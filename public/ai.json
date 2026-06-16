@@ -1,0 +1,28 @@
+{
+  "name": "The Digital Ziggurat",
+  "tagline": "Human flaws. Machine leverage. Public proof.",
+  "owner": "Sergio",
+  "purpose": "A public proof-of-work monument for AI-built projects, experiments, build logs, flaws, and technical ambition.",
+  "primaryActions": [
+    {
+      "label": "Start a build",
+      "href": "mailto:sergio@example.com"
+    },
+    {
+      "label": "View the forge",
+      "href": "/#forge"
+    }
+  ],
+  "sections": [
+    "Human Floor",
+    "Workshop",
+    "Codex Forge",
+    "AI-Readable Shrine",
+    "Signal Beacon"
+  ],
+  "publicMetadata": [
+    "/ai.json",
+    "/projects.json",
+    "/llms.txt"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "projects": [
+    {
+      "name": "PermitPulse",
+      "description": "A civic-tech interface for surfacing permit workflow signals and local friction.",
+      "proves": "Operational software can make bureaucratic patterns readable.",
+      "status": "Prototype",
+      "href": "#permitpulse-demo"
+    },
+    {
+      "name": "Xibalba Pinball",
+      "description": "A playable mythic arcade experiment with a dark underworld pinball atmosphere.",
+      "proves": "Game feel, theme, and browser-native interaction can ship quickly.",
+      "status": "Playable",
+      "href": "#xibalba-demo"
+    },
+    {
+      "name": "Black Swan",
+      "description": "A strategy prototype exploring rare-event thinking through interactive systems.",
+      "proves": "Abstract risk ideas can become tactile decision tools.",
+      "status": "Experiment",
+      "href": "#black-swan-demo"
+    },
+    {
+      "name": "Pumpkin AR Face Filter",
+      "description": "A seasonal AR concept for face tracking, playful overlays, and shareable effects.",
+      "proves": "Computer vision features can become approachable public demos.",
+      "status": "Concept",
+      "href": "#pumpkin-demo"
+    },
+    {
+      "name": "Snapshot Studio",
+      "description": "A lightweight creative tool for producing polished visual snapshots and assets.",
+      "proves": "Small tools can compress repeatable creative workflows.",
+      "status": "MVP",
+      "href": "#snapshot-demo"
+    },
+    {
+      "name": "The Angeles Crest",
+      "description": "A location-driven experience shaped around terrain, atmosphere, and memory.",
+      "proves": "Place-based storytelling can feel cinematic on the web.",
+      "status": "Draft",
+      "href": "#angeles-crest-demo"
+    }
+  ]
+}

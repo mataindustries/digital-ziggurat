@@ -1,0 +1,25 @@
+# The Digital Ziggurat
+
+The Digital Ziggurat is Sergio's public proof-of-work monument for AI-built projects, experiments, build logs, flaws, and technical ambition.
+
+Tagline: Human flaws. Machine leverage. Public proof.
+
+Primary site sections:
+- Human Floor: flawed prototypes, constraints, experiments
+- Workshop: live demos and playable builds
+- Codex Forge: AI-assisted build logs
+- AI-Readable Shrine: metadata for AI agents
+- Signal Beacon: hire/contact CTA
+
+Public metadata:
+- /ai.json
+- /projects.json
+- /llms.txt
+
+Representative projects:
+- PermitPulse
+- Xibalba Pinball
+- Black Swan
+- Pumpkin AR Face Filter
+- Snapshot Studio
+- The Angeles Crest
