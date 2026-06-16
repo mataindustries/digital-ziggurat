@@ -11,15 +11,35 @@ import {
 import './styles.css';
 
 function Ziggurat({ activeTier, onSelectTier }) {
+  const activeTierIndex = zigguratTiers.findIndex((tier) => tier.id === activeTier.id) + 1;
+
   return (
     <div className="ziggurat-stage" aria-label="Interactive ziggurat section selector">
-      <div className="signal-beam" aria-hidden="true" />
+      <div className="monument-atmosphere" aria-hidden="true">
+        <span className="monument-orbit monument-orbit--outer" />
+        <span className="monument-orbit monument-orbit--inner" />
+        <span className="monument-rail monument-rail--left" />
+        <span className="monument-rail monument-rail--right" />
+        <span className="monument-node monument-node--one" />
+        <span className="monument-node monument-node--two" />
+        <span className="monument-node monument-node--three" />
+      </div>
+
+      <div className="signal-beam" aria-hidden="true">
+        <span />
+      </div>
+
       <svg className="grid-lines" viewBox="0 0 900 540" aria-hidden="true">
         <defs>
           <linearGradient id="gridGlow" x1="0" x2="1" y1="0" y2="1">
             <stop offset="0%" stopColor="#1fe7ff" stopOpacity="0.08" />
             <stop offset="56%" stopColor="#1fe7ff" stopOpacity="0.42" />
             <stop offset="100%" stopColor="#f7c66b" stopOpacity="0.18" />
+          </linearGradient>
+          <linearGradient id="frameGlow" x1="0" x2="1" y1="1" y2="0">
+            <stop offset="0%" stopColor="#20e4ff" stopOpacity="0" />
+            <stop offset="48%" stopColor="#20e4ff" stopOpacity="0.62" />
+            <stop offset="100%" stopColor="#f4c76b" stopOpacity="0.22" />
           </linearGradient>
         </defs>
         {Array.from({ length: 13 }).map((_, index) => (
@@ -40,6 +60,20 @@ function Ziggurat({ activeTier, onSelectTier }) {
             fill="none"
           />
         ))}
+        <path
+          className="grid-frame"
+          d="M86 510 L450 44 L814 510"
+          stroke="url(#frameGlow)"
+          strokeWidth="2"
+          fill="none"
+        />
+        <path
+          className="grid-frame grid-frame--low"
+          d="M155 468 H745"
+          stroke="url(#frameGlow)"
+          strokeWidth="1.4"
+          fill="none"
+        />
       </svg>
 
       <div className="ziggurat-core">
@@ -51,9 +85,13 @@ function Ziggurat({ activeTier, onSelectTier }) {
             onClick={() => onSelectTier(tier)}
             aria-pressed={activeTier.id === tier.id}
           >
+            <span className="tier-top-plane" aria-hidden="true" />
             <span className="tier-side tier-side--left" aria-hidden="true" />
             <span className="tier-side tier-side--right" aria-hidden="true" />
             <span className="tier-surface">
+              <span className="tier-index" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
               <span className="tier-label">{tier.name}</span>
               <span className="tier-etching" aria-hidden="true" />
             </span>
@@ -61,13 +99,20 @@ function Ziggurat({ activeTier, onSelectTier }) {
           </button>
         ))}
         <div className="temple-foundation" aria-hidden="true" />
+        <div className="temple-halo" aria-hidden="true" />
         <div className="temple-spire" aria-hidden="true" />
       </div>
 
       <aside className="active-tier-card" key={activeTier.id}>
-        <span>Active tier</span>
+        <div className="active-tier-card__topline">
+          <span>Active tier {String(activeTierIndex).padStart(2, '0')}</span>
+          <span className="active-tier-card__state">Online</span>
+        </div>
         <strong>{activeTier.name}</strong>
         <p>{activeTier.signal}</p>
+        <div className="active-tier-card__meter" aria-hidden="true">
+          <span />
+        </div>
       </aside>
     </div>
   );
