@@ -276,7 +276,10 @@ h1 {
   display: grid;
   width: min(100%, 760px);
   min-height: clamp(360px, 78vw, 720px);
-  padding: clamp(0.25rem, 2vw, 0.8rem) 0 clamp(2.25rem, 6vw, 3.3rem);
+  padding:
+    clamp(0.25rem, 2vw, 0.8rem)
+    clamp(0.65rem, 2.5vw, 1.25rem)
+    clamp(2.25rem, 6vw, 3.3rem);
   place-items: center;
   isolation: isolate;
   perspective: 1200px;
@@ -423,20 +426,18 @@ h1 {
 
 .signal-beam {
   position: absolute;
-  top: -5%;
+  top: -7%;
   left: 50%;
   z-index: 0;
-  width: clamp(92px, 19vw, 150px);
-  height: 60%;
+  width: clamp(24px, 5vw, 42px);
+  height: 54%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 10%, rgba(244, 199, 107, 0.22), transparent 24%),
-    linear-gradient(90deg, transparent, rgba(244, 199, 107, 0.12), transparent),
-    linear-gradient(90deg, transparent 27%, rgba(32, 228, 255, 0.25), transparent 73%),
-    linear-gradient(180deg, rgba(32, 228, 255, 0.62), transparent 80%);
-  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
-  filter: blur(8px);
-  opacity: 0.72;
+    radial-gradient(ellipse at 50% 9%, rgba(244, 199, 107, 0.2), transparent 42%),
+    linear-gradient(90deg, transparent 0 38%, rgba(32, 228, 255, 0.24), transparent 62%),
+    linear-gradient(180deg, rgba(32, 228, 255, 0.48), transparent 82%);
+  filter: blur(5px);
+  opacity: 0.68;
   transform: translateX(-50%);
   animation: beamPulse 4.8s ease-in-out infinite;
 }
@@ -461,8 +462,8 @@ h1 {
   flex-direction: column-reverse;
   align-items: center;
   justify-content: flex-start;
-  width: min(95vw, 700px);
-  padding-top: clamp(4.55rem, 10vw, 6.35rem);
+  width: min(calc(100% - 0.5rem), 700px);
+  padding-top: clamp(4.15rem, 9vw, 5.75rem);
   transform: rotateX(9deg) translateY(-0.35rem);
   transform-style: preserve-3d;
   filter:
@@ -764,10 +765,10 @@ h1 {
 
 .temple-halo {
   position: absolute;
-  top: clamp(0.65rem, 2.7vw, 0.95rem);
+  top: clamp(1.1rem, 3vw, 1.45rem);
   left: 50%;
-  width: clamp(108px, 22vw, 156px);
-  height: clamp(108px, 22vw, 156px);
+  width: clamp(82px, 16vw, 118px);
+  height: clamp(82px, 16vw, 118px);
   z-index: 0;
   border: 1px solid rgba(32, 228, 255, 0.2);
   border-top-color: rgba(244, 199, 107, 0.34);
@@ -782,18 +783,18 @@ h1 {
 
 .temple-spire {
   position: absolute;
-  top: clamp(0.42rem, 2.4vw, 0.75rem);
+  top: clamp(2.25rem, 4.7vw, 3.1rem);
   z-index: 3;
-  width: clamp(70px, 14vw, 104px);
-  height: clamp(82px, 16vw, 116px);
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  width: clamp(36px, 7vw, 52px);
+  height: clamp(16px, 3.2vw, 22px);
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
   background:
-    linear-gradient(148deg, rgba(255, 255, 255, 0.78), transparent 21%),
-    linear-gradient(160deg, rgba(255, 218, 141, 0.98), rgba(32, 228, 255, 0.86) 60%, rgba(7, 18, 22, 0.98));
+    linear-gradient(148deg, rgba(255, 255, 255, 0.7), transparent 34%),
+    linear-gradient(160deg, rgba(255, 218, 141, 0.92), rgba(32, 228, 255, 0.72) 62%, rgba(7, 18, 22, 0.94));
   box-shadow:
-    0 0 76px rgba(32, 228, 255, 0.76),
-    0 0 30px rgba(244, 199, 107, 0.62),
-    inset 0 -22px 26px rgba(0, 0, 0, 0.3);
+    0 0 36px rgba(32, 228, 255, 0.52),
+    0 0 20px rgba(244, 199, 107, 0.36),
+    inset 0 -8px 12px rgba(0, 0, 0, 0.32);
   animation: summitPulse 3.8s ease-in-out infinite;
 }
 
@@ -805,27 +806,29 @@ h1 {
 }
 
 .temple-spire::before {
-  inset: 12% 46% 10%;
+  inset: -210% 48% 38%;
   background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.64);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.64),
+    0 0 28px rgba(32, 228, 255, 0.42);
 }
 
 .temple-spire::after {
-  top: 22%;
-  right: -34%;
-  left: -34%;
+  top: 46%;
+  right: -54%;
+  left: -54%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(244, 199, 107, 0.72), rgba(32, 228, 255, 0.85), transparent);
-  box-shadow: 0 0 18px rgba(32, 228, 255, 0.72);
+  background: linear-gradient(90deg, transparent, rgba(244, 199, 107, 0.58), rgba(32, 228, 255, 0.72), transparent);
+  box-shadow: 0 0 14px rgba(32, 228, 255, 0.52);
   animation: beaconSweep 2.8s ease-in-out infinite;
 }
 
 .active-tier-card {
   position: absolute;
-  right: clamp(0rem, 1.5vw, 0.8rem);
+  right: clamp(1rem, 3vw, 1.5rem);
   bottom: clamp(0.3rem, 2vw, 1rem);
   z-index: 4;
-  width: min(286px, 74vw);
+  width: min(286px, calc(100% - 2rem));
   padding: 0.92rem 1rem 0.86rem;
   border: 1px solid rgba(32, 228, 255, 0.42);
   background:
@@ -1742,13 +1745,19 @@ code {
   }
 
   .hero-art {
-    min-height: 374px;
+    min-height: 426px;
     margin-top: -0.55rem;
   }
 
   .ziggurat-stage {
-    min-height: 374px;
-    padding-bottom: 4.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 426px;
+    padding:
+      0.35rem
+      clamp(0.45rem, 3vw, 0.75rem)
+      0.8rem;
     overflow: visible;
   }
 
@@ -1782,8 +1791,8 @@ code {
   }
 
   .ziggurat-core {
-    width: min(96vw, 450px);
-    padding-top: 4.05rem;
+    width: min(100%, 430px);
+    padding-top: 3.95rem;
   }
 
   .tier {
@@ -1814,13 +1823,15 @@ code {
   }
 
   .temple-spire {
-    width: 64px;
-    height: 76px;
+    top: 2.16rem;
+    width: 38px;
+    height: 17px;
   }
 
   .temple-halo {
-    width: 112px;
-    height: 112px;
+    top: 1.05rem;
+    width: 92px;
+    height: 92px;
   }
 
   .temple-foundation {
@@ -1829,10 +1840,12 @@ code {
   }
 
   .active-tier-card {
-    right: 50%;
-    bottom: 0.2rem;
-    width: min(340px, 90vw);
-    transform: translateX(50%);
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(340px, calc(100% - 0.5rem));
+    margin-top: 0.72rem;
+    transform: none;
   }
 
   .active-tier-card::after {
@@ -1840,7 +1853,7 @@ code {
   }
 
   .active-tier-card {
-    animation-name: tierRevealMobile;
+    animation-name: tierReveal;
   }
 
   .tier-panel {
@@ -1869,12 +1882,11 @@ code {
   }
 
   .hero-art {
-    min-height: 352px;
+    min-height: 410px;
   }
 
   .ziggurat-stage {
-    min-height: 352px;
-    padding-bottom: 4.7rem;
+    min-height: 410px;
   }
 
   .tier {
