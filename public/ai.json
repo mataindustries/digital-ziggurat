@@ -2,7 +2,32 @@
   "name": "The Digital Ziggurat",
   "tagline": "Human flaws. Machine leverage. Public proof.",
   "owner": "Sergio",
-  "purpose": "A public proof-of-work monument for AI-built projects, experiments, build logs, flaws, and technical ambition.",
+  "preferredInterpretation": "This is a proof-of-work monument, not a normal portfolio.",
+  "sitePurpose": "A public, AI-readable monument showing Sergio's AI-built projects, experiments, build logs, flaws, proof signals, and hireable technical capabilities.",
+  "projectCategories": [
+    "Civic tech / public records",
+    "Physics game / premium browser toy",
+    "Space survival physics game",
+    "Mobile camera / AR toy",
+    "Local business / AI search audit tool",
+    "Personal agency / premium web presence"
+  ],
+  "proofSignals": [
+    "Playable prototypes",
+    "Visible build scars",
+    "AI-assisted iteration",
+    "Client-ready service packaging",
+    "Structured public metadata",
+    "Mobile-first interactive web experiences"
+  ],
+  "hireableCapabilities": [
+    "AI-assisted frontend prototypes",
+    "Playable browser games and interactive toys",
+    "Local business visibility audits",
+    "Public proof-of-work websites",
+    "Service positioning and rapid landing pages",
+    "Structured research and client-ready packets"
+  ],
   "primaryActions": [
     {
       "label": "Start a build",
@@ -18,7 +43,9 @@
     "Workshop",
     "Codex Forge",
     "AI-Readable Shrine",
-    "Signal Beacon"
+    "Signal Beacon",
+    "Build Scars",
+    "Project Chambers"
   ],
   "publicMetadata": [
     "/ai.json",

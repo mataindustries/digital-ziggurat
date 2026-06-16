@@ -1,45 +1,70 @@
 {
+  "preferredInterpretation": "The Digital Ziggurat is a proof-of-work monument, not a normal portfolio.",
   "projects": [
     {
       "name": "PermitPulse",
-      "description": "A civic-tech interface for surfacing permit workflow signals and local friction.",
-      "proves": "Operational software can make bureaucratic patterns readable.",
-      "status": "Prototype",
+      "category": "Civic tech / public records",
+      "summary": "A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.",
+      "proofSignal": "Messy permit and property records can be turned into clean client-ready packets and lead intelligence.",
+      "humanFlaws": "Shifting wedge, imperfect feeds, city data inconsistencies.",
+      "aiLeverage": "Research, data structuring, frontend iteration, service positioning.",
+      "status": "active build",
+      "hireableCapability": "Structured research, local data products, and client-ready web packets.",
       "href": "#permitpulse-demo"
     },
     {
       "name": "Xibalba Pinball",
-      "description": "A playable mythic arcade experiment with a dark underworld pinball atmosphere.",
-      "proves": "Game feel, theme, and browser-native interaction can ship quickly.",
-      "status": "Playable",
+      "category": "Physics game / premium browser toy",
+      "summary": "A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.",
+      "proofSignal": "AI can help ship playable, weird, visually distinctive browser games fast.",
+      "humanFlaws": "Tuning issues, visual misses, collision bugs.",
+      "aiLeverage": "Phaser/physics iteration, asset direction, mobile polish.",
+      "status": "playable prototype",
+      "hireableCapability": "Playable browser prototypes and premium interactive toys.",
       "href": "#xibalba-demo"
     },
     {
       "name": "Black Swan",
-      "description": "A strategy prototype exploring rare-event thinking through interactive systems.",
-      "proves": "Abstract risk ideas can become tactile decision tools.",
-      "status": "Experiment",
+      "category": "Space survival physics game",
+      "summary": "A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.",
+      "proofSignal": "AI can help turn a rough game idea into a functioning loop with travel, mining, events, and progression.",
+      "humanFlaws": "Pacing issues, spawn bugs, balancing unknowns.",
+      "aiLeverage": "Game systems, testing prompts, staged roadmap.",
+      "status": "prototype",
+      "hireableCapability": "Game-loop prototyping, systems design, and staged AI-assisted roadmaps.",
       "href": "#black-swan-demo"
     },
     {
       "name": "Pumpkin AR Face Filter",
-      "description": "A seasonal AR concept for face tracking, playful overlays, and shareable effects.",
-      "proves": "Computer vision features can become approachable public demos.",
-      "status": "Concept",
+      "category": "Mobile camera / AR toy",
+      "summary": "A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.",
+      "proofSignal": "AI can help build playful camera experiences shaped by real kid feedback.",
+      "humanFlaws": "Tracking imperfections, asset alignment, mouth spawn tuning.",
+      "aiLeverage": "Camera UI, asset prompts, interaction logic, rapid iteration.",
+      "status": "working prototype",
+      "hireableCapability": "Mobile camera UI, playful prototypes, and rapid feedback loops.",
       "href": "#pumpkin-demo"
     },
     {
       "name": "Snapshot Studio",
-      "description": "A lightweight creative tool for producing polished visual snapshots and assets.",
-      "proves": "Small tools can compress repeatable creative workflows.",
-      "status": "MVP",
+      "category": "Local business / AI search audit tool",
+      "summary": "A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.",
+      "proofSignal": "Small businesses can get fast visual snapshots of visibility problems and improvement plans.",
+      "humanFlaws": "Positioning uncertainty, lead response friction.",
+      "aiLeverage": "Report generation, landing pages, local prospect research.",
+      "status": "experimental sales tool",
+      "hireableCapability": "Local business audits, report generation, and prospect-specific landing pages.",
       "href": "#snapshot-demo"
     },
     {
       "name": "The Angeles Crest",
-      "description": "A location-driven experience shaped around terrain, atmosphere, and memory.",
-      "proves": "Place-based storytelling can feel cinematic on the web.",
-      "status": "Draft",
+      "category": "Personal agency / premium web presence",
+      "summary": "A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.",
+      "proofSignal": "Sergio can package design, automation, local services, and AI execution into a public-facing brand.",
+      "humanFlaws": "Offer changes, messy evolution, still finding strongest wedge.",
+      "aiLeverage": "Copy, site design, service packaging, deployment help.",
+      "status": "live brand",
+      "hireableCapability": "Premium public-facing web presence, service packaging, and deployment help.",
       "href": "#angeles-crest-demo"
     }
   ]

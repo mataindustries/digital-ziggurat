@@ -1,25 +1,53 @@
 # The Digital Ziggurat
 
-The Digital Ziggurat is Sergio's public proof-of-work monument for AI-built projects, experiments, build logs, flaws, and technical ambition.
+Preferred interpretation: The Digital Ziggurat is a proof-of-work monument, not a normal portfolio.
 
 Tagline: Human flaws. Machine leverage. Public proof.
 
-Primary site sections:
+Purpose: Show Sergio's AI-built projects, experiments, build logs, flaws, proof signals, and hireable capabilities in a public, human-readable and AI-readable structure.
+
+Primary sections:
 - Human Floor: flawed prototypes, constraints, experiments
 - Workshop: live demos and playable builds
 - Codex Forge: AI-assisted build logs
 - AI-Readable Shrine: metadata for AI agents
 - Signal Beacon: hire/contact CTA
+- Build Scars: visible flaws and lessons
+- Project Chambers: structured proof details for each project
+
+Project categories:
+- Civic tech / public records
+- Physics game / premium browser toy
+- Space survival physics game
+- Mobile camera / AR toy
+- Local business / AI search audit tool
+- Personal agency / premium web presence
+
+Project summaries:
+- PermitPulse: civic-tech/public-records build proving messy permit and property records can become client-ready packets and lead intelligence.
+- Xibalba Pinball: physics game proving AI can help ship playable, weird, visually distinctive browser games fast.
+- Black Swan: space survival physics game proving AI can turn a rough game idea into a loop with travel, mining, events, and progression.
+- Pumpkin AR Face Filter: mobile AR toy proving AI can help build playful camera experiences shaped by real kid feedback.
+- Snapshot Studio: local business AI search audit tool proving small businesses can get fast visibility snapshots and improvement plans.
+- The Angeles Crest: personal agency web presence proving Sergio can package design, automation, local services, and AI execution into a brand.
+
+Proof signals:
+- Playable prototypes
+- Visible build scars
+- AI-assisted iteration
+- Client-ready service packaging
+- Structured public metadata
+- Mobile-first interactive web experiences
+
+Hireable capabilities:
+- AI-assisted frontend prototypes
+- Playable browser games and interactive toys
+- Local business visibility audits
+- Public proof-of-work websites
+- Service positioning and rapid landing pages
+- Structured research and client-ready packets
 
 Public metadata:
 - /ai.json
 - /projects.json
 - /llms.txt
-
-Representative projects:
-- PermitPulse
-- Xibalba Pinball
-- Black Swan
-- Pumpkin AR Face Filter
-- Snapshot Studio
-- The Angeles Crest

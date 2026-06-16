@@ -1,6 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { projects, buildLog, zigguratTiers } from './data/projects';
+import {
+  projects,
+  buildLog,
+  zigguratTiers,
+  scarTissue,
+  interpretationPanels,
+  hireableCapabilities,
+} from './data/projects';
 import './styles.css';
 
 function Ziggurat({ activeTier, onSelectTier }) {
@@ -44,10 +51,16 @@ function Ziggurat({ activeTier, onSelectTier }) {
             onClick={() => onSelectTier(tier)}
             aria-pressed={activeTier.id === tier.id}
           >
-            <span className="tier-label">{tier.name}</span>
+            <span className="tier-side tier-side--left" aria-hidden="true" />
+            <span className="tier-side tier-side--right" aria-hidden="true" />
+            <span className="tier-surface">
+              <span className="tier-label">{tier.name}</span>
+              <span className="tier-etching" aria-hidden="true" />
+            </span>
             <span className="tier-glow" />
           </button>
         ))}
+        <div className="temple-foundation" aria-hidden="true" />
         <div className="temple-spire" aria-hidden="true" />
       </div>
 
@@ -60,27 +73,80 @@ function Ziggurat({ activeTier, onSelectTier }) {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, onOpen }) {
   return (
-    <article className="project-card">
+    <button className="project-card" type="button" onClick={() => onOpen(project)}>
       <div className="project-card__topline">
         <span className={`status status--${project.statusTone}`}>{project.status}</span>
-        <a href={project.link} className="project-card__link" aria-label={`${project.name} demo link`}>
-          Demo
-        </a>
+        <span className="project-card__link">Open chamber</span>
       </div>
+      <span className="project-card__category">{project.category}</span>
       <h3>{project.name}</h3>
       <p>{project.description}</p>
       <div className="proof">
         <span>Proves</span>
         <strong>{project.proves}</strong>
       </div>
-    </article>
+    </button>
+  );
+}
+
+function ProjectChamber({ project, onClose }) {
+  if (!project) {
+    return null;
+  }
+
+  return (
+    <div className="chamber-backdrop" role="presentation" onClick={onClose}>
+      <section
+        className="project-chamber"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-chamber-title"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button className="chamber-close" type="button" onClick={onClose} aria-label="Close chamber">
+          Close
+        </button>
+        <div className="chamber-header">
+          <p className="section-kicker">Proof-of-work chamber</p>
+          <h2 id="project-chamber-title">{project.name}</h2>
+          <span className={`status status--${project.statusTone}`}>{project.status}</span>
+        </div>
+
+        <div className="chamber-category">{project.category}</div>
+        <p className="chamber-description">{project.description}</p>
+
+        <div className="chamber-grid">
+          <div className="chamber-block chamber-block--wide">
+            <span>What it proves</span>
+            <p>{project.proves}</p>
+          </div>
+          <div className="chamber-block">
+            <span>Human flaws / constraints</span>
+            <p>{project.humanFlaws}</p>
+          </div>
+          <div className="chamber-block">
+            <span>AI leverage used</span>
+            <p>{project.aiLeverage}</p>
+          </div>
+          <div className="chamber-block chamber-block--wide">
+            <span>Next upgrade</span>
+            <p>{project.nextUpgrade}</p>
+          </div>
+        </div>
+
+        <a className="button button-primary chamber-cta" href={project.link}>
+          {project.ctaLabel}
+        </a>
+      </section>
+    </div>
   );
 }
 
 function App() {
   const [activeTier, setActiveTier] = useState(zigguratTiers[1]);
+  const [selectedProject, setSelectedProject] = useState(null);
   const activeProjects = useMemo(
     () => projects.filter((project) => activeTier.projectIds.includes(project.id)),
     [activeTier],
@@ -97,6 +163,7 @@ function App() {
           <div className="nav-links">
             <a href="#forge">Forge</a>
             <a href="#projects">Projects</a>
+            <a href="#shrine">AI</a>
             <a href="#signal">Signal</a>
           </div>
         </nav>
@@ -150,7 +217,32 @@ function App() {
 
         <div className="project-grid">
           {projects.map((project) => (
-            <ProjectCard project={project} key={project.id} />
+            <ProjectCard project={project} key={project.id} onOpen={setSelectedProject} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section human-ai-section" id="proof-map">
+        <div className="section-heading">
+          <p className="section-kicker">Dual Audience</p>
+          <h2>For humans. For AI.</h2>
+          <p>
+            The monument is meant to be explored visually and parsed structurally. Both readings
+            point to the same proof.
+          </p>
+        </div>
+
+        <div className="interpretation-grid">
+          {interpretationPanels.map((panel) => (
+            <article className={`interpretation-card interpretation-card--${panel.id}`} key={panel.id}>
+              <h3>{panel.title}</h3>
+              <p>{panel.text}</p>
+              <div className="signal-list">
+                {panel.signals.map((signal) => (
+                  <span key={signal}>{signal}</span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -166,6 +258,25 @@ function App() {
               <span>{project.name}</span>
               <small>{project.status}</small>
             </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="section scars-section" id="scars">
+        <div className="section-heading">
+          <p className="section-kicker">Build Scars</p>
+          <h2>Scar tissue is part of the structure</h2>
+          <p>
+            The Ziggurat keeps the rough edges visible because failed passes became the system that
+            made later passes sharper.
+          </p>
+        </div>
+        <div className="scar-grid">
+          {scarTissue.map((scar, index) => (
+            <article className="scar-card" key={scar}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <p>{scar}</p>
+            </article>
           ))}
         </div>
       </section>
@@ -214,6 +325,11 @@ function App() {
           The Ziggurat is built to make ambition legible: public artifacts, visible iteration, and
           proof that AI leverage can ship real interfaces.
         </p>
+        <div className="capability-list">
+          {hireableCapabilities.map((capability) => (
+            <span key={capability}>{capability}</span>
+          ))}
+        </div>
         <div className="hero-actions">
           <a className="button button-primary" href="mailto:sergio@example.com">
             Start a build
@@ -223,6 +339,7 @@ function App() {
           </a>
         </div>
       </section>
+      <ProjectChamber project={selectedProject} onClose={() => setSelectedProject(null)} />
     </main>
   );
 }
