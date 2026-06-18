@@ -132,15 +132,53 @@ a {
 
 .brand-mark {
   position: relative;
+  flex: 0 0 32px;
   width: 32px;
   height: 32px;
-  clip-path: polygon(50% 0, 78% 30%, 100% 100%, 0 100%, 22% 30%);
+  border: 1px solid rgba(32, 228, 255, 0.42);
+  border-radius: 8px;
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.7), transparent 32%),
-    linear-gradient(145deg, var(--cyan), var(--gold));
+    radial-gradient(circle at 50% 16%, rgba(244, 199, 107, 0.22), transparent 24%),
+    linear-gradient(145deg, rgba(32, 228, 255, 0.1), transparent 42%),
+    #03090b;
   box-shadow:
-    0 0 22px rgba(32, 228, 255, 0.68),
-    0 0 1px 1px rgba(244, 199, 107, 0.35);
+    0 0 18px rgba(32, 228, 255, 0.34),
+    inset 0 0 18px rgba(32, 228, 255, 0.08);
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.brand-mark::before {
+  right: 5px;
+  bottom: 6px;
+  left: 5px;
+  height: 21px;
+  background:
+    linear-gradient(90deg, transparent 0 8px, #1d2a2f 8px 14px, transparent 14px 22px) 0 0 / 22px 5px no-repeat,
+    linear-gradient(90deg, transparent 0 5px, #152126 5px 17px, transparent 17px 22px) 0 5px / 22px 5px no-repeat,
+    linear-gradient(90deg, transparent 0 2px, #0d171b 2px 20px, transparent 20px 22px) 0 10px / 22px 6px no-repeat,
+    linear-gradient(90deg, #071013 0 22px) 0 16px / 22px 5px no-repeat;
+  filter:
+    drop-shadow(0 0 4px rgba(32, 228, 255, 0.28))
+    drop-shadow(0 0 1px rgba(244, 199, 107, 0.24));
+}
+
+.brand-mark::after {
+  top: 5px;
+  bottom: 6px;
+  left: 50%;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold) 0 12%, #7af7ff 18%, var(--cyan) 72%, transparent);
+  box-shadow:
+    0 0 8px rgba(32, 228, 255, 0.78),
+    0 -1px 8px rgba(244, 199, 107, 0.46);
+  transform: translateX(-50%);
 }
 
 .nav-links {

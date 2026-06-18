@@ -45,7 +45,7 @@
       "id": "permitpulse",
       "name": "PermitPulse",
       "category": "Civic tech / public records",
-      "status": "active build",
+      "status": "Live project",
       "proofSignals": [
         "Public-record research",
         "Client-ready packets",
@@ -53,7 +53,7 @@
       ],
       "links": {
         "demo": {
-          "label": "Live site",
+          "label": "Open project",
           "href": "https://getpermitpulse.com",
           "status": "live"
         },
@@ -68,7 +68,7 @@
       "id": "xibalba-pinball",
       "name": "Xibalba Pinball",
       "category": "Physics game / premium browser toy",
-      "status": "playable prototype",
+      "status": "Play live",
       "proofSignals": [
         "Playable browser game",
         "Physics iteration",
@@ -76,9 +76,9 @@
       ],
       "links": {
         "demo": {
-          "label": "Private build",
-          "href": null,
-          "status": "private"
+          "label": "Play live",
+          "href": "https://xibalba.pages.dev",
+          "status": "live"
         },
         "github": {
           "label": "Private source",
@@ -160,7 +160,7 @@
       "id": "angeles-crest",
       "name": "The Angeles Crest",
       "category": "Personal agency / premium web presence",
-      "status": "live brand",
+      "status": "Live brand",
       "proofSignals": [
         "Premium web presence",
         "Service packaging",
@@ -168,9 +168,9 @@
       ],
       "links": {
         "demo": {
-          "label": "Coming soon",
-          "href": null,
-          "status": "coming-soon"
+          "label": "Open site",
+          "href": "https://theangelescrest.pages.dev",
+          "status": "live"
         },
         "github": {
           "label": "Private source",

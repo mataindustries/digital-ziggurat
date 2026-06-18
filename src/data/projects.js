@@ -34,7 +34,7 @@ export const projects = [
       'Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.',
     aiLeverage:
       'Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.',
-    status: 'active build',
+    status: 'Live project',
     statusTone: 'cyan',
     nextUpgrade:
       'Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.',
@@ -47,7 +47,7 @@ export const projects = [
     ],
     links: {
       demo: {
-        label: 'Live site',
+        label: 'Open project',
         href: 'https://getpermitpulse.com',
         status: 'live',
       },
@@ -71,7 +71,7 @@ export const projects = [
       'Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.',
     aiLeverage:
       'Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.',
-    status: 'playable prototype',
+    status: 'Play live',
     statusTone: 'gold',
     nextUpgrade:
       'Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.',
@@ -84,9 +84,9 @@ export const projects = [
     ],
     links: {
       demo: {
-        label: 'Private build',
-        href: null,
-        status: 'private',
+        label: 'Play live',
+        href: 'https://xibalba.pages.dev',
+        status: 'live',
       },
       github: {
         label: 'Private source',
@@ -223,7 +223,7 @@ export const projects = [
       'Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.',
     aiLeverage:
       'Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.',
-    status: 'live brand',
+    status: 'Live brand',
     statusTone: 'stone',
     nextUpgrade:
       'Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.',
@@ -236,9 +236,9 @@ export const projects = [
     ],
     links: {
       demo: {
-        label: 'Coming soon',
-        href: null,
-        status: 'coming-soon',
+        label: 'Open site',
+        href: 'https://theangelescrest.pages.dev',
+        status: 'live',
       },
       github: {
         label: 'Private source',

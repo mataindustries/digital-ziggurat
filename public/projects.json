@@ -10,7 +10,7 @@
       "id": "permitpulse",
       "name": "PermitPulse",
       "category": "Civic tech / public records",
-      "status": "active build",
+      "status": "Live project",
       "summary": "A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.",
       "whatItProves": "Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.",
       "whatBroke": "The wedge moved, data sources were uneven, and city records did not behave like clean product inputs.",
@@ -30,7 +30,7 @@
       ],
       "links": {
         "demo": {
-          "label": "Live site",
+          "label": "Open project",
           "href": "https://getpermitpulse.com",
           "status": "live"
         },
@@ -45,7 +45,7 @@
       "id": "xibalba-pinball",
       "name": "Xibalba Pinball",
       "category": "Physics game / premium browser toy",
-      "status": "playable prototype",
+      "status": "Play live",
       "summary": "A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.",
       "whatItProves": "AI can help ship weird, playable, visually distinctive browser games before the design is perfect.",
       "whatBroke": "Table tuning fought the art direction, collisions misbehaved, and several visual passes missed the intended underworld mood.",
@@ -65,9 +65,9 @@
       ],
       "links": {
         "demo": {
-          "label": "Private build",
-          "href": null,
-          "status": "private"
+          "label": "Play live",
+          "href": "https://xibalba.pages.dev",
+          "status": "live"
         },
         "github": {
           "label": "Private source",
@@ -185,7 +185,7 @@
       "id": "angeles-crest",
       "name": "The Angeles Crest",
       "category": "Personal agency / premium web presence",
-      "status": "live brand",
+      "status": "Live brand",
       "summary": "A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.",
       "whatItProves": "Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.",
       "whatBroke": "The offer evolved in public, the strongest wedge was not obvious at first, and the brand had to absorb several directions.",
@@ -205,9 +205,9 @@
       ],
       "links": {
         "demo": {
-          "label": "Coming soon",
-          "href": null,
-          "status": "coming-soon"
+          "label": "Open site",
+          "href": "https://theangelescrest.pages.dev",
+          "status": "live"
         },
         "github": {
           "label": "Private source",

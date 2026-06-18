@@ -27,22 +27,22 @@ Project categories:
 
 Projects:
 - PermitPulse: A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.
-  Status: active build
+  Status: Live project
   Proof: Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.
   What broke: The wedge moved, data sources were uneven, and city records did not behave like clean product inputs.
   Human flaws: Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.
   AI leverage: Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.
   Next upgrade: Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.
-  Demo: Live site (https://getpermitpulse.com)
+  Demo: Open project (https://getpermitpulse.com)
   Source: Private source (private)
 - Xibalba Pinball: A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.
-  Status: playable prototype
+  Status: Play live
   Proof: AI can help ship weird, playable, visually distinctive browser games before the design is perfect.
   What broke: Table tuning fought the art direction, collisions misbehaved, and several visual passes missed the intended underworld mood.
   Human flaws: Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.
   AI leverage: Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.
   Next upgrade: Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.
-  Demo: Private build (private)
+  Demo: Play live (https://xibalba.pages.dev)
   Source: Private source (private)
 - Black Swan: A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.
   Status: prototype
@@ -72,13 +72,13 @@ Projects:
   Demo: Internal prototype (internal)
   Source: Private source (private)
 - The Angeles Crest: A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.
-  Status: live brand
+  Status: Live brand
   Proof: Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.
   What broke: The offer evolved in public, the strongest wedge was not obvious at first, and the brand had to absorb several directions.
   Human flaws: Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.
   AI leverage: Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.
   Next upgrade: Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.
-  Demo: Coming soon (coming-soon)
+  Demo: Open site (https://theangelescrest.pages.dev)
   Source: Private source (private)
 
 Build scars:
