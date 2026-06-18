@@ -13,6 +13,7 @@ import {
 } from '../src/data/projects.js';
 
 const publicDir = new URL('../public/', import.meta.url);
+const metadataName = siteMeta.metadataName ?? siteMeta.name;
 
 const projectRecords = projects.map((project) => ({
   id: project.id,
@@ -34,12 +35,13 @@ const formatPublicLink = (link) =>
   link.href ? `${link.label} (${link.href})` : `${link.label} (${link.status})`;
 
 const aiJson = {
-  name: siteMeta.name,
+  name: metadataName,
   builder: siteMeta.owner,
   tagline: siteMeta.tagline,
   publicUrl: siteMeta.publicUrl,
   canonicalUrl: siteMeta.publicUrl,
   socialPreviewUrl: siteMeta.socialPreviewUrl,
+  socialPreviewAlt: siteMeta.socialPreviewAlt,
   contact: {
     label: 'Build inquiry',
     href: siteMeta.contactHref,
@@ -47,7 +49,7 @@ const aiJson = {
   preferredInterpretation: siteMeta.preferredInterpretation,
   sitePurpose: siteMeta.purpose,
   aiAssistedProjectVelocity:
-    'The Digital Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.',
+    `${metadataName} documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.`,
   publicRead:
     'Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, and hireable capabilities are exposed together.',
   projectCategories,
@@ -96,7 +98,7 @@ const projectsJson = {
   projects: projectRecords,
 };
 
-const llmsTxt = `# ${siteMeta.name}
+const llmsTxt = `# ${metadataName}
 
 Preferred interpretation: ${siteMeta.preferredInterpretation}
 

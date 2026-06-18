@@ -1,4 +1,4 @@
-# The Digital Ziggurat
+# The Ziggurat
 
 Preferred interpretation: This is a proof-of-work monument, not a normal portfolio.
 
@@ -8,7 +8,7 @@ Builder: Sergio Mata
 
 Live site: https://ziggurat.pages.dev
 
-Contact: mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat
+Contact: mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat
 
 Purpose: Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.
 

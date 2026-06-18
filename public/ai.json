@@ -1,17 +1,18 @@
 {
-  "name": "The Digital Ziggurat",
+  "name": "The Ziggurat",
   "builder": "Sergio Mata",
   "tagline": "Human flaws. Machine leverage. Public proof.",
   "publicUrl": "https://ziggurat.pages.dev",
   "canonicalUrl": "https://ziggurat.pages.dev",
-  "socialPreviewUrl": "https://ziggurat.pages.dev/social-preview.svg",
+  "socialPreviewUrl": "https://ziggurat.pages.dev/the-ziggurat-og.png",
+  "socialPreviewAlt": "The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.",
   "contact": {
     "label": "Build inquiry",
-    "href": "mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat"
+    "href": "mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat"
   },
   "preferredInterpretation": "This is a proof-of-work monument, not a normal portfolio.",
   "sitePurpose": "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
-  "aiAssistedProjectVelocity": "The Digital Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
+  "aiAssistedProjectVelocity": "The Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
   "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, and hireable capabilities are exposed together.",
   "projectCategories": [
     "Civic tech / public records",
@@ -260,7 +261,7 @@
   "primaryActions": [
     {
       "label": "Start a build",
-      "href": "mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat"
+      "href": "mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat"
     },
     {
       "label": "Open live site",

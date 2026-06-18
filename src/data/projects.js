@@ -3,18 +3,21 @@
 
 export const siteMeta = {
   name: 'The Digital Ziggurat',
+  metadataName: 'The Ziggurat',
   owner: 'Sergio Mata',
   tagline: 'Human flaws. Machine leverage. Public proof.',
-  title: 'The Digital Ziggurat — Human flaws. Machine leverage. Public proof.',
+  title: 'The Ziggurat — Human flaws. Machine leverage. Public proof.',
   description:
     'A cinematic proof-of-work monument showcasing Sergio Mata’s AI-built projects, prototypes, build scars, and technical ambition.',
   publicUrl: 'https://ziggurat.pages.dev',
+  socialPreviewUrl: 'https://ziggurat.pages.dev/the-ziggurat-og.png',
+  socialPreviewAlt:
+    'The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.',
   preferredInterpretation: 'This is a proof-of-work monument, not a normal portfolio.',
   purpose:
     "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
   contactHref:
-    'mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat',
-  socialPreviewUrl: 'https://ziggurat.pages.dev/social-preview.svg',
+    'mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat',
 };
 
 export const projects = [
