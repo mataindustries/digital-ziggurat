@@ -2,8 +2,7 @@
 // scar tissue, interpretation panels, metadata generation, and build log entries.
 
 export const siteMeta = {
-  name: 'The Digital Ziggurat',
-  metadataName: 'The Ziggurat',
+  name: 'The Ziggurat',
   owner: 'Sergio Mata',
   tagline: 'Human flaws. Machine leverage. Public proof.',
   title: 'The Ziggurat — Human flaws. Machine leverage. Public proof.',

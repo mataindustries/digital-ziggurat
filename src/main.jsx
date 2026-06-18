@@ -268,7 +268,7 @@ function App() {
     <main>
       <section className="hero">
         <nav className="nav" aria-label="Main navigation">
-          <a className="brand" href="#top" aria-label="The Digital Ziggurat home">
+          <a className="brand" href="#top" aria-label="The Ziggurat home">
             <span className="brand-mark" />
             <span>{siteMeta.name}</span>
           </a>
@@ -283,7 +283,7 @@ function App() {
         <div className="hero-content" id="top">
           <div className="hero-copy">
             <p className="eyebrow">Public proof-of-work monument</p>
-            <h1>The Digital Ziggurat</h1>
+            <h1>The Ziggurat</h1>
             <p className="tagline">Human flaws. Machine leverage. Public proof.</p>
             <p className="intro">
               Sergio's AI-built projects, flawed prototypes, build logs, experiments, and technical
