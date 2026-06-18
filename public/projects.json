@@ -1,71 +1,220 @@
 {
-  "preferredInterpretation": "The Digital Ziggurat is a proof-of-work monument, not a normal portfolio.",
+  "preferredInterpretation": "This is a proof-of-work monument, not a normal portfolio.",
+  "purpose": "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
+  "builder": "Sergio Mata",
+  "publicUrl": "https://ziggurat.pages.dev",
+  "linkPolicy": "Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.",
+  "projectCount": 6,
   "projects": [
     {
+      "id": "permitpulse",
       "name": "PermitPulse",
       "category": "Civic tech / public records",
-      "summary": "A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.",
-      "proofSignal": "Messy permit and property records can be turned into clean client-ready packets and lead intelligence.",
-      "humanFlaws": "Shifting wedge, imperfect feeds, city data inconsistencies.",
-      "aiLeverage": "Research, data structuring, frontend iteration, service positioning.",
       "status": "active build",
-      "hireableCapability": "Structured research, local data products, and client-ready web packets.",
-      "href": "#permitpulse-demo"
+      "summary": "A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.",
+      "whatItProves": "Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.",
+      "whatBroke": "The wedge moved, data sources were uneven, and city records did not behave like clean product inputs.",
+      "humanFlaws": "Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.",
+      "aiLeverageUsed": "Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.",
+      "nextUpgrade": "Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.",
+      "proofSignals": [
+        "Public-record research",
+        "Client-ready packets",
+        "Local lead intelligence"
+      ],
+      "hireableCapabilities": [
+        "Structured research",
+        "Civic-data interfaces",
+        "Service packaging",
+        "Lead packet design"
+      ],
+      "links": {
+        "demo": {
+          "label": "Live site",
+          "href": "https://getpermitpulse.com",
+          "status": "live"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     },
     {
+      "id": "xibalba-pinball",
       "name": "Xibalba Pinball",
       "category": "Physics game / premium browser toy",
-      "summary": "A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.",
-      "proofSignal": "AI can help ship playable, weird, visually distinctive browser games fast.",
-      "humanFlaws": "Tuning issues, visual misses, collision bugs.",
-      "aiLeverage": "Phaser/physics iteration, asset direction, mobile polish.",
       "status": "playable prototype",
-      "hireableCapability": "Playable browser prototypes and premium interactive toys.",
-      "href": "#xibalba-demo"
+      "summary": "A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.",
+      "whatItProves": "AI can help ship weird, playable, visually distinctive browser games before the design is perfect.",
+      "whatBroke": "Table tuning fought the art direction, collisions misbehaved, and several visual passes missed the intended underworld mood.",
+      "humanFlaws": "Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.",
+      "aiLeverageUsed": "Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.",
+      "nextUpgrade": "Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.",
+      "proofSignals": [
+        "Playable browser game",
+        "Physics iteration",
+        "Premium toy direction"
+      ],
+      "hireableCapabilities": [
+        "Game prototyping",
+        "Interactive browser toys",
+        "Mobile-first game UI",
+        "Rapid polish passes"
+      ],
+      "links": {
+        "demo": {
+          "label": "Private build",
+          "href": null,
+          "status": "private"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     },
     {
+      "id": "black-swan",
       "name": "Black Swan",
       "category": "Space survival physics game",
-      "summary": "A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.",
-      "proofSignal": "AI can help turn a rough game idea into a functioning loop with travel, mining, events, and progression.",
-      "humanFlaws": "Pacing issues, spawn bugs, balancing unknowns.",
-      "aiLeverage": "Game systems, testing prompts, staged roadmap.",
       "status": "prototype",
-      "hireableCapability": "Game-loop prototyping, systems design, and staged AI-assisted roadmaps.",
-      "href": "#black-swan-demo"
+      "summary": "A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.",
+      "whatItProves": "A rough game premise can become a functioning loop with movement, resources, upgrades, event pressure, and progression.",
+      "whatBroke": "Pacing was uneven, spawn logic created strange difficulty spikes, and balancing exposed how much design judgment still matters.",
+      "humanFlaws": "Ambitious scope, balancing unknowns, testing blind spots, and systems that needed more constraint than the first idea allowed.",
+      "aiLeverageUsed": "Game-system scaffolding, debugging prompts, staged roadmap planning, event design, and test-case generation.",
+      "nextUpgrade": "Improve event pacing, economy pressure, save-state clarity, and risk/reward choices that make each run legible.",
+      "proofSignals": [
+        "Survival loop",
+        "Physics risk",
+        "Systems roadmap"
+      ],
+      "hireableCapabilities": [
+        "Game-loop design",
+        "Prototype systems",
+        "AI-assisted debugging",
+        "Roadmap staging"
+      ],
+      "links": {
+        "demo": {
+          "label": "Private build",
+          "href": null,
+          "status": "private"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     },
     {
+      "id": "pumpkin-ar-face-filter",
       "name": "Pumpkin AR Face Filter",
       "category": "Mobile camera / AR toy",
-      "summary": "A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.",
-      "proofSignal": "AI can help build playful camera experiences shaped by real kid feedback.",
-      "humanFlaws": "Tracking imperfections, asset alignment, mouth spawn tuning.",
-      "aiLeverage": "Camera UI, asset prompts, interaction logic, rapid iteration.",
       "status": "working prototype",
-      "hireableCapability": "Mobile camera UI, playful prototypes, and rapid feedback loops.",
-      "href": "#pumpkin-demo"
+      "summary": "A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.",
+      "whatItProves": "AI-assisted prototyping can produce playful camera experiences that respond to real feedback, not just a spec.",
+      "whatBroke": "Face tracking drifted, assets needed repeated alignment, and spawned effects needed more restraint than the first pass had.",
+      "humanFlaws": "Tracking imperfections, asset alignment drift, mouth-spawn tuning, and the unpredictable standard of kid-tested delight.",
+      "aiLeverageUsed": "Camera UI support, asset-prompt iteration, interaction logic, edge-case debugging, and quick feedback loops.",
+      "nextUpgrade": "Stabilize tracking, tune spawned effects, improve capture/share flow, and package the toy as a cleaner mobile demo.",
+      "proofSignals": [
+        "Camera UI",
+        "AR interaction",
+        "Feedback-driven toy"
+      ],
+      "hireableCapabilities": [
+        "Mobile camera interfaces",
+        "Playful prototypes",
+        "Asset prompt direction",
+        "Feedback-driven iteration"
+      ],
+      "links": {
+        "demo": {
+          "label": "Private build",
+          "href": null,
+          "status": "private"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     },
     {
+      "id": "snapshot-studio",
       "name": "Snapshot Studio",
       "category": "Local business / AI search audit tool",
-      "summary": "A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.",
-      "proofSignal": "Small businesses can get fast visual snapshots of visibility problems and improvement plans.",
-      "humanFlaws": "Positioning uncertainty, lead response friction.",
-      "aiLeverage": "Report generation, landing pages, local prospect research.",
       "status": "experimental sales tool",
-      "hireableCapability": "Local business audits, report generation, and prospect-specific landing pages.",
-      "href": "#snapshot-demo"
+      "summary": "A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.",
+      "whatItProves": "Small businesses can receive fast, visual snapshots of search visibility problems and practical improvement plans.",
+      "whatBroke": "The offer started too broad, outreach responses were inconsistent, and report value had to be made obvious faster.",
+      "humanFlaws": "Positioning uncertainty, lead-response friction, messy prospect context, and the gap between a useful audit and a paid offer.",
+      "aiLeverageUsed": "Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.",
+      "nextUpgrade": "Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.",
+      "proofSignals": [
+        "Local visibility audit",
+        "Report generation",
+        "Offer testing"
+      ],
+      "hireableCapabilities": [
+        "Local business audits",
+        "Report systems",
+        "Prospect research",
+        "Landing pages"
+      ],
+      "links": {
+        "demo": {
+          "label": "Internal prototype",
+          "href": null,
+          "status": "internal"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     },
     {
+      "id": "angeles-crest",
       "name": "The Angeles Crest",
       "category": "Personal agency / premium web presence",
-      "summary": "A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.",
-      "proofSignal": "Sergio can package design, automation, local services, and AI execution into a public-facing brand.",
-      "humanFlaws": "Offer changes, messy evolution, still finding strongest wedge.",
-      "aiLeverage": "Copy, site design, service packaging, deployment help.",
       "status": "live brand",
-      "hireableCapability": "Premium public-facing web presence, service packaging, and deployment help.",
-      "href": "#angeles-crest-demo"
+      "summary": "A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.",
+      "whatItProves": "Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.",
+      "whatBroke": "The offer evolved in public, the strongest wedge was not obvious at first, and the brand had to absorb several directions.",
+      "humanFlaws": "Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.",
+      "aiLeverageUsed": "Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.",
+      "nextUpgrade": "Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.",
+      "proofSignals": [
+        "Premium web presence",
+        "Service packaging",
+        "Public brand system"
+      ],
+      "hireableCapabilities": [
+        "Premium landing pages",
+        "Service positioning",
+        "Automation framing",
+        "Deployment support"
+      ],
+      "links": {
+        "demo": {
+          "label": "Coming soon",
+          "href": null,
+          "status": "coming-soon"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     }
   ]
 }

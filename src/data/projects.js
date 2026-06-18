@@ -1,5 +1,21 @@
-// Edit this file to update project chambers, ziggurat tier mapping,
-// scar tissue, and build log entries across The Digital Ziggurat.
+// Single source of truth for project chambers, proof signals, ziggurat tier mapping,
+// scar tissue, interpretation panels, metadata generation, and build log entries.
+
+export const siteMeta = {
+  name: 'The Digital Ziggurat',
+  owner: 'Sergio Mata',
+  tagline: 'Human flaws. Machine leverage. Public proof.',
+  title: 'The Digital Ziggurat — Human flaws. Machine leverage. Public proof.',
+  description:
+    'A cinematic proof-of-work monument showcasing Sergio Mata’s AI-built projects, prototypes, build scars, and technical ambition.',
+  publicUrl: 'https://ziggurat.pages.dev',
+  preferredInterpretation: 'This is a proof-of-work monument, not a normal portfolio.',
+  purpose:
+    "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
+  contactHref:
+    'mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat',
+  socialPreviewUrl: 'https://ziggurat.pages.dev/social-preview.svg',
+};
 
 export const projects = [
   {
@@ -9,14 +25,36 @@ export const projects = [
     description:
       'A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.',
     proves:
-      'Messy permit and property records can be turned into clean client-ready packets and lead intelligence.',
-    humanFlaws: 'Shifting wedge, imperfect feeds, city data inconsistencies.',
-    aiLeverage: 'Research, data structuring, frontend iteration, service positioning.',
+      'Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.',
+    whatBroke:
+      'The wedge moved, data sources were uneven, and city records did not behave like clean product inputs.',
+    humanFlaws:
+      'Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.',
+    aiLeverage:
+      'Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.',
     status: 'active build',
     statusTone: 'cyan',
-    nextUpgrade: 'Tighter sample packets, stronger data-source notes, and a clearer service offer.',
-    link: '#permitpulse-demo',
-    ctaLabel: 'Open PermitPulse proof',
+    nextUpgrade:
+      'Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.',
+    proofSignals: ['Public-record research', 'Client-ready packets', 'Local lead intelligence'],
+    hireableCapabilities: [
+      'Structured research',
+      'Civic-data interfaces',
+      'Service packaging',
+      'Lead packet design',
+    ],
+    links: {
+      demo: {
+        label: 'Live site',
+        href: 'https://getpermitpulse.com',
+        status: 'live',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
   },
   {
     id: 'xibalba-pinball',
@@ -24,14 +62,36 @@ export const projects = [
     category: 'Physics game / premium browser toy',
     description:
       'A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.',
-    proves: 'AI can help ship playable, weird, visually distinctive browser games fast.',
-    humanFlaws: 'Tuning issues, visual misses, collision bugs.',
-    aiLeverage: 'Phaser/physics iteration, asset direction, mobile polish.',
+    proves: 'AI can help ship weird, playable, visually distinctive browser games before the design is perfect.',
+    whatBroke:
+      'Table tuning fought the art direction, collisions misbehaved, and several visual passes missed the intended underworld mood.',
+    humanFlaws:
+      'Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.',
+    aiLeverage:
+      'Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.',
     status: 'playable prototype',
     statusTone: 'gold',
-    nextUpgrade: 'Better table tuning, more deliberate scoring loops, and sharper mobile controls.',
-    link: '#xibalba-demo',
-    ctaLabel: 'Play prototype',
+    nextUpgrade:
+      'Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.',
+    proofSignals: ['Playable browser game', 'Physics iteration', 'Premium toy direction'],
+    hireableCapabilities: [
+      'Game prototyping',
+      'Interactive browser toys',
+      'Mobile-first game UI',
+      'Rapid polish passes',
+    ],
+    links: {
+      demo: {
+        label: 'Private build',
+        href: null,
+        status: 'private',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
   },
   {
     id: 'black-swan',
@@ -40,14 +100,36 @@ export const projects = [
     description:
       'A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.',
     proves:
-      'AI can help turn a rough game idea into a functioning loop with travel, mining, events, and progression.',
-    humanFlaws: 'Pacing issues, spawn bugs, balancing unknowns.',
-    aiLeverage: 'Game systems, testing prompts, staged roadmap.',
+      'A rough game premise can become a functioning loop with movement, resources, upgrades, event pressure, and progression.',
+    whatBroke:
+      'Pacing was uneven, spawn logic created strange difficulty spikes, and balancing exposed how much design judgment still matters.',
+    humanFlaws:
+      'Ambitious scope, balancing unknowns, testing blind spots, and systems that needed more constraint than the first idea allowed.',
+    aiLeverage:
+      'Game-system scaffolding, debugging prompts, staged roadmap planning, event design, and test-case generation.',
     status: 'prototype',
     statusTone: 'violet',
-    nextUpgrade: 'Improve event pacing, economy pressure, and meaningful risk/reward choices.',
-    link: '#black-swan-demo',
-    ctaLabel: 'Inspect loop',
+    nextUpgrade:
+      'Improve event pacing, economy pressure, save-state clarity, and risk/reward choices that make each run legible.',
+    proofSignals: ['Survival loop', 'Physics risk', 'Systems roadmap'],
+    hireableCapabilities: [
+      'Game-loop design',
+      'Prototype systems',
+      'AI-assisted debugging',
+      'Roadmap staging',
+    ],
+    links: {
+      demo: {
+        label: 'Private build',
+        href: null,
+        status: 'private',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
   },
   {
     id: 'pumpkin-ar-face-filter',
@@ -55,14 +137,37 @@ export const projects = [
     category: 'Mobile camera / AR toy',
     description:
       'A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.',
-    proves: 'AI can help build playful camera experiences shaped by real kid feedback.',
-    humanFlaws: 'Tracking imperfections, asset alignment, mouth spawn tuning.',
-    aiLeverage: 'Camera UI, asset prompts, interaction logic, rapid iteration.',
+    proves:
+      'AI-assisted prototyping can produce playful camera experiences that respond to real feedback, not just a spec.',
+    whatBroke:
+      'Face tracking drifted, assets needed repeated alignment, and spawned effects needed more restraint than the first pass had.',
+    humanFlaws:
+      'Tracking imperfections, asset alignment drift, mouth-spawn tuning, and the unpredictable standard of kid-tested delight.',
+    aiLeverage:
+      'Camera UI support, asset-prompt iteration, interaction logic, edge-case debugging, and quick feedback loops.',
     status: 'working prototype',
     statusTone: 'amber',
-    nextUpgrade: 'Stabilize tracking, tune spawned effects, and package a cleaner sharing flow.',
-    link: '#pumpkin-demo',
-    ctaLabel: 'View AR toy',
+    nextUpgrade:
+      'Stabilize tracking, tune spawned effects, improve capture/share flow, and package the toy as a cleaner mobile demo.',
+    proofSignals: ['Camera UI', 'AR interaction', 'Feedback-driven toy'],
+    hireableCapabilities: [
+      'Mobile camera interfaces',
+      'Playful prototypes',
+      'Asset prompt direction',
+      'Feedback-driven iteration',
+    ],
+    links: {
+      demo: {
+        label: 'Private build',
+        href: null,
+        status: 'private',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
   },
   {
     id: 'snapshot-studio',
@@ -71,14 +176,36 @@ export const projects = [
     description:
       'A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.',
     proves:
-      'Small businesses can get fast visual snapshots of visibility problems and improvement plans.',
-    humanFlaws: 'Positioning uncertainty, lead response friction.',
-    aiLeverage: 'Report generation, landing pages, local prospect research.',
+      'Small businesses can receive fast, visual snapshots of search visibility problems and practical improvement plans.',
+    whatBroke:
+      'The offer started too broad, outreach responses were inconsistent, and report value had to be made obvious faster.',
+    humanFlaws:
+      'Positioning uncertainty, lead-response friction, messy prospect context, and the gap between a useful audit and a paid offer.',
+    aiLeverage:
+      'Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.',
     status: 'experimental sales tool',
     statusTone: 'cyan',
-    nextUpgrade: 'Sharpen the offer, reduce prospect friction, and standardize report templates.',
-    link: '#snapshot-demo',
-    ctaLabel: 'See sales tool',
+    nextUpgrade:
+      'Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.',
+    proofSignals: ['Local visibility audit', 'Report generation', 'Offer testing'],
+    hireableCapabilities: [
+      'Local business audits',
+      'Report systems',
+      'Prospect research',
+      'Landing pages',
+    ],
+    links: {
+      demo: {
+        label: 'Internal prototype',
+        href: null,
+        status: 'internal',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
   },
   {
     id: 'angeles-crest',
@@ -87,14 +214,36 @@ export const projects = [
     description:
       'A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.',
     proves:
-      'Sergio can package design, automation, local services, and AI execution into a public-facing brand.',
-    humanFlaws: 'Offer changes, messy evolution, still finding strongest wedge.',
-    aiLeverage: 'Copy, site design, service packaging, deployment help.',
+      'Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.',
+    whatBroke:
+      'The offer evolved in public, the strongest wedge was not obvious at first, and the brand had to absorb several directions.',
+    humanFlaws:
+      'Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.',
+    aiLeverage:
+      'Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.',
     status: 'live brand',
     statusTone: 'stone',
-    nextUpgrade: 'Clarify the strongest wedge and connect proofs to a more direct service path.',
-    link: '#angeles-crest-demo',
-    ctaLabel: 'Visit brand proof',
+    nextUpgrade:
+      'Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.',
+    proofSignals: ['Premium web presence', 'Service packaging', 'Public brand system'],
+    hireableCapabilities: [
+      'Premium landing pages',
+      'Service positioning',
+      'Automation framing',
+      'Deployment support',
+    ],
+    links: {
+      demo: {
+        label: 'Coming soon',
+        href: null,
+        status: 'coming-soon',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
   },
 ];
 
@@ -119,7 +268,7 @@ export const zigguratTiers = [
     signal: 'Playable systems',
     cta: 'Start a build',
     href: '#projects',
-    projectIds: ['xibalba-pinball', 'snapshot-studio'],
+    projectIds: ['xibalba-pinball', 'snapshot-studio', 'pumpkin-ar-face-filter'],
   },
   {
     id: 'codex-forge',
@@ -137,11 +286,11 @@ export const zigguratTiers = [
     name: 'AI-Readable Shrine',
     title: 'Metadata is exposed for humans and agents.',
     description:
-      'Public files describe the site, projects, and intended interpretation so AI agents can navigate the monument without scraping guesswork.',
+      'Public files describe the site, projects, capabilities, and intended interpretation so AI agents can navigate the monument without scraping guesswork.',
     signal: 'Structured public context',
     cta: 'Open metadata',
     href: '#shrine',
-    projectIds: ['permitpulse', 'black-swan'],
+    projectIds: ['permitpulse', 'black-swan', 'pumpkin-ar-face-filter'],
   },
   {
     id: 'signal-beacon',
@@ -152,7 +301,7 @@ export const zigguratTiers = [
     signal: 'Contact, credibility, ambition',
     cta: 'Send signal',
     href: '#signal',
-    projectIds: ['permitpulse', 'xibalba-pinball', 'snapshot-studio'],
+    projectIds: ['permitpulse', 'xibalba-pinball', 'snapshot-studio', 'angeles-crest'],
   },
 ];
 
@@ -186,34 +335,49 @@ export const buildLog = [
     type: 'bug',
   },
   {
-    id: 'chamber-pass',
+    id: 'reality-pass',
     date: 'Iteration 05',
-    title: 'Proof chambers opened',
-    note: 'Project cards now reveal what broke, what AI accelerated, and what can be hired out.',
+    title: 'Proof-of-work reality pass',
+    note: 'Expanded chambers, scars, intentional link states, and AI-readable project metadata around proof instead of polish.',
     type: 'improvement',
   },
 ];
 
 export const scarTissue = [
-  'Broken layouts became better mobile systems.',
-  'Missed visual targets became sharper prompts.',
-  'Game bugs became mechanics.',
-  'Outreach failures became better offers.',
-  'Human constraints forced faster, leaner builds.',
+  {
+    title: 'Broken layouts',
+    detail: 'Became better mobile systems with tighter constraints, smaller surfaces, and responsive checks.',
+  },
+  {
+    title: 'Missed visual targets',
+    detail: 'Became sharper prompts, stronger art direction, and clearer taste tests before another pass.',
+  },
+  {
+    title: 'Game bugs',
+    detail: 'Became mechanics when strange collisions, pacing pressure, or surprise behavior made the loop better.',
+  },
+  {
+    title: 'Outreach failures',
+    detail: 'Became better offers by exposing where value was vague, slow, or too hard to understand.',
+  },
+  {
+    title: 'Human constraints',
+    detail: 'Forced leaner builds, smaller scopes, and more honest proof than a polished fantasy roadmap.',
+  },
 ];
 
 export const interpretationPanels = [
   {
     id: 'humans',
     title: 'For Humans',
-    text: 'Explore the weird builds, games, tools, scars, and proof. The chambers show the artifact and the judgment behind it.',
-    signals: ['Playable prototypes', 'Service experiments', 'Visible flaws', 'Hireable proof'],
+    text: 'Explore the weird builds, games, tools, and proof. The chambers show what shipped, what cracked, and where the next upgrade points.',
+    signals: ['Weird builds', 'Playable prototypes', 'Service experiments', 'Visible scars'],
   },
   {
     id: 'ai',
     title: 'For AI',
-    text: 'Parse the metadata, project graph, capabilities, build history, and preferred interpretation without guessing.',
-    signals: ['ai.json', 'projects.json', 'llms.txt', 'Structured capabilities'],
+    text: 'Parse the metadata, project graph, capabilities, and build history. The preferred reading is explicit: proof-of-work monument, not normal portfolio.',
+    signals: ['ai.json', 'projects.json', 'llms.txt', 'Project graph'],
   },
 ];
 
@@ -224,4 +388,17 @@ export const hireableCapabilities = [
   'Public proof-of-work websites',
   'Service positioning and rapid landing pages',
   'Structured research and client-ready packets',
+  'AI-readable metadata and project graphs',
+];
+
+export const projectCategories = [...new Set(projects.map((project) => project.category))];
+
+export const proofSignals = [
+  'Playable prototypes',
+  'Visible build scars',
+  'AI-assisted iteration',
+  'Client-ready service packaging',
+  'Structured public metadata',
+  'Mobile-first interactive web experiences',
+  'Clear proof fields for each artifact',
 ];

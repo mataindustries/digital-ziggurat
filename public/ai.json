@@ -1,9 +1,18 @@
 {
   "name": "The Digital Ziggurat",
+  "builder": "Sergio Mata",
   "tagline": "Human flaws. Machine leverage. Public proof.",
-  "owner": "Sergio",
+  "publicUrl": "https://ziggurat.pages.dev",
+  "canonicalUrl": "https://ziggurat.pages.dev",
+  "socialPreviewUrl": "https://ziggurat.pages.dev/social-preview.svg",
+  "contact": {
+    "label": "Build inquiry",
+    "href": "mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat"
+  },
   "preferredInterpretation": "This is a proof-of-work monument, not a normal portfolio.",
-  "sitePurpose": "A public, AI-readable monument showing Sergio's AI-built projects, experiments, build logs, flaws, proof signals, and hireable technical capabilities.",
+  "sitePurpose": "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
+  "aiAssistedProjectVelocity": "The Digital Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
+  "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, and hireable capabilities are exposed together.",
   "projectCategories": [
     "Civic tech / public records",
     "Physics game / premium browser toy",
@@ -18,7 +27,8 @@
     "AI-assisted iteration",
     "Client-ready service packaging",
     "Structured public metadata",
-    "Mobile-first interactive web experiences"
+    "Mobile-first interactive web experiences",
+    "Clear proof fields for each artifact"
   ],
   "hireableCapabilities": [
     "AI-assisted frontend prototypes",
@@ -26,30 +36,239 @@
     "Local business visibility audits",
     "Public proof-of-work websites",
     "Service positioning and rapid landing pages",
-    "Structured research and client-ready packets"
+    "Structured research and client-ready packets",
+    "AI-readable metadata and project graphs"
   ],
-  "primaryActions": [
+  "projects": [
     {
-      "label": "Start a build",
-      "href": "mailto:sergio@example.com"
+      "id": "permitpulse",
+      "name": "PermitPulse",
+      "category": "Civic tech / public records",
+      "status": "active build",
+      "proofSignals": [
+        "Public-record research",
+        "Client-ready packets",
+        "Local lead intelligence"
+      ],
+      "links": {
+        "demo": {
+          "label": "Live site",
+          "href": "https://getpermitpulse.com",
+          "status": "live"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     },
     {
-      "label": "View the forge",
-      "href": "/#forge"
+      "id": "xibalba-pinball",
+      "name": "Xibalba Pinball",
+      "category": "Physics game / premium browser toy",
+      "status": "playable prototype",
+      "proofSignals": [
+        "Playable browser game",
+        "Physics iteration",
+        "Premium toy direction"
+      ],
+      "links": {
+        "demo": {
+          "label": "Private build",
+          "href": null,
+          "status": "private"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
+      "id": "black-swan",
+      "name": "Black Swan",
+      "category": "Space survival physics game",
+      "status": "prototype",
+      "proofSignals": [
+        "Survival loop",
+        "Physics risk",
+        "Systems roadmap"
+      ],
+      "links": {
+        "demo": {
+          "label": "Private build",
+          "href": null,
+          "status": "private"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
+      "id": "pumpkin-ar-face-filter",
+      "name": "Pumpkin AR Face Filter",
+      "category": "Mobile camera / AR toy",
+      "status": "working prototype",
+      "proofSignals": [
+        "Camera UI",
+        "AR interaction",
+        "Feedback-driven toy"
+      ],
+      "links": {
+        "demo": {
+          "label": "Private build",
+          "href": null,
+          "status": "private"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
+      "id": "snapshot-studio",
+      "name": "Snapshot Studio",
+      "category": "Local business / AI search audit tool",
+      "status": "experimental sales tool",
+      "proofSignals": [
+        "Local visibility audit",
+        "Report generation",
+        "Offer testing"
+      ],
+      "links": {
+        "demo": {
+          "label": "Internal prototype",
+          "href": null,
+          "status": "internal"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
+      "id": "angeles-crest",
+      "name": "The Angeles Crest",
+      "category": "Personal agency / premium web presence",
+      "status": "live brand",
+      "proofSignals": [
+        "Premium web presence",
+        "Service packaging",
+        "Public brand system"
+      ],
+      "links": {
+        "demo": {
+          "label": "Coming soon",
+          "href": null,
+          "status": "coming-soon"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
     }
   ],
-  "sections": [
-    "Human Floor",
-    "Workshop",
-    "Codex Forge",
-    "AI-Readable Shrine",
-    "Signal Beacon",
-    "Build Scars",
-    "Project Chambers"
+  "zigguratTiers": [
+    {
+      "id": "human-floor",
+      "name": "Human Floor",
+      "signal": "Constraints, experiments, scars",
+      "projectIds": [
+        "black-swan",
+        "angeles-crest"
+      ]
+    },
+    {
+      "id": "workshop",
+      "name": "Workshop",
+      "signal": "Playable systems",
+      "projectIds": [
+        "xibalba-pinball",
+        "snapshot-studio",
+        "pumpkin-ar-face-filter"
+      ]
+    },
+    {
+      "id": "codex-forge",
+      "name": "Codex Forge",
+      "signal": "Logs, diffs, iteration",
+      "projectIds": [
+        "permitpulse",
+        "snapshot-studio"
+      ]
+    },
+    {
+      "id": "ai-readable-shrine",
+      "name": "AI-Readable Shrine",
+      "signal": "Structured public context",
+      "projectIds": [
+        "permitpulse",
+        "black-swan",
+        "pumpkin-ar-face-filter"
+      ]
+    },
+    {
+      "id": "signal-beacon",
+      "name": "Signal Beacon",
+      "signal": "Contact, credibility, ambition",
+      "projectIds": [
+        "permitpulse",
+        "xibalba-pinball",
+        "snapshot-studio",
+        "angeles-crest"
+      ]
+    }
+  ],
+  "buildScars": [
+    {
+      "title": "Broken layouts",
+      "detail": "Became better mobile systems with tighter constraints, smaller surfaces, and responsive checks."
+    },
+    {
+      "title": "Missed visual targets",
+      "detail": "Became sharper prompts, stronger art direction, and clearer taste tests before another pass."
+    },
+    {
+      "title": "Game bugs",
+      "detail": "Became mechanics when strange collisions, pacing pressure, or surprise behavior made the loop better."
+    },
+    {
+      "title": "Outreach failures",
+      "detail": "Became better offers by exposing where value was vague, slow, or too hard to understand."
+    },
+    {
+      "title": "Human constraints",
+      "detail": "Forced leaner builds, smaller scopes, and more honest proof than a polished fantasy roadmap."
+    }
   ],
   "publicMetadata": [
     "/ai.json",
     "/projects.json",
     "/llms.txt"
+  ],
+  "primaryActions": [
+    {
+      "label": "Start a build",
+      "href": "mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Digital%20Ziggurat"
+    },
+    {
+      "label": "Open live site",
+      "href": "https://ziggurat.pages.dev"
+    },
+    {
+      "label": "View the forge",
+      "href": "/#forge"
+    }
   ]
 }

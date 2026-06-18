@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "metadata": "node scripts/generate-public-metadata.mjs",
+    "build": "npm run metadata && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

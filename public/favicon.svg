@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Digital Ziggurat favicon">
+  <rect width="64" height="64" fill="#05070a"/>
+  <path d="M32 5 49 23H15L32 5Z" fill="#f4c76b"/>
+  <path d="M12 25h40l6 13H6l6-13Z" fill="#15252b" stroke="#20e4ff" stroke-width="2"/>
+  <path d="M5 40h54l5 16H0l5-16Z" fill="#0b1116" stroke="#f4c76b" stroke-width="2"/>
+  <path d="M32 4v52" stroke="#20e4ff" stroke-width="2" stroke-linecap="round" opacity=".82"/>
+  <circle cx="32" cy="9" r="3" fill="#eefdff"/>
+</svg>

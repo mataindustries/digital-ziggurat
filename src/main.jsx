@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
+  siteMeta,
   projects,
   buildLog,
   zigguratTiers,
@@ -132,14 +133,40 @@ function ProjectCard({ project, onOpen }) {
         <span>Proves</span>
         <strong>{project.proves}</strong>
       </div>
+      <div className="project-card__signals" aria-label={`${project.name} proof signals`}>
+        {project.proofSignals.slice(0, 2).map((signal) => (
+          <span key={signal}>{signal}</span>
+        ))}
+      </div>
     </button>
   );
 }
 
 function ProjectChamber({ project, onClose }) {
+  useEffect(() => {
+    if (!project) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [project, onClose]);
+
   if (!project) {
     return null;
   }
+
+  const chamberTitleId = `project-chamber-title-${project.id}`;
+  const chamberLinks = [
+    { type: 'Demo', ...project.links.demo },
+    { type: 'Source', ...project.links.github },
+  ];
 
   return (
     <div className="chamber-backdrop" role="presentation" onClick={onClose}>
@@ -147,7 +174,7 @@ function ProjectChamber({ project, onClose }) {
         className="project-chamber"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="project-chamber-title"
+        aria-labelledby={chamberTitleId}
         onClick={(event) => event.stopPropagation()}
       >
         <button className="chamber-close" type="button" onClick={onClose} aria-label="Close chamber">
@@ -155,12 +182,15 @@ function ProjectChamber({ project, onClose }) {
         </button>
         <div className="chamber-header">
           <p className="section-kicker">Proof-of-work chamber</p>
-          <h2 id="project-chamber-title">{project.name}</h2>
+          <h2 id={chamberTitleId}>{project.name}</h2>
           <span className={`status status--${project.statusTone}`}>{project.status}</span>
         </div>
 
         <div className="chamber-category">{project.category}</div>
-        <p className="chamber-description">{project.description}</p>
+        <div className="chamber-summary">
+          <span>Short description</span>
+          <p className="chamber-description">{project.description}</p>
+        </div>
 
         <div className="chamber-grid">
           <div className="chamber-block chamber-block--wide">
@@ -168,7 +198,11 @@ function ProjectChamber({ project, onClose }) {
             <p>{project.proves}</p>
           </div>
           <div className="chamber-block">
-            <span>Human flaws / constraints</span>
+            <span>What broke</span>
+            <p>{project.whatBroke}</p>
+          </div>
+          <div className="chamber-block">
+            <span>Human flaws</span>
             <p>{project.humanFlaws}</p>
           </div>
           <div className="chamber-block">
@@ -181,9 +215,42 @@ function ProjectChamber({ project, onClose }) {
           </div>
         </div>
 
-        <a className="button button-primary chamber-cta" href={project.link}>
-          {project.ctaLabel}
-        </a>
+        <div className="chamber-evidence">
+          <div>
+            <span>Proof signals</span>
+            <div className="signal-list">
+              {project.proofSignals.map((signal) => (
+                <span key={signal}>{signal}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <span>Hireable capabilities</span>
+            <div className="signal-list">
+              {project.hireableCapabilities.map((capability) => (
+                <span key={capability}>{capability}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="chamber-links" aria-label={`${project.name} project links`}>
+          {chamberLinks.map((link) =>
+            link.href ? (
+              <a className="chamber-link" href={link.href} key={link.type}>
+                <span>{link.type}</span>
+                <strong>{link.label}</strong>
+                <small>Public link</small>
+              </a>
+            ) : (
+              <span className="chamber-link is-disabled" key={link.type} aria-disabled="true">
+                <span>{link.type}</span>
+                <strong>{link.label}</strong>
+                <small>{link.status}</small>
+              </span>
+            ),
+          )}
+        </div>
       </section>
     </div>
   );
@@ -203,7 +270,7 @@ function App() {
         <nav className="nav" aria-label="Main navigation">
           <a className="brand" href="#top" aria-label="The Digital Ziggurat home">
             <span className="brand-mark" />
-            <span>The Digital Ziggurat</span>
+            <span>{siteMeta.name}</span>
           </a>
           <div className="nav-links">
             <a href="#forge">Forge</a>
@@ -255,8 +322,8 @@ function App() {
           <p className="section-kicker">Visible Builds</p>
           <h2>Artifacts in the monument</h2>
           <p>
-            Six public-facing project stones, each framed by what it proves rather than just what
-            it is.
+            Six public-facing project stones, each framed by shipped proof, broken edges, AI
+            leverage, and the next upgrade.
           </p>
         </div>
 
@@ -298,12 +365,24 @@ function App() {
           <h2>{activeTier.name} projects</h2>
         </div>
         <div className="project-strip">
-          {activeProjects.map((project) => (
-            <a href={project.link} key={project.id}>
-              <span>{project.name}</span>
-              <small>{project.status}</small>
-            </a>
-          ))}
+          {activeProjects.map((project) =>
+            project.links.demo.href ? (
+              <a href={project.links.demo.href} key={project.id}>
+                <span>{project.name}</span>
+                <small>{project.links.demo.label}</small>
+              </a>
+            ) : (
+              <button
+                className="project-strip__item is-disabled"
+                type="button"
+                key={project.id}
+                disabled
+              >
+                <span>{project.name}</span>
+                <small>{project.links.demo.label}</small>
+              </button>
+            ),
+          )}
         </div>
       </section>
 
@@ -312,15 +391,16 @@ function App() {
           <p className="section-kicker">Build Scars</p>
           <h2>Scar tissue is part of the structure</h2>
           <p>
-            The Ziggurat keeps the rough edges visible because failed passes became the system that
-            made later passes sharper.
+            The Ziggurat keeps rough edges visible because the failed passes became design rules,
+            better offers, and more credible constraints.
           </p>
         </div>
         <div className="scar-grid">
           {scarTissue.map((scar, index) => (
-            <article className="scar-card" key={scar}>
+            <article className="scar-card" key={scar.title}>
               <span>{String(index + 1).padStart(2, '0')}</span>
-              <p>{scar}</p>
+              <h3>{scar.title}</h3>
+              <p>{scar.detail}</p>
             </article>
           ))}
         </div>
@@ -376,7 +456,7 @@ function App() {
           ))}
         </div>
         <div className="hero-actions">
-          <a className="button button-primary" href="mailto:sergio@example.com">
+          <a className="button button-primary" href={siteMeta.contactHref}>
             Start a build
           </a>
           <a className="button button-secondary" href="#forge">
