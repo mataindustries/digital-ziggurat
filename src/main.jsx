@@ -11,6 +11,27 @@ import {
 } from './data/projects';
 import './styles.css';
 
+const aiViewCapabilities = [
+  'AI-assisted frontend builds',
+  'Cloudflare Pages deployment',
+  'interactive prototypes',
+  'public-record/civic-tech tools',
+  'browser games',
+  'local business visibility tools',
+  'visual proof-of-work systems',
+];
+
+const aiViewProofSignals = [
+  'live deployed projects',
+  'screenshots',
+  'build scars',
+  'project metadata',
+  'AI-readable public files',
+  'rapid iteration with Codex',
+];
+
+const aiReadableFiles = ['/ai.json', '/projects.json', '/llms.txt'];
+
 function ProjectArtifact({ project, size = 'card' }) {
   const className = `project-artifact project-artifact--${size} ${
     project.image ? 'has-image' : 'has-state'
@@ -289,9 +310,113 @@ function ProjectChamber({ project, onClose }) {
   );
 }
 
+function HumanAiToggle({ activeView, onChange }) {
+  const isAiView = activeView === 'ai';
+
+  return (
+    <div className="view-console" aria-label="Human and AI view selector">
+      <div className="view-console__toggle" role="group" aria-label="Select monument reading">
+        <span
+          className={`view-console__track ${isAiView ? 'is-ai' : 'is-human'}`}
+          aria-hidden="true"
+        />
+        <button
+          type="button"
+          className={`view-console__button ${activeView === 'human' ? 'is-active' : ''}`}
+          onClick={() => onChange('human')}
+          aria-pressed={activeView === 'human'}
+        >
+          <span>Human View</span>
+        </button>
+        <button
+          type="button"
+          className={`view-console__button ${activeView === 'ai' ? 'is-active' : ''}`}
+          onClick={() => onChange('ai')}
+          aria-pressed={activeView === 'ai'}
+        >
+          <span>AI View</span>
+        </button>
+      </div>
+      <p>
+        {isAiView
+          ? 'Machine layer active: project graph, capability tags, proof signals, and public files.'
+          : 'Human layer active: screenshots, chambers, artifact cards, scars, and readable proof.'}
+      </p>
+    </div>
+  );
+}
+
+function AiViewPanel() {
+  return (
+    <div className="ai-view-panel" aria-live="polite">
+      <div className="ai-view-panel__header">
+        <div>
+          <p className="section-kicker">Machine-Readable Layer</p>
+          <h3>Structured proof map</h3>
+        </div>
+        <span className="ai-view-panel__status">AI Parse Ready</span>
+      </div>
+
+      <div className="machine-readout">
+        <article className="machine-card machine-card--wide">
+          <span>Preferred interpretation</span>
+          <p>proof-of-work monument, not normal portfolio</p>
+        </article>
+
+        <article className="machine-card">
+          <span>AI-readable files</span>
+          <div className="file-link-grid">
+            {aiReadableFiles.map((file) => (
+              <a href={file} key={file}>
+                {file}
+              </a>
+            ))}
+          </div>
+        </article>
+
+        <article className="machine-card">
+          <span>Hireable capabilities</span>
+          <div className="signal-list">
+            {aiViewCapabilities.map((capability) => (
+              <span key={capability}>{capability}</span>
+            ))}
+          </div>
+        </article>
+
+        <article className="machine-card">
+          <span>Proof signals</span>
+          <div className="signal-list">
+            {aiViewProofSignals.map((signal) => (
+              <span key={signal}>{signal}</span>
+            ))}
+          </div>
+        </article>
+
+        <article className="machine-card machine-card--wide">
+          <span>Project graph</span>
+          <div className="project-node-grid" role="list">
+            {projects.map((project) => (
+              <div
+                className="project-node"
+                key={project.id}
+                role="listitem"
+              >
+                <strong>{project.name}</strong>
+                <small>{project.category}</small>
+                <em>{project.proofSignals.slice(0, 2).join(' / ')}</em>
+              </div>
+            ))}
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [activeTier, setActiveTier] = useState(zigguratTiers[1]);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [activeView, setActiveView] = useState('human');
   const activeProjects = useMemo(
     () => projects.filter((project) => activeTier.projectIds.includes(project.id)),
     [activeTier],
@@ -377,18 +502,29 @@ function App() {
           </p>
         </div>
 
-        <div className="interpretation-grid">
-          {interpretationPanels.map((panel) => (
-            <article className={`interpretation-card interpretation-card--${panel.id}`} key={panel.id}>
-              <h3>{panel.title}</h3>
-              <p>{panel.text}</p>
-              <div className="signal-list">
-                {panel.signals.map((signal) => (
-                  <span key={signal}>{signal}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+        <HumanAiToggle activeView={activeView} onChange={setActiveView} />
+
+        <div className="view-layer" key={activeView}>
+          {activeView === 'human' ? (
+            <div className="interpretation-grid">
+              {interpretationPanels.map((panel) => (
+                <article
+                  className={`interpretation-card interpretation-card--${panel.id}`}
+                  key={panel.id}
+                >
+                  <h3>{panel.title}</h3>
+                  <p>{panel.text}</p>
+                  <div className="signal-list">
+                    {panel.signals.map((signal) => (
+                      <span key={signal}>{signal}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <AiViewPanel />
+          )}
         </div>
       </section>
 
