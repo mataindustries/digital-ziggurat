@@ -23,7 +23,7 @@ Some live projects include real screenshot artifacts. Projects without uploaded 
 - Xibalba Pinball: screenshot at /projects/xibalba.jpg
 - Black Swan: Private Build
 - Pumpkin AR Face Filter: Artifact Pending
-- Snapshot Studio: Internal Prototype
+- Snapshot Studio: screenshot at /projects/snapshot-studio.jpg
 - The Angeles Crest: screenshot at /projects/angeles-crest.jpg
 
 Project categories:

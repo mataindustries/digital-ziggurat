@@ -19,7 +19,15 @@ function ProjectArtifact({ project, size = 'card' }) {
   return (
     <figure className={className}>
       {project.image ? (
-        <img src={project.image} alt={project.imageAlt} loading="lazy" />
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          loading="lazy"
+          style={{
+            objectFit: project.visualFit ?? 'cover',
+            objectPosition: project.visualPosition ?? 'center center',
+          }}
+        />
       ) : (
         <div className="project-artifact__state" aria-label={`${project.name} artifact status`}>
           <span>{project.artifactState ?? 'Artifact Pending'}</span>
@@ -28,7 +36,7 @@ function ProjectArtifact({ project, size = 'card' }) {
       )}
       <figcaption>
         <span>{project.name}</span>
-        <small>{project.image ? 'Visual artifact' : 'Sealed chamber'}</small>
+        <small>{project.image ? project.visualStatus ?? 'Visual artifact' : 'Sealed chamber'}</small>
       </figcaption>
     </figure>
   );

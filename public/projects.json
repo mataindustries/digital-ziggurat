@@ -21,7 +21,8 @@
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/permitpulse.jpg",
-        "alt": "PermitPulse project screenshot"
+        "alt": "PermitPulse project screenshot",
+        "position": "center 70%"
       },
       "proofSignals": [
         "Public-record research",
@@ -177,8 +178,10 @@
       "aiLeverageUsed": "Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.",
       "nextUpgrade": "Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.",
       "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Internal Prototype"
+        "type": "screenshot",
+        "src": "/projects/snapshot-studio.jpg",
+        "alt": "Snapshot Studio project screenshot",
+        "status": "internal prototype"
       },
       "proofSignals": [
         "Local visibility audit",

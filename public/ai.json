@@ -47,7 +47,8 @@
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/permitpulse.jpg",
-        "alt": "PermitPulse project screenshot"
+        "alt": "PermitPulse project screenshot",
+        "position": "center 70%"
       }
     },
     {
@@ -79,8 +80,10 @@
       "id": "snapshot-studio",
       "name": "Snapshot Studio",
       "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Internal Prototype"
+        "type": "screenshot",
+        "src": "/projects/snapshot-studio.jpg",
+        "alt": "Snapshot Studio project screenshot",
+        "status": "internal prototype"
       }
     },
     {
@@ -102,7 +105,8 @@
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/permitpulse.jpg",
-        "alt": "PermitPulse project screenshot"
+        "alt": "PermitPulse project screenshot",
+        "position": "center 70%"
       },
       "proofSignals": [
         "Public-record research",
@@ -210,8 +214,10 @@
       "category": "Local business / AI search audit tool",
       "status": "experimental sales tool",
       "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Internal Prototype"
+        "type": "screenshot",
+        "src": "/projects/snapshot-studio.jpg",
+        "alt": "Snapshot Studio project screenshot",
+        "status": "internal prototype"
       },
       "proofSignals": [
         "Local visibility audit",

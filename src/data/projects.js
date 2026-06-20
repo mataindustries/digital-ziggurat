@@ -38,6 +38,7 @@ export const projects = [
     statusTone: 'cyan',
     image: '/projects/permitpulse.jpg',
     imageAlt: 'PermitPulse project screenshot',
+    visualPosition: 'center 70%',
     nextUpgrade:
       'Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.',
     proofSignals: ['Public-record research', 'Client-ready packets', 'Local lead intelligence'],
@@ -193,7 +194,9 @@ export const projects = [
       'Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.',
     status: 'experimental sales tool',
     statusTone: 'cyan',
-    artifactState: 'Internal Prototype',
+    image: '/projects/snapshot-studio.jpg',
+    imageAlt: 'Snapshot Studio project screenshot',
+    visualStatus: 'internal prototype',
     nextUpgrade:
       'Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.',
     proofSignals: ['Local visibility audit', 'Report generation', 'Offer testing'],

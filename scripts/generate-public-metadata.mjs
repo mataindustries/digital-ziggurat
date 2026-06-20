@@ -31,6 +31,9 @@ const projectRecords = projects.map((project) => ({
         type: 'screenshot',
         src: project.image,
         alt: project.imageAlt,
+        ...(project.visualStatus ? { status: project.visualStatus } : {}),
+        ...(project.visualPosition ? { position: project.visualPosition } : {}),
+        ...(project.visualFit ? { fit: project.visualFit } : {}),
       }
     : {
         type: 'intentional-status',
