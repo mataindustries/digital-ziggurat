@@ -13,7 +13,7 @@
   "preferredInterpretation": "This is a proof-of-work monument, not a normal portfolio.",
   "sitePurpose": "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
   "aiAssistedProjectVelocity": "The Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
-  "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, and hireable capabilities are exposed together.",
+  "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, visual artifacts, screenshots where available, and hireable capabilities are exposed together.",
   "projectCategories": [
     "Civic tech / public records",
     "Physics game / premium browser toy",
@@ -40,12 +40,70 @@
     "Structured research and client-ready packets",
     "AI-readable metadata and project graphs"
   ],
+  "visualArtifacts": [
+    {
+      "id": "permitpulse",
+      "name": "PermitPulse",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/permitpulse.jpg",
+        "alt": "PermitPulse project screenshot"
+      }
+    },
+    {
+      "id": "xibalba-pinball",
+      "name": "Xibalba Pinball",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/xibalba.jpg",
+        "alt": "Xibalba Pinball live game screenshot"
+      }
+    },
+    {
+      "id": "black-swan",
+      "name": "Black Swan",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Private Build"
+      }
+    },
+    {
+      "id": "pumpkin-ar-face-filter",
+      "name": "Pumpkin AR Face Filter",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Artifact Pending"
+      }
+    },
+    {
+      "id": "snapshot-studio",
+      "name": "Snapshot Studio",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Internal Prototype"
+      }
+    },
+    {
+      "id": "angeles-crest",
+      "name": "The Angeles Crest",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/angeles-crest.jpg",
+        "alt": "The Angeles Crest brand site screenshot"
+      }
+    }
+  ],
   "projects": [
     {
       "id": "permitpulse",
       "name": "PermitPulse",
       "category": "Civic tech / public records",
       "status": "Live project",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/permitpulse.jpg",
+        "alt": "PermitPulse project screenshot"
+      },
       "proofSignals": [
         "Public-record research",
         "Client-ready packets",
@@ -69,6 +127,11 @@
       "name": "Xibalba Pinball",
       "category": "Physics game / premium browser toy",
       "status": "Play live",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/xibalba.jpg",
+        "alt": "Xibalba Pinball live game screenshot"
+      },
       "proofSignals": [
         "Playable browser game",
         "Physics iteration",
@@ -92,6 +155,10 @@
       "name": "Black Swan",
       "category": "Space survival physics game",
       "status": "prototype",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Private Build"
+      },
       "proofSignals": [
         "Survival loop",
         "Physics risk",
@@ -115,6 +182,10 @@
       "name": "Pumpkin AR Face Filter",
       "category": "Mobile camera / AR toy",
       "status": "working prototype",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Artifact Pending"
+      },
       "proofSignals": [
         "Camera UI",
         "AR interaction",
@@ -138,6 +209,10 @@
       "name": "Snapshot Studio",
       "category": "Local business / AI search audit tool",
       "status": "experimental sales tool",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Internal Prototype"
+      },
       "proofSignals": [
         "Local visibility audit",
         "Report generation",
@@ -161,6 +236,11 @@
       "name": "The Angeles Crest",
       "category": "Personal agency / premium web presence",
       "status": "Live brand",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/angeles-crest.jpg",
+        "alt": "The Angeles Crest brand site screenshot"
+      },
       "proofSignals": [
         "Premium web presence",
         "Service packaging",

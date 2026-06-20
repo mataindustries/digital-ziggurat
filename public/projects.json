@@ -4,6 +4,7 @@
   "builder": "Sergio Mata",
   "publicUrl": "https://ziggurat.pages.dev",
   "linkPolicy": "Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.",
+  "visualArtifactPolicy": "Live projects may include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.",
   "projectCount": 6,
   "projects": [
     {
@@ -17,6 +18,11 @@
       "humanFlaws": "Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.",
       "aiLeverageUsed": "Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.",
       "nextUpgrade": "Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/permitpulse.jpg",
+        "alt": "PermitPulse project screenshot"
+      },
       "proofSignals": [
         "Public-record research",
         "Client-ready packets",
@@ -52,6 +58,11 @@
       "humanFlaws": "Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.",
       "aiLeverageUsed": "Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.",
       "nextUpgrade": "Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/xibalba.jpg",
+        "alt": "Xibalba Pinball live game screenshot"
+      },
       "proofSignals": [
         "Playable browser game",
         "Physics iteration",
@@ -87,6 +98,10 @@
       "humanFlaws": "Ambitious scope, balancing unknowns, testing blind spots, and systems that needed more constraint than the first idea allowed.",
       "aiLeverageUsed": "Game-system scaffolding, debugging prompts, staged roadmap planning, event design, and test-case generation.",
       "nextUpgrade": "Improve event pacing, economy pressure, save-state clarity, and risk/reward choices that make each run legible.",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Private Build"
+      },
       "proofSignals": [
         "Survival loop",
         "Physics risk",
@@ -122,6 +137,10 @@
       "humanFlaws": "Tracking imperfections, asset alignment drift, mouth-spawn tuning, and the unpredictable standard of kid-tested delight.",
       "aiLeverageUsed": "Camera UI support, asset-prompt iteration, interaction logic, edge-case debugging, and quick feedback loops.",
       "nextUpgrade": "Stabilize tracking, tune spawned effects, improve capture/share flow, and package the toy as a cleaner mobile demo.",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Artifact Pending"
+      },
       "proofSignals": [
         "Camera UI",
         "AR interaction",
@@ -157,6 +176,10 @@
       "humanFlaws": "Positioning uncertainty, lead-response friction, messy prospect context, and the gap between a useful audit and a paid offer.",
       "aiLeverageUsed": "Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.",
       "nextUpgrade": "Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Internal Prototype"
+      },
       "proofSignals": [
         "Local visibility audit",
         "Report generation",
@@ -192,6 +215,11 @@
       "humanFlaws": "Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.",
       "aiLeverageUsed": "Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.",
       "nextUpgrade": "Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/angeles-crest.jpg",
+        "alt": "The Angeles Crest brand site screenshot"
+      },
       "proofSignals": [
         "Premium web presence",
         "Service packaging",

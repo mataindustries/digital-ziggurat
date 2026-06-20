@@ -36,6 +36,8 @@ export const projects = [
       'Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.',
     status: 'Live project',
     statusTone: 'cyan',
+    image: '/projects/permitpulse.jpg',
+    imageAlt: 'PermitPulse project screenshot',
     nextUpgrade:
       'Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.',
     proofSignals: ['Public-record research', 'Client-ready packets', 'Local lead intelligence'],
@@ -73,6 +75,8 @@ export const projects = [
       'Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.',
     status: 'Play live',
     statusTone: 'gold',
+    image: '/projects/xibalba.jpg',
+    imageAlt: 'Xibalba Pinball live game screenshot',
     nextUpgrade:
       'Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.',
     proofSignals: ['Playable browser game', 'Physics iteration', 'Premium toy direction'],
@@ -111,6 +115,7 @@ export const projects = [
       'Game-system scaffolding, debugging prompts, staged roadmap planning, event design, and test-case generation.',
     status: 'prototype',
     statusTone: 'violet',
+    artifactState: 'Private Build',
     nextUpgrade:
       'Improve event pacing, economy pressure, save-state clarity, and risk/reward choices that make each run legible.',
     proofSignals: ['Survival loop', 'Physics risk', 'Systems roadmap'],
@@ -149,6 +154,7 @@ export const projects = [
       'Camera UI support, asset-prompt iteration, interaction logic, edge-case debugging, and quick feedback loops.',
     status: 'working prototype',
     statusTone: 'amber',
+    artifactState: 'Artifact Pending',
     nextUpgrade:
       'Stabilize tracking, tune spawned effects, improve capture/share flow, and package the toy as a cleaner mobile demo.',
     proofSignals: ['Camera UI', 'AR interaction', 'Feedback-driven toy'],
@@ -187,6 +193,7 @@ export const projects = [
       'Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.',
     status: 'experimental sales tool',
     statusTone: 'cyan',
+    artifactState: 'Internal Prototype',
     nextUpgrade:
       'Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.',
     proofSignals: ['Local visibility audit', 'Report generation', 'Offer testing'],
@@ -225,6 +232,8 @@ export const projects = [
       'Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.',
     status: 'Live brand',
     statusTone: 'stone',
+    image: '/projects/angeles-crest.jpg',
+    imageAlt: 'The Angeles Crest brand site screenshot',
     nextUpgrade:
       'Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.',
     proofSignals: ['Premium web presence', 'Service packaging', 'Public brand system'],

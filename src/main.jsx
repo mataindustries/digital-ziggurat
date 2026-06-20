@@ -11,6 +11,29 @@ import {
 } from './data/projects';
 import './styles.css';
 
+function ProjectArtifact({ project, size = 'card' }) {
+  const className = `project-artifact project-artifact--${size} ${
+    project.image ? 'has-image' : 'has-state'
+  }`;
+
+  return (
+    <figure className={className}>
+      {project.image ? (
+        <img src={project.image} alt={project.imageAlt} loading="lazy" />
+      ) : (
+        <div className="project-artifact__state" aria-label={`${project.name} artifact status`}>
+          <span>{project.artifactState ?? 'Artifact Pending'}</span>
+          <small>{project.category}</small>
+        </div>
+      )}
+      <figcaption>
+        <span>{project.name}</span>
+        <small>{project.image ? 'Visual artifact' : 'Sealed chamber'}</small>
+      </figcaption>
+    </figure>
+  );
+}
+
 function Ziggurat({ activeTier, onSelectTier }) {
   const activeTierIndex = zigguratTiers.findIndex((tier) => tier.id === activeTier.id) + 1;
 
@@ -126,6 +149,7 @@ function ProjectCard({ project, onOpen }) {
         <span className={`status status--${project.statusTone}`}>{project.status}</span>
         <span className="project-card__link">Open chamber</span>
       </div>
+      <ProjectArtifact project={project} />
       <span className="project-card__category">{project.category}</span>
       <h3>{project.name}</h3>
       <p>{project.description}</p>
@@ -187,6 +211,7 @@ function ProjectChamber({ project, onClose }) {
         </div>
 
         <div className="chamber-category">{project.category}</div>
+        <ProjectArtifact project={project} size="chamber" />
         <div className="chamber-summary">
           <span>Short description</span>
           <p className="chamber-description">{project.description}</p>
@@ -409,6 +434,27 @@ function App() {
       <section className="section forge-section" id="forge">
         <div className="section-heading">
           <p className="section-kicker">Codex Forge</p>
+          <h2>Artifacts from the forge</h2>
+          <p>
+            Screenshots, prototypes, scars, and shipped surfaces from the builds that shaped the
+            monument.
+          </p>
+        </div>
+
+        <div className="artifact-grid">
+          {projects.map((project) => (
+            <article className="artifact-card" key={project.id}>
+              <ProjectArtifact project={project} size="forge" />
+              <div>
+                <h3>{project.name}</h3>
+                <p>{project.proofSignals.slice(0, 2).join(' / ')}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="section-heading section-heading--timeline">
+          <p className="section-kicker">Build Log</p>
           <h2>Build log timeline</h2>
           <p>Rough iterations, exposed bugs, fixes, and upgrades left visible.</p>
         </div>

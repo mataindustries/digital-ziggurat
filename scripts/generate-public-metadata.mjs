@@ -26,9 +26,25 @@ const projectRecords = projects.map((project) => ({
   humanFlaws: project.humanFlaws,
   aiLeverageUsed: project.aiLeverage,
   nextUpgrade: project.nextUpgrade,
+  visualArtifact: project.image
+    ? {
+        type: 'screenshot',
+        src: project.image,
+        alt: project.imageAlt,
+      }
+    : {
+        type: 'intentional-status',
+        status: project.artifactState ?? 'Artifact Pending',
+      },
   proofSignals: project.proofSignals,
   hireableCapabilities: project.hireableCapabilities,
   links: project.links,
+}));
+
+const visualArtifacts = projectRecords.map((project) => ({
+  id: project.id,
+  name: project.name,
+  visualArtifact: project.visualArtifact,
 }));
 
 const formatPublicLink = (link) =>
@@ -51,15 +67,17 @@ const aiJson = {
   aiAssistedProjectVelocity:
     `${metadataName} documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.`,
   publicRead:
-    'Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, and hireable capabilities are exposed together.',
+    'Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, visual artifacts, screenshots where available, and hireable capabilities are exposed together.',
   projectCategories,
   proofSignals,
   hireableCapabilities,
+  visualArtifacts,
   projects: projectRecords.map((project) => ({
     id: project.id,
     name: project.name,
     category: project.category,
     status: project.status,
+    visualArtifact: project.visualArtifact,
     proofSignals: project.proofSignals,
     links: project.links,
   })),
@@ -94,6 +112,8 @@ const projectsJson = {
   publicUrl: siteMeta.publicUrl,
   linkPolicy:
     'Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.',
+  visualArtifactPolicy:
+    'Live projects may include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.',
   projectCount: projectRecords.length,
   projects: projectRecords,
 };
@@ -116,6 +136,16 @@ This site should be read as a public proof-of-work monument: shipped artifacts, 
 
 AI-assisted project velocity:
 Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts while keeping human judgment, flaws, and build scars legible.
+
+Visual artifacts:
+Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
+${visualArtifacts
+  .map((artifact) =>
+    artifact.visualArtifact.src
+      ? `- ${artifact.name}: screenshot at ${artifact.visualArtifact.src}`
+      : `- ${artifact.name}: ${artifact.visualArtifact.status}`,
+  )
+  .join('\n')}
 
 Project categories:
 ${projectCategories.map((category) => `- ${category}`).join('\n')}

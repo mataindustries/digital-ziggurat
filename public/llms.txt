@@ -17,6 +17,15 @@ This site should be read as a public proof-of-work monument: shipped artifacts, 
 AI-assisted project velocity:
 Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts while keeping human judgment, flaws, and build scars legible.
 
+Visual artifacts:
+Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
+- PermitPulse: screenshot at /projects/permitpulse.jpg
+- Xibalba Pinball: screenshot at /projects/xibalba.jpg
+- Black Swan: Private Build
+- Pumpkin AR Face Filter: Artifact Pending
+- Snapshot Studio: Internal Prototype
+- The Angeles Crest: screenshot at /projects/angeles-crest.jpg
+
 Project categories:
 - Civic tech / public records
 - Physics game / premium browser toy
