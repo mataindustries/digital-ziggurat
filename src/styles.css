@@ -2108,6 +2108,239 @@ code {
     rgba(8, 14, 17, 0.92);
 }
 
+.signal-console {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.35rem;
+  padding: 1rem;
+  border: 1px solid rgba(32, 228, 255, 0.34);
+  background:
+    linear-gradient(135deg, rgba(32, 228, 255, 0.14), transparent 34%),
+    linear-gradient(315deg, rgba(244, 199, 107, 0.1), transparent 48%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.034) 0 1px, transparent 1px 6px),
+    rgba(2, 7, 10, 0.9);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.34),
+    0 0 36px rgba(32, 228, 255, 0.12),
+    inset 0 0 34px rgba(32, 228, 255, 0.08);
+  overflow: hidden;
+}
+
+.signal-console::before,
+.signal-console::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.signal-console::before {
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0 8%, rgba(32, 228, 255, 0.1) 8.2% 8.5%, transparent 8.7% 100%),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  opacity: 0.72;
+}
+
+.signal-console::after {
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), transparent);
+  box-shadow: 0 0 22px rgba(32, 228, 255, 0.48);
+}
+
+.signal-console__header,
+.signal-console__grid,
+.signal-console__readout {
+  position: relative;
+  z-index: 1;
+}
+
+.signal-console__header {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.signal-console__header h3 {
+  margin-bottom: 0.5rem;
+  color: #f8fdff;
+  font-size: clamp(1.8rem, 8vw, 3.2rem);
+  line-height: 0.96;
+}
+
+.signal-console__header p {
+  margin-bottom: 0;
+  color: #b8cbd3;
+}
+
+.signal-console__status {
+  display: grid;
+  width: max-content;
+  min-width: 132px;
+  gap: 0.2rem;
+  padding: 0.68rem 0.78rem;
+  border: 1px solid rgba(244, 199, 107, 0.28);
+  background:
+    linear-gradient(135deg, rgba(244, 199, 107, 0.12), transparent 46%),
+    rgba(3, 8, 11, 0.82);
+}
+
+.signal-console__status span,
+.signal-console__label {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.signal-console__status strong {
+  color: var(--cyan);
+  font-size: 1.35rem;
+  line-height: 1;
+  text-shadow: 0 0 16px rgba(32, 228, 255, 0.46);
+}
+
+.signal-console__grid,
+.signal-console__options {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.signal-option {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.72rem;
+  width: 100%;
+  min-height: 52px;
+  padding: 0.74rem 0.78rem;
+  border: 1px solid rgba(170, 229, 244, 0.18);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.052), transparent 38%),
+    rgba(4, 10, 13, 0.78);
+  color: #d7e8ee;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.signal-option::after {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.45rem;
+  left: 0.55rem;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), transparent);
+  opacity: 0;
+  transform: scaleX(0.55);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.signal-option span {
+  display: inline-grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid rgba(244, 199, 107, 0.24);
+  place-items: center;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 950;
+}
+
+.signal-option strong {
+  font-size: 0.9rem;
+  line-height: 1.15;
+}
+
+.signal-option:hover,
+.signal-option:focus-visible {
+  border-color: rgba(32, 228, 255, 0.52);
+  color: #f7fdff;
+  transform: translateY(-2px);
+}
+
+.signal-option:focus-visible {
+  outline: 2px solid rgba(32, 228, 255, 0.72);
+  outline-offset: 2px;
+}
+
+.signal-option.is-active {
+  border-color: rgba(32, 228, 255, 0.82);
+  background:
+    linear-gradient(135deg, rgba(32, 228, 255, 0.18), transparent 42%),
+    linear-gradient(315deg, rgba(244, 199, 107, 0.13), transparent 50%),
+    rgba(5, 15, 18, 0.96);
+  color: #ffffff;
+  box-shadow:
+    0 0 28px rgba(32, 228, 255, 0.18),
+    inset 0 0 22px rgba(32, 228, 255, 0.09);
+}
+
+.signal-option.is-active::after {
+  opacity: 0.9;
+  transform: scaleX(1);
+}
+
+.signal-console__readout {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  padding: 1rem;
+  border: 1px solid rgba(32, 228, 255, 0.24);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(244, 199, 107, 0.1), transparent 8rem),
+    linear-gradient(135deg, rgba(32, 228, 255, 0.1), transparent 42%),
+    rgba(3, 8, 11, 0.84);
+  box-shadow: inset 0 0 28px rgba(32, 228, 255, 0.06);
+}
+
+.signal-console__readout h4 {
+  margin: 0;
+  color: #f8fdff;
+  font-size: clamp(1.35rem, 6vw, 2.15rem);
+  line-height: 1.02;
+}
+
+.signal-console__readout p {
+  margin: 0;
+  color: #b8cbd3;
+  line-height: 1.58;
+}
+
+.signal-console__meter {
+  position: relative;
+  height: 4px;
+  margin: 0.2rem 0 0.3rem;
+  overflow: hidden;
+  background: rgba(32, 228, 255, 0.12);
+}
+
+.signal-console__meter span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 76%;
+  background: linear-gradient(90deg, var(--cyan), var(--gold));
+  box-shadow: 0 0 18px rgba(32, 228, 255, 0.72);
+  animation: readoutCharge 3.2s ease-in-out infinite;
+}
+
+.signal-console__send {
+  width: 100%;
+}
+
 @keyframes pulseGrid {
   0%,
   100% {
@@ -2363,6 +2596,24 @@ code {
   .timeline-item {
     grid-template-columns: 130px minmax(0, 1fr) auto;
     align-items: start;
+  }
+
+  .signal-console {
+    padding: 1.15rem;
+  }
+
+  .signal-console__header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+
+  .signal-console__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+    align-items: stretch;
+  }
+
+  .signal-console__options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -2636,6 +2887,15 @@ code {
   .view-console__button::after,
   .file-link-grid a,
   .project-node {
+    transition: none;
+  }
+
+  .signal-console__meter span {
+    animation: none;
+  }
+
+  .signal-option,
+  .signal-option::after {
     transition: none;
   }
 }

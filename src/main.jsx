@@ -32,6 +32,57 @@ const aiViewProofSignals = [
 
 const aiReadableFiles = ['/ai.json', '/projects.json', '/llms.txt'];
 
+const signalOptions = [
+  {
+    label: 'Weird premium landing page',
+    description:
+      'A sharp, memorable page with unusual atmosphere, clear proof, and a CTA that feels built instead of templated.',
+  },
+  {
+    label: 'Local business automation',
+    description:
+      'A lean workflow or interface that reduces repetitive work for a local operator and makes the next action obvious.',
+  },
+  {
+    label: 'Civic/public-record tool',
+    description:
+      'A public-data prototype that turns messy records, permits, filings, or local signals into something usable.',
+  },
+  {
+    label: 'Browser game prototype',
+    description:
+      'A playable browser experiment with a distinct mechanic, mobile-first controls, and enough polish to test fast.',
+  },
+  {
+    label: 'AI workflow system',
+    description:
+      'A practical AI-assisted flow for research, drafting, sorting, enrichment, or internal decision support.',
+  },
+  {
+    label: 'Visual proof-of-work page',
+    description:
+      'A public artifact page that makes shipped work, process, evidence, and credibility easy to inspect.',
+  },
+  {
+    label: 'Something stranger',
+    description:
+      'A harder-to-classify prototype where the concept matters more than fitting a standard product category.',
+  },
+];
+
+function buildSignalMailto(selectedSignal) {
+  const subject = 'Build Inquiry from The Ziggurat';
+  const body = `I found The Ziggurat and want to discuss a build.
+
+Selected signal:
+${selectedSignal}
+
+What I need:
+[Write a short description here]`;
+
+  return `mailto:matasergio741@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 function ProjectArtifact({ project, size = 'card' }) {
   const className = `project-artifact project-artifact--${size} ${
     project.image ? 'has-image' : 'has-state'
@@ -413,6 +464,61 @@ function AiViewPanel() {
   );
 }
 
+function SignalConsole() {
+  const [selectedSignal, setSelectedSignal] = useState(signalOptions[0]);
+  const selectedIndex = signalOptions.findIndex((option) => option.label === selectedSignal.label) + 1;
+  const signalMailto = buildSignalMailto(selectedSignal.label);
+
+  return (
+    <section className="signal-console" aria-labelledby="signal-console-title">
+      <div className="signal-console__header">
+        <div>
+          <p className="section-kicker">Signal Console</p>
+          <h3 id="signal-console-title">Choose the signal.</h3>
+          <p>I’ll translate it into a fast, buildable AI-assisted prototype.</p>
+        </div>
+        <div className="signal-console__status" aria-hidden="true">
+          <span>Console online</span>
+          <strong>{String(selectedIndex).padStart(2, '0')}</strong>
+        </div>
+      </div>
+
+      <div className="signal-console__grid">
+        <div className="signal-console__options" role="group" aria-label="Build signal options">
+          {signalOptions.map((option, index) => {
+            const isActive = selectedSignal.label === option.label;
+
+            return (
+              <button
+                className={`signal-option ${isActive ? 'is-active' : ''}`}
+                type="button"
+                key={option.label}
+                onClick={() => setSelectedSignal(option)}
+                aria-pressed={isActive}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{option.label}</strong>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="signal-console__readout" aria-live="polite">
+          <span className="signal-console__label">Selected signal</span>
+          <h4>{selectedSignal.label}</h4>
+          <p>{selectedSignal.description}</p>
+          <div className="signal-console__meter" aria-hidden="true">
+            <span />
+          </div>
+          <a className="button button-primary signal-console__send" href={signalMailto}>
+            Send signal
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [activeTier, setActiveTier] = useState(zigguratTiers[1]);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -645,9 +751,10 @@ function App() {
             <span key={capability}>{capability}</span>
           ))}
         </div>
+        <SignalConsole />
         <div className="hero-actions">
           <a className="button button-primary" href={siteMeta.contactHref}>
-            Start a build
+            Email directly
           </a>
           <a className="button button-secondary" href="#forge">
             View the forge
