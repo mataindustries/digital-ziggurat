@@ -13,12 +13,13 @@ import './styles.css';
 
 const aiViewCapabilities = [
   'AI-assisted frontend builds',
+  'premium landing pages',
+  'browser game prototypes',
   'Cloudflare Pages deployment',
-  'interactive prototypes',
-  'public-record/civic-tech tools',
-  'browser games',
   'local business visibility tools',
+  'civic/public-record research products',
   'visual proof-of-work systems',
+  'rapid prototype iteration with Codex and frontier AI models',
 ];
 
 const aiViewProofSignals = [
@@ -30,7 +31,12 @@ const aiViewProofSignals = [
   'rapid iteration with Codex',
 ];
 
-const aiReadableFiles = ['/ai.json', '/projects.json', '/llms.txt'];
+const aiReadableFiles = [
+  { href: '/proof.html', label: 'Machine-readable proof' },
+  { href: '/ai.json', label: '/ai.json' },
+  { href: '/projects.json', label: '/projects.json' },
+  { href: '/llms.txt', label: '/llms.txt' },
+];
 
 const signalOptions = [
   {
@@ -418,8 +424,8 @@ function AiViewPanel() {
           <span>AI-readable files</span>
           <div className="file-link-grid">
             {aiReadableFiles.map((file) => (
-              <a href={file} key={file}>
-                {file}
+              <a href={file.href} key={file.href}>
+                {file.label}
               </a>
             ))}
           </div>
@@ -728,11 +734,12 @@ function App() {
           <p className="section-kicker">AI-Readable Shrine</p>
           <h2>Metadata exposed on purpose</h2>
           <p>
-            Agents can inspect public context through <code>/ai.json</code>,{' '}
-            <code>/projects.json</code>, and <code>/llms.txt</code>.
+            Agents can inspect static proof and public context through <code>/proof.html</code>,{' '}
+            <code>/ai.json</code>, <code>/projects.json</code>, and <code>/llms.txt</code>.
           </p>
         </div>
         <div className="metadata-grid">
+          <a href="/proof.html">Machine-readable proof</a>
           <a href="/ai.json">ai.json</a>
           <a href="/projects.json">projects.json</a>
           <a href="/llms.txt">llms.txt</a>

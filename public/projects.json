@@ -3,6 +3,7 @@
   "purpose": "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
   "builder": "Sergio Mata",
   "publicUrl": "https://ziggurat.pages.dev",
+  "staticProofPage": "https://ziggurat.pages.dev/proof.html",
   "linkPolicy": "Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.",
   "visualArtifactPolicy": "Live projects may include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.",
   "projectCount": 6,

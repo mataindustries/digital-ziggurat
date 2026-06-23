@@ -396,13 +396,14 @@ export const interpretationPanels = [
 ];
 
 export const hireableCapabilities = [
-  'AI-assisted frontend prototypes',
-  'Playable browser games and interactive toys',
-  'Local business visibility audits',
-  'Public proof-of-work websites',
-  'Service positioning and rapid landing pages',
-  'Structured research and client-ready packets',
-  'AI-readable metadata and project graphs',
+  'AI-assisted frontend builds',
+  'premium landing pages',
+  'browser game prototypes',
+  'Cloudflare Pages deployment',
+  'local business visibility tools',
+  'civic/public-record research products',
+  'visual proof-of-work systems',
+  'rapid prototype iteration with Codex and frontier AI models',
 ];
 
 export const projectCategories = [...new Set(projects.map((project) => project.category))];
