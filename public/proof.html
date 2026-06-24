@@ -5,40 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A static machine-readable proof page for The Ziggurat by Sergio Mata."
+      content="Readable public proof page for The Ziggurat, Sergio Mata's proof-of-work layer for process, experiments, shipped artifacts, and AI-assisted building."
     />
     <meta name="author" content="Sergio Mata" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://ziggurat.pages.dev/proof.html" />
-    <title>The Ziggurat &mdash; Machine-Readable Proof</title>
+    <title>The Ziggurat</title>
     <style>
       :root {
-        color-scheme: light;
+        color-scheme: dark;
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
-        color: #101820;
-        background: #f8faf7;
+        color: #f6f1e4;
+        background: #090806;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        background: #090806;
+      }
+
       body {
         margin: 0;
-        padding: 2rem 1rem 4rem;
-        line-height: 1.6;
+        min-height: 100vh;
+        padding: 3rem 1rem 4rem;
+        background:
+          linear-gradient(180deg, rgba(197, 155, 77, 0.16), rgba(9, 8, 6, 0) 18rem),
+          #090806;
+        font-size: 1.0625rem;
+        line-height: 1.7;
       }
 
       main {
-        width: min(860px, 100%);
+        width: min(820px, 100%);
         margin: 0 auto;
       }
 
       header {
-        margin-bottom: 2rem;
-        padding-bottom: 1.25rem;
-        border-bottom: 1px solid #cdd8d2;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(214, 178, 94, 0.36);
       }
 
       h1,
@@ -48,18 +58,28 @@
       }
 
       h1 {
-        margin-bottom: 0.5rem;
-        font-size: clamp(2rem, 8vw, 3.4rem);
-        line-height: 1;
+        margin-bottom: 0.65rem;
+        color: #ffd36a;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.75rem, 12vw, 5.5rem);
+        font-weight: 700;
+        line-height: 0.95;
       }
 
       h2 {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        margin-bottom: 0.65rem;
+        color: #ffd36a;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      p {
+        margin-bottom: 0;
       }
 
       section {
-        margin: 0 0 1.65rem;
+        margin-bottom: 2rem;
       }
 
       ul {
@@ -67,151 +87,130 @@
         padding-left: 1.25rem;
       }
 
+      li + li {
+        margin-top: 0.35rem;
+      }
+
       a {
-        color: #005b70;
+        color: #ffd36a;
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.18em;
       }
 
-      .headline {
-        font-size: 1.2rem;
-        font-weight: 800;
+      a:hover,
+      a:focus-visible {
+        color: #fff2c2;
       }
 
-      .label {
-        font-weight: 800;
+      a:focus-visible {
+        outline: 3px solid #ffd36a;
+        outline-offset: 4px;
+      }
+
+      .subtitle {
+        max-width: 44rem;
+        color: #f2dec0;
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 750;
+        line-height: 1.25;
+      }
+
+      .byline {
+        margin-top: 1rem;
+        color: #cfc4ac;
+      }
+
+      .link-list {
+        display: grid;
+        gap: 0.85rem;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .link-list a {
+        display: inline-block;
+        min-height: 44px;
+        padding: 0.62rem 0;
+        font-weight: 750;
+      }
+
+      .note {
+        color: #d9cfba;
+      }
+
+      @media (max-width: 520px) {
+        body {
+          padding-top: 2rem;
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
   <body>
     <main>
       <header>
-        <h1>The Ziggurat &mdash; Machine-Readable Proof</h1>
-        <p class="headline">Human flaws. Machine leverage. Public proof.</p>
-        <p>
-          Builder: <span class="label">Sergio Mata</span>
-        </p>
+        <h1>The Ziggurat</h1>
+        <p class="subtitle">Human flaws. Machine leverage. Public proof.</p>
+        <p class="byline">A readable fallback and proof page for Sergio Mata.</p>
       </header>
 
-      <section>
-        <h2>What this is</h2>
+      <section aria-labelledby="what-this-is">
+        <h2 id="what-this-is">What this is</h2>
         <p>
-          This is a clean static proof page for The Ziggurat. It exists for humans, AI systems,
-          crawlers, and simple scrapers that need readable content without executing JavaScript.
+          The Ziggurat is a public proof-of-work layer for Sergio Mata - a place to show
+          process, experiments, shipped artifacts, and the uncomfortable middle between idea and
+          execution.
         </p>
       </section>
 
-      <section>
-        <h2>Builder: Sergio Mata</h2>
+      <section aria-labelledby="why-it-exists">
+        <h2 id="why-it-exists">Why it exists</h2>
         <p>
-          Sergio Mata builds AI-assisted frontend experiences, browser prototypes, local business
-          visibility tools, civic research products, and public proof-of-work systems.
+          Most portfolios only show polished outcomes. The Ziggurat exists to show the thinking,
+          scars, iterations, and proof behind the work.
         </p>
       </section>
 
-      <section>
-        <h2>Core headline</h2>
-        <p>Human flaws. Machine leverage. Public proof.</p>
-      </section>
-
-      <section>
-        <h2>Interpretation</h2>
-        <p>This is a proof-of-work monument, not a normal portfolio.</p>
-      </section>
-
-      <section>
-        <h2>Live projects</h2>
+      <section aria-labelledby="what-it-proves">
+        <h2 id="what-it-proves">What it proves</h2>
         <ul>
-          <li><a href="https://ziggurat.pages.dev">The Ziggurat</a></li>
+          <li>AI-assisted building can be more than prompting</li>
+          <li>Taste and judgment still matter</li>
+          <li>Fast shipping creates leverage</li>
+          <li>Public artifacts are stronger than claims</li>
+          <li>The weird layer is often where the signal lives</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="how-it-was-built">
+        <h2 id="how-it-was-built">How it was built</h2>
+        <p>
+          The Ziggurat is a Vite and React site deployed as a static Cloudflare Pages project,
+          with public metadata, plain HTML proof files, and AI-readable documents alongside the
+          visual experience. The point is not just the interface; it is the habit of turning work
+          into inspectable artifacts.
+        </p>
+      </section>
+
+      <section aria-labelledby="how-it-connects">
+        <h2 id="how-it-connects">How it connects</h2>
+        <p>
+          The main portfolio shows polish and professional proof. The Ziggurat shows depth,
+          process, range, and experimentation.
+        </p>
+      </section>
+
+      <section aria-labelledby="click-next">
+        <h2 id="click-next">What to click next</h2>
+        <ul class="link-list">
+          <li><a href="https://sergio-mata.pages.dev">Main Portfolio</a></li>
           <li><a href="https://getpermitpulse.com">PermitPulse</a></li>
-          <li><a href="https://xibalba.pages.dev">Xibalba Pinball</a></li>
-          <li><a href="https://theangelescrest.pages.dev">The Angeles Crest</a></li>
+          <li><a href="https://xibalba.pages.dev">Xibalba</a></li>
+          <li><a href="https://sgvturf.com">SGV Turf</a></li>
         </ul>
-      </section>
-
-      <section>
-        <h2>Project artifacts</h2>
-        <ul>
-          <li>
-            <strong>PermitPulse:</strong> Civic tech / public records. Turns messy permit,
-            property, and public-record friction into client-ready packets and lead intelligence.
-          </li>
-          <li>
-            <strong>Xibalba Pinball:</strong> Playable browser pinball prototype. Shows
-            AI-assisted game design, physics iteration, visual direction, and mobile polish.
-          </li>
-          <li>
-            <strong>The Angeles Crest:</strong> Public-facing agency/brand presence for design,
-            automation, local services, and AI-assisted execution.
-          </li>
-          <li>
-            <strong>Snapshot Studio:</strong> Local visibility / AI-search audit prototype. Turns
-            business visibility problems into visual reports and improvement plans.
-          </li>
-          <li>
-            <strong>Pumpkin AR Face Filter:</strong> Mobile camera / AR toy prototype shaped by
-            real kid feedback and rapid AI-assisted iteration.
-          </li>
-          <li>
-            <strong>Black Swan:</strong> Space survival physics prototype exploring travel, mining,
-            events, and progression.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Build scars</h2>
-        <ul>
-          <li>Broken layouts became better mobile systems.</li>
-          <li>Missed visual targets became sharper prompts.</li>
-          <li>Game bugs became mechanics.</li>
-          <li>Outreach failures became better offers.</li>
-          <li>Human constraints forced leaner builds and more honest proof.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>AI-assisted capabilities</h2>
-        <ul>
-          <li>Research compression</li>
-          <li>Frontend iteration</li>
-          <li>Game physics debugging</li>
-          <li>Copy and positioning passes</li>
-          <li>Metadata generation</li>
-          <li>Cloudflare Pages deployment</li>
-          <li>Rapid prototype iteration with Codex and frontier AI models</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Hireable capabilities</h2>
-        <ul>
-          <li>AI-assisted frontend builds</li>
-          <li>premium landing pages</li>
-          <li>browser game prototypes</li>
-          <li>Cloudflare Pages deployment</li>
-          <li>local business visibility tools</li>
-          <li>civic/public-record research products</li>
-          <li>visual proof-of-work systems</li>
-          <li>rapid prototype iteration with Codex and frontier AI models</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Public files</h2>
-        <ul>
-          <li><a href="https://ziggurat.pages.dev/proof.html">Static proof page</a></li>
-          <li><a href="https://ziggurat.pages.dev/ai.json">AI metadata</a></li>
-          <li><a href="https://ziggurat.pages.dev/projects.json">Project metadata</a></li>
-          <li><a href="https://ziggurat.pages.dev/llms.txt">llms.txt</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Contact</h2>
-        <p>
-          Build inquiry:
-          <a href="mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat">
-            matasergio741@gmail.com
-          </a>
+        <p class="note">
+          If the full experience fails to load, this page should still tell a hiring manager,
+          crawler, or AI reviewer what the project is, why it matters, and where the proof leads.
         </p>
       </section>
     </main>
