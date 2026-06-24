@@ -101,6 +101,49 @@ export const projects = [
     },
   },
   {
+    id: 'bouncebox',
+    name: 'BounceBox',
+    category: 'Physics-driven sound toy / interactive audio playground',
+    description:
+      'An experimental browser-based music toy where bouncing objects, motion, sound, and simple controls become a playable rhythm system.',
+    proves:
+      'Interactive audio prototypes can turn motion, collision, and simple controls into a proof of playful product thinking.',
+    whatBroke:
+      'Sound timing, collision feel, control clarity, and toy-like restraint all need iteration before the system becomes legible.',
+    humanFlaws:
+      'Raw mechanics, unfinished public packaging, taste calibration, and the challenge of making weird interaction feel intentional.',
+    aiLeverage:
+      'Rapid AI-assisted coding loops, browser physics scaffolding, audio interaction experiments, control tuning, and product-positioning passes.',
+    status: 'In progress',
+    statusTone: 'gold',
+    artifactState: 'In Progress',
+    nextUpgrade:
+      'Publish a playable public build, tune the rhythm feel, add clearer controls, and capture a real screenshot once the interaction is stable.',
+    proofSignals: [
+      'Interactive prototyping',
+      'Audio/visual experimentation',
+      'AI-assisted iteration',
+    ],
+    hireableCapabilities: [
+      'Interactive browser toys',
+      'Audio prototyping',
+      'Physics-driven UI',
+      'Rapid AI-assisted iteration',
+    ],
+    links: {
+      demo: {
+        label: 'In progress',
+        href: null,
+        status: 'in-progress',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
+  },
+  {
     id: 'black-swan',
     name: 'Black Swan',
     category: 'Space survival physics game',
@@ -282,7 +325,7 @@ export const zigguratTiers = [
     signal: 'Playable systems',
     cta: 'Start a build',
     href: '#projects',
-    projectIds: ['xibalba-pinball', 'snapshot-studio', 'pumpkin-ar-face-filter'],
+    projectIds: ['xibalba-pinball', 'bouncebox', 'snapshot-studio', 'pumpkin-ar-face-filter'],
   },
   {
     id: 'codex-forge',
@@ -315,7 +358,7 @@ export const zigguratTiers = [
     signal: 'Contact, credibility, ambition',
     cta: 'Send signal',
     href: '#signal',
-    projectIds: ['permitpulse', 'xibalba-pinball', 'snapshot-studio', 'angeles-crest'],
+    projectIds: ['permitpulse', 'xibalba-pinball', 'bouncebox', 'snapshot-studio', 'angeles-crest'],
   },
 ];
 
@@ -399,6 +442,7 @@ export const hireableCapabilities = [
   'AI-assisted frontend builds',
   'premium landing pages',
   'browser game prototypes',
+  'interactive audio toys',
   'Cloudflare Pages deployment',
   'local business visibility tools',
   'civic/public-record research products',
@@ -415,5 +459,6 @@ export const proofSignals = [
   'Client-ready service packaging',
   'Structured public metadata',
   'Mobile-first interactive web experiences',
+  'Audio/visual experimentation',
   'Clear proof fields for each artifact',
 ];

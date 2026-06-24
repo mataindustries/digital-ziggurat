@@ -6,7 +6,7 @@
   "staticProofPage": "https://ziggurat.pages.dev/proof.html",
   "linkPolicy": "Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.",
   "visualArtifactPolicy": "Live projects may include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.",
-  "projectCount": 6,
+  "projectCount": 7,
   "projects": [
     {
       "id": "permitpulse",
@@ -81,6 +81,45 @@
           "label": "Play live",
           "href": "https://xibalba.pages.dev",
           "status": "live"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
+      "id": "bouncebox",
+      "name": "BounceBox",
+      "category": "Physics-driven sound toy / interactive audio playground",
+      "status": "In progress",
+      "summary": "An experimental browser-based music toy where bouncing objects, motion, sound, and simple controls become a playable rhythm system.",
+      "whatItProves": "Interactive audio prototypes can turn motion, collision, and simple controls into a proof of playful product thinking.",
+      "whatBroke": "Sound timing, collision feel, control clarity, and toy-like restraint all need iteration before the system becomes legible.",
+      "humanFlaws": "Raw mechanics, unfinished public packaging, taste calibration, and the challenge of making weird interaction feel intentional.",
+      "aiLeverageUsed": "Rapid AI-assisted coding loops, browser physics scaffolding, audio interaction experiments, control tuning, and product-positioning passes.",
+      "nextUpgrade": "Publish a playable public build, tune the rhythm feel, add clearer controls, and capture a real screenshot once the interaction is stable.",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "In Progress"
+      },
+      "proofSignals": [
+        "Interactive prototyping",
+        "Audio/visual experimentation",
+        "AI-assisted iteration"
+      ],
+      "hireableCapabilities": [
+        "Interactive browser toys",
+        "Audio prototyping",
+        "Physics-driven UI",
+        "Rapid AI-assisted iteration"
+      ],
+      "links": {
+        "demo": {
+          "label": "In progress",
+          "href": null,
+          "status": "in-progress"
         },
         "github": {
           "label": "Private source",

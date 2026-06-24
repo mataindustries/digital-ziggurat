@@ -15,6 +15,7 @@ const aiViewCapabilities = [
   'AI-assisted frontend builds',
   'premium landing pages',
   'browser game prototypes',
+  'interactive audio toys',
   'Cloudflare Pages deployment',
   'local business visibility tools',
   'civic/public-record research products',
@@ -27,6 +28,7 @@ const aiViewProofSignals = [
   'screenshots',
   'build scars',
   'project metadata',
+  'audio/visual experiments',
   'AI-readable public files',
   'rapid iteration with Codex',
 ];
@@ -592,7 +594,7 @@ function App() {
           <p className="section-kicker">Visible Builds</p>
           <h2>Artifacts in the monument</h2>
           <p>
-            Six public-facing project stones, each framed by shipped proof, broken edges, AI
+            Seven public-facing project stones, each framed by shipped proof, broken edges, AI
             leverage, and the next upgrade.
           </p>
         </div>

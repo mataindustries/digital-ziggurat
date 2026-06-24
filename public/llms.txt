@@ -23,6 +23,7 @@ Visual artifacts:
 Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
 - PermitPulse: screenshot at /projects/permitpulse.jpg
 - Xibalba Pinball: screenshot at /projects/xibalba.jpg
+- BounceBox: In Progress
 - Black Swan: Private Build
 - Pumpkin AR Face Filter: Artifact Pending
 - Snapshot Studio: screenshot at /projects/snapshot-studio.jpg
@@ -31,6 +32,7 @@ Some live projects include real screenshot artifacts. Projects without uploaded 
 Project categories:
 - Civic tech / public records
 - Physics game / premium browser toy
+- Physics-driven sound toy / interactive audio playground
 - Space survival physics game
 - Mobile camera / AR toy
 - Local business / AI search audit tool
@@ -54,6 +56,15 @@ Projects:
   AI leverage: Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.
   Next upgrade: Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.
   Demo: Play live (https://xibalba.pages.dev)
+  Source: Private source (private)
+- BounceBox: An experimental browser-based music toy where bouncing objects, motion, sound, and simple controls become a playable rhythm system.
+  Status: In progress
+  Proof: Interactive audio prototypes can turn motion, collision, and simple controls into a proof of playful product thinking.
+  What broke: Sound timing, collision feel, control clarity, and toy-like restraint all need iteration before the system becomes legible.
+  Human flaws: Raw mechanics, unfinished public packaging, taste calibration, and the challenge of making weird interaction feel intentional.
+  AI leverage: Rapid AI-assisted coding loops, browser physics scaffolding, audio interaction experiments, control tuning, and product-positioning passes.
+  Next upgrade: Publish a playable public build, tune the rhythm feel, add clearer controls, and capture a real screenshot once the interaction is stable.
+  Demo: In progress (in-progress)
   Source: Private source (private)
 - Black Swan: A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.
   Status: prototype
@@ -112,12 +123,14 @@ Proof signals:
 - Client-ready service packaging
 - Structured public metadata
 - Mobile-first interactive web experiences
+- Audio/visual experimentation
 - Clear proof fields for each artifact
 
 Hireable capabilities:
 - AI-assisted frontend builds
 - premium landing pages
 - browser game prototypes
+- interactive audio toys
 - Cloudflare Pages deployment
 - local business visibility tools
 - civic/public-record research products
