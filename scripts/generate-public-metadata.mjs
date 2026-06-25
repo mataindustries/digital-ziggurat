@@ -18,8 +18,10 @@ const metadataName = siteMeta.metadataName ?? siteMeta.name;
 const projectRecords = projects.map((project) => ({
   id: project.id,
   name: project.name,
+  ...(project.subtitle ? { subtitle: project.subtitle } : {}),
   category: project.category,
   status: project.status,
+  ...(project.featured ? { featured: true } : {}),
   summary: project.description,
   whatItProves: project.proves,
   whatBroke: project.whatBroke,
@@ -39,6 +41,16 @@ const projectRecords = projects.map((project) => ({
         type: 'intentional-status',
         status: project.artifactState ?? 'Artifact Pending',
       },
+  ...(project.detailImage
+    ? {
+        detailVisualArtifact: {
+          type: 'screenshot',
+          src: project.detailImage.src,
+          alt: project.detailImage.alt,
+          label: project.detailImage.label,
+        },
+      }
+    : {}),
   proofSignals: project.proofSignals,
   hireableCapabilities: project.hireableCapabilities,
   links: project.links,

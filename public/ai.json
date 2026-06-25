@@ -18,7 +18,7 @@
   "projectCategories": [
     "Civic tech / public records",
     "Physics game / premium browser toy",
-    "Physics-driven sound toy / interactive audio playground",
+    "Experimental Browser Instrument",
     "Space survival physics game",
     "Mobile camera / AR toy",
     "Local business / AI search audit tool",
@@ -69,8 +69,11 @@
       "id": "bouncebox",
       "name": "BounceBox",
       "visualArtifact": {
-        "type": "intentional-status",
-        "status": "In Progress"
+        "type": "screenshot",
+        "src": "/images/bouncebox/bouncebox-808-performance.png",
+        "alt": "BounceBox 808 performance screen",
+        "status": "Live performance",
+        "position": "center center"
       }
     },
     {
@@ -170,27 +173,30 @@
     {
       "id": "bouncebox",
       "name": "BounceBox",
-      "category": "Physics-driven sound toy / interactive audio playground",
-      "status": "In progress",
+      "category": "Experimental Browser Instrument",
+      "status": "Live experiment",
       "visualArtifact": {
-        "type": "intentional-status",
-        "status": "In Progress"
+        "type": "screenshot",
+        "src": "/images/bouncebox/bouncebox-808-performance.png",
+        "alt": "BounceBox 808 performance screen",
+        "status": "Live performance",
+        "position": "center center"
       },
       "proofSignals": [
-        "Interactive prototyping",
-        "Audio/visual experimentation",
-        "AI-assisted iteration"
+        "Physics groovebox",
+        "AI-generated MIDI",
+        "Mobile performance UI"
       ],
       "links": {
         "demo": {
-          "label": "In progress",
-          "href": null,
-          "status": "in-progress"
+          "label": "Live Demo",
+          "href": "https://bouncebox.pages.dev",
+          "status": "live"
         },
         "github": {
-          "label": "Private source",
+          "label": "GitHub Repo",
           "href": null,
-          "status": "private"
+          "status": "repo pending"
         }
       }
     },
@@ -321,8 +327,8 @@
       "name": "Workshop",
       "signal": "Playable systems",
       "projectIds": [
-        "xibalba-pinball",
         "bouncebox",
+        "xibalba-pinball",
         "snapshot-studio",
         "pumpkin-ar-face-filter"
       ]
@@ -351,9 +357,9 @@
       "name": "Signal Beacon",
       "signal": "Contact, credibility, ambition",
       "projectIds": [
+        "bouncebox",
         "permitpulse",
         "xibalba-pinball",
-        "bouncebox",
         "snapshot-studio",
         "angeles-crest"
       ]

@@ -103,43 +103,54 @@ export const projects = [
   {
     id: 'bouncebox',
     name: 'BounceBox',
-    category: 'Physics-driven sound toy / interactive audio playground',
+    subtitle: 'Physics Groovebox',
+    category: 'Experimental Browser Instrument',
     description:
-      'An experimental browser-based music toy where bouncing objects, motion, sound, and simple controls become a playable rhythm system.',
+      'A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.',
     proves:
-      'Interactive audio prototypes can turn motion, collision, and simple controls into a proof of playful product thinking.',
+      'Browser-native physics, audio, generative controls, and mobile UI can become a flagship playable instrument.',
     whatBroke:
-      'Sound timing, collision feel, control clarity, and toy-like restraint all need iteration before the system becomes legible.',
+      'Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.',
     humanFlaws:
-      'Raw mechanics, unfinished public packaging, taste calibration, and the challenge of making weird interaction feel intentional.',
+      'Ambitious scope, strange interaction design, performance-control density, and the taste work of making weird mechanics feel intentional.',
     aiLeverage:
-      'Rapid AI-assisted coding loops, browser physics scaffolding, audio interaction experiments, control tuning, and product-positioning passes.',
-    status: 'In progress',
+      'Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.',
+    status: 'Live experiment',
     statusTone: 'gold',
-    artifactState: 'In Progress',
+    featured: true,
+    image: '/images/bouncebox/bouncebox-808-performance.png',
+    imageAlt: 'BounceBox 808 performance screen',
+    detailImage: {
+      src: '/images/bouncebox/bouncebox-midi-lab.png',
+      alt: 'BounceBox MIDI Lab screen',
+      label: 'MIDI Lab',
+    },
+    visualStatus: 'Live performance',
+    visualPosition: 'center center',
     nextUpgrade:
-      'Publish a playable public build, tune the rhythm feel, add clearer controls, and capture a real screenshot once the interaction is stable.',
+      'Deepen the MIDI Lab, refine groove snapshot recall, and document the performance workflow as a public case study.',
     proofSignals: [
-      'Interactive prototyping',
-      'Audio/visual experimentation',
-      'AI-assisted iteration',
+      'Physics groovebox',
+      'AI-generated MIDI',
+      'Mobile performance UI',
     ],
     hireableCapabilities: [
-      'Interactive browser toys',
-      'Audio prototyping',
-      'Physics-driven UI',
-      'Rapid AI-assisted iteration',
+      'Creative coding',
+      'Interactive audio systems',
+      'Generative UI',
+      'Mobile-first web instruments',
     ],
     links: {
       demo: {
-        label: 'In progress',
-        href: null,
-        status: 'in-progress',
+        label: 'Live Demo',
+        href: 'https://bouncebox.pages.dev',
+        status: 'live',
       },
       github: {
-        label: 'Private source',
+        label: 'GitHub Repo',
+        // TODO: Add the public BounceBox repository URL when it is available.
         href: null,
-        status: 'private',
+        status: 'repo pending',
       },
     },
   },
@@ -325,7 +336,7 @@ export const zigguratTiers = [
     signal: 'Playable systems',
     cta: 'Start a build',
     href: '#projects',
-    projectIds: ['xibalba-pinball', 'bouncebox', 'snapshot-studio', 'pumpkin-ar-face-filter'],
+    projectIds: ['bouncebox', 'xibalba-pinball', 'snapshot-studio', 'pumpkin-ar-face-filter'],
   },
   {
     id: 'codex-forge',
@@ -358,7 +369,7 @@ export const zigguratTiers = [
     signal: 'Contact, credibility, ambition',
     cta: 'Send signal',
     href: '#signal',
-    projectIds: ['permitpulse', 'xibalba-pinball', 'bouncebox', 'snapshot-studio', 'angeles-crest'],
+    projectIds: ['bouncebox', 'permitpulse', 'xibalba-pinball', 'snapshot-studio', 'angeles-crest'],
   },
 ];
 

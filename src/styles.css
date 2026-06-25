@@ -1070,6 +1070,28 @@ h1 {
   transform: rotate(45deg);
 }
 
+.project-card--featured {
+  min-height: 300px;
+  border-color: rgba(244, 199, 107, 0.34);
+  background:
+    linear-gradient(145deg, rgba(244, 199, 107, 0.13), transparent 32%),
+    linear-gradient(315deg, rgba(32, 228, 255, 0.11), transparent 42%),
+    linear-gradient(180deg, rgba(16, 24, 28, 0.98), rgba(5, 9, 12, 0.98));
+  box-shadow:
+    inset 0 0 34px rgba(244, 199, 107, 0.06),
+    0 18px 44px rgba(0, 0, 0, 0.2);
+}
+
+.project-card--featured::before {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), transparent);
+}
+
 .project-card:hover,
 .project-card:focus-visible {
   border-color: rgba(32, 228, 255, 0.5);
@@ -1259,6 +1281,16 @@ h1 {
 .project-card h3 {
   margin: 0.48rem 0 0.65rem;
   font-size: 1.35rem;
+}
+
+.project-card__subtitle {
+  display: block;
+  margin: -0.35rem 0 0.65rem;
+  color: #e8fbff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .project-card p {
@@ -1958,6 +1990,15 @@ code {
   line-height: 0.86;
 }
 
+.chamber-subtitle {
+  margin: -0.35rem 0 0.9rem;
+  color: var(--cyan);
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .chamber-category {
   width: max-content;
   max-width: 100%;
@@ -1972,6 +2013,39 @@ code {
 
 .chamber-summary {
   max-width: 48rem;
+}
+
+.detail-artifact {
+  position: relative;
+  margin: 0 0 1rem;
+  border: 1px solid rgba(244, 199, 107, 0.22);
+  background:
+    linear-gradient(135deg, rgba(244, 199, 107, 0.1), transparent 40%),
+    rgba(4, 9, 12, 0.86);
+  overflow: hidden;
+}
+
+.detail-artifact img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center center;
+  filter: saturate(0.98) contrast(1.06) brightness(0.86);
+}
+
+.detail-artifact figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem 0.75rem 0.65rem;
+  background: linear-gradient(180deg, transparent, rgba(2, 6, 8, 0.88));
+  color: #ffe0a0;
+  font-size: 0.68rem;
+  font-weight: 950;
+  text-align: right;
+  text-transform: uppercase;
 }
 
 .chamber-summary span,
@@ -2521,6 +2595,10 @@ code {
 
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card--featured {
+    grid-column: span 2;
   }
 
   .artifact-grid {

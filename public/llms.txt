@@ -23,7 +23,7 @@ Visual artifacts:
 Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
 - PermitPulse: screenshot at /projects/permitpulse.jpg
 - Xibalba Pinball: screenshot at /projects/xibalba.jpg
-- BounceBox: In Progress
+- BounceBox: screenshot at /images/bouncebox/bouncebox-808-performance.png
 - Black Swan: Private Build
 - Pumpkin AR Face Filter: Artifact Pending
 - Snapshot Studio: screenshot at /projects/snapshot-studio.jpg
@@ -32,7 +32,7 @@ Some live projects include real screenshot artifacts. Projects without uploaded 
 Project categories:
 - Civic tech / public records
 - Physics game / premium browser toy
-- Physics-driven sound toy / interactive audio playground
+- Experimental Browser Instrument
 - Space survival physics game
 - Mobile camera / AR toy
 - Local business / AI search audit tool
@@ -57,15 +57,15 @@ Projects:
   Next upgrade: Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.
   Demo: Play live (https://xibalba.pages.dev)
   Source: Private source (private)
-- BounceBox: An experimental browser-based music toy where bouncing objects, motion, sound, and simple controls become a playable rhythm system.
-  Status: In progress
-  Proof: Interactive audio prototypes can turn motion, collision, and simple controls into a proof of playful product thinking.
-  What broke: Sound timing, collision feel, control clarity, and toy-like restraint all need iteration before the system becomes legible.
-  Human flaws: Raw mechanics, unfinished public packaging, taste calibration, and the challenge of making weird interaction feel intentional.
-  AI leverage: Rapid AI-assisted coding loops, browser physics scaffolding, audio interaction experiments, control tuning, and product-positioning passes.
-  Next upgrade: Publish a playable public build, tune the rhythm feel, add clearer controls, and capture a real screenshot once the interaction is stable.
-  Demo: In progress (in-progress)
-  Source: Private source (private)
+- BounceBox: A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.
+  Status: Live experiment
+  Proof: Browser-native physics, audio, generative controls, and mobile UI can become a flagship playable instrument.
+  What broke: Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.
+  Human flaws: Ambitious scope, strange interaction design, performance-control density, and the taste work of making weird mechanics feel intentional.
+  AI leverage: Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.
+  Next upgrade: Deepen the MIDI Lab, refine groove snapshot recall, and document the performance workflow as a public case study.
+  Demo: Live Demo (https://bouncebox.pages.dev)
+  Source: GitHub Repo (repo pending)
 - Black Swan: A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.
   Status: prototype
   Proof: A rough game premise can become a functioning loop with movement, resources, upgrades, event pressure, and progression.

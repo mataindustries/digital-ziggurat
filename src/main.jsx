@@ -232,7 +232,11 @@ function Ziggurat({ activeTier, onSelectTier }) {
 
 function ProjectCard({ project, onOpen }) {
   return (
-    <button className="project-card" type="button" onClick={() => onOpen(project)}>
+    <button
+      className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
+      type="button"
+      onClick={() => onOpen(project)}
+    >
       <div className="project-card__topline">
         <span className={`status status--${project.statusTone}`}>{project.status}</span>
         <span className="project-card__link">Open chamber</span>
@@ -240,6 +244,7 @@ function ProjectCard({ project, onOpen }) {
       <ProjectArtifact project={project} />
       <span className="project-card__category">{project.category}</span>
       <h3>{project.name}</h3>
+      {project.subtitle ? <span className="project-card__subtitle">{project.subtitle}</span> : null}
       <p>{project.description}</p>
       <div className="proof">
         <span>Proves</span>
@@ -295,11 +300,18 @@ function ProjectChamber({ project, onClose }) {
         <div className="chamber-header">
           <p className="section-kicker">Proof-of-work chamber</p>
           <h2 id={chamberTitleId}>{project.name}</h2>
+          {project.subtitle ? <p className="chamber-subtitle">{project.subtitle}</p> : null}
           <span className={`status status--${project.statusTone}`}>{project.status}</span>
         </div>
 
         <div className="chamber-category">{project.category}</div>
         <ProjectArtifact project={project} size="chamber" />
+        {project.detailImage ? (
+          <figure className="detail-artifact">
+            <img src={project.detailImage.src} alt={project.detailImage.alt} loading="lazy" />
+            <figcaption>{project.detailImage.label}</figcaption>
+          </figure>
+        ) : null}
         <div className="chamber-summary">
           <span>Short description</span>
           <p className="chamber-description">{project.description}</p>
@@ -531,8 +543,18 @@ function App() {
   const [activeTier, setActiveTier] = useState(zigguratTiers[1]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeView, setActiveView] = useState('human');
+  const visibleProjects = useMemo(
+    () =>
+      [...projects].sort(
+        (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)),
+      ),
+    [],
+  );
   const activeProjects = useMemo(
-    () => projects.filter((project) => activeTier.projectIds.includes(project.id)),
+    () =>
+      activeTier.projectIds
+        .map((projectId) => projects.find((project) => project.id === projectId))
+        .filter(Boolean),
     [activeTier],
   );
 
@@ -600,7 +622,7 @@ function App() {
         </div>
 
         <div className="project-grid">
-          {projects.map((project) => (
+          {visibleProjects.map((project) => (
             <ProjectCard project={project} key={project.id} onOpen={setSelectedProject} />
           ))}
         </div>
