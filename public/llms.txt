@@ -23,6 +23,7 @@ Visual artifacts:
 Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
 - PermitPulse: screenshot at /projects/permitpulse.jpg
 - Xibalba Pinball: screenshot at /projects/xibalba.jpg
+- Danger Close: screenshot at /projects/danger-close.jpg
 - BounceBox: screenshot at /images/bouncebox/bouncebox-808-performance.png
 - Black Swan: Private Build
 - Pumpkin AR Face Filter: Artifact Pending
@@ -32,6 +33,7 @@ Some live projects include real screenshot artifacts. Projects without uploaded 
 Project categories:
 - Civic tech / public records
 - Physics game / premium browser toy
+- Browser game / drone survival prototype
 - Experimental Browser Instrument
 - Space survival physics game
 - Mobile camera / AR toy
@@ -46,6 +48,7 @@ Projects:
   Human flaws: Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.
   AI leverage: Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.
   Next upgrade: Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.
+  Visual artifacts: /projects/permitpulse.jpg
   Demo: Open project (https://getpermitpulse.com)
   Source: Private source (private)
 - Xibalba Pinball: A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.
@@ -55,7 +58,20 @@ Projects:
   Human flaws: Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.
   AI leverage: Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.
   Next upgrade: Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.
+  Visual artifacts: /projects/xibalba.jpg
   Demo: Play live (https://xibalba.pages.dev)
+  Source: Private source (private)
+- Danger Close: A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.
+  Status: Live project
+  Current status: Live playable prototype
+  Proof: AI-assisted development can ship a polished browser game loop with sector selection, upgrade systems, enemy pressure, resource collection, survival pacing, and premium sci-fi interface design.
+  What broke: Early balancing passes created uneven pressure, dense combat states reduced clarity, and experimental systems did not always share a clean plan.
+  Human flaws: Balancing is still evolving, visual density needs tuning, and some systems grew from rough experiments rather than a perfect plan.
+  AI leverage: Used Codex and frontier AI models for gameplay systems, UI polish, enemy behavior, upgrade design, copy, testing checklists, and rapid iteration.
+  Next upgrade: More enemy variety, better map drama, stronger audio/impact polish, and a sharper onboarding flow.
+  Tags: Browser game, Survival loop, Drone combat, Upgrade systems, AI-assisted game design, Cloudflare Pages, Playable prototype
+  Visual artifacts: /projects/danger-close.jpg, /projects/danger-close-sector.jpg, /projects/danger-close-upgrades.jpg, /projects/danger-close-combat.jpg
+  Demo: Play live (https://dangerclose.pages.dev)
   Source: Private source (private)
 - BounceBox: A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.
   Status: Live experiment
@@ -64,6 +80,7 @@ Projects:
   Human flaws: Ambitious scope, strange interaction design, performance-control density, and the taste work of making weird mechanics feel intentional.
   AI leverage: Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.
   Next upgrade: Deepen the MIDI Lab, refine groove snapshot recall, and document the performance workflow as a public case study.
+  Visual artifacts: /images/bouncebox/bouncebox-808-performance.png
   Demo: Live Demo (https://bouncebox.pages.dev)
   Source: GitHub Repo (repo pending)
 - Black Swan: A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.
@@ -73,6 +90,7 @@ Projects:
   Human flaws: Ambitious scope, balancing unknowns, testing blind spots, and systems that needed more constraint than the first idea allowed.
   AI leverage: Game-system scaffolding, debugging prompts, staged roadmap planning, event design, and test-case generation.
   Next upgrade: Improve event pacing, economy pressure, save-state clarity, and risk/reward choices that make each run legible.
+  Visual artifacts: Private Build
   Demo: Private build (private)
   Source: Private source (private)
 - Pumpkin AR Face Filter: A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.
@@ -82,6 +100,7 @@ Projects:
   Human flaws: Tracking imperfections, asset alignment drift, mouth-spawn tuning, and the unpredictable standard of kid-tested delight.
   AI leverage: Camera UI support, asset-prompt iteration, interaction logic, edge-case debugging, and quick feedback loops.
   Next upgrade: Stabilize tracking, tune spawned effects, improve capture/share flow, and package the toy as a cleaner mobile demo.
+  Visual artifacts: Artifact Pending
   Demo: Private build (private)
   Source: Private source (private)
 - Snapshot Studio: A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.
@@ -91,6 +110,7 @@ Projects:
   Human flaws: Positioning uncertainty, lead-response friction, messy prospect context, and the gap between a useful audit and a paid offer.
   AI leverage: Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.
   Next upgrade: Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.
+  Visual artifacts: /projects/snapshot-studio.jpg
   Demo: Internal prototype (internal)
   Source: Private source (private)
 - The Angeles Crest: A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.
@@ -100,6 +120,7 @@ Projects:
   Human flaws: Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.
   AI leverage: Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.
   Next upgrade: Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.
+  Visual artifacts: /projects/angeles-crest.jpg
   Demo: Open site (https://theangelescrest.pages.dev)
   Source: Private source (private)
 

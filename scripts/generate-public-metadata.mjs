@@ -21,6 +21,7 @@ const projectRecords = projects.map((project) => ({
   ...(project.subtitle ? { subtitle: project.subtitle } : {}),
   category: project.category,
   status: project.status,
+  ...(project.currentStatus ? { currentStatus: project.currentStatus } : {}),
   ...(project.featured ? { featured: true } : {}),
   summary: project.description,
   whatItProves: project.proves,
@@ -51,6 +52,17 @@ const projectRecords = projects.map((project) => ({
         },
       }
     : {}),
+  ...(project.artifacts?.length
+    ? {
+        additionalVisualArtifacts: project.artifacts.map((artifact) => ({
+          type: 'screenshot',
+          src: artifact.src,
+          alt: artifact.alt,
+          label: artifact.label,
+        })),
+      }
+    : {}),
+  ...(project.tags?.length ? { tags: project.tags } : {}),
   proofSignals: project.proofSignals,
   hireableCapabilities: project.hireableCapabilities,
   links: project.links,
@@ -93,7 +105,14 @@ const aiJson = {
     name: project.name,
     category: project.category,
     status: project.status,
+    ...(project.currentStatus ? { currentStatus: project.currentStatus } : {}),
+    summary: project.summary,
+    whatItProves: project.whatItProves,
     visualArtifact: project.visualArtifact,
+    ...(project.additionalVisualArtifacts
+      ? { additionalVisualArtifacts: project.additionalVisualArtifacts }
+      : {}),
+    ...(project.tags ? { tags: project.tags } : {}),
     proofSignals: project.proofSignals,
     links: project.links,
   })),
@@ -174,11 +193,17 @@ ${projectRecords
   .map(
     (project) => `- ${project.name}: ${project.summary}
   Status: ${project.status}
-  Proof: ${project.whatItProves}
+  ${project.currentStatus ? `Current status: ${project.currentStatus}\n  ` : ''}Proof: ${project.whatItProves}
   What broke: ${project.whatBroke}
   Human flaws: ${project.humanFlaws}
   AI leverage: ${project.aiLeverageUsed}
   Next upgrade: ${project.nextUpgrade}
+  ${project.tags ? `Tags: ${project.tags.join(', ')}\n  ` : ''}Visual artifacts: ${[
+    project.visualArtifact.src ?? project.visualArtifact.status,
+    ...(project.additionalVisualArtifacts?.map((artifact) => artifact.src) ?? []),
+  ]
+    .filter(Boolean)
+    .join(', ')}
   Demo: ${formatPublicLink(project.links.demo)}
   Source: ${formatPublicLink(project.links.github)}`,
   )

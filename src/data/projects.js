@@ -101,6 +101,76 @@ export const projects = [
     },
   },
   {
+    id: 'danger-close',
+    name: 'Danger Close',
+    category: 'Browser game / drone survival prototype',
+    description:
+      'A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.',
+    proves:
+      'AI-assisted development can ship a polished browser game loop with sector selection, upgrade systems, enemy pressure, resource collection, survival pacing, and premium sci-fi interface design.',
+    whatBroke:
+      'Early balancing passes created uneven pressure, dense combat states reduced clarity, and experimental systems did not always share a clean plan.',
+    humanFlaws:
+      'Balancing is still evolving, visual density needs tuning, and some systems grew from rough experiments rather than a perfect plan.',
+    aiLeverage:
+      'Used Codex and frontier AI models for gameplay systems, UI polish, enemy behavior, upgrade design, copy, testing checklists, and rapid iteration.',
+    status: 'Live project',
+    currentStatus: 'Live playable prototype',
+    statusTone: 'cyan',
+    image: '/projects/danger-close.jpg',
+    imageAlt: 'Danger Close browser survival game screenshot',
+    visualStatus: 'live project',
+    visualPosition: 'center center',
+    artifacts: [
+      {
+        src: '/projects/danger-close-sector.jpg',
+        alt: 'Danger Close sector selection screenshot',
+        label: 'Sector selection',
+      },
+      {
+        src: '/projects/danger-close-upgrades.jpg',
+        alt: 'Danger Close hangar upgrades screenshot',
+        label: 'Hangar upgrades',
+      },
+      {
+        src: '/projects/danger-close-combat.jpg',
+        alt: 'Danger Close combat in the Dead Datacenter screenshot',
+        label: 'Combat / Dead Datacenter',
+      },
+    ],
+    nextUpgrade:
+      'More enemy variety, better map drama, stronger audio/impact polish, and a sharper onboarding flow.',
+    tags: [
+      'Browser game',
+      'Survival loop',
+      'Drone combat',
+      'Upgrade systems',
+      'AI-assisted game design',
+      'Cloudflare Pages',
+      'Playable prototype',
+    ],
+    proofSignals: ['Playable browser game', 'Drone survival loop', 'AI-assisted game design'],
+    hireableCapabilities: [
+      'Browser game prototyping',
+      'Gameplay system design',
+      'Premium sci-fi interfaces',
+      'AI-assisted iteration',
+    ],
+    cardCta: true,
+    links: {
+      demo: {
+        label: 'Play live',
+        href: 'https://dangerclose.pages.dev',
+        status: 'live',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
+  },
+  {
     id: 'bouncebox',
     name: 'BounceBox',
     subtitle: 'Physics Groovebox',
@@ -148,7 +218,6 @@ export const projects = [
       },
       github: {
         label: 'GitHub Repo',
-        // TODO: Add the public BounceBox repository URL when it is available.
         href: null,
         status: 'repo pending',
       },
@@ -336,7 +405,13 @@ export const zigguratTiers = [
     signal: 'Playable systems',
     cta: 'Start a build',
     href: '#projects',
-    projectIds: ['bouncebox', 'xibalba-pinball', 'snapshot-studio', 'pumpkin-ar-face-filter'],
+    projectIds: [
+      'bouncebox',
+      'xibalba-pinball',
+      'danger-close',
+      'snapshot-studio',
+      'pumpkin-ar-face-filter',
+    ],
   },
   {
     id: 'codex-forge',

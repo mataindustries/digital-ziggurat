@@ -18,6 +18,7 @@
   "projectCategories": [
     "Civic tech / public records",
     "Physics game / premium browser toy",
+    "Browser game / drone survival prototype",
     "Experimental Browser Instrument",
     "Space survival physics game",
     "Mobile camera / AR toy",
@@ -63,6 +64,17 @@
         "type": "screenshot",
         "src": "/projects/xibalba.jpg",
         "alt": "Xibalba Pinball live game screenshot"
+      }
+    },
+    {
+      "id": "danger-close",
+      "name": "Danger Close",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/danger-close.jpg",
+        "alt": "Danger Close browser survival game screenshot",
+        "status": "live project",
+        "position": "center center"
       }
     },
     {
@@ -118,6 +130,8 @@
       "name": "PermitPulse",
       "category": "Civic tech / public records",
       "status": "Live project",
+      "summary": "A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.",
+      "whatItProves": "Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.",
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/permitpulse.jpg",
@@ -147,6 +161,8 @@
       "name": "Xibalba Pinball",
       "category": "Physics game / premium browser toy",
       "status": "Play live",
+      "summary": "A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.",
+      "whatItProves": "AI can help ship weird, playable, visually distinctive browser games before the design is perfect.",
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/xibalba.jpg",
@@ -171,10 +187,74 @@
       }
     },
     {
+      "id": "danger-close",
+      "name": "Danger Close",
+      "category": "Browser game / drone survival prototype",
+      "status": "Live project",
+      "currentStatus": "Live playable prototype",
+      "summary": "A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.",
+      "whatItProves": "AI-assisted development can ship a polished browser game loop with sector selection, upgrade systems, enemy pressure, resource collection, survival pacing, and premium sci-fi interface design.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/danger-close.jpg",
+        "alt": "Danger Close browser survival game screenshot",
+        "status": "live project",
+        "position": "center center"
+      },
+      "additionalVisualArtifacts": [
+        {
+          "type": "screenshot",
+          "src": "/projects/danger-close-sector.jpg",
+          "alt": "Danger Close sector selection screenshot",
+          "label": "Sector selection"
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/danger-close-upgrades.jpg",
+          "alt": "Danger Close hangar upgrades screenshot",
+          "label": "Hangar upgrades"
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/danger-close-combat.jpg",
+          "alt": "Danger Close combat in the Dead Datacenter screenshot",
+          "label": "Combat / Dead Datacenter"
+        }
+      ],
+      "tags": [
+        "Browser game",
+        "Survival loop",
+        "Drone combat",
+        "Upgrade systems",
+        "AI-assisted game design",
+        "Cloudflare Pages",
+        "Playable prototype"
+      ],
+      "proofSignals": [
+        "Playable browser game",
+        "Drone survival loop",
+        "AI-assisted game design"
+      ],
+      "links": {
+        "demo": {
+          "label": "Play live",
+          "href": "https://dangerclose.pages.dev",
+          "status": "live"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
       "id": "bouncebox",
       "name": "BounceBox",
       "category": "Experimental Browser Instrument",
       "status": "Live experiment",
+      "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
+      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a flagship playable instrument.",
       "visualArtifact": {
         "type": "screenshot",
         "src": "/images/bouncebox/bouncebox-808-performance.png",
@@ -205,6 +285,8 @@
       "name": "Black Swan",
       "category": "Space survival physics game",
       "status": "prototype",
+      "summary": "A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.",
+      "whatItProves": "A rough game premise can become a functioning loop with movement, resources, upgrades, event pressure, and progression.",
       "visualArtifact": {
         "type": "intentional-status",
         "status": "Private Build"
@@ -232,6 +314,8 @@
       "name": "Pumpkin AR Face Filter",
       "category": "Mobile camera / AR toy",
       "status": "working prototype",
+      "summary": "A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.",
+      "whatItProves": "AI-assisted prototyping can produce playful camera experiences that respond to real feedback, not just a spec.",
       "visualArtifact": {
         "type": "intentional-status",
         "status": "Artifact Pending"
@@ -259,6 +343,8 @@
       "name": "Snapshot Studio",
       "category": "Local business / AI search audit tool",
       "status": "experimental sales tool",
+      "summary": "A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.",
+      "whatItProves": "Small businesses can receive fast, visual snapshots of search visibility problems and practical improvement plans.",
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/snapshot-studio.jpg",
@@ -288,6 +374,8 @@
       "name": "The Angeles Crest",
       "category": "Personal agency / premium web presence",
       "status": "Live brand",
+      "summary": "A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.",
+      "whatItProves": "Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.",
       "visualArtifact": {
         "type": "screenshot",
         "src": "/projects/angeles-crest.jpg",
@@ -329,6 +417,7 @@
       "projectIds": [
         "bouncebox",
         "xibalba-pinball",
+        "danger-close",
         "snapshot-studio",
         "pumpkin-ar-face-filter"
       ]

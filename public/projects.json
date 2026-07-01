@@ -6,7 +6,7 @@
   "staticProofPage": "https://ziggurat.pages.dev/proof.html",
   "linkPolicy": "Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.",
   "visualArtifactPolicy": "Live projects may include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.",
-  "projectCount": 7,
+  "projectCount": 8,
   "projects": [
     {
       "id": "permitpulse",
@@ -80,6 +80,78 @@
         "demo": {
           "label": "Play live",
           "href": "https://xibalba.pages.dev",
+          "status": "live"
+        },
+        "github": {
+          "label": "Private source",
+          "href": null,
+          "status": "private"
+        }
+      }
+    },
+    {
+      "id": "danger-close",
+      "name": "Danger Close",
+      "category": "Browser game / drone survival prototype",
+      "status": "Live project",
+      "currentStatus": "Live playable prototype",
+      "summary": "A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.",
+      "whatItProves": "AI-assisted development can ship a polished browser game loop with sector selection, upgrade systems, enemy pressure, resource collection, survival pacing, and premium sci-fi interface design.",
+      "whatBroke": "Early balancing passes created uneven pressure, dense combat states reduced clarity, and experimental systems did not always share a clean plan.",
+      "humanFlaws": "Balancing is still evolving, visual density needs tuning, and some systems grew from rough experiments rather than a perfect plan.",
+      "aiLeverageUsed": "Used Codex and frontier AI models for gameplay systems, UI polish, enemy behavior, upgrade design, copy, testing checklists, and rapid iteration.",
+      "nextUpgrade": "More enemy variety, better map drama, stronger audio/impact polish, and a sharper onboarding flow.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/danger-close.jpg",
+        "alt": "Danger Close browser survival game screenshot",
+        "status": "live project",
+        "position": "center center"
+      },
+      "additionalVisualArtifacts": [
+        {
+          "type": "screenshot",
+          "src": "/projects/danger-close-sector.jpg",
+          "alt": "Danger Close sector selection screenshot",
+          "label": "Sector selection"
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/danger-close-upgrades.jpg",
+          "alt": "Danger Close hangar upgrades screenshot",
+          "label": "Hangar upgrades"
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/danger-close-combat.jpg",
+          "alt": "Danger Close combat in the Dead Datacenter screenshot",
+          "label": "Combat / Dead Datacenter"
+        }
+      ],
+      "tags": [
+        "Browser game",
+        "Survival loop",
+        "Drone combat",
+        "Upgrade systems",
+        "AI-assisted game design",
+        "Cloudflare Pages",
+        "Playable prototype"
+      ],
+      "proofSignals": [
+        "Playable browser game",
+        "Drone survival loop",
+        "AI-assisted game design"
+      ],
+      "hireableCapabilities": [
+        "Browser game prototyping",
+        "Gameplay system design",
+        "Premium sci-fi interfaces",
+        "AI-assisted iteration"
+      ],
+      "links": {
+        "demo": {
+          "label": "Play live",
+          "href": "https://dangerclose.pages.dev",
           "status": "live"
         },
         "github": {

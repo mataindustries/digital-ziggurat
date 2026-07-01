@@ -232,30 +232,40 @@ function Ziggurat({ activeTier, onSelectTier }) {
 
 function ProjectCard({ project, onOpen }) {
   return (
-    <button
+    <article
       className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
-      type="button"
-      onClick={() => onOpen(project)}
     >
-      <div className="project-card__topline">
-        <span className={`status status--${project.statusTone}`}>{project.status}</span>
-        <span className="project-card__link">Open chamber</span>
-      </div>
-      <ProjectArtifact project={project} />
-      <span className="project-card__category">{project.category}</span>
-      <h3>{project.name}</h3>
-      {project.subtitle ? <span className="project-card__subtitle">{project.subtitle}</span> : null}
-      <p>{project.description}</p>
-      <div className="proof">
-        <span>Proves</span>
-        <strong>{project.proves}</strong>
-      </div>
-      <div className="project-card__signals" aria-label={`${project.name} proof signals`}>
-        {project.proofSignals.slice(0, 2).map((signal) => (
-          <span key={signal}>{signal}</span>
-        ))}
-      </div>
-    </button>
+      <button
+        className="project-card__open"
+        type="button"
+        onClick={() => onOpen(project)}
+        aria-label={`Open ${project.name} project chamber`}
+      >
+        <div className="project-card__topline">
+          <span className={`status status--${project.statusTone}`}>{project.status}</span>
+          <span className="project-card__link">Open chamber</span>
+        </div>
+        <ProjectArtifact project={project} />
+        <span className="project-card__category">{project.category}</span>
+        <h3>{project.name}</h3>
+        {project.subtitle ? <span className="project-card__subtitle">{project.subtitle}</span> : null}
+        <p>{project.description}</p>
+        <div className="proof">
+          <span>Proves</span>
+          <strong>{project.proves}</strong>
+        </div>
+        <div className="project-card__signals" aria-label={`${project.name} proof signals`}>
+          {project.proofSignals.slice(0, 2).map((signal) => (
+            <span key={signal}>{signal}</span>
+          ))}
+        </div>
+      </button>
+      {project.cardCta && project.links.demo.href ? (
+        <a className="project-card__cta" href={project.links.demo.href}>
+          {project.links.demo.label}
+        </a>
+      ) : null}
+    </article>
   );
 }
 
@@ -306,7 +316,16 @@ function ProjectChamber({ project, onClose }) {
 
         <div className="chamber-category">{project.category}</div>
         <ProjectArtifact project={project} size="chamber" />
-        {project.detailImage ? (
+        {project.artifacts?.length ? (
+          <div className="detail-artifacts" aria-label={`${project.name} visual artifacts`}>
+            {project.artifacts.map((artifact) => (
+              <figure className="detail-artifact" key={artifact.src}>
+                <img src={artifact.src} alt={artifact.alt} loading="lazy" />
+                <figcaption>{artifact.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        ) : project.detailImage ? (
           <figure className="detail-artifact">
             <img src={project.detailImage.src} alt={project.detailImage.alt} loading="lazy" />
             <figcaption>{project.detailImage.label}</figcaption>
@@ -334,6 +353,12 @@ function ProjectChamber({ project, onClose }) {
             <span>AI leverage used</span>
             <p>{project.aiLeverage}</p>
           </div>
+          {project.currentStatus ? (
+            <div className="chamber-block chamber-block--wide">
+              <span>Current status</span>
+              <p>{project.currentStatus}</p>
+            </div>
+          ) : null}
           <div className="chamber-block chamber-block--wide">
             <span>Next upgrade</span>
             <p>{project.nextUpgrade}</p>
@@ -357,6 +382,16 @@ function ProjectChamber({ project, onClose }) {
               ))}
             </div>
           </div>
+          {project.tags?.length ? (
+            <div className="chamber-evidence__wide">
+              <span>Tags</span>
+              <div className="signal-list">
+                {project.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
 
         <div className="chamber-links" aria-label={`${project.name} project links`}>
@@ -616,7 +651,7 @@ function App() {
           <p className="section-kicker">Visible Builds</p>
           <h2>Artifacts in the monument</h2>
           <p>
-            Seven public-facing project stones, each framed by shipped proof, broken edges, AI
+            Eight public-facing project stones, each framed by shipped proof, broken edges, AI
             leverage, and the next upgrade.
           </p>
         </div>
