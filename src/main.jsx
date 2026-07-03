@@ -8,20 +8,10 @@ import {
   scarTissue,
   interpretationPanels,
   hireableCapabilities,
+  implementationServices,
+  servicePaths,
 } from './data/projects';
 import './styles.css';
-
-const aiViewCapabilities = [
-  'AI-assisted frontend builds',
-  'premium landing pages',
-  'browser game prototypes',
-  'interactive audio toys',
-  'Cloudflare Pages deployment',
-  'local business visibility tools',
-  'civic/public-record research products',
-  'visual proof-of-work systems',
-  'rapid prototype iteration with Codex and frontier AI models',
-];
 
 const aiViewProofSignals = [
   'live deployed projects',
@@ -38,6 +28,16 @@ const aiReadableFiles = [
   { href: '/ai.json', label: '/ai.json' },
   { href: '/projects.json', label: '/projects.json' },
   { href: '/llms.txt', label: '/llms.txt' },
+  {
+    href: '/sergio-mata-permit-clarity.pdf',
+    label: 'Permit service sheet · 1-page PDF',
+    newTab: true,
+  },
+  {
+    href: '/sergio-mata-local-web-fixes.pdf',
+    label: 'Web fixes service sheet · 1-page PDF',
+    newTab: true,
+  },
 ];
 
 const signalOptions = [
@@ -473,7 +473,12 @@ function AiViewPanel() {
           <span>AI-readable files</span>
           <div className="file-link-grid">
             {aiReadableFiles.map((file) => (
-              <a href={file.href} key={file.href}>
+              <a
+                href={file.href}
+                key={file.href}
+                target={file.newTab ? '_blank' : undefined}
+                rel={file.newTab ? 'noopener noreferrer' : undefined}
+              >
                 {file.label}
               </a>
             ))}
@@ -483,7 +488,7 @@ function AiViewPanel() {
         <article className="machine-card">
           <span>Hireable capabilities</span>
           <div className="signal-list">
-            {aiViewCapabilities.map((capability) => (
+            {hireableCapabilities.map((capability) => (
               <span key={capability}>{capability}</span>
             ))}
           </div>
@@ -574,6 +579,106 @@ function SignalConsole() {
   );
 }
 
+function WeeklyWork() {
+  return (
+    <section
+      className="section availability-section"
+      id="available-work"
+      aria-labelledby="available-work-title"
+    >
+      <div className="section-heading availability-section__heading">
+        <p className="section-kicker">Available implementation work</p>
+        <h2 id="available-work-title">Work I can do this week</h2>
+        <p>Small, useful, fixed-scope builds and repairs. No giant redesign required.</p>
+      </div>
+
+      <div className="capability-grid">
+        {implementationServices.map((service, index) => (
+          <article className="capability-card" key={service.title}>
+            <div className="capability-card__readout">
+              <span>Capability {String(index + 1).padStart(2, '0')}</span>
+              <span className="capability-card__status">Ready</span>
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="quick-review">
+        <div>
+          <p className="section-kicker">Small-project intake</p>
+          <h3>Have one annoying web problem?</h3>
+          <p>
+            Send me the link and a short description. I’ll tell you the first useful fix and
+            whether it fits a small flat-price project.
+          </p>
+        </div>
+        <a className="button button-primary" href={siteMeta.contactHref}>
+          Request a quick review
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function ServicePaths() {
+  return (
+    <section
+      className="section service-paths"
+      id="service-paths"
+      aria-labelledby="service-paths-title"
+    >
+      <div className="section-heading service-paths__heading">
+        <p className="section-kicker">Choose a service path</p>
+        <h2 id="service-paths-title">What do you need help with?</h2>
+        <p>
+          Two focused ways to work with me—each with clear scope, starting prices, and examples of
+          the work.
+        </p>
+      </div>
+
+      <div className="service-path-grid">
+        {servicePaths.map((service, index) => (
+          <article
+            className={`service-path-card service-path-card--${service.tone}`}
+            key={service.id}
+          >
+            <div className="service-path-card__readout" aria-hidden="true">
+              <span>Service path {String(index + 1).padStart(2, '0')}</span>
+              <span>Scope ready</span>
+            </div>
+            <p className="service-path-card__label">{service.label}</p>
+            <h3>{service.heading}</h3>
+            <p className="service-path-card__description">{service.description}</p>
+            <ul className="service-path-card__proof">
+              {service.proofPoints.map((proofPoint) => (
+                <li key={proofPoint}>{proofPoint}</li>
+              ))}
+            </ul>
+            <div className="service-path-card__actions">
+              <a
+                className="service-path-card__primary"
+                href={service.primaryLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${service.primaryLink.label}, one-page PDF service sheet (opens in a new tab)`}
+              >
+                <span>{service.primaryLink.label}</span>
+                <small>1-page PDF</small>
+              </a>
+              <a className="service-path-card__secondary" href={service.secondaryLink.href}>
+                {service.secondaryLink.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [activeTier, setActiveTier] = useState(zigguratTiers[1]);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -611,19 +716,35 @@ function App() {
 
         <div className="hero-content" id="top">
           <div className="hero-copy">
-            <p className="eyebrow">Public proof-of-work monument</p>
-            <h1>The Ziggurat</h1>
-            <p className="tagline">Human flaws. Machine leverage. Public proof.</p>
+            <div className="hero-eyebrow-row">
+              <p className="eyebrow">Available for web + AI implementation work</p>
+              <div
+                className="availability-readout"
+                aria-label="Available this week in the San Gabriel Valley, Los Angeles, and remotely"
+              >
+                <span>Available this week</span>
+                <small>SGV / LA / Remote</small>
+              </div>
+            </div>
+            <h1>I build useful web tools fast.</h1>
+            <p className="tagline">
+              Frontend prototypes, WordPress fixes, AI-assisted workflows, and local business
+              systems—shipped, deployed, and ready to inspect.
+            </p>
             <p className="intro">
-              Sergio's AI-built projects, flawed prototypes, build logs, experiments, and technical
-              ambition carved into one public monument.
+              I’m Sergio Mata, an AI-assisted web builder based in the San Gabriel Valley. I help
+              businesses, agencies, and project teams turn messy web problems into usable pages,
+              tools, workflows, and prototypes.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
-                Start a build
+              <a className="button button-primary" href={siteMeta.contactHref}>
+                Hire me for a web fix
               </a>
-              <a className="button button-secondary" href="#forge">
-                View the forge
+              <a className="button button-secondary" href="#projects">
+                See deployed projects
+              </a>
+              <a className="button button-tertiary" href={siteMeta.generalContactHref}>
+                Email me
               </a>
             </div>
           </div>
@@ -645,6 +766,10 @@ function App() {
           <a href={activeTier.href}>{activeTier.cta}</a>
         </div>
       </section>
+
+      <WeeklyWork />
+
+      <ServicePaths />
 
       <section className="section projects-section" id="projects">
         <div className="section-heading">
@@ -798,10 +923,16 @@ function App() {
           </p>
         </div>
         <div className="metadata-grid">
-          <a href="/proof.html">Machine-readable proof</a>
-          <a href="/ai.json">ai.json</a>
-          <a href="/projects.json">projects.json</a>
-          <a href="/llms.txt">llms.txt</a>
+          {aiReadableFiles.map((file) => (
+            <a
+              href={file.href}
+              key={file.href}
+              target={file.newTab ? '_blank' : undefined}
+              rel={file.newTab ? 'noopener noreferrer' : undefined}
+            >
+              {file.label}
+            </a>
+          ))}
         </div>
       </section>
 

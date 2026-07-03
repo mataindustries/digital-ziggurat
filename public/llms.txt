@@ -6,18 +6,44 @@ Tagline: Human flaws. Machine leverage. Public proof.
 
 Builder: Sergio Mata
 
+Availability: Available this week for paid implementation work
+
+Service area: San Gabriel Valley / Los Angeles / remote
+
 Live site: https://ziggurat.pages.dev
 
 Static proof page: https://ziggurat.pages.dev/proof.html
 
-Contact: mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat
+Contact: mailto:matasergio741@gmail.com?subject=Web%20Fix%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AI%20need%20help%20with%3A%0A%0AWebsite%20or%20project%20link%3A%0A%0ATimeline%3A%0A
 
-Purpose: Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.
+Purpose: Make Sergio Mata's availability for paid implementation work and AI-assisted execution legible through practical services, shipped artifacts, visible flaws, build history, and machine-readable project metadata.
 
 This site should be read as a public proof-of-work monument: shipped artifacts, visible flaws, AI leverage, build history, and structured proof. It is not a normal portfolio organized around polished case-study theater.
 
 AI-assisted project velocity:
 Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts while keeping human judgment, flaws, and build scars legible.
+
+Available implementation work:
+- WordPress / Elementor fixes: Layout problems, mobile cleanup, content updates, and broken sections.
+- Contact forms + email routing: Form notifications, forwarding problems, aliases, missed leads, and delivery testing.
+- Landing pages: Focused service, campaign, intake, booking, or quote-request pages.
+- AI-assisted workflow cleanup: Research, drafting, sorting, reporting, and repetitive internal processes.
+- Google Business + website audit: Find conversion friction, inconsistent information, and missing calls to action.
+- Permit research packets: Organize public permit records, timelines, open questions, and follow-up context.
+- Frontend prototypes: Interactive concepts, browser tools, playable demos, and unusual interfaces.
+- Small business automation: Lead intake, follow-up, report generation, and lightweight operational tools.
+
+Service paths:
+- Permit clarity for project teams
+  Audience: Independent permit research, client-ready packets, follow-up summaries, and lightweight status tools for architects, contractors, permit consultants, and owner teams.
+  Services: independent permit research; Permit Triage Packets; client-ready follow-up summaries; permit status pages
+  One-page PDF service sheet: /sergio-mata-permit-clarity.pdf
+  Secondary action: Visit PermitPulse (https://getpermitpulse.com)
+- Fast web fixes for local businesses and agencies
+  Audience: Focused help with broken forms, WordPress and Elementor issues, landing pages, website audits, and lightweight workflow automation.
+  Services: WordPress and Elementor fixes; contact form and email-routing fixes; landing pages; website audits; small business workflow automation
+  One-page PDF service sheet: /sergio-mata-local-web-fixes.pdf
+  Secondary action: Send your website (mailto:matasergio741@gmail.com?subject=Website%20Fix%20Request&body=Hi%20Sergio%2C%0A%0AWebsite%20link%3A%0A%0AThe%20one%20thing%20I%20need%20fixed%3A%0A%0ATimeline%3A%0A)
 
 Visual artifacts:
 Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
@@ -148,18 +174,26 @@ Proof signals:
 - Clear proof fields for each artifact
 
 Hireable capabilities:
-- AI-assisted frontend builds
-- premium landing pages
+- available for paid web + AI implementation work
+- WordPress and Elementor support
+- contact form and email-routing fixes
+- landing pages and quote-request pages
+- AI-assisted workflow cleanup
+- local business website audits
+- permit research packets
+- frontend prototyping
+- small business automation
+- San Gabriel Valley / Los Angeles / remote
 - browser game prototypes
 - interactive audio toys
 - Cloudflare Pages deployment
-- local business visibility tools
-- civic/public-record research products
 - visual proof-of-work systems
 - rapid prototype iteration with Codex and frontier AI models
 
-Public metadata:
-- /proof.html
-- /ai.json
-- /projects.json
-- /llms.txt
+Public resources:
+- /proof.html: static proof
+- /ai.json: structured metadata
+- /projects.json: structured project data
+- /llms.txt: AI-readable summary
+- /sergio-mata-permit-clarity.pdf: one-page PDF service sheet for permit support
+- /sergio-mata-local-web-fixes.pdf: one-page PDF service sheet for web and workflow support

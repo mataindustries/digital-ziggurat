@@ -5,19 +5,124 @@ export const siteMeta = {
   name: 'The Ziggurat',
   owner: 'Sergio Mata',
   tagline: 'Human flaws. Machine leverage. Public proof.',
-  title: 'The Ziggurat — Human flaws. Machine leverage. Public proof.',
+  title: 'Sergio Mata — Web + AI Implementation | The Ziggurat',
   description:
-    'A cinematic proof-of-work monument showcasing Sergio Mata’s AI-built projects, prototypes, build scars, and technical ambition.',
+    'Sergio Mata is available for paid web and AI implementation work in the San Gabriel Valley, Los Angeles, and remotely.',
   publicUrl: 'https://ziggurat.pages.dev',
   socialPreviewUrl: 'https://ziggurat.pages.dev/the-ziggurat-og.png',
   socialPreviewAlt:
     'The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.',
   preferredInterpretation: 'This is a proof-of-work monument, not a normal portfolio.',
   purpose:
-    "Make Sergio Mata's AI-assisted execution legible through shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
+    "Make Sergio Mata's availability for paid implementation work and AI-assisted execution legible through practical services, shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
+  availability: 'Available this week for paid implementation work',
+  serviceArea: 'San Gabriel Valley / Los Angeles / remote',
   contactHref:
-    'mailto:matasergio741@gmail.com?subject=Build%20Inquiry%20from%20The%20Ziggurat',
+    'mailto:matasergio741@gmail.com?subject=Web%20Fix%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AI%20need%20help%20with%3A%0A%0AWebsite%20or%20project%20link%3A%0A%0ATimeline%3A%0A',
+  generalContactHref:
+    'mailto:matasergio741@gmail.com?subject=Work%20Inquiry%20from%20The%20Ziggurat',
 };
+
+export const implementationServices = [
+  {
+    title: 'WordPress / Elementor fixes',
+    description: 'Layout problems, mobile cleanup, content updates, and broken sections.',
+  },
+  {
+    title: 'Contact forms + email routing',
+    description:
+      'Form notifications, forwarding problems, aliases, missed leads, and delivery testing.',
+  },
+  {
+    title: 'Landing pages',
+    description: 'Focused service, campaign, intake, booking, or quote-request pages.',
+  },
+  {
+    title: 'AI-assisted workflow cleanup',
+    description: 'Research, drafting, sorting, reporting, and repetitive internal processes.',
+  },
+  {
+    title: 'Google Business + website audit',
+    description:
+      'Find conversion friction, inconsistent information, and missing calls to action.',
+  },
+  {
+    title: 'Permit research packets',
+    description:
+      'Organize public permit records, timelines, open questions, and follow-up context.',
+  },
+  {
+    title: 'Frontend prototypes',
+    description: 'Interactive concepts, browser tools, playable demos, and unusual interfaces.',
+  },
+  {
+    title: 'Small business automation',
+    description:
+      'Lead intake, follow-up, report generation, and lightweight operational tools.',
+  },
+];
+
+export const servicePaths = [
+  {
+    id: 'permit-support',
+    tone: 'gold',
+    label: 'Permit + project support',
+    heading: 'Permit clarity for project teams',
+    description:
+      'Independent permit research, client-ready packets, follow-up summaries, and lightweight status tools for architects, contractors, permit consultants, and owner teams.',
+    proofPoints: [
+      'Permit status and public-record research',
+      '48-hour Permit Triage Packets',
+      'Client-ready follow-up summaries',
+      'Permit intake and status pages',
+    ],
+    machineReadablePositioning: [
+      'independent permit research',
+      'Permit Triage Packets',
+      'client-ready follow-up summaries',
+      'permit status pages',
+    ],
+    primaryLink: {
+      label: 'View permit service sheet',
+      href: '/sergio-mata-permit-clarity.pdf',
+      format: 'One-page PDF service sheet',
+    },
+    secondaryLink: {
+      label: 'Visit PermitPulse',
+      href: 'https://getpermitpulse.com',
+    },
+  },
+  {
+    id: 'web-workflow-support',
+    tone: 'cyan',
+    label: 'Web + workflow support',
+    heading: 'Fast web fixes for local businesses and agencies',
+    description:
+      'Focused help with broken forms, WordPress and Elementor issues, landing pages, website audits, and lightweight workflow automation.',
+    proofPoints: [
+      'Contact forms and email routing',
+      'WordPress / Elementor fixes',
+      'Landing and quote pages',
+      'Website audits and intake automation',
+    ],
+    machineReadablePositioning: [
+      'WordPress and Elementor fixes',
+      'contact form and email-routing fixes',
+      'landing pages',
+      'website audits',
+      'small business workflow automation',
+    ],
+    primaryLink: {
+      label: 'View web fixes service sheet',
+      href: '/sergio-mata-local-web-fixes.pdf',
+      format: 'One-page PDF service sheet',
+    },
+    secondaryLink: {
+      label: 'Send your website',
+      href: 'mailto:matasergio741@gmail.com?subject=Website%20Fix%20Request&body=Hi%20Sergio%2C%0A%0AWebsite%20link%3A%0A%0AThe%20one%20thing%20I%20need%20fixed%3A%0A%0ATimeline%3A%0A',
+    },
+  },
+];
 
 export const projects = [
   {
@@ -525,13 +630,19 @@ export const interpretationPanels = [
 ];
 
 export const hireableCapabilities = [
-  'AI-assisted frontend builds',
-  'premium landing pages',
+  'available for paid web + AI implementation work',
+  'WordPress and Elementor support',
+  'contact form and email-routing fixes',
+  'landing pages and quote-request pages',
+  'AI-assisted workflow cleanup',
+  'local business website audits',
+  'permit research packets',
+  'frontend prototyping',
+  'small business automation',
+  'San Gabriel Valley / Los Angeles / remote',
   'browser game prototypes',
   'interactive audio toys',
   'Cloudflare Pages deployment',
-  'local business visibility tools',
-  'civic/public-record research products',
   'visual proof-of-work systems',
   'rapid prototype iteration with Codex and frontier AI models',
 ];
