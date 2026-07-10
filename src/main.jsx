@@ -220,7 +220,7 @@ function Ziggurat({ activeTier, onSelectTier }) {
         </div>
         <div className="temple-foundation" aria-hidden="true" />
         <div className="temple-halo" aria-hidden="true" />
-        <div className="temple-spire" aria-hidden="true" />
+        <div className="summit-beacon" aria-hidden="true" />
       </div>
 
       <div className="monument-plaza" aria-hidden="true">
