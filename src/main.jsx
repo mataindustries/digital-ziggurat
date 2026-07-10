@@ -128,6 +128,9 @@ function Ziggurat({ activeTier, onSelectTier }) {
   return (
     <div className="ziggurat-stage" aria-label="Interactive ziggurat section selector">
       <div className="monument-atmosphere" aria-hidden="true">
+        <span className="monument-horizon" />
+        <span className="monument-haze monument-haze--one" />
+        <span className="monument-haze monument-haze--two" />
         <span className="monument-orbit monument-orbit--outer" />
         <span className="monument-orbit monument-orbit--inner" />
         <span className="monument-rail monument-rail--left" />
@@ -210,9 +213,20 @@ function Ziggurat({ activeTier, onSelectTier }) {
             <span className="tier-glow" />
           </button>
         ))}
+        <div className="ceremonial-ascent" aria-hidden="true">
+          {Array.from({ length: 11 }).map((_, index) => (
+            <span key={`stair-${index}`} />
+          ))}
+        </div>
         <div className="temple-foundation" aria-hidden="true" />
         <div className="temple-halo" aria-hidden="true" />
         <div className="temple-spire" aria-hidden="true" />
+      </div>
+
+      <div className="monument-plaza" aria-hidden="true">
+        <span className="plaza-causeway" />
+        <span className="plaza-stone plaza-stone--left" />
+        <span className="plaza-stone plaza-stone--right" />
       </div>
 
       <aside className="active-tier-card" key={activeTier.id}>
@@ -726,7 +740,8 @@ function App() {
                 <small>SGV / LA / Remote</small>
               </div>
             </div>
-            <h1>I build useful web tools fast.</h1>
+            <p className="hero-role">I build useful web tools fast.</p>
+            <h1>Human flaws. Machine leverage. Public proof.</h1>
             <p className="tagline">
               Frontend prototypes, WordPress fixes, AI-assisted workflows, and local business
               systems—shipped, deployed, and ready to inspect.
