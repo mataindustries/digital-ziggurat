@@ -889,48 +889,6 @@ h1 {
   animation: haloDrift 5.4s ease-in-out infinite;
 }
 
-.temple-spire {
-  position: absolute;
-  top: clamp(2.25rem, 4.7vw, 3.1rem);
-  z-index: 3;
-  width: clamp(36px, 7vw, 52px);
-  height: clamp(16px, 3.2vw, 22px);
-  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
-  background:
-    linear-gradient(148deg, rgba(255, 255, 255, 0.7), transparent 34%),
-    linear-gradient(160deg, rgba(255, 218, 141, 0.92), rgba(32, 228, 255, 0.72) 62%, rgba(7, 18, 22, 0.94));
-  box-shadow:
-    0 0 36px rgba(32, 228, 255, 0.52),
-    0 0 20px rgba(244, 199, 107, 0.36),
-    inset 0 -8px 12px rgba(0, 0, 0, 0.32);
-  animation: summitPulse 3.8s ease-in-out infinite;
-}
-
-.temple-spire::before,
-.temple-spire::after {
-  position: absolute;
-  content: "";
-  pointer-events: none;
-}
-
-.temple-spire::before {
-  inset: -210% 48% 38%;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow:
-    0 0 18px rgba(255, 255, 255, 0.64),
-    0 0 28px rgba(32, 228, 255, 0.42);
-}
-
-.temple-spire::after {
-  top: 46%;
-  right: -54%;
-  left: -54%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(244, 199, 107, 0.58), rgba(32, 228, 255, 0.72), transparent);
-  box-shadow: 0 0 14px rgba(32, 228, 255, 0.52);
-  animation: beaconSweep 2.8s ease-in-out infinite;
-}
-
 .active-tier-card {
   position: absolute;
   right: clamp(1rem, 3vw, 1.5rem);
@@ -2944,17 +2902,6 @@ code {
   }
 }
 
-@keyframes summitPulse {
-  0%,
-  100% {
-    filter: brightness(0.95) saturate(1);
-  }
-
-  50% {
-    filter: brightness(1.26) saturate(1.12);
-  }
-}
-
 @keyframes haloDrift {
   0%,
   100% {
@@ -2965,19 +2912,6 @@ code {
   50% {
     opacity: 0.9;
     transform: translate(-50%, -20%) rotateX(68deg) scale(1.04);
-  }
-}
-
-@keyframes beaconSweep {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scaleX(0.72);
-  }
-
-  50% {
-    opacity: 0.95;
-    transform: scaleX(1.08);
   }
 }
 
@@ -3397,12 +3331,6 @@ code {
     bottom: 8px;
   }
 
-  .temple-spire {
-    top: 2.16rem;
-    width: 38px;
-    height: 17px;
-  }
-
   .temple-halo {
     top: 1.05rem;
     width: 92px;
@@ -3489,8 +3417,6 @@ code {
   .monument-node,
   .temple-halo,
   .signal-beam,
-  .temple-spire,
-  .temple-spire::after,
   .tier.is-active .tier-surface::before,
   .active-tier-card__meter span,
   .view-layer,
