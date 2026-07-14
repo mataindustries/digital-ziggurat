@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   siteMeta,
@@ -102,7 +102,11 @@ function ProjectArtifact({ project, size = 'card' }) {
         <img
           src={project.image}
           alt={project.imageAlt}
-          loading="lazy"
+          width={project.imageWidth}
+          height={project.imageHeight}
+          loading={size === 'chamber' ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={size === 'chamber' ? 'high' : 'auto'}
           style={{
             objectFit: project.visualFit ?? 'cover',
             objectPosition: project.visualPosition ?? 'center center',
@@ -119,6 +123,100 @@ function ProjectArtifact({ project, size = 'card' }) {
         <small>{project.image ? project.visualStatus ?? 'Visual artifact' : 'Sealed chamber'}</small>
       </figcaption>
     </figure>
+  );
+}
+
+function PermitPulseArtifactStory({ project }) {
+  return (
+    <section className="permitpulse-artifact-story" aria-labelledby="permitpulse-artifacts-title">
+      <div className="permitpulse-section-heading">
+        <p className="section-kicker">Recovered system surfaces</p>
+        <h3 id="permitpulse-artifacts-title">From record intake to review packet</h3>
+        <p>
+          Each surface exposes another part of the same case: evidence enters with provenance,
+          chronology is reconstructed, review gates delivery, and the packet retains its source
+          trail.
+        </p>
+      </div>
+      <div className="permitpulse-artifacts">
+        {project.artifacts.map((artifact) => (
+          <figure className="permitpulse-artifact" key={artifact.src}>
+            <div className="permitpulse-artifact__viewport">
+              <img
+                src={artifact.src}
+                alt={artifact.alt}
+                width={artifact.width}
+                height={artifact.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>
+              <strong>{artifact.label}</strong>
+              <span>{artifact.caption}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PermitPulseSystemNotes({ project }) {
+  return (
+    <>
+      <section className="permitpulse-milestones" aria-labelledby="permitpulse-milestones-title">
+        <div className="permitpulse-section-heading">
+          <p className="section-kicker">Operational readout</p>
+          <h3 id="permitpulse-milestones-title">The prototype became a working instrument</h3>
+          <p>
+            The recent passes joined research, review, document generation, and deployment into
+            one controlled operating surface.
+          </p>
+        </div>
+        <div className="permitpulse-milestone-grid">
+          {project.milestones.map((milestone) => (
+            <span key={milestone}>{milestone}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="permitpulse-engineering" aria-labelledby="permitpulse-engineering-title">
+        <div className="permitpulse-section-heading">
+          <p className="section-kicker">Builder field notes</p>
+          <h3 id="permitpulse-engineering-title">Infrastructure behind the chamber</h3>
+          <p>{project.engineeringNotes.summary}</p>
+          <p>
+            AI is used as an engineering accelerator for research organization, implementation,
+            debugging, and test passes—not as an autonomous permit reviewer or decision maker.
+          </p>
+        </div>
+        <div className="signal-list" aria-label="PermitPulse engineering technologies">
+          {project.engineeringNotes.technologies.map((technology) => (
+            <span key={technology}>{technology}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="permitpulse-connections" aria-labelledby="permitpulse-connections-title">
+        <div className="permitpulse-section-heading">
+          <p className="section-kicker">Shared construction marks</p>
+          <h3 id="permitpulse-connections-title">Built from the Ziggurat’s recurring philosophy</h3>
+          <p>
+            These are family resemblances, not software dependencies: dense state made legible,
+            mobile controls treated seriously, and finished output kept close to its evidence.
+          </p>
+        </div>
+        <div className="permitpulse-connection-grid">
+          {project.connections.map((connection) => (
+            <article key={connection.name}>
+              <strong>{connection.name}</strong>
+              <p>{connection.note}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -284,19 +382,55 @@ function ProjectCard({ project, onOpen }) {
 }
 
 function ProjectChamber({ project, onClose }) {
+  const chamberRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
   useEffect(() => {
     if (!project) {
       return undefined;
     }
 
+    const previouslyFocusedElement = document.activeElement;
+    const previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      if (event.key !== 'Tab') {
+        return;
+      }
+
+      const focusableElements = chamberRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+
+      if (!focusableElements?.length) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousBodyOverflow;
+      previouslyFocusedElement?.focus?.();
+    };
   }, [project, onClose]);
 
   if (!project) {
@@ -304,6 +438,7 @@ function ProjectChamber({ project, onClose }) {
   }
 
   const chamberTitleId = `project-chamber-title-${project.id}`;
+  const chamberDescriptionId = `project-chamber-description-${project.id}`;
   const chamberLinks = [
     { type: 'Demo', ...project.links.demo },
     { type: 'Source', ...project.links.github },
@@ -312,13 +447,23 @@ function ProjectChamber({ project, onClose }) {
   return (
     <div className="chamber-backdrop" role="presentation" onClick={onClose}>
       <section
-        className="project-chamber"
+        className={`project-chamber ${
+          project.chamberVariant ? `project-chamber--${project.chamberVariant}` : ''
+        }`}
         role="dialog"
         aria-modal="true"
         aria-labelledby={chamberTitleId}
+        aria-describedby={chamberDescriptionId}
         onClick={(event) => event.stopPropagation()}
+        ref={chamberRef}
       >
-        <button className="chamber-close" type="button" onClick={onClose} aria-label="Close chamber">
+        <button
+          className="chamber-close"
+          type="button"
+          onClick={onClose}
+          aria-label="Close chamber"
+          ref={closeButtonRef}
+        >
           Close
         </button>
         <div className="chamber-header">
@@ -330,11 +475,18 @@ function ProjectChamber({ project, onClose }) {
 
         <div className="chamber-category">{project.category}</div>
         <ProjectArtifact project={project} size="chamber" />
-        {project.artifacts?.length ? (
+        {project.chamberVariant !== 'permitpulse' && project.artifacts?.length ? (
           <div className="detail-artifacts" aria-label={`${project.name} visual artifacts`}>
             {project.artifacts.map((artifact) => (
               <figure className="detail-artifact" key={artifact.src}>
-                <img src={artifact.src} alt={artifact.alt} loading="lazy" />
+                <img
+                  src={artifact.src}
+                  alt={artifact.alt}
+                  width={artifact.width}
+                  height={artifact.height}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <figcaption>{artifact.label}</figcaption>
               </figure>
             ))}
@@ -346,9 +498,15 @@ function ProjectChamber({ project, onClose }) {
           </figure>
         ) : null}
         <div className="chamber-summary">
-          <span>Short description</span>
-          <p className="chamber-description">{project.description}</p>
+          <span>{project.chamberVariant === 'permitpulse' ? 'Expedition record' : 'Short description'}</span>
+          <p className="chamber-description" id={chamberDescriptionId}>
+            {project.description}
+          </p>
         </div>
+
+        {project.chamberVariant === 'permitpulse' ? (
+          <PermitPulseArtifactStory project={project} />
+        ) : null}
 
         <div className="chamber-grid">
           <div className="chamber-block chamber-block--wide">
@@ -378,6 +536,10 @@ function ProjectChamber({ project, onClose }) {
             <p>{project.nextUpgrade}</p>
           </div>
         </div>
+
+        {project.chamberVariant === 'permitpulse' ? (
+          <PermitPulseSystemNotes project={project} />
+        ) : null}
 
         <div className="chamber-evidence">
           <div>

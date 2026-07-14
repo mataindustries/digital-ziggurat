@@ -20,7 +20,7 @@
   "aiAssistedProjectVelocity": "The Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
   "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, visual artifacts, screenshots where available, hireable capabilities, and the static proof page are exposed together.",
   "projectCategories": [
-    "Civic tech / public records",
+    "Civic operations / public-record evidence",
     "Physics game / premium browser toy",
     "Browser game / drone survival prototype",
     "Experimental Browser Instrument",
@@ -155,9 +155,12 @@
       "name": "PermitPulse",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/permitpulse.jpg",
-        "alt": "PermitPulse project screenshot",
-        "position": "center 70%"
+        "src": "/projects/permitpulse/permitpulse-00-mission-control-collage.png",
+        "alt": "PermitPulse mission control workspace beside a permit review packet, executive summary, agency dependency map, and supporting evidence page",
+        "status": "Mission control / review packet",
+        "position": "center center",
+        "width": 1536,
+        "height": 1024
       }
     },
     {
@@ -231,20 +234,152 @@
     {
       "id": "permitpulse",
       "name": "PermitPulse",
-      "category": "Civic tech / public records",
-      "status": "Live project",
-      "summary": "A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.",
-      "whatItProves": "Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.",
+      "category": "Civic operations / public-record evidence",
+      "status": "Operational system",
+      "currentStatus": "Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.",
+      "summary": "An engineering expedition into fragmented public records: source evidence is preserved, chronology is reconstructed, human review stays explicit, and approved case material becomes a deterministic client packet.",
+      "whatItProves": "Uneven permit records can be carried through one traceable workflow—from source capture and provenance to reviewer-controlled, professional deliverables—without hiding uncertainty.",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/permitpulse.jpg",
-        "alt": "PermitPulse project screenshot",
-        "position": "center 70%"
+        "src": "/projects/permitpulse/permitpulse-00-mission-control-collage.png",
+        "alt": "PermitPulse mission control workspace beside a permit review packet, executive summary, agency dependency map, and supporting evidence page",
+        "status": "Mission control / review packet",
+        "position": "center center",
+        "width": 1536,
+        "height": 1024
       },
+      "additionalVisualArtifacts": [
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-01-mission-control.png",
+          "alt": "PermitPulse Mission Control workspace showing case status, investigation health, evidence, timeline, reviewer, and packet navigation",
+          "label": "Mission Control",
+          "capability": "A single authenticated workspace holds case state, investigation health, review readiness, and packet operations.",
+          "width": 720,
+          "height": 1341
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-02-evidence-register.png",
+          "alt": "PermitPulse evidence register showing verified source records with provenance and contributor details",
+          "label": "Evidence Register",
+          "capability": "Source records retain provenance, dates, contributors, verification state, and the boundary between evidence and analysis.",
+          "width": 719,
+          "height": 1443
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-03-case-timeline.png",
+          "alt": "PermitPulse reconstructed case timeline with dated permit and communication events",
+          "label": "Timeline Reconstruction",
+          "capability": "Dated records are assembled into a reviewable chronology while gaps and unresolved handoffs remain visible.",
+          "width": 719,
+          "height": 1350
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-04-packet-preview.png",
+          "alt": "PermitPulse packet preview workspace with readiness checks and generated document pages",
+          "label": "Packet Generation",
+          "capability": "Readiness checks gate a deterministic preview before reviewed case material becomes a client deliverable.",
+          "width": 719,
+          "height": 1465
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-05-review-packet-cover.png",
+          "alt": "PermitPulse permit review packet cover for an ADU resubmittal case",
+          "label": "Review Packet",
+          "capability": "A restrained, client-ready cover records jurisdiction, permit identity, packet version, and generation state.",
+          "width": 717,
+          "height": 866
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-06-executive-summary.png",
+          "alt": "PermitPulse executive summary distinguishing confirmed records, unknowns, risks, and strengths",
+          "label": "Executive Summary",
+          "capability": "Confirmed facts, missing confirmation, material risks, and useful strengths are separated for human review.",
+          "width": 719,
+          "height": 932
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-07-dependency-map.png",
+          "alt": "PermitPulse agency dependency map showing review blockers, supporting evidence, and recommended next steps",
+          "label": "Agency Dependency Graph",
+          "capability": "Evidence-grounded blockers are translated into agency dependencies and concrete follow-up questions.",
+          "width": 719,
+          "height": 925
+        },
+        {
+          "type": "screenshot",
+          "src": "/projects/permitpulse/permitpulse-08-supporting-evidence.png",
+          "alt": "PermitPulse supporting evidence page preserving source, review, provenance, and verification details",
+          "label": "Supporting Evidence",
+          "capability": "The rendered packet carries evidence summaries and provenance forward so conclusions remain inspectable.",
+          "width": 720,
+          "height": 924
+        }
+      ],
+      "tags": [
+        "Civic operations",
+        "Evidence provenance",
+        "Reviewer workflow",
+        "Cloudflare infrastructure",
+        "Private storage",
+        "Deterministic rendering"
+      ],
+      "milestones": [
+        "Mission Control workspace",
+        "Evidence graph and provenance register",
+        "Reviewer-controlled workflow",
+        "Packet generation engine",
+        "Authenticated Cloudflare deployment",
+        "Private evidence storage",
+        "Mobile operation",
+        "Deterministic rendering and cross-render parity"
+      ],
+      "engineeringNotes": {
+        "summary": "React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Cloudflare Workers",
+          "Cloudflare D1",
+          "Cloudflare R2",
+          "Better Auth",
+          "HTML/PDF generation",
+          "AI-assisted engineering"
+        ]
+      },
+      "sharedEngineeringPhilosophy": [
+        {
+          "name": "Snapshot Studio",
+          "note": "Turns irregular source material into a concise, inspectable report."
+        },
+        {
+          "name": "Portfolio",
+          "note": "Treats visible proof, metadata, and delivery craft as parts of the same artifact."
+        },
+        {
+          "name": "Danger Close",
+          "note": "Makes dense system state legible through a focused mission-control interface."
+        },
+        {
+          "name": "Xibalba",
+          "note": "Uses atmosphere in service of interaction instead of as decoration alone."
+        },
+        {
+          "name": "BounceBox",
+          "note": "Builds a serious mobile control surface around an unconventional workflow."
+        }
+      ],
       "proofSignals": [
-        "Public-record research",
-        "Client-ready packets",
-        "Local lead intelligence"
+        "Evidence provenance",
+        "Human review workflow",
+        "Deterministic client packets",
+        "Authenticated operations"
       ],
       "links": {
         "demo": {

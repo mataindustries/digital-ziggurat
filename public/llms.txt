@@ -47,7 +47,7 @@ Service paths:
 
 Visual artifacts:
 Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
-- PermitPulse: screenshot at /projects/permitpulse.jpg
+- PermitPulse: screenshot at /projects/permitpulse/permitpulse-00-mission-control-collage.png
 - Xibalba Pinball: screenshot at /projects/xibalba.jpg
 - Danger Close: screenshot at /projects/danger-close.jpg
 - BounceBox: screenshot at /images/bouncebox/bouncebox-808-performance.png
@@ -57,7 +57,7 @@ Some live projects include real screenshot artifacts. Projects without uploaded 
 - The Angeles Crest: screenshot at /projects/angeles-crest.jpg
 
 Project categories:
-- Civic tech / public records
+- Civic operations / public-record evidence
 - Physics game / premium browser toy
 - Browser game / drone survival prototype
 - Experimental Browser Instrument
@@ -67,14 +67,20 @@ Project categories:
 - Personal agency / premium web presence
 
 Projects:
-- PermitPulse: A civic-tech build for turning permit, property, and public-record friction into useful client packets and lead signals.
-  Status: Live project
-  Proof: Messy permit and property records can become clean client-ready packets, local intelligence, and sharper service opportunities.
-  What broke: The wedge moved, data sources were uneven, and city records did not behave like clean product inputs.
-  Human flaws: Shifting offer, imperfect feeds, manual research drag, and the hard reality of local government data.
-  AI leverage: Research compression, permit-data structuring, copy passes, frontend iteration, and service positioning.
-  Next upgrade: Publish tighter sample packets, name the strongest buyer, and document the exact data-source assumptions.
-  Visual artifacts: /projects/permitpulse.jpg
+- PermitPulse: An engineering expedition into fragmented public records: source evidence is preserved, chronology is reconstructed, human review stays explicit, and approved case material becomes a deterministic client packet.
+  Status: Operational system
+  Current status: Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.
+  Proof: Uneven permit records can be carried through one traceable workflow—from source capture and provenance to reviewer-controlled, professional deliverables—without hiding uncertainty.
+  What broke: Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.
+  Human flaws: The system keeps open conditions, source gaps, reviewer judgment, and unresolved agency handoffs visible instead of manufacturing certainty.
+  AI leverage: AI accelerated research organization, implementation passes, interface iteration, and test coverage. Evidence approval, interpretation, and delivery decisions remain human-controlled.
+  Next upgrade: Continue hardening jurisdiction-specific source assumptions, reviewer safeguards, and packet validation as new record conditions appear.
+  Tags: Civic operations, Evidence provenance, Reviewer workflow, Cloudflare infrastructure, Private storage, Deterministic rendering
+  Visual artifacts: /projects/permitpulse/permitpulse-00-mission-control-collage.png, /projects/permitpulse/permitpulse-01-mission-control.png, /projects/permitpulse/permitpulse-02-evidence-register.png, /projects/permitpulse/permitpulse-03-case-timeline.png, /projects/permitpulse/permitpulse-04-packet-preview.png, /projects/permitpulse/permitpulse-05-review-packet-cover.png, /projects/permitpulse/permitpulse-06-executive-summary.png, /projects/permitpulse/permitpulse-07-dependency-map.png, /projects/permitpulse/permitpulse-08-supporting-evidence.png
+  Milestones: Mission Control workspace; Evidence graph and provenance register; Reviewer-controlled workflow; Packet generation engine; Authenticated Cloudflare deployment; Private evidence storage; Mobile operation; Deterministic rendering and cross-render parity
+  Engineering: React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.
+  Technologies: React, TypeScript, Cloudflare Workers, Cloudflare D1, Cloudflare R2, Better Auth, HTML/PDF generation, AI-assisted engineering
+  Shared engineering philosophy: Snapshot Studio — Turns irregular source material into a concise, inspectable report.; Portfolio — Treats visible proof, metadata, and delivery craft as parts of the same artifact.; Danger Close — Makes dense system state legible through a focused mission-control interface.; Xibalba — Uses atmosphere in service of interaction instead of as decoration alone.; BounceBox — Builds a serious mobile control surface around an unconventional workflow.
   Demo: Open project (https://getpermitpulse.com)
   Source: Private source (private)
 - Xibalba Pinball: A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.

@@ -39,6 +39,8 @@ const projectRecords = projects.map((project) => ({
         ...(project.visualStatus ? { status: project.visualStatus } : {}),
         ...(project.visualPosition ? { position: project.visualPosition } : {}),
         ...(project.visualFit ? { fit: project.visualFit } : {}),
+        ...(project.imageWidth ? { width: project.imageWidth } : {}),
+        ...(project.imageHeight ? { height: project.imageHeight } : {}),
       }
     : {
         type: 'intentional-status',
@@ -61,9 +63,15 @@ const projectRecords = projects.map((project) => ({
           src: artifact.src,
           alt: artifact.alt,
           label: artifact.label,
+          ...(artifact.caption ? { capability: artifact.caption } : {}),
+          ...(artifact.width ? { width: artifact.width } : {}),
+          ...(artifact.height ? { height: artifact.height } : {}),
         })),
       }
     : {}),
+  ...(project.milestones?.length ? { milestones: project.milestones } : {}),
+  ...(project.engineeringNotes ? { engineeringNotes: project.engineeringNotes } : {}),
+  ...(project.connections?.length ? { sharedEngineeringPhilosophy: project.connections } : {}),
   ...(project.tags?.length ? { tags: project.tags } : {}),
   proofSignals: project.proofSignals,
   hireableCapabilities: project.hireableCapabilities,
@@ -146,6 +154,11 @@ const aiJson = {
       ? { additionalVisualArtifacts: project.additionalVisualArtifacts }
       : {}),
     ...(project.tags ? { tags: project.tags } : {}),
+    ...(project.milestones ? { milestones: project.milestones } : {}),
+    ...(project.engineeringNotes ? { engineeringNotes: project.engineeringNotes } : {}),
+    ...(project.sharedEngineeringPhilosophy
+      ? { sharedEngineeringPhilosophy: project.sharedEngineeringPhilosophy }
+      : {}),
     proofSignals: project.proofSignals,
     links: project.links,
   })),
@@ -272,7 +285,17 @@ ${projectRecords
   ]
     .filter(Boolean)
     .join(', ')}
-  Demo: ${formatPublicLink(project.links.demo)}
+  ${project.milestones ? `Milestones: ${project.milestones.join('; ')}\n  ` : ''}${
+    project.engineeringNotes
+      ? `Engineering: ${project.engineeringNotes.summary}\n  Technologies: ${project.engineeringNotes.technologies.join(', ')}\n  `
+      : ''
+  }${
+    project.sharedEngineeringPhilosophy
+      ? `Shared engineering philosophy: ${project.sharedEngineeringPhilosophy
+          .map((connection) => `${connection.name} — ${connection.note}`)
+          .join('; ')}\n  `
+      : ''
+  }Demo: ${formatPublicLink(project.links.demo)}
   Source: ${formatPublicLink(project.links.github)}`,
   )
   .join('\n')}
