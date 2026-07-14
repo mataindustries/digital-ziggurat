@@ -20,7 +20,7 @@
   "aiAssistedProjectVelocity": "The Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
   "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, visual artifacts, screenshots where available, hireable capabilities, and the static proof page are exposed together.",
   "projectCategories": [
-    "Civic operations / public-record evidence",
+    "Operational permit intelligence / evidence systems",
     "Physics game / premium browser toy",
     "Browser game / drone survival prototype",
     "Experimental Browser Instrument",
@@ -30,6 +30,8 @@
     "Personal agency / premium web presence"
   ],
   "proofSignals": [
+    "PermitPulse OS flagship engineering",
+    "Evidence-backed human review workflows",
     "Playable prototypes",
     "Visible build scars",
     "AI-assisted iteration",
@@ -41,6 +43,9 @@
   ],
   "hireableCapabilities": [
     "available for paid web + AI implementation work",
+    "flagship full-stack permit intelligence platform",
+    "Cloudflare Workers, D1, and R2 systems",
+    "review workflows and deterministic PDF generation",
     "WordPress and Elementor support",
     "contact form and email-routing fixes",
     "landing pages and quote-request pages",
@@ -115,7 +120,7 @@
         "format": "One-page PDF service sheet"
       },
       "secondaryLink": {
-        "label": "Visit PermitPulse",
+        "label": "Visit PermitPulse OS",
         "href": "https://getpermitpulse.com"
       }
     },
@@ -152,15 +157,15 @@
   "visualArtifacts": [
     {
       "id": "permitpulse",
-      "name": "PermitPulse",
+      "name": "PermitPulse OS",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/permitpulse/permitpulse-00-mission-control-collage.png",
-        "alt": "PermitPulse mission control workspace beside a permit review packet, executive summary, agency dependency map, and supporting evidence page",
-        "status": "Mission control / review packet",
-        "position": "center center",
-        "width": 1536,
-        "height": 1024
+        "src": "/projects/permitpulse/permitpulse-01-mission-control.png",
+        "alt": "PermitPulse OS Mission Control showing case status, investigation health, evidence, timeline, review readiness, and packet operations",
+        "status": "Mission Control",
+        "position": "center top",
+        "width": 720,
+        "height": 1341
       }
     },
     {
@@ -233,20 +238,22 @@
   "projects": [
     {
       "id": "permitpulse",
-      "name": "PermitPulse",
-      "category": "Civic operations / public-record evidence",
+      "name": "PermitPulse OS",
+      "category": "Operational permit intelligence / evidence systems",
       "status": "Operational system",
+      "featured": true,
+      "flagshipLabel": "Current Flagship",
       "currentStatus": "Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.",
-      "summary": "An engineering expedition into fragmented public records: source evidence is preserved, chronology is reconstructed, human review stays explicit, and approved case material becomes a deterministic client packet.",
-      "whatItProves": "Uneven permit records can be carried through one traceable workflow—from source capture and provenance to reviewer-controlled, professional deliverables—without hiding uncertainty.",
+      "summary": "A full-stack operating system for capturing permit evidence, building chronology, reviewing findings, and generating professional client packets with an inspectable source trail.",
+      "whatItProves": "Fragmented public records can move through one traceable, reviewer-controlled workflow—from evidence capture and chronology to approved, deterministic PDF deliverables—without hiding uncertainty.",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/permitpulse/permitpulse-00-mission-control-collage.png",
-        "alt": "PermitPulse mission control workspace beside a permit review packet, executive summary, agency dependency map, and supporting evidence page",
-        "status": "Mission control / review packet",
-        "position": "center center",
-        "width": 1536,
-        "height": 1024
+        "src": "/projects/permitpulse/permitpulse-01-mission-control.png",
+        "alt": "PermitPulse OS Mission Control showing case status, investigation health, evidence, timeline, review readiness, and packet operations",
+        "status": "Mission Control",
+        "position": "center top",
+        "width": 720,
+        "height": 1341
       },
       "additionalVisualArtifacts": [
         {
@@ -271,7 +278,7 @@
           "type": "screenshot",
           "src": "/projects/permitpulse/permitpulse-03-case-timeline.png",
           "alt": "PermitPulse reconstructed case timeline with dated permit and communication events",
-          "label": "Timeline Reconstruction",
+          "label": "Timeline",
           "capability": "Dated records are assembled into a reviewable chronology while gaps and unresolved handoffs remain visible.",
           "width": 719,
           "height": 1350
@@ -280,7 +287,7 @@
           "type": "screenshot",
           "src": "/projects/permitpulse/permitpulse-04-packet-preview.png",
           "alt": "PermitPulse packet preview workspace with readiness checks and generated document pages",
-          "label": "Packet Generation",
+          "label": "Packet Preview",
           "capability": "Readiness checks gate a deterministic preview before reviewed case material becomes a client deliverable.",
           "width": 719,
           "height": 1465
@@ -307,7 +314,7 @@
           "type": "screenshot",
           "src": "/projects/permitpulse/permitpulse-07-dependency-map.png",
           "alt": "PermitPulse agency dependency map showing review blockers, supporting evidence, and recommended next steps",
-          "label": "Agency Dependency Graph",
+          "label": "Agency Dependency Map",
           "capability": "Evidence-grounded blockers are translated into agency dependencies and concrete follow-up questions.",
           "width": 719,
           "height": 925
@@ -334,11 +341,18 @@
         "Mission Control workspace",
         "Evidence graph and provenance register",
         "Reviewer-controlled workflow",
-        "Packet generation engine",
+        "AI-assisted review with human approval",
+        "PDF generation engine",
         "Authenticated Cloudflare deployment",
         "Private evidence storage",
         "Mobile operation",
         "Deterministic rendering and cross-render parity"
+      ],
+      "operationalFlow": [
+        "Capture evidence",
+        "Build chronology",
+        "Review findings",
+        "Generate professional packet"
       ],
       "engineeringNotes": {
         "summary": "React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.",
@@ -349,8 +363,10 @@
           "Cloudflare D1",
           "Cloudflare R2",
           "Better Auth",
-          "HTML/PDF generation",
-          "AI-assisted engineering"
+          "Deterministic rendering",
+          "PDF generation",
+          "AI-assisted review",
+          "Human approval"
         ]
       },
       "sharedEngineeringPhilosophy": [
@@ -492,7 +508,7 @@
       "category": "Experimental Browser Instrument",
       "status": "Live experiment",
       "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
-      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a flagship playable instrument.",
+      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.",
       "visualArtifact": {
         "type": "screenshot",
         "src": "/images/bouncebox/bouncebox-808-performance.png",
@@ -663,7 +679,7 @@
     {
       "id": "codex-forge",
       "name": "Codex Forge",
-      "signal": "Logs, diffs, iteration",
+      "signal": "Flagship systems engineering",
       "projectIds": [
         "permitpulse",
         "snapshot-studio"
@@ -684,8 +700,8 @@
       "name": "Signal Beacon",
       "signal": "Contact, credibility, ambition",
       "projectIds": [
-        "bouncebox",
         "permitpulse",
+        "bouncebox",
         "xibalba-pinball",
         "snapshot-studio",
         "angeles-crest"

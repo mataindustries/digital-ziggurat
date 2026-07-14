@@ -14,6 +14,8 @@ import {
 import './styles.css';
 
 const aiViewProofSignals = [
+  'PermitPulse OS flagship system',
+  'evidence-backed review workflow',
   'live deployed projects',
   'screenshots',
   'build scars',
@@ -92,6 +94,7 @@ What I need:
 }
 
 function ProjectArtifact({ project, size = 'card' }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const className = `project-artifact project-artifact--${size} ${
     project.image ? 'has-image' : 'has-state'
   }`;
@@ -100,6 +103,7 @@ function ProjectArtifact({ project, size = 'card' }) {
     <figure className={className}>
       {project.image ? (
         <img
+          className={imageLoaded ? 'is-loaded' : ''}
           src={project.image}
           alt={project.imageAlt}
           width={project.imageWidth}
@@ -107,6 +111,8 @@ function ProjectArtifact({ project, size = 'card' }) {
           loading={size === 'chamber' ? 'eager' : 'lazy'}
           decoding="async"
           fetchPriority={size === 'chamber' ? 'high' : 'auto'}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(true)}
           style={{
             objectFit: project.visualFit ?? 'cover',
             objectPosition: project.visualPosition ?? 'center center',
@@ -123,6 +129,19 @@ function ProjectArtifact({ project, size = 'card' }) {
         <small>{project.image ? project.visualStatus ?? 'Visual artifact' : 'Sealed chamber'}</small>
       </figcaption>
     </figure>
+  );
+}
+
+function PermitPulseFlow({ project, compact = false }) {
+  return (
+    <ol
+      className={`permitpulse-flow ${compact ? 'permitpulse-flow--compact' : ''}`}
+      aria-label="PermitPulse OS operational workflow"
+    >
+      {project.operationalFlow.map((step) => (
+        <li key={step}>{step}</li>
+      ))}
+    </ol>
   );
 }
 
@@ -191,7 +210,7 @@ function PermitPulseSystemNotes({ project }) {
             debugging, and test passes—not as an autonomous permit reviewer or decision maker.
           </p>
         </div>
-        <div className="signal-list" aria-label="PermitPulse engineering technologies">
+        <div className="signal-list" aria-label="PermitPulse OS engineering technologies">
           {project.engineeringNotes.technologies.map((technology) => (
             <span key={technology}>{technology}</span>
           ))}
@@ -345,7 +364,9 @@ function Ziggurat({ activeTier, onSelectTier }) {
 function ProjectCard({ project, onOpen }) {
   return (
     <article
-      className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
+      className={`project-card ${project.featured ? 'project-card--featured' : ''} ${
+        project.chamberVariant ? `project-card--${project.chamberVariant}` : ''
+      }`}
     >
       <button
         className="project-card__open"
@@ -354,22 +375,34 @@ function ProjectCard({ project, onOpen }) {
         aria-label={`Open ${project.name} project chamber`}
       >
         <div className="project-card__topline">
-          <span className={`status status--${project.statusTone}`}>{project.status}</span>
+          <div className="project-card__status-group">
+            {project.flagshipLabel ? (
+              <span className="flagship-badge">{project.flagshipLabel}</span>
+            ) : null}
+            <span className={`status status--${project.statusTone}`}>{project.status}</span>
+          </div>
           <span className="project-card__link">Open chamber</span>
         </div>
-        <ProjectArtifact project={project} />
-        <span className="project-card__category">{project.category}</span>
-        <h3>{project.name}</h3>
-        {project.subtitle ? <span className="project-card__subtitle">{project.subtitle}</span> : null}
-        <p>{project.description}</p>
-        <div className="proof">
-          <span>Proves</span>
-          <strong>{project.proves}</strong>
-        </div>
-        <div className="project-card__signals" aria-label={`${project.name} proof signals`}>
-          {project.proofSignals.slice(0, 2).map((signal) => (
-            <span key={signal}>{signal}</span>
-          ))}
+        <div className="project-card__body">
+          <ProjectArtifact project={project} />
+          <div className="project-card__content">
+            <span className="project-card__category">{project.category}</span>
+            <h3>{project.name}</h3>
+            {project.subtitle ? (
+              <span className="project-card__subtitle">{project.subtitle}</span>
+            ) : null}
+            {project.operationalFlow ? <PermitPulseFlow project={project} compact /> : null}
+            <p>{project.description}</p>
+            <div className="proof">
+              <span>Proves</span>
+              <strong>{project.proves}</strong>
+            </div>
+            <div className="project-card__signals" aria-label={`${project.name} proof signals`}>
+              {project.proofSignals.slice(0, 2).map((signal) => (
+                <span key={signal}>{signal}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </button>
       {project.cardCta && project.links.demo.href ? (
@@ -468,6 +501,9 @@ function ProjectChamber({ project, onClose }) {
         </button>
         <div className="chamber-header">
           <p className="section-kicker">Proof-of-work chamber</p>
+          {project.flagshipLabel ? (
+            <span className="flagship-badge">{project.flagshipLabel}</span>
+          ) : null}
           <h2 id={chamberTitleId}>{project.name}</h2>
           {project.subtitle ? <p className="chamber-subtitle">{project.subtitle}</p> : null}
           <span className={`status status--${project.statusTone}`}>{project.status}</span>
@@ -498,11 +534,13 @@ function ProjectChamber({ project, onClose }) {
           </figure>
         ) : null}
         <div className="chamber-summary">
-          <span>{project.chamberVariant === 'permitpulse' ? 'Expedition record' : 'Short description'}</span>
+          <span>{project.chamberVariant === 'permitpulse' ? 'Platform brief' : 'Short description'}</span>
           <p className="chamber-description" id={chamberDescriptionId}>
             {project.description}
           </p>
         </div>
+
+        {project.operationalFlow ? <PermitPulseFlow project={project} /> : null}
 
         {project.chamberVariant === 'permitpulse' ? (
           <PermitPulseArtifactStory project={project} />
@@ -856,7 +894,7 @@ function ServicePaths() {
 }
 
 function App() {
-  const [activeTier, setActiveTier] = useState(zigguratTiers[1]);
+  const [activeTier, setActiveTier] = useState(zigguratTiers[2]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeView, setActiveView] = useState('human');
   const visibleProjects = useMemo(
@@ -911,14 +949,15 @@ function App() {
             <p className="intro">
               I’m Sergio Mata, an AI-assisted web builder based in the San Gabriel Valley. I help
               businesses, agencies, and project teams turn messy web problems into usable pages,
-              tools, workflows, and prototypes.
+              tools, workflows, and prototypes. PermitPulse OS is the flagship proof: a full-stack,
+              evidence-backed permit intelligence platform built for real review and delivery.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href={siteMeta.contactHref}>
                 Hire me for a web fix
               </a>
               <a className="button button-secondary" href="#projects">
-                See deployed projects
+                Inspect the flagship build
               </a>
               <a className="button button-tertiary" href={siteMeta.generalContactHref}>
                 Email me
@@ -951,10 +990,11 @@ function App() {
       <section className="section projects-section" id="projects">
         <div className="section-heading">
           <p className="section-kicker">Visible Builds</p>
-          <h2>Artifacts in the monument</h2>
+          <h2>PermitPulse OS leads the monument</h2>
           <p>
-            Eight public-facing project stones, each framed by shipped proof, broken edges, AI
-            leverage, and the next upgrade.
+            The current flagship is the strongest demonstration of my engineering work: a secure,
+            evidence-centered operating system that turns fragmented records into reviewed client
+            deliverables. The remaining chambers show the experiments and systems around it.
           </p>
         </div>
 

@@ -7,7 +7,7 @@ export const siteMeta = {
   tagline: 'Human flaws. Machine leverage. Public proof.',
   title: 'Sergio Mata — Web + AI Implementation | The Ziggurat',
   description:
-    'Sergio Mata is available for paid web and AI implementation work in the San Gabriel Valley, Los Angeles, and remotely.',
+    'Explore PermitPulse OS, Sergio Mata’s flagship evidence and permit-intelligence platform, alongside deployed web and AI-assisted engineering work.',
   publicUrl: 'https://ziggurat.pages.dev',
   socialPreviewUrl: 'https://ziggurat.pages.dev/the-ziggurat-og.png',
   socialPreviewAlt:
@@ -88,7 +88,7 @@ export const servicePaths = [
       format: 'One-page PDF service sheet',
     },
     secondaryLink: {
-      label: 'Visit PermitPulse',
+      label: 'Visit PermitPulse OS',
       href: 'https://getpermitpulse.com',
     },
   },
@@ -127,30 +127,40 @@ export const servicePaths = [
 export const projects = [
   {
     id: 'permitpulse',
-    name: 'PermitPulse',
-    category: 'Civic operations / public-record evidence',
+    name: 'PermitPulse OS',
+    subtitle:
+      'Operational permit intelligence that transforms fragmented public records into reviewed, evidence-backed client deliverables.',
+    category: 'Operational permit intelligence / evidence systems',
     description:
-      'An engineering expedition into fragmented public records: source evidence is preserved, chronology is reconstructed, human review stays explicit, and approved case material becomes a deterministic client packet.',
+      'A full-stack operating system for capturing permit evidence, building chronology, reviewing findings, and generating professional client packets with an inspectable source trail.',
     proves:
-      'Uneven permit records can be carried through one traceable workflow—from source capture and provenance to reviewer-controlled, professional deliverables—without hiding uncertainty.',
+      'Fragmented public records can move through one traceable, reviewer-controlled workflow—from evidence capture and chronology to approved, deterministic PDF deliverables—without hiding uncertainty.',
     whatBroke:
       'Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.',
     humanFlaws:
       'The system keeps open conditions, source gaps, reviewer judgment, and unresolved agency handoffs visible instead of manufacturing certainty.',
     aiLeverage:
-      'AI accelerated research organization, implementation passes, interface iteration, and test coverage. Evidence approval, interpretation, and delivery decisions remain human-controlled.',
+      'AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval.',
     status: 'Operational system',
     currentStatus:
       'Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.',
     statusTone: 'cyan',
-    image: '/projects/permitpulse/permitpulse-00-mission-control-collage.png',
+    featured: true,
+    flagshipLabel: 'Current Flagship',
+    image: '/projects/permitpulse/permitpulse-01-mission-control.png',
     imageAlt:
-      'PermitPulse mission control workspace beside a permit review packet, executive summary, agency dependency map, and supporting evidence page',
-    imageWidth: 1536,
-    imageHeight: 1024,
-    visualStatus: 'Mission control / review packet',
-    visualPosition: 'center center',
+      'PermitPulse OS Mission Control showing case status, investigation health, evidence, timeline, review readiness, and packet operations',
+    imageWidth: 720,
+    imageHeight: 1341,
+    visualStatus: 'Mission Control',
+    visualPosition: 'center top',
     chamberVariant: 'permitpulse',
+    operationalFlow: [
+      'Capture evidence',
+      'Build chronology',
+      'Review findings',
+      'Generate professional packet',
+    ],
     artifacts: [
       {
         src: '/projects/permitpulse/permitpulse-01-mission-control.png',
@@ -173,7 +183,7 @@ export const projects = [
       {
         src: '/projects/permitpulse/permitpulse-03-case-timeline.png',
         alt: 'PermitPulse reconstructed case timeline with dated permit and communication events',
-        label: 'Timeline Reconstruction',
+        label: 'Timeline',
         caption:
           'Dated records are assembled into a reviewable chronology while gaps and unresolved handoffs remain visible.',
         width: 719,
@@ -182,7 +192,7 @@ export const projects = [
       {
         src: '/projects/permitpulse/permitpulse-04-packet-preview.png',
         alt: 'PermitPulse packet preview workspace with readiness checks and generated document pages',
-        label: 'Packet Generation',
+        label: 'Packet Preview',
         caption:
           'Readiness checks gate a deterministic preview before reviewed case material becomes a client deliverable.',
         width: 719,
@@ -209,7 +219,7 @@ export const projects = [
       {
         src: '/projects/permitpulse/permitpulse-07-dependency-map.png',
         alt: 'PermitPulse agency dependency map showing review blockers, supporting evidence, and recommended next steps',
-        label: 'Agency Dependency Graph',
+        label: 'Agency Dependency Map',
         caption:
           'Evidence-grounded blockers are translated into agency dependencies and concrete follow-up questions.',
         width: 719,
@@ -229,7 +239,8 @@ export const projects = [
       'Mission Control workspace',
       'Evidence graph and provenance register',
       'Reviewer-controlled workflow',
-      'Packet generation engine',
+      'AI-assisted review with human approval',
+      'PDF generation engine',
       'Authenticated Cloudflare deployment',
       'Private evidence storage',
       'Mobile operation',
@@ -245,8 +256,10 @@ export const projects = [
         'Cloudflare D1',
         'Cloudflare R2',
         'Better Auth',
-        'HTML/PDF generation',
-        'AI-assisted engineering',
+        'Deterministic rendering',
+        'PDF generation',
+        'AI-assisted review',
+        'Human approval',
       ],
     },
     connections: [
@@ -423,7 +436,7 @@ export const projects = [
     description:
       'A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.',
     proves:
-      'Browser-native physics, audio, generative controls, and mobile UI can become a flagship playable instrument.',
+      'Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.',
     whatBroke:
       'Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.',
     humanFlaws:
@@ -432,7 +445,6 @@ export const projects = [
       'Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.',
     status: 'Live experiment',
     statusTone: 'gold',
-    featured: true,
     image: '/images/bouncebox/bouncebox-808-performance.png',
     imageAlt: 'BounceBox 808 performance screen',
     detailImage: {
@@ -661,10 +673,10 @@ export const zigguratTiers = [
   {
     id: 'codex-forge',
     name: 'Codex Forge',
-    title: 'AI-assisted build logs become part of the artifact.',
+    title: 'PermitPulse OS anchors the engineering forge.',
     description:
-      'The forge records prompt-driven iteration, bugs, fixes, and judgment calls so the process is visible alongside the output.',
-    signal: 'Logs, diffs, iteration',
+      'The flagship turns fragmented records into reviewed client packets through authenticated Cloudflare infrastructure, deterministic rendering, AI-assisted review, and explicit human approval.',
+    signal: 'Flagship systems engineering',
     cta: 'View the forge',
     href: '#forge',
     projectIds: ['permitpulse', 'snapshot-studio'],
@@ -689,7 +701,7 @@ export const zigguratTiers = [
     signal: 'Contact, credibility, ambition',
     cta: 'Send signal',
     href: '#signal',
-    projectIds: ['bouncebox', 'permitpulse', 'xibalba-pinball', 'snapshot-studio', 'angeles-crest'],
+    projectIds: ['permitpulse', 'bouncebox', 'xibalba-pinball', 'snapshot-studio', 'angeles-crest'],
   },
 ];
 
@@ -771,6 +783,9 @@ export const interpretationPanels = [
 
 export const hireableCapabilities = [
   'available for paid web + AI implementation work',
+  'flagship full-stack permit intelligence platform',
+  'Cloudflare Workers, D1, and R2 systems',
+  'review workflows and deterministic PDF generation',
   'WordPress and Elementor support',
   'contact form and email-routing fixes',
   'landing pages and quote-request pages',
@@ -790,6 +805,8 @@ export const hireableCapabilities = [
 export const projectCategories = [...new Set(projects.map((project) => project.category))];
 
 export const proofSignals = [
+  'PermitPulse OS flagship engineering',
+  'Evidence-backed human review workflows',
   'Playable prototypes',
   'Visible build scars',
   'AI-assisted iteration',

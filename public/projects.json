@@ -63,7 +63,7 @@
         "format": "One-page PDF service sheet"
       },
       "secondaryLink": {
-        "label": "Visit PermitPulse",
+        "label": "Visit PermitPulse OS",
         "href": "https://getpermitpulse.com"
       }
     },
@@ -99,6 +99,9 @@
   ],
   "hireableCapabilities": [
     "available for paid web + AI implementation work",
+    "flagship full-stack permit intelligence platform",
+    "Cloudflare Workers, D1, and R2 systems",
+    "review workflows and deterministic PDF generation",
     "WordPress and Elementor support",
     "contact form and email-routing fixes",
     "landing pages and quote-request pages",
@@ -150,24 +153,27 @@
   "projects": [
     {
       "id": "permitpulse",
-      "name": "PermitPulse",
-      "category": "Civic operations / public-record evidence",
+      "name": "PermitPulse OS",
+      "subtitle": "Operational permit intelligence that transforms fragmented public records into reviewed, evidence-backed client deliverables.",
+      "category": "Operational permit intelligence / evidence systems",
       "status": "Operational system",
       "currentStatus": "Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.",
-      "summary": "An engineering expedition into fragmented public records: source evidence is preserved, chronology is reconstructed, human review stays explicit, and approved case material becomes a deterministic client packet.",
-      "whatItProves": "Uneven permit records can be carried through one traceable workflow—from source capture and provenance to reviewer-controlled, professional deliverables—without hiding uncertainty.",
+      "featured": true,
+      "flagshipLabel": "Current Flagship",
+      "summary": "A full-stack operating system for capturing permit evidence, building chronology, reviewing findings, and generating professional client packets with an inspectable source trail.",
+      "whatItProves": "Fragmented public records can move through one traceable, reviewer-controlled workflow—from evidence capture and chronology to approved, deterministic PDF deliverables—without hiding uncertainty.",
       "whatBroke": "Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.",
       "humanFlaws": "The system keeps open conditions, source gaps, reviewer judgment, and unresolved agency handoffs visible instead of manufacturing certainty.",
-      "aiLeverageUsed": "AI accelerated research organization, implementation passes, interface iteration, and test coverage. Evidence approval, interpretation, and delivery decisions remain human-controlled.",
+      "aiLeverageUsed": "AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval.",
       "nextUpgrade": "Continue hardening jurisdiction-specific source assumptions, reviewer safeguards, and packet validation as new record conditions appear.",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/permitpulse/permitpulse-00-mission-control-collage.png",
-        "alt": "PermitPulse mission control workspace beside a permit review packet, executive summary, agency dependency map, and supporting evidence page",
-        "status": "Mission control / review packet",
-        "position": "center center",
-        "width": 1536,
-        "height": 1024
+        "src": "/projects/permitpulse/permitpulse-01-mission-control.png",
+        "alt": "PermitPulse OS Mission Control showing case status, investigation health, evidence, timeline, review readiness, and packet operations",
+        "status": "Mission Control",
+        "position": "center top",
+        "width": 720,
+        "height": 1341
       },
       "additionalVisualArtifacts": [
         {
@@ -192,7 +198,7 @@
           "type": "screenshot",
           "src": "/projects/permitpulse/permitpulse-03-case-timeline.png",
           "alt": "PermitPulse reconstructed case timeline with dated permit and communication events",
-          "label": "Timeline Reconstruction",
+          "label": "Timeline",
           "capability": "Dated records are assembled into a reviewable chronology while gaps and unresolved handoffs remain visible.",
           "width": 719,
           "height": 1350
@@ -201,7 +207,7 @@
           "type": "screenshot",
           "src": "/projects/permitpulse/permitpulse-04-packet-preview.png",
           "alt": "PermitPulse packet preview workspace with readiness checks and generated document pages",
-          "label": "Packet Generation",
+          "label": "Packet Preview",
           "capability": "Readiness checks gate a deterministic preview before reviewed case material becomes a client deliverable.",
           "width": 719,
           "height": 1465
@@ -228,7 +234,7 @@
           "type": "screenshot",
           "src": "/projects/permitpulse/permitpulse-07-dependency-map.png",
           "alt": "PermitPulse agency dependency map showing review blockers, supporting evidence, and recommended next steps",
-          "label": "Agency Dependency Graph",
+          "label": "Agency Dependency Map",
           "capability": "Evidence-grounded blockers are translated into agency dependencies and concrete follow-up questions.",
           "width": 719,
           "height": 925
@@ -247,11 +253,18 @@
         "Mission Control workspace",
         "Evidence graph and provenance register",
         "Reviewer-controlled workflow",
-        "Packet generation engine",
+        "AI-assisted review with human approval",
+        "PDF generation engine",
         "Authenticated Cloudflare deployment",
         "Private evidence storage",
         "Mobile operation",
         "Deterministic rendering and cross-render parity"
+      ],
+      "operationalFlow": [
+        "Capture evidence",
+        "Build chronology",
+        "Review findings",
+        "Generate professional packet"
       ],
       "engineeringNotes": {
         "summary": "React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.",
@@ -262,8 +275,10 @@
           "Cloudflare D1",
           "Cloudflare R2",
           "Better Auth",
-          "HTML/PDF generation",
-          "AI-assisted engineering"
+          "Deterministic rendering",
+          "PDF generation",
+          "AI-assisted review",
+          "Human approval"
         ]
       },
       "sharedEngineeringPhilosophy": [
@@ -439,9 +454,8 @@
       "subtitle": "Physics Groovebox",
       "category": "Experimental Browser Instrument",
       "status": "Live experiment",
-      "featured": true,
       "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
-      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a flagship playable instrument.",
+      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.",
       "whatBroke": "Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.",
       "humanFlaws": "Ambitious scope, strange interaction design, performance-control density, and the taste work of making weird mechanics feel intentional.",
       "aiLeverageUsed": "Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.",

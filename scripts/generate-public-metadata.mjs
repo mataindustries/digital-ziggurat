@@ -25,6 +25,7 @@ const projectRecords = projects.map((project) => ({
   status: project.status,
   ...(project.currentStatus ? { currentStatus: project.currentStatus } : {}),
   ...(project.featured ? { featured: true } : {}),
+  ...(project.flagshipLabel ? { flagshipLabel: project.flagshipLabel } : {}),
   summary: project.description,
   whatItProves: project.proves,
   whatBroke: project.whatBroke,
@@ -70,6 +71,7 @@ const projectRecords = projects.map((project) => ({
       }
     : {}),
   ...(project.milestones?.length ? { milestones: project.milestones } : {}),
+  ...(project.operationalFlow?.length ? { operationalFlow: project.operationalFlow } : {}),
   ...(project.engineeringNotes ? { engineeringNotes: project.engineeringNotes } : {}),
   ...(project.connections?.length ? { sharedEngineeringPhilosophy: project.connections } : {}),
   ...(project.tags?.length ? { tags: project.tags } : {}),
@@ -146,6 +148,8 @@ const aiJson = {
     name: project.name,
     category: project.category,
     status: project.status,
+    ...(project.featured ? { featured: true } : {}),
+    ...(project.flagshipLabel ? { flagshipLabel: project.flagshipLabel } : {}),
     ...(project.currentStatus ? { currentStatus: project.currentStatus } : {}),
     summary: project.summary,
     whatItProves: project.whatItProves,
@@ -155,6 +159,7 @@ const aiJson = {
       : {}),
     ...(project.tags ? { tags: project.tags } : {}),
     ...(project.milestones ? { milestones: project.milestones } : {}),
+    ...(project.operationalFlow ? { operationalFlow: project.operationalFlow } : {}),
     ...(project.engineeringNotes ? { engineeringNotes: project.engineeringNotes } : {}),
     ...(project.sharedEngineeringPhilosophy
       ? { sharedEngineeringPhilosophy: project.sharedEngineeringPhilosophy }
@@ -274,18 +279,24 @@ ${projectRecords
   .map(
     (project) => `- ${project.name}: ${project.summary}
   Status: ${project.status}
-  ${project.currentStatus ? `Current status: ${project.currentStatus}\n  ` : ''}Proof: ${project.whatItProves}
+${project.flagshipLabel ? `  Featured position: ${project.flagshipLabel}\n` : ''}${
+      project.currentStatus ? `  Current status: ${project.currentStatus}\n` : ''
+    }  Proof: ${project.whatItProves}
   What broke: ${project.whatBroke}
   Human flaws: ${project.humanFlaws}
   AI leverage: ${project.aiLeverageUsed}
   Next upgrade: ${project.nextUpgrade}
-  ${project.tags ? `Tags: ${project.tags.join(', ')}\n  ` : ''}Visual artifacts: ${[
+  ${project.tags ? `Tags: ${project.tags.join(', ')}\n  ` : ''}Visual artifacts: ${[...new Set([
     project.visualArtifact.src ?? project.visualArtifact.status,
     ...(project.additionalVisualArtifacts?.map((artifact) => artifact.src) ?? []),
-  ]
+  ])]
     .filter(Boolean)
     .join(', ')}
-  ${project.milestones ? `Milestones: ${project.milestones.join('; ')}\n  ` : ''}${
+${
+      project.operationalFlow
+        ? `  Operational flow: ${project.operationalFlow.join(' → ')}\n`
+        : ''
+    }${project.milestones ? `  Milestones: ${project.milestones.join('; ')}\n` : ''}${
     project.engineeringNotes
       ? `Engineering: ${project.engineeringNotes.summary}\n  Technologies: ${project.engineeringNotes.technologies.join(', ')}\n  `
       : ''
