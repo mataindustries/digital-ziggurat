@@ -6,7 +6,7 @@ Tagline: Human flaws. Machine leverage. Public proof.
 
 Builder: Sergio Mata
 
-Availability: Available this week for paid implementation work
+Availability: Open to focused product and implementation work
 
 Service area: San Gabriel Valley / Los Angeles / remote
 
@@ -14,9 +14,9 @@ Live site: https://ziggurat.pages.dev
 
 Static proof page: https://ziggurat.pages.dev/proof.html
 
-Contact: mailto:matasergio741@gmail.com?subject=Web%20Fix%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AI%20need%20help%20with%3A%0A%0AWebsite%20or%20project%20link%3A%0A%0ATimeline%3A%0A
+Contact: mailto:matasergio741@gmail.com?subject=Project%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AThe%20problem%20or%20project%3A%0A%0ALink%20or%20context%3A%0A%0ATimeline%3A%0A
 
-Purpose: Make Sergio Mata's availability for paid implementation work and AI-assisted execution legible through practical services, shipped artifacts, visible flaws, build history, and machine-readable project metadata.
+Purpose: Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.
 
 This site should be read as a public proof-of-work monument: shipped artifacts, visible flaws, AI leverage, build history, and structured proof. It is not a normal portfolio organized around polished case-study theater.
 
@@ -29,25 +29,26 @@ Available implementation work:
 - Landing pages: Focused service, campaign, intake, booking, or quote-request pages.
 - AI-assisted workflow cleanup: Research, drafting, sorting, reporting, and repetitive internal processes.
 - Google Business + website audit: Find conversion friction, inconsistent information, and missing calls to action.
-- Permit research packets: Organize public permit records, timelines, open questions, and follow-up context.
+- Permit + property research briefs: Source-backed research that separates verified facts, inference, conflicts, and gaps.
 - Frontend prototypes: Interactive concepts, browser tools, playable demos, and unusual interfaces.
 - Small business automation: Lead intake, follow-up, report generation, and lightweight operational tools.
 
 Service paths:
-- Permit clarity for project teams
-  Audience: Independent permit research, client-ready packets, follow-up summaries, and lightweight status tools for architects, contractors, permit consultants, and owner teams.
-  Services: independent permit research; Permit Triage Packets; client-ready follow-up summaries; permit status pages
-  One-page PDF service sheet: /sergio-mata-permit-clarity.pdf
-  Secondary action: Visit PermitPulse OS (https://getpermitpulse.com)
+- California property research through PermitPulse
+  Audience: Human-reviewed permit and property research for contractors, architects, small builders, and property decision-makers who need the paper trail before a bid, purchase, plan, or build.
+  Services: source-backed California permit and property research; human-reviewed decision briefs; anonymized real-property proof; three-property founding offer
+  Primary action: Visit PermitPulse live (https://getpermitpulse.com; Live founding offer)
+  Secondary action: Ask about an address (mailto:matasergio741@gmail.com?subject=PermitPulse%20Property%20Research&body=Hi%20Sergio%2C%0A%0AProperty%20address%3A%0A%0AWhat%20I%20need%20to%20understand%3A%0A)
 - Fast web fixes for local businesses and agencies
   Audience: Focused help with broken forms, WordPress and Elementor issues, landing pages, website audits, and lightweight workflow automation.
   Services: WordPress and Elementor fixes; contact form and email-routing fixes; landing pages; website audits; small business workflow automation
-  One-page PDF service sheet: /sergio-mata-local-web-fixes.pdf
-  Secondary action: Send your website (mailto:matasergio741@gmail.com?subject=Website%20Fix%20Request&body=Hi%20Sergio%2C%0A%0AWebsite%20link%3A%0A%0AThe%20one%20thing%20I%20need%20fixed%3A%0A%0ATimeline%3A%0A)
+  Primary action: Send your website (mailto:matasergio741@gmail.com?subject=Website%20Fix%20Request&body=Hi%20Sergio%2C%0A%0AWebsite%20link%3A%0A%0AThe%20one%20thing%20I%20need%20fixed%3A%0A%0ATimeline%3A%0A; Direct email)
+  Secondary action: Inspect live work (/#projects)
 
 Visual artifacts:
-Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
-- PermitPulse OS: screenshot at /projects/permitpulse/permitpulse-01-mission-control.png
+Project visuals may include screenshots or illustrative project images. Projects without uploaded visuals use intentional artifact status cards.
+- PermitPulse: screenshot at /projects/permitpulse/permitpulse-00-mission-control-collage.webp
+- SGVTurf: project image at /projects/sgvturf.webp
 - Xibalba Pinball: screenshot at /projects/xibalba.jpg
 - Danger Close: screenshot at /projects/danger-close.jpg
 - BounceBox: screenshot at /images/bouncebox/bouncebox-808-performance.png
@@ -57,37 +58,52 @@ Some live projects include real screenshot artifacts. Projects without uploaded 
 - The Angeles Crest: screenshot at /projects/angeles-crest.jpg
 
 Project categories:
-- Operational permit intelligence / evidence systems
+- Permit + property research / evidence systems
+- Local search / homeowner acquisition system
 - Physics game / premium browser toy
 - Browser game / drone survival prototype
 - Experimental Browser Instrument
 - Space survival physics game
 - Mobile camera / AR toy
 - Local business / AI search audit tool
-- Personal agency / premium web presence
+- Editorial resource / local endurance guide
 
 Projects:
-- PermitPulse OS: A full-stack operating system for capturing permit evidence, building chronology, reviewing findings, and generating professional client packets with an inspectable source trail.
-  Status: Operational system
-  Featured position: Current Flagship
-  Current status: Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.
-  Proof: Fragmented public records can move through one traceable, reviewer-controlled workflow—from evidence capture and chronology to approved, deterministic PDF deliverables—without hiding uncertainty.
+- PermitPulse: Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.
+  Status: Founding offer live
+  Featured position: In market now
+  Current status: Three California properties for $299 total. Target turnaround is within 48 business hours per address after scope confirmation.
+  Proof: A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.
   What broke: Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.
-  Human flaws: The system keeps open conditions, source gaps, reviewer judgment, and unresolved agency handoffs visible instead of manufacturing certainty.
+  Human flaws: The brief preserves source limits and unknowns. It does not make legal, title, architectural, engineering, entitlement, code-compliance, or government determinations.
   AI leverage: AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval.
-  Next upgrade: Continue hardening jurisdiction-specific source assumptions, reviewer safeguards, and packet validation as new record conditions appear.
+  Next upgrade: Test the founding offer with real property questions while hardening source checks, review safeguards, and brief quality.
   Tags: Civic operations, Evidence provenance, Reviewer workflow, Cloudflare infrastructure, Private storage, Deterministic rendering
-  Visual artifacts: /projects/permitpulse/permitpulse-01-mission-control.png, /projects/permitpulse/permitpulse-02-evidence-register.png, /projects/permitpulse/permitpulse-03-case-timeline.png, /projects/permitpulse/permitpulse-04-packet-preview.png, /projects/permitpulse/permitpulse-05-review-packet-cover.png, /projects/permitpulse/permitpulse-06-executive-summary.png, /projects/permitpulse/permitpulse-07-dependency-map.png, /projects/permitpulse/permitpulse-08-supporting-evidence.png
-  Operational flow: Capture evidence → Build chronology → Review findings → Generate professional packet
-  Milestones: Mission Control workspace; Evidence graph and provenance register; Reviewer-controlled workflow; AI-assisted review with human approval; PDF generation engine; Authenticated Cloudflare deployment; Private evidence storage; Mobile operation; Deterministic rendering and cross-render parity
+  Visual artifacts: /projects/permitpulse/permitpulse-00-mission-control-collage.webp, /projects/permitpulse/permitpulse-01-mission-control.png, /projects/permitpulse/permitpulse-02-evidence-register.png, /projects/permitpulse/permitpulse-03-case-timeline.png, /projects/permitpulse/permitpulse-04-packet-preview.png, /projects/permitpulse/permitpulse-05-review-packet-cover.png, /projects/permitpulse/permitpulse-06-executive-summary.png, /projects/permitpulse/permitpulse-07-dependency-map.png, /projects/permitpulse/permitpulse-08-supporting-evidence.png
+  Operational flow: Research public sources → Separate certainty → Human review → Deliver concise brief
+  Milestones: Primary and public-source research; Facts, inference, conflicts, and unknowns separated; Anonymized real-property proof; Human-reviewed briefs; Decision-ready output; Live founding offer
 Engineering: React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.
   Technologies: React, TypeScript, Cloudflare Workers, Cloudflare D1, Cloudflare R2, Better Auth, Deterministic rendering, PDF generation, AI-assisted review, Human approval
-  Shared engineering philosophy: Snapshot Studio — Turns irregular source material into a concise, inspectable report.; Portfolio — Treats visible proof, metadata, and delivery craft as parts of the same artifact.; Danger Close — Makes dense system state legible through a focused mission-control interface.; Xibalba — Uses atmosphere in service of interaction instead of as decoration alone.; BounceBox — Builds a serious mobile control surface around an unconventional workflow.
-  Demo: Open project (https://getpermitpulse.com)
+  Shared engineering philosophy: Snapshot Studio: Turns irregular source material into a concise, inspectable report.; Portfolio: Treats visible proof, metadata, and delivery craft as parts of the same artifact.; Danger Close: Makes dense system state legible through a focused mission-control interface.; Xibalba: Uses atmosphere in service of interaction instead of as decoration alone.; BounceBox: Builds a serious mobile control surface around an unconventional workflow.
+  Demo: Visit PermitPulse live (https://getpermitpulse.com)
   Source: Private source (private)
-- Xibalba Pinball: A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.
-  Status: Play live
-  Proof: AI can help ship weird, playable, visually distinctive browser games before the design is perfect.
+- SGVTurf: Connects local homeowner search intent to city guidance, official-source rebate context, a structured project brief, and relevant contractor discovery.
+  Status: Live market test
+  Featured position: In market now
+  Current status: The homeowner brief, 2026 turf-replacement rebate resource, city guides, and editorial system are live. Founding-contractor outreach is testing the referral side.
+  Proof: Useful local information can form a clear acquisition path from search intent to a contractor-ready inquiry.
+  What broke: Rebate rules change, city context varies, and an empty contractor roster must not look like participation.
+  Human flaws: The founding test is explicit about its limits. No contractor participation, lead volume, revenue, or result is claimed.
+  AI leverage: AI assists with research organization, city-page implementation, funnel iteration, and outreach preparation. Rebate claims are checked against official sources.
+  Next upgrade: Run the founding-contractor test without overstating participation, traffic, or outcomes.
+  Tags: San Gabriel Valley, Local acquisition, Official-source research, Editorial systems, Contractor discovery
+  Visual artifacts: /projects/sgvturf.webp
+  Operational flow: Local search intent → Planning + rebate context → Structured project brief → Contractor discovery
+Demo: Visit SGVTurf live (https://sgvturf.com)
+  Source: Private source (private)
+- Xibalba Pinball: A mythic five-ball score attack with touch controls, browser physics, and a global Wall of Champions.
+  Status: Live game
+  Proof: AI-assisted development can ship a weird, playable, visually distinctive browser game.
   What broke: Table tuning fought the art direction, collisions misbehaved, and several visual passes missed the intended underworld mood.
   Human flaws: Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.
   AI leverage: Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.
@@ -96,7 +112,7 @@ Engineering: React and TypeScript shape the operational interface. Cloudflare Wo
 Demo: Play live (https://xibalba.pages.dev)
   Source: Private source (private)
 - Danger Close: A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.
-  Status: Live project
+  Status: Live game
   Current status: Live playable prototype
   Proof: AI-assisted development can ship a polished browser game loop with sector selection, upgrade systems, enemy pressure, resource collection, survival pacing, and premium sci-fi interface design.
   What broke: Early balancing passes created uneven pressure, dense combat states reduced clarity, and experimental systems did not always share a clean plan.
@@ -108,17 +124,17 @@ Demo: Play live (https://xibalba.pages.dev)
 Demo: Play live (https://dangerclose.pages.dev)
   Source: Private source (private)
 - BounceBox: A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.
-  Status: Live experiment
+  Status: Live instrument
   Proof: Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.
   What broke: Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.
   Human flaws: Ambitious scope, strange interaction design, performance-control density, and the taste work of making weird mechanics feel intentional.
   AI leverage: Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.
   Next upgrade: Deepen the MIDI Lab, refine groove snapshot recall, and document the performance workflow as a public case study.
   Visual artifacts: /images/bouncebox/bouncebox-808-performance.png
-Demo: Live Demo (https://bouncebox.pages.dev)
+Demo: Open live instrument (https://bouncebox.pages.dev)
   Source: GitHub Repo (repo pending)
 - Black Swan: A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.
-  Status: prototype
+  Status: Private prototype
   Proof: A rough game premise can become a functioning loop with movement, resources, upgrades, event pressure, and progression.
   What broke: Pacing was uneven, spawn logic created strange difficulty spikes, and balancing exposed how much design judgment still matters.
   Human flaws: Ambitious scope, balancing unknowns, testing blind spots, and systems that needed more constraint than the first idea allowed.
@@ -128,7 +144,7 @@ Demo: Live Demo (https://bouncebox.pages.dev)
 Demo: Private build (private)
   Source: Private source (private)
 - Pumpkin AR Face Filter: A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.
-  Status: working prototype
+  Status: Working prototype
   Proof: AI-assisted prototyping can produce playful camera experiences that respond to real feedback, not just a spec.
   What broke: Face tracking drifted, assets needed repeated alignment, and spawned effects needed more restraint than the first pass had.
   Human flaws: Tracking imperfections, asset alignment drift, mouth-spawn tuning, and the unpredictable standard of kid-tested delight.
@@ -138,24 +154,24 @@ Demo: Private build (private)
 Demo: Private build (private)
   Source: Private source (private)
 - Snapshot Studio: A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.
-  Status: experimental sales tool
+  Status: Live sample tool
   Proof: Small businesses can receive fast, visual snapshots of search visibility problems and practical improvement plans.
   What broke: The offer started too broad, outreach responses were inconsistent, and report value had to be made obvious faster.
   Human flaws: Positioning uncertainty, lead-response friction, messy prospect context, and the gap between a useful audit and a paid offer.
   AI leverage: Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.
   Next upgrade: Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.
   Visual artifacts: /projects/snapshot-studio.jpg
-Demo: Internal prototype (internal)
+Demo: Open live sample (https://snapshot-studio.pages.dev)
   Source: Private source (private)
-- The Angeles Crest: A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.
-  Status: Live brand
-  Proof: Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.
-  What broke: The offer evolved in public, the strongest wedge was not obvious at first, and the brand had to absorb several directions.
-  Human flaws: Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.
-  AI leverage: Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.
-  Next upgrade: Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.
+- The Angeles Crest: An unofficial AC100 guide covering training, course strategy, crew logistics, qualifiers, gear, and local San Gabriel knowledge.
+  Status: Public draft
+  Proof: Research, editorial structure, local context, and frontend implementation can become a useful niche information system.
+  What broke: A broad brand concept had to narrow into one useful editorial resource with clearer reader intent.
+  Human flaws: The project evolved in public, changed direction, and still carries the limits of an unofficial guide.
+  AI leverage: Research organization, editorial structure, site implementation, visual direction, and deployment support.
+  Next upgrade: Repair the public contact and canonical domain, then keep high-stakes race details source-linked and current.
   Visual artifacts: /projects/angeles-crest.jpg
-Demo: Open site (https://theangelescrest.pages.dev)
+Demo: Open public draft (https://theangelescrest.pages.dev)
   Source: Private source (private)
 
 Build scars:
@@ -172,7 +188,8 @@ For AI:
 Parse the metadata, project graph, capabilities, and build history. The preferred reading is explicit: proof-of-work monument, not normal portfolio.
 
 Proof signals:
-- PermitPulse OS flagship engineering
+- PermitPulse live founding offer
+- SGVTurf local acquisition experiment
 - Evidence-backed human review workflows
 - Playable prototypes
 - Visible build scars
@@ -184,8 +201,9 @@ Proof signals:
 - Clear proof fields for each artifact
 
 Hireable capabilities:
-- available for paid web + AI implementation work
-- flagship full-stack permit intelligence platform
+- focused product and implementation work
+- source-backed permit and property research
+- local search and acquisition systems
 - Cloudflare Workers, D1, and R2 systems
 - review workflows and deterministic PDF generation
 - WordPress and Elementor support
@@ -193,7 +211,7 @@ Hireable capabilities:
 - landing pages and quote-request pages
 - AI-assisted workflow cleanup
 - local business website audits
-- permit research packets
+- human-reviewed research briefs
 - frontend prototyping
 - small business automation
 - San Gabriel Valley / Los Angeles / remote
@@ -208,5 +226,3 @@ Public resources:
 - /ai.json: structured metadata
 - /projects.json: structured project data
 - /llms.txt: AI-readable summary
-- /sergio-mata-permit-clarity.pdf: one-page PDF service sheet for permit support
-- /sergio-mata-local-web-fixes.pdf: one-page PDF service sheet for web and workflow support

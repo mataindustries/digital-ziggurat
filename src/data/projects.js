@@ -5,20 +5,20 @@ export const siteMeta = {
   name: 'The Ziggurat',
   owner: 'Sergio Mata',
   tagline: 'Human flaws. Machine leverage. Public proof.',
-  title: 'Sergio Mata — Web + AI Implementation | The Ziggurat',
+  title: 'Sergio Mata | Products, Systems, and Interactive Work | The Ziggurat',
   description:
-    'Explore PermitPulse OS, Sergio Mata’s flagship evidence and permit-intelligence platform, alongside deployed web and AI-assisted engineering work.',
+    'Explore Sergio Mata’s live products, research systems, local acquisition experiments, frontend builds, and interactive work.',
   publicUrl: 'https://ziggurat.pages.dev',
   socialPreviewUrl: 'https://ziggurat.pages.dev/the-ziggurat-og.png',
   socialPreviewAlt:
     'The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.',
   preferredInterpretation: 'This is a proof-of-work monument, not a normal portfolio.',
   purpose:
-    "Make Sergio Mata's availability for paid implementation work and AI-assisted execution legible through practical services, shipped artifacts, visible flaws, build history, and machine-readable project metadata.",
-  availability: 'Available this week for paid implementation work',
+    "Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.",
+  availability: 'Open to focused product and implementation work',
   serviceArea: 'San Gabriel Valley / Los Angeles / remote',
   contactHref:
-    'mailto:matasergio741@gmail.com?subject=Web%20Fix%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AI%20need%20help%20with%3A%0A%0AWebsite%20or%20project%20link%3A%0A%0ATimeline%3A%0A',
+    'mailto:matasergio741@gmail.com?subject=Project%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AThe%20problem%20or%20project%3A%0A%0ALink%20or%20context%3A%0A%0ATimeline%3A%0A',
   generalContactHref:
     'mailto:matasergio741@gmail.com?subject=Work%20Inquiry%20from%20The%20Ziggurat',
 };
@@ -47,9 +47,9 @@ export const implementationServices = [
       'Find conversion friction, inconsistent information, and missing calls to action.',
   },
   {
-    title: 'Permit research packets',
+    title: 'Permit + property research briefs',
     description:
-      'Organize public permit records, timelines, open questions, and follow-up context.',
+      'Source-backed research that separates verified facts, inference, conflicts, and gaps.',
   },
   {
     title: 'Frontend prototypes',
@@ -67,29 +67,30 @@ export const servicePaths = [
     id: 'permit-support',
     tone: 'gold',
     label: 'Permit + project support',
-    heading: 'Permit clarity for project teams',
+    heading: 'California property research through PermitPulse',
     description:
-      'Independent permit research, client-ready packets, follow-up summaries, and lightweight status tools for architects, contractors, permit consultants, and owner teams.',
+      'Human-reviewed permit and property research for contractors, architects, small builders, and property decision-makers who need the paper trail before a bid, purchase, plan, or build.',
     proofPoints: [
-      'Permit status and public-record research',
-      '48-hour Permit Triage Packets',
-      'Client-ready follow-up summaries',
-      'Permit intake and status pages',
+      'Primary and public sources',
+      'Facts, inference, conflicts, and gaps separated',
+      'Anonymized real-property proof',
+      'Three properties for $299 total',
     ],
     machineReadablePositioning: [
-      'independent permit research',
-      'Permit Triage Packets',
-      'client-ready follow-up summaries',
-      'permit status pages',
+      'source-backed California permit and property research',
+      'human-reviewed decision briefs',
+      'anonymized real-property proof',
+      'three-property founding offer',
     ],
     primaryLink: {
-      label: 'View permit service sheet',
-      href: '/sergio-mata-permit-clarity.pdf',
-      format: 'One-page PDF service sheet',
+      label: 'Visit PermitPulse live',
+      href: 'https://getpermitpulse.com',
+      format: 'Live founding offer',
+      newTab: true,
     },
     secondaryLink: {
-      label: 'Visit PermitPulse OS',
-      href: 'https://getpermitpulse.com',
+      label: 'Ask about an address',
+      href: 'mailto:matasergio741@gmail.com?subject=PermitPulse%20Property%20Research&body=Hi%20Sergio%2C%0A%0AProperty%20address%3A%0A%0AWhat%20I%20need%20to%20understand%3A%0A',
     },
   },
   {
@@ -113,13 +114,13 @@ export const servicePaths = [
       'small business workflow automation',
     ],
     primaryLink: {
-      label: 'View web fixes service sheet',
-      href: '/sergio-mata-local-web-fixes.pdf',
-      format: 'One-page PDF service sheet',
-    },
-    secondaryLink: {
       label: 'Send your website',
       href: 'mailto:matasergio741@gmail.com?subject=Website%20Fix%20Request&body=Hi%20Sergio%2C%0A%0AWebsite%20link%3A%0A%0AThe%20one%20thing%20I%20need%20fixed%3A%0A%0ATimeline%3A%0A',
+      format: 'Direct email',
+    },
+    secondaryLink: {
+      label: 'Inspect live work',
+      href: '/#projects',
     },
   },
 ];
@@ -127,39 +128,39 @@ export const servicePaths = [
 export const projects = [
   {
     id: 'permitpulse',
-    name: 'PermitPulse OS',
+    name: 'PermitPulse',
     subtitle:
-      'Operational permit intelligence that transforms fragmented public records into reviewed, evidence-backed client deliverables.',
-    category: 'Operational permit intelligence / evidence systems',
+      'Public-record software evolved into a human-reviewed California property research service.',
+    category: 'Permit + property research / evidence systems',
     description:
-      'A full-stack operating system for capturing permit evidence, building chronology, reviewing findings, and generating professional client packets with an inspectable source trail.',
+      'Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.',
     proves:
-      'Fragmented public records can move through one traceable, reviewer-controlled workflow—from evidence capture and chronology to approved, deterministic PDF deliverables—without hiding uncertainty.',
+      'A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.',
     whatBroke:
       'Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.',
     humanFlaws:
-      'The system keeps open conditions, source gaps, reviewer judgment, and unresolved agency handoffs visible instead of manufacturing certainty.',
+      'The brief preserves source limits and unknowns. It does not make legal, title, architectural, engineering, entitlement, code-compliance, or government determinations.',
     aiLeverage:
       'AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval.',
-    status: 'Operational system',
+    status: 'Founding offer live',
     currentStatus:
-      'Deployed on secure Cloudflare infrastructure with authenticated operations, private evidence storage, mobile access, and deterministic HTML/PDF packet rendering.',
-    statusTone: 'cyan',
+      'Three California properties for $299 total. Target turnaround is within 48 business hours per address after scope confirmation.',
+    statusTone: 'gold',
     featured: true,
-    flagshipLabel: 'Current Flagship',
-    image: '/projects/permitpulse/permitpulse-01-mission-control.png',
+    flagshipLabel: 'In market now',
+    image: '/projects/permitpulse/permitpulse-00-mission-control-collage.webp',
     imageAlt:
-      'PermitPulse OS Mission Control showing case status, investigation health, evidence, timeline, review readiness, and packet operations',
-    imageWidth: 720,
-    imageHeight: 1341,
-    visualStatus: 'Mission Control',
-    visualPosition: 'center top',
+      'PermitPulse research system collage showing Mission Control, evidence records, review workflow, and client brief output',
+    imageWidth: 1200,
+    imageHeight: 800,
+    visualStatus: 'Research workflow + brief',
+    visualPosition: 'center center',
     chamberVariant: 'permitpulse',
     operationalFlow: [
-      'Capture evidence',
-      'Build chronology',
-      'Review findings',
-      'Generate professional packet',
+      'Research public sources',
+      'Separate certainty',
+      'Human review',
+      'Deliver concise brief',
     ],
     artifacts: [
       {
@@ -236,15 +237,12 @@ export const projects = [
       },
     ],
     milestones: [
-      'Mission Control workspace',
-      'Evidence graph and provenance register',
-      'Reviewer-controlled workflow',
-      'AI-assisted review with human approval',
-      'PDF generation engine',
-      'Authenticated Cloudflare deployment',
-      'Private evidence storage',
-      'Mobile operation',
-      'Deterministic rendering and cross-render parity',
+      'Primary and public-source research',
+      'Facts, inference, conflicts, and unknowns separated',
+      'Anonymized real-property proof',
+      'Human-reviewed briefs',
+      'Decision-ready output',
+      'Live founding offer',
     ],
     engineeringNotes: {
       summary:
@@ -285,12 +283,12 @@ export const projects = [
       },
     ],
     nextUpgrade:
-      'Continue hardening jurisdiction-specific source assumptions, reviewer safeguards, and packet validation as new record conditions appear.',
+      'Test the founding offer with real property questions while hardening source checks, review safeguards, and brief quality.',
     proofSignals: [
-      'Evidence provenance',
-      'Human review workflow',
-      'Deterministic client packets',
-      'Authenticated operations',
+      'Anonymized real-property proof',
+      'Human-reviewed research briefs',
+      'Live three-property founding offer',
+      'Evidence-centered workflow',
     ],
     hireableCapabilities: [
       'Public-record systems',
@@ -308,8 +306,74 @@ export const projects = [
     ],
     links: {
       demo: {
-        label: 'Open project',
+        label: 'Visit PermitPulse live',
         href: 'https://getpermitpulse.com',
+        status: 'live',
+      },
+      github: {
+        label: 'Private source',
+        href: null,
+        status: 'private',
+      },
+    },
+  },
+  {
+    id: 'sgvturf',
+    name: 'SGVTurf',
+    subtitle: 'An SGV homeowner planning and contractor-discovery system.',
+    category: 'Local search / homeowner acquisition system',
+    description:
+      'Connects local homeowner search intent to city guidance, official-source rebate context, a structured project brief, and relevant contractor discovery.',
+    proves:
+      'Useful local information can form a clear acquisition path from search intent to a contractor-ready inquiry.',
+    whatBroke:
+      'Rebate rules change, city context varies, and an empty contractor roster must not look like participation.',
+    humanFlaws:
+      'The founding test is explicit about its limits. No contractor participation, lead volume, revenue, or result is claimed.',
+    aiLeverage:
+      'AI assists with research organization, city-page implementation, funnel iteration, and outreach preparation. Rebate claims are checked against official sources.',
+    status: 'Live market test',
+    currentStatus:
+      'The homeowner brief, 2026 turf-replacement rebate resource, city guides, and editorial system are live. Founding-contractor outreach is testing the referral side.',
+    statusTone: 'cyan',
+    flagshipLabel: 'In market now',
+    image: '/projects/sgvturf.webp',
+    imageType: 'project image',
+    imageAlt: 'Drought-smart front yard visual used by SGVTurf',
+    imageWidth: 1672,
+    imageHeight: 941,
+    visualStatus: 'Live SGV planning system',
+    visualPosition: 'center center',
+    operationalFlow: [
+      'Local search intent',
+      'Planning + rebate context',
+      'Structured project brief',
+      'Contractor discovery',
+    ],
+    nextUpgrade:
+      'Run the founding-contractor test without overstating participation, traffic, or outcomes.',
+    proofSignals: [
+      'Official-source rebate research',
+      'Homeowner-to-contractor funnel',
+      'SGV city planning guides',
+    ],
+    hireableCapabilities: [
+      'Local search strategy',
+      'Acquisition funnel design',
+      'Research systems',
+      'Structured intake',
+    ],
+    tags: [
+      'San Gabriel Valley',
+      'Local acquisition',
+      'Official-source research',
+      'Editorial systems',
+      'Contractor discovery',
+    ],
+    links: {
+      demo: {
+        label: 'Visit SGVTurf live',
+        href: 'https://sgvturf.com',
         status: 'live',
       },
       github: {
@@ -324,18 +388,20 @@ export const projects = [
     name: 'Xibalba Pinball',
     category: 'Physics game / premium browser toy',
     description:
-      'A playable mythic arcade experiment with underworld atmosphere, browser physics, and mobile-first game feel.',
-    proves: 'AI can help ship weird, playable, visually distinctive browser games before the design is perfect.',
+      'A mythic five-ball score attack with touch controls, browser physics, and a global Wall of Champions.',
+    proves: 'AI-assisted development can ship a weird, playable, visually distinctive browser game.',
     whatBroke:
       'Table tuning fought the art direction, collisions misbehaved, and several visual passes missed the intended underworld mood.',
     humanFlaws:
       'Imperfect tuning, collision edge cases, mobile control pressure, and taste decisions that had to be earned through failed passes.',
     aiLeverage:
       'Physics implementation support, Phaser iteration, asset direction prompts, debugging loops, and mobile polish.',
-    status: 'Play live',
+    status: 'Live game',
     statusTone: 'gold',
     image: '/projects/xibalba.jpg',
     imageAlt: 'Xibalba Pinball live game screenshot',
+    imageWidth: 720,
+    imageHeight: 1319,
     nextUpgrade:
       'Tighten table physics, add a clearer scoring loop, and turn the best collision surprises into deliberate mechanics.',
     proofSignals: ['Playable browser game', 'Physics iteration', 'Premium toy direction'],
@@ -372,11 +438,13 @@ export const projects = [
       'Balancing is still evolving, visual density needs tuning, and some systems grew from rough experiments rather than a perfect plan.',
     aiLeverage:
       'Used Codex and frontier AI models for gameplay systems, UI polish, enemy behavior, upgrade design, copy, testing checklists, and rapid iteration.',
-    status: 'Live project',
+    status: 'Live game',
     currentStatus: 'Live playable prototype',
     statusTone: 'cyan',
     image: '/projects/danger-close.jpg',
     imageAlt: 'Danger Close browser survival game screenshot',
+    imageWidth: 720,
+    imageHeight: 1357,
     visualStatus: 'live project',
     visualPosition: 'center center',
     artifacts: [
@@ -384,16 +452,22 @@ export const projects = [
         src: '/projects/danger-close-sector.jpg',
         alt: 'Danger Close sector selection screenshot',
         label: 'Sector selection',
+        width: 720,
+        height: 1351,
       },
       {
         src: '/projects/danger-close-upgrades.jpg',
         alt: 'Danger Close hangar upgrades screenshot',
         label: 'Hangar upgrades',
+        width: 719,
+        height: 1302,
       },
       {
         src: '/projects/danger-close-combat.jpg',
         alt: 'Danger Close combat in the Dead Datacenter screenshot',
         label: 'Combat / Dead Datacenter',
+        width: 720,
+        height: 1350,
       },
     ],
     nextUpgrade:
@@ -414,7 +488,6 @@ export const projects = [
       'Premium sci-fi interfaces',
       'AI-assisted iteration',
     ],
-    cardCta: true,
     links: {
       demo: {
         label: 'Play live',
@@ -443,14 +516,18 @@ export const projects = [
       'Ambitious scope, strange interaction design, performance-control density, and the taste work of making weird mechanics feel intentional.',
     aiLeverage:
       'Custom ChatGPT MIDI Lab, generative pattern design, TypeScript iteration, mobile UI passes, control naming, and performance-state testing.',
-    status: 'Live experiment',
+    status: 'Live instrument',
     statusTone: 'gold',
     image: '/images/bouncebox/bouncebox-808-performance.png',
     imageAlt: 'BounceBox 808 performance screen',
+    imageWidth: 720,
+    imageHeight: 1342,
     detailImage: {
       src: '/images/bouncebox/bouncebox-midi-lab.png',
       alt: 'BounceBox MIDI Lab screen',
       label: 'MIDI Lab',
+      width: 720,
+      height: 1457,
     },
     visualStatus: 'Live performance',
     visualPosition: 'center center',
@@ -469,7 +546,7 @@ export const projects = [
     ],
     links: {
       demo: {
-        label: 'Live Demo',
+        label: 'Open live instrument',
         href: 'https://bouncebox.pages.dev',
         status: 'live',
       },
@@ -494,7 +571,7 @@ export const projects = [
       'Ambitious scope, balancing unknowns, testing blind spots, and systems that needed more constraint than the first idea allowed.',
     aiLeverage:
       'Game-system scaffolding, debugging prompts, staged roadmap planning, event design, and test-case generation.',
-    status: 'prototype',
+    status: 'Private prototype',
     statusTone: 'violet',
     artifactState: 'Private Build',
     nextUpgrade:
@@ -533,7 +610,7 @@ export const projects = [
       'Tracking imperfections, asset alignment drift, mouth-spawn tuning, and the unpredictable standard of kid-tested delight.',
     aiLeverage:
       'Camera UI support, asset-prompt iteration, interaction logic, edge-case debugging, and quick feedback loops.',
-    status: 'working prototype',
+    status: 'Working prototype',
     statusTone: 'amber',
     artifactState: 'Artifact Pending',
     nextUpgrade:
@@ -572,11 +649,13 @@ export const projects = [
       'Positioning uncertainty, lead-response friction, messy prospect context, and the gap between a useful audit and a paid offer.',
     aiLeverage:
       'Prospect research, report drafting, local search framing, landing-page passes, and repeatable audit structure.',
-    status: 'experimental sales tool',
+    status: 'Live sample tool',
     statusTone: 'cyan',
     image: '/projects/snapshot-studio.jpg',
-    imageAlt: 'Snapshot Studio project screenshot',
-    visualStatus: 'internal prototype',
+    imageAlt: 'Snapshot Studio lead-to-report workflow interface',
+    imageWidth: 720,
+    imageHeight: 1368,
+    visualStatus: 'Live workflow interface',
     nextUpgrade:
       'Tighten the offer, standardize report templates, reduce prospect friction, and add clearer before/after examples.',
     proofSignals: ['Local visibility audit', 'Report generation', 'Offer testing'],
@@ -588,9 +667,9 @@ export const projects = [
     ],
     links: {
       demo: {
-        label: 'Internal prototype',
-        href: null,
-        status: 'internal',
+        label: 'Open live sample',
+        href: 'https://snapshot-studio.pages.dev',
+        status: 'live',
       },
       github: {
         label: 'Private source',
@@ -602,33 +681,36 @@ export const projects = [
   {
     id: 'angeles-crest',
     name: 'The Angeles Crest',
-    category: 'Personal agency / premium web presence',
+    category: 'Editorial resource / local endurance guide',
     description:
-      'A public-facing brand for packaging design, automation, local services, and AI execution into a premium web presence.',
+      'An unofficial AC100 guide covering training, course strategy, crew logistics, qualifiers, gear, and local San Gabriel knowledge.',
     proves:
-      'Sergio can package taste, automation, service design, local business sense, and AI execution into a credible public brand.',
+      'Research, editorial structure, local context, and frontend implementation can become a useful niche information system.',
     whatBroke:
-      'The offer evolved in public, the strongest wedge was not obvious at first, and the brand had to absorb several directions.',
+      'A broad brand concept had to narrow into one useful editorial resource with clearer reader intent.',
     humanFlaws:
-      'Offer changes, messy evolution, ambition outrunning the first package, and the ongoing work of choosing the sharpest wedge.',
+      'The project evolved in public, changed direction, and still carries the limits of an unofficial guide.',
     aiLeverage:
-      'Copy exploration, site design, service packaging, visual direction, deployment help, and faster positioning passes.',
-    status: 'Live brand',
+      'Research organization, editorial structure, site implementation, visual direction, and deployment support.',
+    status: 'Public draft',
     statusTone: 'stone',
     image: '/projects/angeles-crest.jpg',
-    imageAlt: 'The Angeles Crest brand site screenshot',
+    imageAlt: 'The Angeles Crest unofficial AC100 guide draft screenshot',
+    imageWidth: 719,
+    imageHeight: 1348,
+    visualStatus: 'Draft editorial guide',
     nextUpgrade:
-      'Connect the strongest proofs to a more direct service path and publish the right case-study routes when the brand page is ready.',
-    proofSignals: ['Premium web presence', 'Service packaging', 'Public brand system'],
+      'Repair the public contact and canonical domain, then keep high-stakes race details source-linked and current.',
+    proofSignals: ['Editorial research system', 'Local endurance guide', 'Niche web resource'],
     hireableCapabilities: [
-      'Premium landing pages',
-      'Service positioning',
-      'Automation framing',
-      'Deployment support',
+      'Editorial information design',
+      'Research organization',
+      'Niche content systems',
+      'Frontend implementation',
     ],
     links: {
       demo: {
-        label: 'Open site',
+        label: 'Open public draft',
         href: 'https://theangelescrest.pages.dev',
         status: 'live',
       },
@@ -673,10 +755,10 @@ export const zigguratTiers = [
   {
     id: 'codex-forge',
     name: 'Codex Forge',
-    title: 'PermitPulse OS anchors the engineering forge.',
+    title: 'PermitPulse anchors the engineering forge.',
     description:
-      'The flagship turns fragmented records into reviewed client packets through authenticated Cloudflare infrastructure, deterministic rendering, AI-assisted review, and explicit human approval.',
-    signal: 'Flagship systems engineering',
+      'The system turns fragmented records into source-backed, human-reviewed briefs and carries that workflow into a live service offer.',
+    signal: 'Research systems engineering',
     cta: 'View the forge',
     href: '#forge',
     projectIds: ['permitpulse', 'snapshot-studio'],
@@ -701,7 +783,14 @@ export const zigguratTiers = [
     signal: 'Contact, credibility, ambition',
     cta: 'Send signal',
     href: '#signal',
-    projectIds: ['permitpulse', 'bouncebox', 'xibalba-pinball', 'snapshot-studio', 'angeles-crest'],
+    projectIds: [
+      'permitpulse',
+      'sgvturf',
+      'bouncebox',
+      'xibalba-pinball',
+      'snapshot-studio',
+      'angeles-crest',
+    ],
   },
 ];
 
@@ -782,8 +871,9 @@ export const interpretationPanels = [
 ];
 
 export const hireableCapabilities = [
-  'available for paid web + AI implementation work',
-  'flagship full-stack permit intelligence platform',
+  'focused product and implementation work',
+  'source-backed permit and property research',
+  'local search and acquisition systems',
   'Cloudflare Workers, D1, and R2 systems',
   'review workflows and deterministic PDF generation',
   'WordPress and Elementor support',
@@ -791,7 +881,7 @@ export const hireableCapabilities = [
   'landing pages and quote-request pages',
   'AI-assisted workflow cleanup',
   'local business website audits',
-  'permit research packets',
+  'human-reviewed research briefs',
   'frontend prototyping',
   'small business automation',
   'San Gabriel Valley / Los Angeles / remote',
@@ -805,7 +895,8 @@ export const hireableCapabilities = [
 export const projectCategories = [...new Set(projects.map((project) => project.category))];
 
 export const proofSignals = [
-  'PermitPulse OS flagship engineering',
+  'PermitPulse live founding offer',
+  'SGVTurf local acquisition experiment',
   'Evidence-backed human review workflows',
   'Playable prototypes',
   'Visible build scars',

@@ -8,13 +8,13 @@ import {
   scarTissue,
   interpretationPanels,
   hireableCapabilities,
-  implementationServices,
   servicePaths,
 } from './data/projects';
 import './styles.css';
 
 const aiViewProofSignals = [
-  'PermitPulse OS flagship system',
+  'PermitPulse live research service',
+  'SGVTurf local acquisition system',
   'evidence-backed review workflow',
   'live deployed projects',
   'screenshots',
@@ -30,16 +30,6 @@ const aiReadableFiles = [
   { href: '/ai.json', label: '/ai.json' },
   { href: '/projects.json', label: '/projects.json' },
   { href: '/llms.txt', label: '/llms.txt' },
-  {
-    href: '/sergio-mata-permit-clarity.pdf',
-    label: 'Permit service sheet · 1-page PDF',
-    newTab: true,
-  },
-  {
-    href: '/sergio-mata-local-web-fixes.pdf',
-    label: 'Web fixes service sheet · 1-page PDF',
-    newTab: true,
-  },
 ];
 
 const signalOptions = [
@@ -132,11 +122,11 @@ function ProjectArtifact({ project, size = 'card' }) {
   );
 }
 
-function PermitPulseFlow({ project, compact = false }) {
+function ProjectFlow({ project, compact = false }) {
   return (
     <ol
       className={`permitpulse-flow ${compact ? 'permitpulse-flow--compact' : ''}`}
-      aria-label="PermitPulse OS operational workflow"
+      aria-label={`${project.name} workflow`}
     >
       {project.operationalFlow.map((step) => (
         <li key={step}>{step}</li>
@@ -152,9 +142,8 @@ function PermitPulseArtifactStory({ project }) {
         <p className="section-kicker">Recovered system surfaces</p>
         <h3 id="permitpulse-artifacts-title">From record intake to review packet</h3>
         <p>
-          Each surface exposes another part of the same case: evidence enters with provenance,
-          chronology is reconstructed, review gates delivery, and the packet retains its source
-          trail.
+          Each surface exposes another part of the same case. Evidence enters with provenance,
+          chronology is reconstructed, certainty is labeled, and human review gates delivery.
         </p>
       </div>
       <div className="permitpulse-artifacts">
@@ -187,10 +176,10 @@ function PermitPulseSystemNotes({ project }) {
       <section className="permitpulse-milestones" aria-labelledby="permitpulse-milestones-title">
         <div className="permitpulse-section-heading">
           <p className="section-kicker">Operational readout</p>
-          <h3 id="permitpulse-milestones-title">The prototype became a working instrument</h3>
+          <h3 id="permitpulse-milestones-title">The prototype became a research service</h3>
           <p>
-            The recent passes joined research, review, document generation, and deployment into
-            one controlled operating surface.
+            Research, review, document generation, real-property proof, and a live offer now work
+            as one controlled system.
           </p>
         </div>
         <div className="permitpulse-milestone-grid">
@@ -207,10 +196,10 @@ function PermitPulseSystemNotes({ project }) {
           <p>{project.engineeringNotes.summary}</p>
           <p>
             AI is used as an engineering accelerator for research organization, implementation,
-            debugging, and test passes—not as an autonomous permit reviewer or decision maker.
+            debugging, and test passes. It is not an autonomous permit reviewer or decision maker.
           </p>
         </div>
-        <div className="signal-list" aria-label="PermitPulse OS engineering technologies">
+        <div className="signal-list" aria-label="PermitPulse engineering technologies">
           {project.engineeringNotes.technologies.map((technology) => (
             <span key={technology}>{technology}</span>
           ))}
@@ -391,7 +380,7 @@ function ProjectCard({ project, onOpen }) {
             {project.subtitle ? (
               <span className="project-card__subtitle">{project.subtitle}</span>
             ) : null}
-            {project.operationalFlow ? <PermitPulseFlow project={project} compact /> : null}
+            {project.operationalFlow ? <ProjectFlow project={project} compact /> : null}
             <p>{project.description}</p>
             <div className="proof">
               <span>Proves</span>
@@ -405,8 +394,13 @@ function ProjectCard({ project, onOpen }) {
           </div>
         </div>
       </button>
-      {project.cardCta && project.links.demo.href ? (
-        <a className="project-card__cta" href={project.links.demo.href}>
+      {project.links.demo.href ? (
+        <a
+          className="project-card__cta"
+          href={project.links.demo.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {project.links.demo.label}
         </a>
       ) : null}
@@ -425,6 +419,11 @@ function ProjectChamber({ project, onClose }) {
 
     const previouslyFocusedElement = document.activeElement;
     const previousBodyOverflow = document.body.style.overflow;
+    const previousBodyPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
     document.body.style.overflow = 'hidden';
     closeButtonRef.current?.focus();
 
@@ -462,6 +461,7 @@ function ProjectChamber({ project, onClose }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = previousBodyOverflow;
+      document.body.style.paddingRight = previousBodyPaddingRight;
       previouslyFocusedElement?.focus?.();
     };
   }, [project, onClose]);
@@ -473,7 +473,7 @@ function ProjectChamber({ project, onClose }) {
   const chamberTitleId = `project-chamber-title-${project.id}`;
   const chamberDescriptionId = `project-chamber-description-${project.id}`;
   const chamberLinks = [
-    { type: 'Demo', ...project.links.demo },
+    { type: 'Live', ...project.links.demo },
     { type: 'Source', ...project.links.github },
   ];
 
@@ -529,18 +529,56 @@ function ProjectChamber({ project, onClose }) {
           </div>
         ) : project.detailImage ? (
           <figure className="detail-artifact">
-            <img src={project.detailImage.src} alt={project.detailImage.alt} loading="lazy" />
+            <img
+              src={project.detailImage.src}
+              alt={project.detailImage.alt}
+              width={project.detailImage.width}
+              height={project.detailImage.height}
+              loading="lazy"
+              decoding="async"
+            />
             <figcaption>{project.detailImage.label}</figcaption>
           </figure>
         ) : null}
         <div className="chamber-summary">
-          <span>{project.chamberVariant === 'permitpulse' ? 'Platform brief' : 'Short description'}</span>
+          <span>
+            {project.chamberVariant === 'permitpulse'
+              ? 'Service + system brief'
+              : 'Short description'}
+          </span>
           <p className="chamber-description" id={chamberDescriptionId}>
             {project.description}
           </p>
         </div>
 
-        {project.operationalFlow ? <PermitPulseFlow project={project} /> : null}
+        <div
+          className="chamber-links chamber-links--primary"
+          aria-label={`${project.name} project links`}
+        >
+          {chamberLinks.map((link) =>
+            link.href ? (
+              <a
+                className="chamber-link"
+                href={link.href}
+                key={link.type}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{link.type}</span>
+                <strong>{link.label}</strong>
+                <small>Public link</small>
+              </a>
+            ) : (
+              <span className="chamber-link is-disabled" key={link.type} aria-disabled="true">
+                <span>{link.type}</span>
+                <strong>{link.label}</strong>
+                <small>{link.status}</small>
+              </span>
+            ),
+          )}
+        </div>
+
+        {project.operationalFlow ? <ProjectFlow project={project} /> : null}
 
         {project.chamberVariant === 'permitpulse' ? (
           <PermitPulseArtifactStory project={project} />
@@ -608,23 +646,6 @@ function ProjectChamber({ project, onClose }) {
           ) : null}
         </div>
 
-        <div className="chamber-links" aria-label={`${project.name} project links`}>
-          {chamberLinks.map((link) =>
-            link.href ? (
-              <a className="chamber-link" href={link.href} key={link.type}>
-                <span>{link.type}</span>
-                <strong>{link.label}</strong>
-                <small>Public link</small>
-              </a>
-            ) : (
-              <span className="chamber-link is-disabled" key={link.type} aria-disabled="true">
-                <span>{link.type}</span>
-                <strong>{link.label}</strong>
-                <small>{link.status}</small>
-              </span>
-            ),
-          )}
-        </div>
       </section>
     </div>
   );
@@ -793,49 +814,6 @@ function SignalConsole() {
   );
 }
 
-function WeeklyWork() {
-  return (
-    <section
-      className="section availability-section"
-      id="available-work"
-      aria-labelledby="available-work-title"
-    >
-      <div className="section-heading availability-section__heading">
-        <p className="section-kicker">Available implementation work</p>
-        <h2 id="available-work-title">Work I can do this week</h2>
-        <p>Small, useful, fixed-scope builds and repairs. No giant redesign required.</p>
-      </div>
-
-      <div className="capability-grid">
-        {implementationServices.map((service, index) => (
-          <article className="capability-card" key={service.title}>
-            <div className="capability-card__readout">
-              <span>Capability {String(index + 1).padStart(2, '0')}</span>
-              <span className="capability-card__status">Ready</span>
-            </div>
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-          </article>
-        ))}
-      </div>
-
-      <div className="quick-review">
-        <div>
-          <p className="section-kicker">Small-project intake</p>
-          <h3>Have one annoying web problem?</h3>
-          <p>
-            Send me the link and a short description. I’ll tell you the first useful fix and
-            whether it fits a small flat-price project.
-          </p>
-        </div>
-        <a className="button button-primary" href={siteMeta.contactHref}>
-          Request a quick review
-        </a>
-      </div>
-    </section>
-  );
-}
-
 function ServicePaths() {
   return (
     <section
@@ -846,10 +824,7 @@ function ServicePaths() {
       <div className="section-heading service-paths__heading">
         <p className="section-kicker">Choose a service path</p>
         <h2 id="service-paths-title">What do you need help with?</h2>
-        <p>
-          Two focused ways to work with me—each with clear scope, starting prices, and examples of
-          the work.
-        </p>
+        <p>Two focused ways to start with a real problem and a clear next step.</p>
       </div>
 
       <div className="service-path-grid">
@@ -874,12 +849,16 @@ function ServicePaths() {
               <a
                 className="service-path-card__primary"
                 href={service.primaryLink.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${service.primaryLink.label}, one-page PDF service sheet (opens in a new tab)`}
+                target={service.primaryLink.newTab ? '_blank' : undefined}
+                rel={service.primaryLink.newTab ? 'noopener noreferrer' : undefined}
+                aria-label={
+                  service.primaryLink.newTab
+                    ? `${service.primaryLink.label} (opens in a new tab)`
+                    : service.primaryLink.label
+                }
               >
                 <span>{service.primaryLink.label}</span>
-                <small>1-page PDF</small>
+                <small>{service.primaryLink.format}</small>
               </a>
               <a className="service-path-card__secondary" href={service.secondaryLink.href}>
                 {service.secondaryLink.label}
@@ -904,16 +883,11 @@ function App() {
       ),
     [],
   );
-  const activeProjects = useMemo(
-    () =>
-      activeTier.projectIds
-        .map((projectId) => projects.find((project) => project.id === projectId))
-        .filter(Boolean),
-    [activeTier],
-  );
-
   return (
     <main>
+      <a className="skip-link" href="#projects">
+        Skip to live work
+      </a>
       <section className="hero">
         <nav className="nav" aria-label="Main navigation">
           <a className="brand" href="#top" aria-label="The Ziggurat home">
@@ -921,46 +895,56 @@ function App() {
             <span>{siteMeta.name}</span>
           </a>
           <div className="nav-links">
-            <a href="#forge">Forge</a>
-            <a href="#projects">Projects</a>
+            <a href="#projects">Work</a>
+            <a href="#service-paths">Services</a>
             <a href="#shrine">AI</a>
-            <a href="#signal">Signal</a>
+            <a href="#signal">Contact</a>
           </div>
         </nav>
 
         <div className="hero-content" id="top">
           <div className="hero-copy">
             <div className="hero-eyebrow-row">
-              <p className="eyebrow">Available for web + AI implementation work</p>
+              <p className="eyebrow">Product builder / SGV + remote</p>
               <div
                 className="availability-readout"
-                aria-label="Available this week in the San Gabriel Valley, Los Angeles, and remotely"
+                aria-label="Current market-facing work: PermitPulse and SGVTurf"
               >
-                <span>Available this week</span>
-                <small>SGV / LA / Remote</small>
+                <span>In market now</span>
+                <small>PermitPulse + SGVTurf</small>
               </div>
             </div>
-            <p className="hero-role">I build useful web tools fast.</p>
+            <p className="hero-role">I build working products and business systems.</p>
             <h1>Human flaws. Machine leverage. Public proof.</h1>
             <p className="tagline">
-              Frontend prototypes, WordPress fixes, AI-assisted workflows, and local business
-              systems—shipped, deployed, and ready to inspect.
+              Research workflows, local acquisition systems, frontend prototypes, and playable
+              experiments. Shipped, live, and ready to inspect.
             </p>
             <p className="intro">
-              I’m Sergio Mata, an AI-assisted web builder based in the San Gabriel Valley. I help
-              businesses, agencies, and project teams turn messy web problems into usable pages,
-              tools, workflows, and prototypes. PermitPulse OS is the flagship proof: a full-stack,
-              evidence-backed permit intelligence platform built for real review and delivery.
+              I’m Sergio Mata, an AI-assisted product builder in the San Gabriel Valley.
+              PermitPulse and SGVTurf are live market-facing services. The rest of The Ziggurat
+              shows the product thinking, implementation, data work, and interactive range behind
+              them.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href={siteMeta.contactHref}>
-                Hire me for a web fix
+              <a
+                className="button button-primary"
+                href="https://getpermitpulse.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit PermitPulse
               </a>
-              <a className="button button-secondary" href="#projects">
-                Inspect the flagship build
+              <a
+                className="button button-secondary"
+                href="https://sgvturf.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit SGVTurf
               </a>
-              <a className="button button-tertiary" href={siteMeta.generalContactHref}>
-                Email me
+              <a className="button button-tertiary" href="#projects">
+                View all work
               </a>
             </div>
           </div>
@@ -983,18 +967,14 @@ function App() {
         </div>
       </section>
 
-      <WeeklyWork />
-
-      <ServicePaths />
-
       <section className="section projects-section" id="projects">
         <div className="section-heading">
-          <p className="section-kicker">Visible Builds</p>
-          <h2>PermitPulse OS leads the monument</h2>
+          <p className="section-kicker">Current work</p>
+          <h2>Live systems first. Experiments below.</h2>
           <p>
-            The current flagship is the strongest demonstration of my engineering work: a secure,
-            evidence-centered operating system that turns fragmented records into reviewed client
-            deliverables. The remaining chambers show the experiments and systems around it.
+            PermitPulse turns California public records into human-reviewed briefs. SGVTurf
+            connects SGV homeowner intent to planning, rebate context, project briefs, and
+            contractor discovery. The remaining chambers show the range behind them.
           </p>
         </div>
 
@@ -1004,6 +984,8 @@ function App() {
           ))}
         </div>
       </section>
+
+      <ServicePaths />
 
       <section className="section human-ai-section" id="proof-map">
         <div className="section-heading">
@@ -1041,33 +1023,6 @@ function App() {
         </div>
       </section>
 
-      <section className="section active-section">
-        <div className="section-heading">
-          <p className="section-kicker">Selected Tier</p>
-          <h2>{activeTier.name} projects</h2>
-        </div>
-        <div className="project-strip">
-          {activeProjects.map((project) =>
-            project.links.demo.href ? (
-              <a href={project.links.demo.href} key={project.id}>
-                <span>{project.name}</span>
-                <small>{project.links.demo.label}</small>
-              </a>
-            ) : (
-              <button
-                className="project-strip__item is-disabled"
-                type="button"
-                key={project.id}
-                disabled
-              >
-                <span>{project.name}</span>
-                <small>{project.links.demo.label}</small>
-              </button>
-            ),
-          )}
-        </div>
-      </section>
-
       <section className="section scars-section" id="scars">
         <div className="section-heading">
           <p className="section-kicker">Build Scars</p>
@@ -1091,29 +1046,11 @@ function App() {
       <section className="section forge-section" id="forge">
         <div className="section-heading">
           <p className="section-kicker">Codex Forge</p>
-          <h2>Artifacts from the forge</h2>
+          <h2>Build history from the forge</h2>
           <p>
-            Screenshots, prototypes, scars, and shipped surfaces from the builds that shaped the
-            monument.
+            The public artifacts sit above. This log keeps the iterations that shaped the
+            monument visible.
           </p>
-        </div>
-
-        <div className="artifact-grid">
-          {projects.map((project) => (
-            <article className="artifact-card" key={project.id}>
-              <ProjectArtifact project={project} size="forge" />
-              <div>
-                <h3>{project.name}</h3>
-                <p>{project.proofSignals.slice(0, 2).join(' / ')}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="section-heading section-heading--timeline">
-          <p className="section-kicker">Build Log</p>
-          <h2>Build log timeline</h2>
-          <p>Rough iterations, exposed bugs, fixes, and upgrades left visible.</p>
         </div>
 
         <ol className="timeline">
@@ -1155,10 +1092,10 @@ function App() {
 
       <section className="signal" id="signal">
         <p className="section-kicker">Signal Beacon</p>
-        <h2>Hire the builder. Inspect the proof.</h2>
+        <h2>Build something useful. Inspect the proof.</h2>
         <p>
-          The Ziggurat is built to make ambition legible: public artifacts, visible iteration, and
-          proof that AI leverage can ship real interfaces.
+          Public artifacts, visible iteration, and working systems show how I approach a build.
+          Send the real problem if the approach fits.
         </p>
         <div className="capability-list">
           {hireableCapabilities.map((capability) => (

@@ -34,7 +34,7 @@ const projectRecords = projects.map((project) => ({
   nextUpgrade: project.nextUpgrade,
   visualArtifact: project.image
     ? {
-        type: 'screenshot',
+        type: project.imageType ?? 'screenshot',
         src: project.image,
         alt: project.imageAlt,
         ...(project.visualStatus ? { status: project.visualStatus } : {}),
@@ -54,6 +54,8 @@ const projectRecords = projects.map((project) => ({
           src: project.detailImage.src,
           alt: project.detailImage.alt,
           label: project.detailImage.label,
+          ...(project.detailImage.width ? { width: project.detailImage.width } : {}),
+          ...(project.detailImage.height ? { height: project.detailImage.height } : {}),
         },
       }
     : {}),
@@ -91,16 +93,6 @@ const publicResources = [
   { type: 'structured metadata', path: '/ai.json' },
   { type: 'structured project data', path: '/projects.json' },
   { type: 'AI-readable summary', path: '/llms.txt' },
-  {
-    type: 'one-page PDF service sheet',
-    servicePath: 'permit support',
-    path: servicePaths[0].primaryLink.href,
-  },
-  {
-    type: 'one-page PDF service sheet',
-    servicePath: 'web and workflow support',
-    path: servicePaths[1].primaryLink.href,
-  },
 ];
 
 const formatPublicLink = (link) =>
@@ -177,26 +169,21 @@ const aiJson = {
   publicResources,
   primaryActions: [
     {
-      label: 'Hire Sergio for a web fix',
-      href: siteMeta.contactHref,
+      label: 'Visit PermitPulse live',
+      href: 'https://getpermitpulse.com',
+    },
+    {
+      label: 'Visit SGVTurf live',
+      href: 'https://sgvturf.com',
     },
     {
       label: 'Email Sergio',
       href: siteMeta.generalContactHref,
     },
     {
-      label: 'Open live site',
-      href: siteMeta.publicUrl,
+      label: 'View all projects',
+      href: '/#projects',
     },
-    {
-      label: 'View the forge',
-      href: '/#forge',
-    },
-    ...servicePaths.map((service) => ({
-      label: service.primaryLink.label,
-      href: service.primaryLink.href,
-      format: service.primaryLink.format,
-    })),
   ],
 };
 
@@ -215,7 +202,7 @@ const projectsJson = {
   linkPolicy:
     'Only real public URLs are included. Unavailable project destinations use a null href and an intentional status.',
   visualArtifactPolicy:
-    'Live projects may include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.',
+    'Project visuals may include screenshots or illustrative project images. Projects without uploaded visuals use intentional artifact status cards.',
   projectCount: projectRecords.length,
   projects: projectRecords,
 };
@@ -256,17 +243,17 @@ ${servicePaths
     (service) => `- ${service.heading}
   Audience: ${service.description}
   Services: ${service.machineReadablePositioning.join('; ')}
-  One-page PDF service sheet: ${service.primaryLink.href}
+  Primary action: ${service.primaryLink.label} (${service.primaryLink.href}; ${service.primaryLink.format})
   Secondary action: ${service.secondaryLink.label} (${service.secondaryLink.href})`,
   )
   .join('\n')}
 
 Visual artifacts:
-Some live projects include real screenshot artifacts. Projects without uploaded screenshots use intentional artifact status cards instead of fake images.
+Project visuals may include screenshots or illustrative project images. Projects without uploaded visuals use intentional artifact status cards.
 ${visualArtifacts
   .map((artifact) =>
     artifact.visualArtifact.src
-      ? `- ${artifact.name}: screenshot at ${artifact.visualArtifact.src}`
+      ? `- ${artifact.name}: ${artifact.visualArtifact.type} at ${artifact.visualArtifact.src}`
       : `- ${artifact.name}: ${artifact.visualArtifact.status}`,
   )
   .join('\n')}
@@ -303,7 +290,7 @@ ${
   }${
     project.sharedEngineeringPhilosophy
       ? `Shared engineering philosophy: ${project.sharedEngineeringPhilosophy
-          .map((connection) => `${connection.name} — ${connection.note}`)
+          .map((connection) => `${connection.name}: ${connection.note}`)
           .join('; ')}\n  `
       : ''
   }Demo: ${formatPublicLink(project.links.demo)}
@@ -481,10 +468,10 @@ const proofHtml = `<!doctype html>
   <body>
     <main>
       <header>
-        <p class="eyebrow">Available for web + AI implementation work</p>
-        <h1>I build useful web tools fast.</h1>
-        <p class="subtitle">Frontend prototypes, WordPress fixes, AI-assisted workflows, and local business systems—shipped, deployed, and ready to inspect.</p>
-        <p class="byline">Sergio Mata · AI-assisted web builder · ${escapeHtml(siteMeta.serviceArea)}</p>
+        <p class="eyebrow">Product builder / SGV + remote</p>
+        <h1>Working products. Public proof.</h1>
+        <p class="subtitle">Research workflows, local acquisition systems, frontend prototypes, and playable experiments. Shipped, live, and ready to inspect.</p>
+        <p class="byline">Sergio Mata · AI-assisted product builder · ${escapeHtml(siteMeta.serviceArea)}</p>
         <span class="status">${escapeHtml(siteMeta.availability)}</span>
       </header>
 
@@ -510,7 +497,7 @@ const proofHtml = `<!doctype html>
 
       <section aria-labelledby="service-paths">
         <h2 id="service-paths">Choose a service path</h2>
-        <p>Two focused ways to work with Sergio, each with clear scope, starting prices, and examples of the work.</p>
+        <p>Two focused ways to start with a real problem and a clear next step.</p>
         <div class="service-paths">
           ${servicePaths
             .map(
@@ -521,7 +508,7 @@ const proofHtml = `<!doctype html>
               ${service.machineReadablePositioning.map((item) => `<li>${escapeHtml(item)}</li>`).join('\n              ')}
             </ul>
             <p class="format">${escapeHtml(service.primaryLink.format)}</p>
-            <p><a href="${escapeHtml(service.primaryLink.href)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${service.primaryLink.label}, one-page PDF service sheet (opens in a new tab)`)}">${escapeHtml(service.primaryLink.label)}</a></p>
+            <p><a href="${escapeHtml(service.primaryLink.href)}"${service.primaryLink.newTab ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escapeHtml(service.primaryLink.label)}</a></p>
           </article>`,
             )
             .join('\n          ')}
@@ -544,7 +531,7 @@ const proofHtml = `<!doctype html>
 
       <section aria-labelledby="contact">
         <h2 id="contact">Have one annoying web problem?</h2>
-        <p class="note">Send the link and a short description. Sergio will identify the first useful fix and whether it fits a small flat-price project.</p>
+        <p class="note">Send the link and a short description. Sergio will identify the first useful fix and whether it fits a focused project.</p>
         <ul class="actions">
           <li><a href="${escapeHtml(siteMeta.contactHref)}">Request a quick review</a></li>
           <li><a href="${escapeHtml(siteMeta.publicUrl)}">Open the visual monument</a></li>
