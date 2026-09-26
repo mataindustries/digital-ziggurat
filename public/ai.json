@@ -1,10 +1,11 @@
 {
   "name": "The Ziggurat",
   "builder": "Sergio Mata",
+  "role": "Frontend + AI implementation",
   "tagline": "Human flaws. Machine leverage. Public proof.",
   "availability": {
-    "status": "Open to focused product and implementation work",
-    "serviceArea": "San Gabriel Valley / Los Angeles / remote"
+    "status": "Open to contract work, agency overflow and full-time roles.",
+    "serviceArea": "Los Angeles / remote"
   },
   "publicUrl": "https://ziggurat.pages.dev",
   "canonicalUrl": "https://ziggurat.pages.dev",
@@ -12,57 +13,86 @@
   "socialPreviewUrl": "https://ziggurat.pages.dev/the-ziggurat-og.png",
   "socialPreviewAlt": "The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.",
   "contact": {
-    "label": "Build inquiry",
-    "href": "mailto:matasergio741@gmail.com?subject=Project%20Inquiry%20from%20The%20Ziggurat&body=Hi%20Sergio%2C%0A%0AThe%20problem%20or%20project%3A%0A%0ALink%20or%20context%3A%0A%0ATimeline%3A%0A"
+    "email": "matasergio741@gmail.com",
+    "href": "mailto:matasergio741@gmail.com?subject=Work%20inquiry%20for%20Sergio",
+    "routes": [
+      {
+        "label": "I need a site or frontend built",
+        "subject": "Frontend project for Sergio",
+        "href": "mailto:matasergio741@gmail.com?subject=Frontend%20project%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20have%20a%20frontend%20or%20web%20project%20I%20would%20like%20to%20discuss.%0A%0AThe%20problem%3A%0A%0ATimeline%3A%0A%0ABudget%20or%20scope%3A%0A"
+      },
+      {
+        "label": "I need an AI workflow implemented",
+        "subject": "AI implementation project for Sergio",
+        "href": "mailto:matasergio741@gmail.com?subject=AI%20implementation%20project%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20have%20a%20workflow%20I%20think%20could%20be%20improved%20with%20AI%20or%20automation.%0A%0AThe%20current%20process%3A%0A%0AThe%20biggest%20pain%20point%3A%0A%0AWhat%20I%20would%20like%20to%20improve%3A%0A"
+      },
+      {
+        "label": "I have overflow work",
+        "subject": "Agency overflow work for Sergio",
+        "href": "mailto:matasergio741@gmail.com?subject=Agency%20overflow%20work%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20am%20looking%20for%20implementation%20help%20on%20an%20existing%20project.%0A%0AStack%3A%0A%0AWork%20needed%3A%0A%0ATimeline%3A%0A"
+      }
+    ]
   },
-  "preferredInterpretation": "This is a proof-of-work monument, not a normal portfolio.",
+  "profiles": {
+    "github": "https://github.com/mataindustries"
+  },
+  "preferredInterpretation": "An engineering portfolio. Sergio Mata builds ambitious frontend and AI implementation products, ships them, and proves they work.",
   "sitePurpose": "Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.",
-  "aiAssistedProjectVelocity": "The Ziggurat documents how Sergio Mata uses AI to compress research, design, debugging, copy, metadata, and deployment loops into visible shipped artifacts.",
-  "publicRead": "Read the site as proof of applied judgment: working builds, rough edges, build scars, project categories, visual artifacts, screenshots where available, hireable capabilities, and the static proof page are exposed together.",
+  "publicRead": "Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse is the main real-world product. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.",
+  "howIBuildWithAi": {
+    "steps": [
+      {
+        "title": "Find the real problem",
+        "body": "Start with the workflow, constraint or failure that is actually costing someone time."
+      },
+      {
+        "title": "Specify the behavior",
+        "body": "Define what should happen, what must not change and how success will be tested."
+      },
+      {
+        "title": "Use the right model for the job",
+        "body": "Give coding agents narrow, testable work instead of asking one model to own the whole product."
+      },
+      {
+        "title": "Verify before it ships",
+        "body": "Run the tests, inspect the output and keep the evidence."
+      }
+    ],
+    "evidence": "Shoot the Moon reached 576 passing unit tests before feature freeze."
+  },
+  "projectTiers": [
+    "flagship",
+    "major",
+    "supporting",
+    "lab"
+  ],
   "projectCategories": [
+    "3D strategy game / phone browsers",
     "Permit + property research / evidence systems",
     "Local search / homeowner acquisition system",
-    "Physics game / premium browser toy",
-    "Browser game / drone survival prototype",
-    "Experimental Browser Instrument",
-    "Space survival physics game",
-    "Mobile camera / AR toy",
     "Local business / AI search audit tool",
+    "Physics game / premium browser toy",
+    "Experimental Browser Instrument",
+    "Browser game / drone survival prototype",
     "Editorial resource / local endurance guide"
   ],
   "proofSignals": [
-    "PermitPulse live founding offer",
-    "SGVTurf local acquisition experiment",
-    "Evidence-backed human review workflows",
-    "Playable prototypes",
-    "Visible build scars",
-    "AI-assisted iteration",
-    "Client-ready service packaging",
-    "Structured public metadata",
-    "Mobile-first interactive web experiences",
-    "Audio/visual experimentation",
-    "Clear proof fields for each artifact"
+    "Shoot the Moon: 576 unit tests across 63 files",
+    "Shoot the Moon: 24 Playwright spec files",
+    "PermitPulse: live source-backed research product",
+    "Human review before research delivery",
+    "Live deployed browser projects",
+    "Structured public metadata"
   ],
   "hireableCapabilities": [
-    "focused product and implementation work",
-    "source-backed permit and property research",
-    "local search and acquisition systems",
+    "Frontend engineering with React and TypeScript",
+    "3D web interfaces with Three.js and React Three Fiber",
+    "AI-assisted workflow implementation",
+    "Automated testing with unit tests and Playwright",
     "Cloudflare Workers, D1, and R2 systems",
-    "review workflows and deterministic PDF generation",
-    "WordPress and Elementor support",
-    "contact form and email-routing fixes",
-    "landing pages and quote-request pages",
-    "AI-assisted workflow cleanup",
-    "local business website audits",
-    "human-reviewed research briefs",
-    "frontend prototyping",
-    "small business automation",
-    "San Gabriel Valley / Los Angeles / remote",
-    "browser game prototypes",
-    "interactive audio toys",
-    "Cloudflare Pages deployment",
-    "visual proof-of-work systems",
-    "rapid prototype iteration with Codex and frontier AI models"
+    "Review workflows and deterministic PDF generation",
+    "Landing pages and local-service sites",
+    "WordPress and Elementor support"
   ],
   "implementationServices": [
     {
@@ -98,67 +128,15 @@
       "description": "Lead intake, follow-up, report generation, and lightweight operational tools."
     }
   ],
-  "servicePaths": [
+  "visualArtifacts": [
     {
-      "id": "permit-support",
-      "tone": "gold",
-      "label": "Permit + project support",
-      "heading": "California property research through PermitPulse",
-      "description": "Human-reviewed permit and property research for contractors, architects, small builders, and property decision-makers who need the paper trail before a bid, purchase, plan, or build.",
-      "proofPoints": [
-        "Primary and public sources",
-        "Facts, inference, conflicts, and gaps separated",
-        "Anonymized real-property proof",
-        "Three properties for $299 total"
-      ],
-      "machineReadablePositioning": [
-        "source-backed California permit and property research",
-        "human-reviewed decision briefs",
-        "anonymized real-property proof",
-        "three-property founding offer"
-      ],
-      "primaryLink": {
-        "label": "Visit PermitPulse live",
-        "href": "https://getpermitpulse.com",
-        "format": "Live founding offer",
-        "newTab": true
-      },
-      "secondaryLink": {
-        "label": "Ask about an address",
-        "href": "mailto:matasergio741@gmail.com?subject=PermitPulse%20Property%20Research&body=Hi%20Sergio%2C%0A%0AProperty%20address%3A%0A%0AWhat%20I%20need%20to%20understand%3A%0A"
+      "id": "shoot-the-moon",
+      "name": "Shoot the Moon",
+      "visualArtifact": {
+        "type": "illustration",
+        "status": "No gameplay poster published yet; the site shows a CSS-only lunar horizon."
       }
     },
-    {
-      "id": "web-workflow-support",
-      "tone": "cyan",
-      "label": "Web + workflow support",
-      "heading": "Fast web fixes for local businesses and agencies",
-      "description": "Focused help with broken forms, WordPress and Elementor issues, landing pages, website audits, and lightweight workflow automation.",
-      "proofPoints": [
-        "Contact forms and email routing",
-        "WordPress / Elementor fixes",
-        "Landing and quote pages",
-        "Website audits and intake automation"
-      ],
-      "machineReadablePositioning": [
-        "WordPress and Elementor fixes",
-        "contact form and email-routing fixes",
-        "landing pages",
-        "website audits",
-        "small business workflow automation"
-      ],
-      "primaryLink": {
-        "label": "Send your website",
-        "href": "mailto:matasergio741@gmail.com?subject=Website%20Fix%20Request&body=Hi%20Sergio%2C%0A%0AWebsite%20link%3A%0A%0AThe%20one%20thing%20I%20need%20fixed%3A%0A%0ATimeline%3A%0A",
-        "format": "Direct email"
-      },
-      "secondaryLink": {
-        "label": "Inspect live work",
-        "href": "/#projects"
-      }
-    }
-  ],
-  "visualArtifacts": [
     {
       "id": "permitpulse",
       "name": "PermitPulse",
@@ -186,6 +164,18 @@
       }
     },
     {
+      "id": "snapshot-studio",
+      "name": "Snapshot Studio",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/snapshot-studio.jpg",
+        "alt": "Snapshot Studio lead-to-report workflow interface",
+        "status": "Live workflow interface",
+        "width": 720,
+        "height": 1368
+      }
+    },
+    {
       "id": "xibalba-pinball",
       "name": "Xibalba Pinball",
       "visualArtifact": {
@@ -194,19 +184,6 @@
         "alt": "Xibalba Pinball live game screenshot",
         "width": 720,
         "height": 1319
-      }
-    },
-    {
-      "id": "danger-close",
-      "name": "Danger Close",
-      "visualArtifact": {
-        "type": "screenshot",
-        "src": "/projects/danger-close.jpg",
-        "alt": "Danger Close browser survival game screenshot",
-        "status": "live project",
-        "position": "center center",
-        "width": 720,
-        "height": 1357
       }
     },
     {
@@ -223,31 +200,16 @@
       }
     },
     {
-      "id": "black-swan",
-      "name": "Black Swan",
-      "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Private Build"
-      }
-    },
-    {
-      "id": "pumpkin-ar-face-filter",
-      "name": "Pumpkin AR Face Filter",
-      "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Artifact Pending"
-      }
-    },
-    {
-      "id": "snapshot-studio",
-      "name": "Snapshot Studio",
+      "id": "danger-close",
+      "name": "Danger Close",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/snapshot-studio.jpg",
-        "alt": "Snapshot Studio lead-to-report workflow interface",
-        "status": "Live workflow interface",
+        "src": "/projects/danger-close.jpg",
+        "alt": "Danger Close browser survival game screenshot",
+        "status": "live project",
+        "position": "center center",
         "width": 720,
-        "height": 1368
+        "height": 1357
       }
     },
     {
@@ -265,14 +227,58 @@
   ],
   "projects": [
     {
+      "id": "shoot-the-moon",
+      "name": "Shoot the Moon",
+      "tier": "flagship",
+      "category": "3D strategy game / phone browsers",
+      "status": "Feature freeze",
+      "badge": "Flagship project",
+      "summary": "A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.",
+      "keyFacts": [
+        "576 unit tests",
+        "24 Playwright spec files",
+        "React + TypeScript + Three.js",
+        "Save schema v9"
+      ],
+      "whatItProves": "Ambitious 3D browser work can be built with real test coverage behind it.",
+      "visualArtifact": {
+        "type": "illustration",
+        "status": "No gameplay poster published yet; the site shows a CSS-only lunar horizon."
+      },
+      "tags": [
+        "React 19",
+        "TypeScript",
+        "Three.js",
+        "React Three Fiber",
+        "Vite",
+        "NASA lunar textures"
+      ],
+      "proofSignals": [
+        "576 unit tests across 63 files",
+        "24 Playwright spec files",
+        "Zero external 3D model files",
+        "Save schema v9 with v1 to v8 migrations"
+      ],
+      "links": {
+        "live": null,
+        "source": null,
+        "caseStudy": null
+      }
+    },
+    {
       "id": "permitpulse",
       "name": "PermitPulse",
+      "tier": "major",
       "category": "Permit + property research / evidence systems",
       "status": "Founding offer live",
-      "featured": true,
-      "flagshipLabel": "In market now",
+      "badge": "In market now",
       "currentStatus": "Three California properties for $299 total. Target turnaround is within 48 business hours per address after scope confirmation.",
       "summary": "Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.",
+      "keyFacts": [
+        "Source-backed research",
+        "Unknown stays unknown",
+        "Human scope review"
+      ],
       "whatItProves": "A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.",
       "visualArtifact": {
         "type": "screenshot",
@@ -394,28 +400,6 @@
           "Human approval"
         ]
       },
-      "sharedEngineeringPhilosophy": [
-        {
-          "name": "Snapshot Studio",
-          "note": "Turns irregular source material into a concise, inspectable report."
-        },
-        {
-          "name": "Portfolio",
-          "note": "Treats visible proof, metadata, and delivery craft as parts of the same artifact."
-        },
-        {
-          "name": "Danger Close",
-          "note": "Makes dense system state legible through a focused mission-control interface."
-        },
-        {
-          "name": "Xibalba",
-          "note": "Uses atmosphere in service of interaction instead of as decoration alone."
-        },
-        {
-          "name": "BounceBox",
-          "note": "Builds a serious mobile control surface around an unconventional workflow."
-        }
-      ],
       "proofSignals": [
         "Anonymized real-property proof",
         "Human-reviewed research briefs",
@@ -423,26 +407,23 @@
         "Evidence-centered workflow"
       ],
       "links": {
-        "demo": {
-          "label": "Visit PermitPulse live",
-          "href": "https://getpermitpulse.com",
-          "status": "live"
+        "live": {
+          "label": "Visit PermitPulse",
+          "href": "https://getpermitpulse.com"
         },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
+        "source": null,
+        "caseStudy": null
       }
     },
     {
       "id": "sgvturf",
       "name": "SGVTurf",
+      "tier": "supporting",
       "category": "Local search / homeowner acquisition system",
       "status": "Live market test",
-      "flagshipLabel": "In market now",
       "currentStatus": "The homeowner brief, 2026 turf-replacement rebate resource, city guides, and editorial system are live. Founding-contractor outreach is testing the referral side.",
       "summary": "Connects local homeowner search intent to city guidance, official-source rebate context, a structured project brief, and relevant contractor discovery.",
+      "oneLiner": "A local-service site built around search intent, service-area pages and lead capture.",
       "whatItProves": "Useful local information can form a clear acquisition path from search intent to a contractor-ready inquiry.",
       "visualArtifact": {
         "type": "project image",
@@ -472,24 +453,53 @@
         "SGV city planning guides"
       ],
       "links": {
-        "demo": {
-          "label": "Visit SGVTurf live",
-          "href": "https://sgvturf.com",
-          "status": "live"
+        "live": {
+          "label": "Visit SGVTurf",
+          "href": "https://sgvturf.com"
         },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
+        "source": null,
+        "caseStudy": null
+      }
+    },
+    {
+      "id": "snapshot-studio",
+      "name": "Snapshot Studio",
+      "tier": "supporting",
+      "category": "Local business / AI search audit tool",
+      "status": "Live sample tool",
+      "summary": "A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.",
+      "oneLiner": "Turns a business intake into a structured improvement snapshot and action plan.",
+      "whatItProves": "Small businesses can receive fast, visual snapshots of search visibility problems and practical improvement plans.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/projects/snapshot-studio.jpg",
+        "alt": "Snapshot Studio lead-to-report workflow interface",
+        "status": "Live workflow interface",
+        "width": 720,
+        "height": 1368
+      },
+      "proofSignals": [
+        "Local visibility audit",
+        "Report generation",
+        "Offer testing"
+      ],
+      "links": {
+        "live": {
+          "label": "Open live sample",
+          "href": "https://snapshot-studio.pages.dev"
+        },
+        "source": null,
+        "caseStudy": null
       }
     },
     {
       "id": "xibalba-pinball",
       "name": "Xibalba Pinball",
+      "tier": "supporting",
       "category": "Physics game / premium browser toy",
       "status": "Live game",
       "summary": "A mythic five-ball score attack with touch controls, browser physics, and a global Wall of Champions.",
+      "oneLiner": "Browser pinball with physics, scoring and a global leaderboard.",
       "whatItProves": "AI-assisted development can ship a weird, playable, visually distinctive browser game.",
       "visualArtifact": {
         "type": "screenshot",
@@ -504,25 +514,55 @@
         "Premium toy direction"
       ],
       "links": {
-        "demo": {
+        "live": {
           "label": "Play live",
-          "href": "https://xibalba.pages.dev",
-          "status": "live"
+          "href": "https://xibalba.pages.dev"
         },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
+        "source": null,
+        "caseStudy": null
+      }
+    },
+    {
+      "id": "bouncebox",
+      "name": "BounceBox",
+      "tier": "supporting",
+      "category": "Experimental Browser Instrument",
+      "status": "Live instrument",
+      "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
+      "oneLiner": "A mobile music playground built with Web Audio, generative MIDI and dense touch controls.",
+      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.",
+      "visualArtifact": {
+        "type": "screenshot",
+        "src": "/images/bouncebox/bouncebox-808-performance.png",
+        "alt": "BounceBox 808 performance screen",
+        "status": "Live performance",
+        "position": "center center",
+        "width": 720,
+        "height": 1342
+      },
+      "proofSignals": [
+        "Physics groovebox",
+        "AI-generated MIDI",
+        "Mobile performance UI"
+      ],
+      "links": {
+        "live": {
+          "label": "Open live instrument",
+          "href": "https://bouncebox.pages.dev"
+        },
+        "source": null,
+        "caseStudy": null
       }
     },
     {
       "id": "danger-close",
       "name": "Danger Close",
+      "tier": "lab",
       "category": "Browser game / drone survival prototype",
       "status": "Live game",
       "currentStatus": "Live playable prototype",
       "summary": "A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.",
+      "oneLiner": "Interactive browser experiment focused on fast tactical feedback.",
       "whatItProves": "AI-assisted development can ship a polished browser game loop with sector selection, upgrade systems, enemy pressure, resource collection, survival pacing, and premium sci-fi interface design.",
       "visualArtifact": {
         "type": "screenshot",
@@ -574,149 +614,22 @@
         "AI-assisted game design"
       ],
       "links": {
-        "demo": {
+        "live": {
           "label": "Play live",
-          "href": "https://dangerclose.pages.dev",
-          "status": "live"
+          "href": "https://dangerclose.pages.dev"
         },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
-      }
-    },
-    {
-      "id": "bouncebox",
-      "name": "BounceBox",
-      "category": "Experimental Browser Instrument",
-      "status": "Live instrument",
-      "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
-      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.",
-      "visualArtifact": {
-        "type": "screenshot",
-        "src": "/images/bouncebox/bouncebox-808-performance.png",
-        "alt": "BounceBox 808 performance screen",
-        "status": "Live performance",
-        "position": "center center",
-        "width": 720,
-        "height": 1342
-      },
-      "proofSignals": [
-        "Physics groovebox",
-        "AI-generated MIDI",
-        "Mobile performance UI"
-      ],
-      "links": {
-        "demo": {
-          "label": "Open live instrument",
-          "href": "https://bouncebox.pages.dev",
-          "status": "live"
-        },
-        "github": {
-          "label": "GitHub Repo",
-          "href": null,
-          "status": "repo pending"
-        }
-      }
-    },
-    {
-      "id": "black-swan",
-      "name": "Black Swan",
-      "category": "Space survival physics game",
-      "status": "Private prototype",
-      "summary": "A survival-loop prototype with travel, mining, events, upgrades, and physics-driven risk.",
-      "whatItProves": "A rough game premise can become a functioning loop with movement, resources, upgrades, event pressure, and progression.",
-      "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Private Build"
-      },
-      "proofSignals": [
-        "Survival loop",
-        "Physics risk",
-        "Systems roadmap"
-      ],
-      "links": {
-        "demo": {
-          "label": "Private build",
-          "href": null,
-          "status": "private"
-        },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
-      }
-    },
-    {
-      "id": "pumpkin-ar-face-filter",
-      "name": "Pumpkin AR Face Filter",
-      "category": "Mobile camera / AR toy",
-      "status": "Working prototype",
-      "summary": "A playful camera experiment shaped around face tracking, seasonal overlays, and kid-tested reactions.",
-      "whatItProves": "AI-assisted prototyping can produce playful camera experiences that respond to real feedback, not just a spec.",
-      "visualArtifact": {
-        "type": "intentional-status",
-        "status": "Artifact Pending"
-      },
-      "proofSignals": [
-        "Camera UI",
-        "AR interaction",
-        "Feedback-driven toy"
-      ],
-      "links": {
-        "demo": {
-          "label": "Private build",
-          "href": null,
-          "status": "private"
-        },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
-      }
-    },
-    {
-      "id": "snapshot-studio",
-      "name": "Snapshot Studio",
-      "category": "Local business / AI search audit tool",
-      "status": "Live sample tool",
-      "summary": "A lightweight sales tool for turning local visibility problems into fast visual reports and improvement plans.",
-      "whatItProves": "Small businesses can receive fast, visual snapshots of search visibility problems and practical improvement plans.",
-      "visualArtifact": {
-        "type": "screenshot",
-        "src": "/projects/snapshot-studio.jpg",
-        "alt": "Snapshot Studio lead-to-report workflow interface",
-        "status": "Live workflow interface",
-        "width": 720,
-        "height": 1368
-      },
-      "proofSignals": [
-        "Local visibility audit",
-        "Report generation",
-        "Offer testing"
-      ],
-      "links": {
-        "demo": {
-          "label": "Open live sample",
-          "href": "https://snapshot-studio.pages.dev",
-          "status": "live"
-        },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
+        "source": null,
+        "caseStudy": null
       }
     },
     {
       "id": "angeles-crest",
       "name": "The Angeles Crest",
+      "tier": "lab",
       "category": "Editorial resource / local endurance guide",
       "status": "Public draft",
       "summary": "An unofficial AC100 guide covering training, course strategy, crew logistics, qualifiers, gear, and local San Gabriel knowledge.",
+      "oneLiner": "An ongoing local publishing and web experiment.",
       "whatItProves": "Research, editorial structure, local context, and frontend implementation can become a useful niche information system.",
       "visualArtifact": {
         "type": "screenshot",
@@ -732,96 +645,45 @@
         "Niche web resource"
       ],
       "links": {
-        "demo": {
+        "live": {
           "label": "Open public draft",
-          "href": "https://theangelescrest.pages.dev",
-          "status": "live"
+          "href": "https://theangelescrest.pages.dev"
         },
-        "github": {
-          "label": "Private source",
-          "href": null,
-          "status": "private"
-        }
+        "source": null,
+        "caseStudy": null
       }
     }
   ],
-  "zigguratTiers": [
-    {
-      "id": "human-floor",
-      "name": "Human Floor",
-      "signal": "Constraints, experiments, scars",
-      "projectIds": [
-        "black-swan",
-        "angeles-crest"
-      ]
-    },
-    {
-      "id": "workshop",
-      "name": "Workshop",
-      "signal": "Playable systems",
-      "projectIds": [
-        "bouncebox",
-        "xibalba-pinball",
-        "danger-close",
-        "snapshot-studio",
-        "pumpkin-ar-face-filter"
-      ]
-    },
-    {
-      "id": "codex-forge",
-      "name": "Codex Forge",
-      "signal": "Research systems engineering",
-      "projectIds": [
-        "permitpulse",
-        "snapshot-studio"
-      ]
-    },
-    {
-      "id": "ai-readable-shrine",
-      "name": "AI-Readable Shrine",
-      "signal": "Structured public context",
-      "projectIds": [
-        "permitpulse",
-        "black-swan",
-        "pumpkin-ar-face-filter"
-      ]
-    },
-    {
-      "id": "signal-beacon",
-      "name": "Signal Beacon",
-      "signal": "Contact, credibility, ambition",
-      "projectIds": [
-        "permitpulse",
-        "sgvturf",
-        "bouncebox",
-        "xibalba-pinball",
-        "snapshot-studio",
-        "angeles-crest"
-      ]
-    }
-  ],
-  "buildScars": [
-    {
-      "title": "Broken layouts",
-      "detail": "Became better mobile systems with tighter constraints, smaller surfaces, and responsive checks."
-    },
-    {
-      "title": "Missed visual targets",
-      "detail": "Became sharper prompts, stronger art direction, and clearer taste tests before another pass."
-    },
-    {
-      "title": "Game bugs",
-      "detail": "Became mechanics when strange collisions, pacing pressure, or surprise behavior made the loop better."
-    },
-    {
-      "title": "Outreach failures",
-      "detail": "Became better offers by exposing where value was vague, slow, or too hard to understand."
-    },
-    {
-      "title": "Human constraints",
-      "detail": "Forced leaner builds, smaller scopes, and more honest proof than a polished fantasy roadmap."
-    }
-  ],
+  "sectionNavigation": {
+    "description": "The Ziggurat tiers link to page sections, listed bottom to top.",
+    "tiers": [
+      {
+        "id": "lab",
+        "name": "Lab",
+        "href": "/#lab"
+      },
+      {
+        "id": "process",
+        "name": "How I build",
+        "href": "/#process"
+      },
+      {
+        "id": "work",
+        "name": "Shipped work",
+        "href": "/#work"
+      },
+      {
+        "id": "permitpulse",
+        "name": "PermitPulse",
+        "href": "/#permitpulse"
+      },
+      {
+        "id": "shoot-the-moon",
+        "name": "Shoot the Moon",
+        "href": "/#shoot-the-moon"
+      }
+    ]
+  },
   "publicResources": [
     {
       "type": "static proof",
@@ -842,20 +704,24 @@
   ],
   "primaryActions": [
     {
-      "label": "Visit PermitPulse live",
+      "label": "View Shoot the Moon",
+      "href": "/#shoot-the-moon"
+    },
+    {
+      "label": "Visit PermitPulse",
       "href": "https://getpermitpulse.com"
     },
     {
-      "label": "Visit SGVTurf live",
-      "href": "https://sgvturf.com"
+      "label": "Work with Sergio",
+      "href": "/#contact"
     },
     {
       "label": "Email Sergio",
-      "href": "mailto:matasergio741@gmail.com?subject=Work%20Inquiry%20from%20The%20Ziggurat"
+      "href": "mailto:matasergio741@gmail.com?subject=Work%20inquiry%20for%20Sergio"
     },
     {
-      "label": "View all projects",
-      "href": "/#projects"
+      "label": "GitHub",
+      "href": "https://github.com/mataindustries"
     }
   ]
 }

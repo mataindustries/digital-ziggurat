@@ -1,96 +1,65 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   siteMeta,
-  projects,
-  buildLog,
+  contactRoutes,
+  processSteps,
+  processEvidence,
+  projectsByTier,
+  getProject,
   zigguratTiers,
-  scarTissue,
-  interpretationPanels,
-  hireableCapabilities,
-  servicePaths,
 } from './data/projects';
 import './styles.css';
 
-const aiViewProofSignals = [
-  'PermitPulse live research service',
-  'SGVTurf local acquisition system',
-  'evidence-backed review workflow',
-  'live deployed projects',
-  'screenshots',
-  'build scars',
-  'project metadata',
-  'audio/visual experiments',
-  'AI-readable public files',
-  'rapid iteration with Codex',
-];
+const flagshipProject = getProject('shoot-the-moon');
+const majorProject = getProject('permitpulse');
+const supportingProjects = projectsByTier('supporting');
+const labProjects = projectsByTier('lab');
 
-const aiReadableFiles = [
-  { href: '/proof.html', label: 'Machine-readable proof' },
-  { href: '/ai.json', label: '/ai.json' },
-  { href: '/projects.json', label: '/projects.json' },
-  { href: '/llms.txt', label: '/llms.txt' },
-];
+const machineReadableFiles = ['/llms.txt', '/ai.json', '/projects.json'];
 
-const signalOptions = [
-  {
-    label: 'Weird premium landing page',
-    description:
-      'A sharp, memorable page with unusual atmosphere, clear proof, and a CTA that feels built instead of templated.',
-  },
-  {
-    label: 'Local business automation',
-    description:
-      'A lean workflow or interface that reduces repetitive work for a local operator and makes the next action obvious.',
-  },
-  {
-    label: 'Civic/public-record tool',
-    description:
-      'A public-data prototype that turns messy records, permits, filings, or local signals into something usable.',
-  },
-  {
-    label: 'Browser game prototype',
-    description:
-      'A playable browser experiment with a distinct mechanic, mobile-first controls, and enough polish to test fast.',
-  },
-  {
-    label: 'AI workflow system',
-    description:
-      'A practical AI-assisted flow for research, drafting, sorting, enrichment, or internal decision support.',
-  },
-  {
-    label: 'Visual proof-of-work page',
-    description:
-      'A public artifact page that makes shipped work, process, evidence, and credibility easy to inspect.',
-  },
-  {
-    label: 'Something stranger',
-    description:
-      'A harder-to-classify prototype where the concept matters more than fitting a standard product category.',
-  },
-];
+const profileLinks = [
+  { label: 'Résumé', href: siteMeta.resumeUrl },
+  { label: 'GitHub', href: siteMeta.githubUrl },
+  { label: 'LinkedIn', href: siteMeta.linkedinUrl },
+].filter((link) => link.href);
 
-function buildSignalMailto(selectedSignal) {
-  const subject = 'Build Inquiry from The Ziggurat';
-  const body = `I found The Ziggurat and want to discuss a build.
-
-Selected signal:
-${selectedSignal}
-
-What I need:
-[Write a short description here]`;
-
-  return `mailto:matasergio741@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+function VisuallyHidden({ children }) {
+  return <span className="visually-hidden">{children}</span>;
 }
 
-function ProjectArtifact({ project, size = 'card' }) {
+function ExternalLink({ href, className, children, context }) {
+  return (
+    <a className={className} href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+      <VisuallyHidden>
+        {context ? ` ${context}` : ''} (opens in a new tab)
+      </VisuallyHidden>
+      <span className="external-mark" aria-hidden="true">
+        ↗
+      </span>
+    </a>
+  );
+}
+
+function DetailsButton({ project, onOpen, className = 'button button-secondary' }) {
+  return (
+    <button className={className} type="button" onClick={() => onOpen(project)}>
+      Details
+      <VisuallyHidden> about {project.name}</VisuallyHidden>
+    </button>
+  );
+}
+
+function ProjectArtifact({ project }) {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const className = `project-artifact project-artifact--${size} ${
-    project.image ? 'has-image' : 'has-state'
-  }`;
 
   return (
-    <figure className={className}>
+    <figure
+      className={`project-artifact project-artifact--chamber ${
+        project.image ? 'has-image' : 'has-state'
+      }`}
+    >
       {project.image ? (
         <img
           className={imageLoaded ? 'is-loaded' : ''}
@@ -98,9 +67,9 @@ function ProjectArtifact({ project, size = 'card' }) {
           alt={project.imageAlt}
           width={project.imageWidth}
           height={project.imageHeight}
-          loading={size === 'chamber' ? 'eager' : 'lazy'}
+          loading="eager"
           decoding="async"
-          fetchPriority={size === 'chamber' ? 'high' : 'auto'}
+          fetchPriority="high"
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageLoaded(true)}
           style={{
@@ -109,25 +78,66 @@ function ProjectArtifact({ project, size = 'card' }) {
           }}
         />
       ) : (
-        <div className="project-artifact__state" aria-label={`${project.name} artifact status`}>
-          <span>{project.artifactState ?? 'Artifact Pending'}</span>
+        <div className="project-artifact__state">
+          <span>{project.status}</span>
           <small>{project.category}</small>
         </div>
       )}
       <figcaption>
         <span>{project.name}</span>
-        <small>{project.image ? project.visualStatus ?? 'Visual artifact' : 'Sealed chamber'}</small>
+        <small>{project.visualStatus ?? project.status}</small>
       </figcaption>
     </figure>
   );
 }
 
-function ProjectFlow({ project, compact = false }) {
+// 16:9 flagship media. Uses the real poster when one exists, otherwise a CSS-only
+// lunar horizon so no fake screenshot or placeholder text ever ships.
+function FlagshipMedia({ project, eager = true }) {
+  const { media } = project;
+
   return (
-    <ol
-      className={`permitpulse-flow ${compact ? 'permitpulse-flow--compact' : ''}`}
-      aria-label={`${project.name} workflow`}
-    >
+    <div className="flagship-media">
+      {media?.poster ? (
+        <img
+          src={media.poster}
+          alt={media.alt}
+          width={media.width}
+          height={media.height}
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      ) : (
+        <div className="lunar-fallback" aria-hidden="true">
+          <span className="lunar-fallback__stars" />
+          <span className="lunar-fallback__mass" />
+          <span className="lunar-fallback__edge" />
+          <span className="lunar-fallback__signal" />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function FeatureImage({ project }) {
+  return (
+    <div className="feature-image">
+      <img
+        src={project.image}
+        alt={project.imageAlt}
+        width={project.imageWidth}
+        height={project.imageHeight}
+        loading="lazy"
+        decoding="async"
+        style={{ objectPosition: project.visualPosition ?? 'center center' }}
+      />
+    </div>
+  );
+}
+
+function ProjectFlow({ project }) {
+  return (
+    <ol className="permitpulse-flow" aria-label={`${project.name} workflow`}>
       {project.operationalFlow.map((step) => (
         <li key={step}>{step}</li>
       ))}
@@ -205,34 +215,18 @@ function PermitPulseSystemNotes({ project }) {
           ))}
         </div>
       </section>
-
-      <section className="permitpulse-connections" aria-labelledby="permitpulse-connections-title">
-        <div className="permitpulse-section-heading">
-          <p className="section-kicker">Shared construction marks</p>
-          <h3 id="permitpulse-connections-title">Built from the Ziggurat’s recurring philosophy</h3>
-          <p>
-            These are family resemblances, not software dependencies: dense state made legible,
-            mobile controls treated seriously, and finished output kept close to its evidence.
-          </p>
-        </div>
-        <div className="permitpulse-connection-grid">
-          {project.connections.map((connection) => (
-            <article key={connection.name}>
-              <strong>{connection.name}</strong>
-              <p>{connection.note}</p>
-            </article>
-          ))}
-        </div>
-      </section>
     </>
   );
 }
 
-function Ziggurat({ activeTier, onSelectTier }) {
-  const activeTierIndex = zigguratTiers.findIndex((tier) => tier.id === activeTier.id) + 1;
+function Ziggurat() {
+  // Rendered top to bottom so keyboard and screen reader order matches page order.
+  const tiersTopDown = zigguratTiers
+    .map((tier, index) => ({ ...tier, level: index + 1 }))
+    .reverse();
 
   return (
-    <div className="ziggurat-stage" aria-label="Interactive ziggurat section selector">
+    <div className="ziggurat-stage">
       <div className="monument-atmosphere" aria-hidden="true">
         <span className="monument-horizon" />
         <span className="monument-haze monument-haze--one" />
@@ -297,27 +291,27 @@ function Ziggurat({ activeTier, onSelectTier }) {
         />
       </svg>
 
-      <div className="ziggurat-core">
-        {zigguratTiers.map((tier, index) => (
-          <button
-            className={`tier tier-${index + 1} ${activeTier.id === tier.id ? 'is-active' : ''}`}
+      <nav className="ziggurat-core" aria-label="Page sections">
+        {tiersTopDown.map((tier) => (
+          <a
+            className={`tier tier-${tier.level} ${
+              tier.level === zigguratTiers.length ? 'is-summit' : ''
+            }`}
             key={tier.id}
-            type="button"
-            onClick={() => onSelectTier(tier)}
-            aria-pressed={activeTier.id === tier.id}
+            href={tier.href}
           >
             <span className="tier-top-plane" aria-hidden="true" />
             <span className="tier-side tier-side--left" aria-hidden="true" />
             <span className="tier-side tier-side--right" aria-hidden="true" />
             <span className="tier-surface">
               <span className="tier-index" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
+                {String(tier.level).padStart(2, '0')}
               </span>
               <span className="tier-label">{tier.name}</span>
               <span className="tier-etching" aria-hidden="true" />
             </span>
-            <span className="tier-glow" />
-          </button>
+            <span className="tier-glow" aria-hidden="true" />
+          </a>
         ))}
         <div className="ceremonial-ascent" aria-hidden="true">
           {Array.from({ length: 11 }).map((_, index) => (
@@ -327,84 +321,342 @@ function Ziggurat({ activeTier, onSelectTier }) {
         <div className="temple-foundation" aria-hidden="true" />
         <div className="temple-halo" aria-hidden="true" />
         <div className="summit-beacon" aria-hidden="true" />
-      </div>
+      </nav>
 
       <div className="monument-plaza" aria-hidden="true">
         <span className="plaza-causeway" />
         <span className="plaza-stone plaza-stone--left" />
         <span className="plaza-stone plaza-stone--right" />
       </div>
-
-      <aside className="active-tier-card" key={activeTier.id}>
-        <div className="active-tier-card__topline">
-          <span>Active tier {String(activeTierIndex).padStart(2, '0')}</span>
-          <span className="active-tier-card__state">Online</span>
-        </div>
-        <strong>{activeTier.name}</strong>
-        <p>{activeTier.signal}</p>
-        <div className="active-tier-card__meter" aria-hidden="true">
-          <span />
-        </div>
-      </aside>
     </div>
   );
 }
 
-function ProjectCard({ project, onOpen }) {
+function SiteHeader() {
   return (
-    <article
-      className={`project-card ${project.featured ? 'project-card--featured' : ''} ${
-        project.chamberVariant ? `project-card--${project.chamberVariant}` : ''
-      }`}
-    >
-      <button
-        className="project-card__open"
-        type="button"
-        onClick={() => onOpen(project)}
-        aria-label={`Open ${project.name} project chamber`}
-      >
-        <div className="project-card__topline">
-          <div className="project-card__status-group">
-            {project.flagshipLabel ? (
-              <span className="flagship-badge">{project.flagshipLabel}</span>
-            ) : null}
-            <span className={`status status--${project.statusTone}`}>{project.status}</span>
-          </div>
-          <span className="project-card__link">Open chamber</span>
-        </div>
-        <div className="project-card__body">
-          <ProjectArtifact project={project} />
-          <div className="project-card__content">
-            <span className="project-card__category">{project.category}</span>
-            <h3>{project.name}</h3>
-            {project.subtitle ? (
-              <span className="project-card__subtitle">{project.subtitle}</span>
-            ) : null}
-            {project.operationalFlow ? <ProjectFlow project={project} compact /> : null}
-            <p>{project.description}</p>
-            <div className="proof">
-              <span>Proves</span>
-              <strong>{project.proves}</strong>
-            </div>
-            <div className="project-card__signals" aria-label={`${project.name} proof signals`}>
-              {project.proofSignals.slice(0, 2).map((signal) => (
-                <span key={signal}>{signal}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </button>
-      {project.links.demo.href ? (
-        <a
-          className="project-card__cta"
-          href={project.links.demo.href}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {project.links.demo.label}
+    <header className="site-header">
+      <div className="nav">
+        <a className="brand" href="#top">
+          <span className="brand-mark" aria-hidden="true" />
+          <span className="brand-text">
+            <span className="brand-name">{siteMeta.owner}</span>
+            <span className="brand-sub">{siteMeta.name}</span>
+          </span>
         </a>
-      ) : null}
+        <nav className="nav-links" aria-label="Main">
+          <a className="nav-link" href="#shoot-the-moon">
+            Work
+          </a>
+          <a className="nav-link" href="#process">
+            How I build
+          </a>
+          <ExternalLink className="nav-link" href={siteMeta.githubUrl}>
+            GitHub
+          </ExternalLink>
+          <a className="button button-outline nav-cta" href="#contact">
+            Work with me
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="hero" id="top" aria-labelledby="hero-title">
+      <div className="hero-content">
+        <div className="hero-copy">
+          <p className="eyebrow">Frontend + AI implementation</p>
+          <h1 id="hero-title">I build ambitious web products that actually work.</h1>
+          <p className="hero-subhead">
+            Frontend systems, AI-assisted workflows and interactive products for real business
+            problems.
+          </p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#shoot-the-moon">
+              View the work
+            </a>
+            <a className="button button-secondary" href="#contact">
+              Work with me
+            </a>
+          </div>
+          <p className="availability">
+            <span className="availability__dot" aria-hidden="true" />
+            {siteMeta.availability}
+          </p>
+        </div>
+
+        <div className="hero-art">
+          <Ziggurat />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FactChips({ project }) {
+  return (
+    <ul className="fact-chips" aria-label={`${project.name} facts`}>
+      {project.feature.facts.map((fact) => (
+        <li key={fact}>{fact}</li>
+      ))}
+    </ul>
+  );
+}
+
+function FeatureSection({ project, variant, media, liveLabel, onOpen }) {
+  const titleId = `${project.id}-title`;
+  const live = project.links.live;
+
+  return (
+    <section
+      className={`section feature feature--${variant}`}
+      id={project.id}
+      aria-labelledby={titleId}
+      tabIndex={-1}
+    >
+      <div className="feature__layout">
+        <div className="feature__heading">
+          <p className="section-kicker">{project.feature.eyebrow}</p>
+          <h2 id={titleId}>{project.name}</h2>
+        </div>
+        <div className="feature__media">{media}</div>
+        <div className="feature__body">
+          <p className="feature__text">{project.feature.body ?? project.description}</p>
+          <FactChips project={project} />
+          <div className="feature__actions">
+            {live?.href ? (
+              <ExternalLink className="button button-primary" href={live.href}>
+                {liveLabel}
+              </ExternalLink>
+            ) : null}
+            <DetailsButton project={project} onOpen={onOpen} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WorkCard({ project, onOpen }) {
+  const live = project.links.live;
+
+  return (
+    <article className="work-card">
+      <div className="work-card__thumb">
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          width={project.imageWidth}
+          height={project.imageHeight}
+          loading="lazy"
+          decoding="async"
+          style={{ objectPosition: project.thumbPosition ?? project.visualPosition ?? 'center' }}
+        />
+      </div>
+      <div className="work-card__body">
+        <h3>{project.name}</h3>
+        <p>{project.oneLiner}</p>
+        <p className="work-card__stack">{project.stack}</p>
+      </div>
+      <div className="work-card__actions">
+        {live?.href ? (
+          <ExternalLink className="text-action" href={live.href} context={project.name}>
+            Open
+          </ExternalLink>
+        ) : null}
+        <DetailsButton project={project} onOpen={onOpen} className="text-action" />
+      </div>
     </article>
+  );
+}
+
+function WorkSection({ onOpen }) {
+  return (
+    <section className="section work-section" id="work" aria-labelledby="work-title">
+      <div className="section-heading">
+        <p className="section-kicker">More shipped work</p>
+        <h2 id="work-title">Different problems. Same standard.</h2>
+        <p>Smaller products and experiments that prove different parts of the stack.</p>
+      </div>
+      <ul className="work-grid">
+        {supportingProjects.map((project) => (
+          <li key={project.id}>
+            <WorkCard project={project} onOpen={onOpen} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function ProcessSection() {
+  return (
+    <section className="section process-section" id="process" aria-labelledby="process-title">
+      <div className="section-heading">
+        <p className="section-kicker">How I build with AI</p>
+        <h2 id="process-title">AI makes the loop faster. The standard stays human.</h2>
+      </div>
+      <ol className="process-steps">
+        {processSteps.map((step, index) => (
+          <li className="process-step" key={step.title}>
+            <span className="process-step__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p className="process-evidence">{processEvidence}</p>
+    </section>
+  );
+}
+
+function LabSection() {
+  return (
+    <section className="section lab-section" id="lab" aria-labelledby="lab-title">
+      <div className="section-heading">
+        <p className="section-kicker">Lab</p>
+        <h2 id="lab-title">Experiments worth keeping around.</h2>
+      </div>
+      <ul className="lab-list">
+        {labProjects.map((project) => (
+          <li className="lab-item" key={project.id}>
+            <div>
+              <h3>{project.name}</h3>
+              <p>{project.oneLiner}</p>
+            </div>
+            {project.links.live?.href ? (
+              <ExternalLink
+                className="text-action"
+                href={project.links.live.href}
+                context={project.name}
+              >
+                Open
+              </ExternalLink>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function copyWithSelection(text) {
+  const field = document.createElement('textarea');
+  field.value = text;
+  field.setAttribute('readonly', '');
+  field.style.position = 'fixed';
+  field.style.opacity = '0';
+  document.body.appendChild(field);
+  field.select();
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  }
+  field.remove();
+  return copied;
+}
+
+function ContactSection() {
+  const [copyStatus, setCopyStatus] = useState('');
+  const resetTimer = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(resetTimer.current), []);
+
+  const copyEmail = async () => {
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(siteMeta.email);
+      copied = true;
+    } catch {
+      copied = copyWithSelection(siteMeta.email);
+    }
+    setCopyStatus(
+      copied ? 'Email address copied.' : 'Copy failed. Select the address to copy it.',
+    );
+    window.clearTimeout(resetTimer.current);
+    resetTimer.current = window.setTimeout(() => setCopyStatus(''), 4000);
+  };
+
+  return (
+    <section className="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div className="contact-panel">
+        <div className="contact-panel__intro">
+          <p className="section-kicker">Work with me</p>
+          <h2 id="contact-title">Have something difficult to build?</h2>
+          <p>
+            I am open to contract work, agency overflow and full-time roles. If you have a
+            workflow, product or web problem that needs a fast technical implementation, send me
+            the problem.
+          </p>
+          <div className="contact-email">
+            <a className="contact-email__address" href={siteMeta.contactHref}>
+              {siteMeta.email}
+            </a>
+            <button className="button button-secondary contact-email__copy" type="button" onClick={copyEmail}>
+              Copy email
+            </button>
+          </div>
+          <p className="copy-status" role="status">
+            {copyStatus}
+          </p>
+        </div>
+
+        <div className="contact-panel__routes">
+          <ul className="contact-routes">
+            {contactRoutes.map((route) => (
+              <li key={route.id}>
+                <a className="contact-route" href={route.href}>
+                  <span>{route.label}</span>
+                  <VisuallyHidden> (opens an email draft)</VisuallyHidden>
+                  <span className="contact-route__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {profileLinks.length ? (
+            <ul className="contact-profiles">
+              {profileLinks.map((link) => (
+                <li key={link.label}>
+                  <ExternalLink className="text-action" href={link.href}>
+                    {link.label}
+                  </ExternalLink>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <p className="site-footer__line">
+        {siteMeta.name}. {siteMeta.tagline}
+      </p>
+      <nav aria-label="Machine-readable files">
+        <ul className="site-footer__links">
+          {machineReadableFiles.map((path) => (
+            <li key={path}>
+              <a href={path}>{path}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <p className="site-footer__copyright">
+        © {new Date().getFullYear()} {siteMeta.owner}
+      </p>
+    </footer>
   );
 }
 
@@ -473,9 +725,11 @@ function ProjectChamber({ project, onClose }) {
   const chamberTitleId = `project-chamber-title-${project.id}`;
   const chamberDescriptionId = `project-chamber-description-${project.id}`;
   const chamberLinks = [
-    { type: 'Live', ...project.links.demo },
-    { type: 'Source', ...project.links.github },
-  ];
+    { type: 'Live', ...project.links.live },
+    { type: 'Source', ...project.links.source },
+    { type: 'Case study', ...project.links.caseStudy },
+  ].filter((link) => link.href);
+  const isPermitPulse = project.chamberVariant === 'permitpulse';
 
   return (
     <div className="chamber-backdrop" role="presentation" onClick={onClose}>
@@ -494,69 +748,55 @@ function ProjectChamber({ project, onClose }) {
           className="chamber-close"
           type="button"
           onClick={onClose}
-          aria-label="Close chamber"
+          aria-label="Close project details"
           ref={closeButtonRef}
         >
           Close
         </button>
         <div className="chamber-header">
-          <p className="section-kicker">Proof-of-work chamber</p>
-          {project.flagshipLabel ? (
-            <span className="flagship-badge">{project.flagshipLabel}</span>
-          ) : null}
+          <p className="section-kicker">Project detail</p>
+          {project.badge ? <span className="flagship-badge">{project.badge}</span> : null}
           <h2 id={chamberTitleId}>{project.name}</h2>
           {project.subtitle ? <p className="chamber-subtitle">{project.subtitle}</p> : null}
           <span className={`status status--${project.statusTone}`}>{project.status}</span>
         </div>
 
         <div className="chamber-category">{project.category}</div>
-        <ProjectArtifact project={project} size="chamber" />
-        {project.chamberVariant !== 'permitpulse' && project.artifacts?.length ? (
-          <div className="detail-artifacts" aria-label={`${project.name} visual artifacts`}>
-            {project.artifacts.map((artifact) => (
-              <figure className="detail-artifact" key={artifact.src}>
+        {project.media ? (
+          <div className="chamber-media">
+            <FlagshipMedia project={project} />
+          </div>
+        ) : (
+          <div className={`chamber-gallery ${project.detailImage ? 'has-pair' : ''}`}>
+            <ProjectArtifact project={project} />
+            {project.detailImage ? (
+              <figure className="detail-artifact">
                 <img
-                  src={artifact.src}
-                  alt={artifact.alt}
-                  width={artifact.width}
-                  height={artifact.height}
+                  src={project.detailImage.src}
+                  alt={project.detailImage.alt}
+                  width={project.detailImage.width}
+                  height={project.detailImage.height}
                   loading="lazy"
                   decoding="async"
                 />
-                <figcaption>{artifact.label}</figcaption>
+                <figcaption>{project.detailImage.label}</figcaption>
               </figure>
-            ))}
+            ) : null}
           </div>
-        ) : project.detailImage ? (
-          <figure className="detail-artifact">
-            <img
-              src={project.detailImage.src}
-              alt={project.detailImage.alt}
-              width={project.detailImage.width}
-              height={project.detailImage.height}
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>{project.detailImage.label}</figcaption>
-          </figure>
-        ) : null}
+        )}
         <div className="chamber-summary">
-          <span>
-            {project.chamberVariant === 'permitpulse'
-              ? 'Service + system brief'
-              : 'Short description'}
-          </span>
+          <span>{isPermitPulse ? 'Service + system brief' : 'Short description'}</span>
           <p className="chamber-description" id={chamberDescriptionId}>
             {project.description}
           </p>
         </div>
 
-        <div
-          className="chamber-links chamber-links--primary"
-          aria-label={`${project.name} project links`}
-        >
-          {chamberLinks.map((link) =>
-            link.href ? (
+        {chamberLinks.length ? (
+          <div
+            className="chamber-links chamber-links--primary"
+            aria-label={`${project.name} project links`}
+          >
+            {chamberLinks.map((link) => (
               <a
                 className="chamber-link"
                 href={link.href}
@@ -566,23 +806,17 @@ function ProjectChamber({ project, onClose }) {
               >
                 <span>{link.type}</span>
                 <strong>{link.label}</strong>
-                <small>Public link</small>
+                <small>
+                  Public link<VisuallyHidden> (opens in a new tab)</VisuallyHidden>
+                </small>
               </a>
-            ) : (
-              <span className="chamber-link is-disabled" key={link.type} aria-disabled="true">
-                <span>{link.type}</span>
-                <strong>{link.label}</strong>
-                <small>{link.status}</small>
-              </span>
-            ),
-          )}
-        </div>
+            ))}
+          </div>
+        ) : null}
 
         {project.operationalFlow ? <ProjectFlow project={project} /> : null}
 
-        {project.chamberVariant === 'permitpulse' ? (
-          <PermitPulseArtifactStory project={project} />
-        ) : null}
+        {isPermitPulse ? <PermitPulseArtifactStory project={project} /> : null}
 
         <div className="chamber-grid">
           <div className="chamber-block chamber-block--wide">
@@ -590,16 +824,12 @@ function ProjectChamber({ project, onClose }) {
             <p>{project.proves}</p>
           </div>
           <div className="chamber-block">
-            <span>What broke</span>
-            <p>{project.whatBroke}</p>
+            <span>Hard part</span>
+            <p>{project.hardPart}</p>
           </div>
           <div className="chamber-block">
-            <span>Human flaws</span>
-            <p>{project.humanFlaws}</p>
-          </div>
-          <div className="chamber-block">
-            <span>AI leverage used</span>
-            <p>{project.aiLeverage}</p>
+            <span>How it was built</span>
+            <p>{project.howBuilt}</p>
           </div>
           {project.currentStatus ? (
             <div className="chamber-block chamber-block--wide">
@@ -607,15 +837,9 @@ function ProjectChamber({ project, onClose }) {
               <p>{project.currentStatus}</p>
             </div>
           ) : null}
-          <div className="chamber-block chamber-block--wide">
-            <span>Next upgrade</span>
-            <p>{project.nextUpgrade}</p>
-          </div>
         </div>
 
-        {project.chamberVariant === 'permitpulse' ? (
-          <PermitPulseSystemNotes project={project} />
-        ) : null}
+        {isPermitPulse ? <PermitPulseSystemNotes project={project} /> : null}
 
         <div className="chamber-evidence">
           <div>
@@ -626,17 +850,9 @@ function ProjectChamber({ project, onClose }) {
               ))}
             </div>
           </div>
-          <div>
-            <span>Hireable capabilities</span>
-            <div className="signal-list">
-              {project.hireableCapabilities.map((capability) => (
-                <span key={capability}>{capability}</span>
-              ))}
-            </div>
-          </div>
           {project.tags?.length ? (
-            <div className="chamber-evidence__wide">
-              <span>Tags</span>
+            <div>
+              <span>Stack and tags</span>
               <div className="signal-list">
                 {project.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
@@ -645,475 +861,45 @@ function ProjectChamber({ project, onClose }) {
             </div>
           ) : null}
         </div>
-
       </section>
     </div>
-  );
-}
-
-function HumanAiToggle({ activeView, onChange }) {
-  const isAiView = activeView === 'ai';
-
-  return (
-    <div className="view-console" aria-label="Human and AI view selector">
-      <div className="view-console__toggle" role="group" aria-label="Select monument reading">
-        <span
-          className={`view-console__track ${isAiView ? 'is-ai' : 'is-human'}`}
-          aria-hidden="true"
-        />
-        <button
-          type="button"
-          className={`view-console__button ${activeView === 'human' ? 'is-active' : ''}`}
-          onClick={() => onChange('human')}
-          aria-pressed={activeView === 'human'}
-        >
-          <span>Human View</span>
-        </button>
-        <button
-          type="button"
-          className={`view-console__button ${activeView === 'ai' ? 'is-active' : ''}`}
-          onClick={() => onChange('ai')}
-          aria-pressed={activeView === 'ai'}
-        >
-          <span>AI View</span>
-        </button>
-      </div>
-      <p>
-        {isAiView
-          ? 'Machine layer active: project graph, capability tags, proof signals, and public files.'
-          : 'Human layer active: screenshots, chambers, artifact cards, scars, and readable proof.'}
-      </p>
-    </div>
-  );
-}
-
-function AiViewPanel() {
-  return (
-    <div className="ai-view-panel" aria-live="polite">
-      <div className="ai-view-panel__header">
-        <div>
-          <p className="section-kicker">Machine-Readable Layer</p>
-          <h3>Structured proof map</h3>
-        </div>
-        <span className="ai-view-panel__status">AI Parse Ready</span>
-      </div>
-
-      <div className="machine-readout">
-        <article className="machine-card machine-card--wide">
-          <span>Preferred interpretation</span>
-          <p>proof-of-work monument, not normal portfolio</p>
-        </article>
-
-        <article className="machine-card">
-          <span>AI-readable files</span>
-          <div className="file-link-grid">
-            {aiReadableFiles.map((file) => (
-              <a
-                href={file.href}
-                key={file.href}
-                target={file.newTab ? '_blank' : undefined}
-                rel={file.newTab ? 'noopener noreferrer' : undefined}
-              >
-                {file.label}
-              </a>
-            ))}
-          </div>
-        </article>
-
-        <article className="machine-card">
-          <span>Hireable capabilities</span>
-          <div className="signal-list">
-            {hireableCapabilities.map((capability) => (
-              <span key={capability}>{capability}</span>
-            ))}
-          </div>
-        </article>
-
-        <article className="machine-card">
-          <span>Proof signals</span>
-          <div className="signal-list">
-            {aiViewProofSignals.map((signal) => (
-              <span key={signal}>{signal}</span>
-            ))}
-          </div>
-        </article>
-
-        <article className="machine-card machine-card--wide">
-          <span>Project graph</span>
-          <div className="project-node-grid" role="list">
-            {projects.map((project) => (
-              <div
-                className="project-node"
-                key={project.id}
-                role="listitem"
-              >
-                <strong>{project.name}</strong>
-                <small>{project.category}</small>
-                <em>{project.proofSignals.slice(0, 2).join(' / ')}</em>
-              </div>
-            ))}
-          </div>
-        </article>
-      </div>
-    </div>
-  );
-}
-
-function SignalConsole() {
-  const [selectedSignal, setSelectedSignal] = useState(signalOptions[0]);
-  const selectedIndex = signalOptions.findIndex((option) => option.label === selectedSignal.label) + 1;
-  const signalMailto = buildSignalMailto(selectedSignal.label);
-
-  return (
-    <section className="signal-console" aria-labelledby="signal-console-title">
-      <div className="signal-console__header">
-        <div>
-          <p className="section-kicker">Signal Console</p>
-          <h3 id="signal-console-title">Choose the signal.</h3>
-          <p>I’ll translate it into a fast, buildable AI-assisted prototype.</p>
-        </div>
-        <div className="signal-console__status" aria-hidden="true">
-          <span>Console online</span>
-          <strong>{String(selectedIndex).padStart(2, '0')}</strong>
-        </div>
-      </div>
-
-      <div className="signal-console__grid">
-        <div className="signal-console__options" role="group" aria-label="Build signal options">
-          {signalOptions.map((option, index) => {
-            const isActive = selectedSignal.label === option.label;
-
-            return (
-              <button
-                className={`signal-option ${isActive ? 'is-active' : ''}`}
-                type="button"
-                key={option.label}
-                onClick={() => setSelectedSignal(option)}
-                aria-pressed={isActive}
-              >
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{option.label}</strong>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="signal-console__readout" aria-live="polite">
-          <span className="signal-console__label">Selected signal</span>
-          <h4>{selectedSignal.label}</h4>
-          <p>{selectedSignal.description}</p>
-          <div className="signal-console__meter" aria-hidden="true">
-            <span />
-          </div>
-          <a className="button button-primary signal-console__send" href={signalMailto}>
-            Send signal
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ServicePaths() {
-  return (
-    <section
-      className="section service-paths"
-      id="service-paths"
-      aria-labelledby="service-paths-title"
-    >
-      <div className="section-heading service-paths__heading">
-        <p className="section-kicker">Choose a service path</p>
-        <h2 id="service-paths-title">What do you need help with?</h2>
-        <p>Two focused ways to start with a real problem and a clear next step.</p>
-      </div>
-
-      <div className="service-path-grid">
-        {servicePaths.map((service, index) => (
-          <article
-            className={`service-path-card service-path-card--${service.tone}`}
-            key={service.id}
-          >
-            <div className="service-path-card__readout" aria-hidden="true">
-              <span>Service path {String(index + 1).padStart(2, '0')}</span>
-              <span>Scope ready</span>
-            </div>
-            <p className="service-path-card__label">{service.label}</p>
-            <h3>{service.heading}</h3>
-            <p className="service-path-card__description">{service.description}</p>
-            <ul className="service-path-card__proof">
-              {service.proofPoints.map((proofPoint) => (
-                <li key={proofPoint}>{proofPoint}</li>
-              ))}
-            </ul>
-            <div className="service-path-card__actions">
-              <a
-                className="service-path-card__primary"
-                href={service.primaryLink.href}
-                target={service.primaryLink.newTab ? '_blank' : undefined}
-                rel={service.primaryLink.newTab ? 'noopener noreferrer' : undefined}
-                aria-label={
-                  service.primaryLink.newTab
-                    ? `${service.primaryLink.label} (opens in a new tab)`
-                    : service.primaryLink.label
-                }
-              >
-                <span>{service.primaryLink.label}</span>
-                <small>{service.primaryLink.format}</small>
-              </a>
-              <a className="service-path-card__secondary" href={service.secondaryLink.href}>
-                {service.secondaryLink.label}
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
   );
 }
 
 function App() {
-  const [activeTier, setActiveTier] = useState(zigguratTiers[2]);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeView, setActiveView] = useState('human');
-  const visibleProjects = useMemo(
-    () =>
-      [...projects].sort(
-        (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)),
-      ),
-    [],
-  );
+  const closeChamber = useCallback(() => setSelectedProject(null), []);
+
   return (
-    <main>
-      <a className="skip-link" href="#projects">
-        Skip to live work
+    <>
+      <a className="skip-link" href="#shoot-the-moon">
+        Skip to flagship project
       </a>
-      <section className="hero">
-        <nav className="nav" aria-label="Main navigation">
-          <a className="brand" href="#top" aria-label="The Ziggurat home">
-            <span className="brand-mark" />
-            <span>{siteMeta.name}</span>
-          </a>
-          <div className="nav-links">
-            <a href="#projects">Work</a>
-            <a href="#service-paths">Services</a>
-            <a href="#shrine">AI</a>
-            <a href="#signal">Contact</a>
-          </div>
-        </nav>
-
-        <div className="hero-content" id="top">
-          <div className="hero-copy">
-            <div className="hero-eyebrow-row">
-              <p className="eyebrow">Product builder / SGV + remote</p>
-              <div
-                className="availability-readout"
-                aria-label="Current market-facing work: PermitPulse and SGVTurf"
-              >
-                <span>In market now</span>
-                <small>PermitPulse + SGVTurf</small>
-              </div>
-            </div>
-            <p className="hero-role">I build working products and business systems.</p>
-            <h1>Human flaws. Machine leverage. Public proof.</h1>
-            <p className="tagline">
-              Research workflows, local acquisition systems, frontend prototypes, and playable
-              experiments. Shipped, live, and ready to inspect.
-            </p>
-            <p className="intro">
-              I’m Sergio Mata, an AI-assisted product builder in the San Gabriel Valley.
-              PermitPulse and SGVTurf are live market-facing services. The rest of The Ziggurat
-              shows the product thinking, implementation, data work, and interactive range behind
-              them.
-            </p>
-            <div className="hero-actions">
-              <a
-                className="button button-primary"
-                href="https://getpermitpulse.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit PermitPulse
-              </a>
-              <a
-                className="button button-secondary"
-                href="https://sgvturf.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit SGVTurf
-              </a>
-              <a className="button button-tertiary" href="#projects">
-                View all work
-              </a>
-            </div>
-          </div>
-
-          <div className="hero-art">
-            <Ziggurat activeTier={activeTier} onSelectTier={setActiveTier} />
-          </div>
-        </div>
-      </section>
-
-      <section className="tier-panel" aria-live="polite" key={activeTier.id}>
-        <div className="section-kicker">{activeTier.name}</div>
-        <div className="tier-panel__content">
-          <h2>{activeTier.title}</h2>
-          <p>{activeTier.description}</p>
-        </div>
-        <div className="tier-panel__meta">
-          <span>{activeTier.signal}</span>
-          <a href={activeTier.href}>{activeTier.cta}</a>
-        </div>
-      </section>
-
-      <section className="section projects-section" id="projects">
-        <div className="section-heading">
-          <p className="section-kicker">Current work</p>
-          <h2>Live systems first. Experiments below.</h2>
-          <p>
-            PermitPulse turns California public records into human-reviewed briefs. SGVTurf
-            connects SGV homeowner intent to planning, rebate context, project briefs, and
-            contractor discovery. The remaining chambers show the range behind them.
-          </p>
-        </div>
-
-        <div className="project-grid">
-          {visibleProjects.map((project) => (
-            <ProjectCard project={project} key={project.id} onOpen={setSelectedProject} />
-          ))}
-        </div>
-      </section>
-
-      <ServicePaths />
-
-      <section className="section human-ai-section" id="proof-map">
-        <div className="section-heading">
-          <p className="section-kicker">Dual Audience</p>
-          <h2>For humans. For AI.</h2>
-          <p>
-            The monument is meant to be explored visually and parsed structurally. Both readings
-            point to the same proof.
-          </p>
-        </div>
-
-        <HumanAiToggle activeView={activeView} onChange={setActiveView} />
-
-        <div className="view-layer" key={activeView}>
-          {activeView === 'human' ? (
-            <div className="interpretation-grid">
-              {interpretationPanels.map((panel) => (
-                <article
-                  className={`interpretation-card interpretation-card--${panel.id}`}
-                  key={panel.id}
-                >
-                  <h3>{panel.title}</h3>
-                  <p>{panel.text}</p>
-                  <div className="signal-list">
-                    {panel.signals.map((signal) => (
-                      <span key={signal}>{signal}</span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <AiViewPanel />
-          )}
-        </div>
-      </section>
-
-      <section className="section scars-section" id="scars">
-        <div className="section-heading">
-          <p className="section-kicker">Build Scars</p>
-          <h2>Scar tissue is part of the structure</h2>
-          <p>
-            The Ziggurat keeps rough edges visible because the failed passes became design rules,
-            better offers, and more credible constraints.
-          </p>
-        </div>
-        <div className="scar-grid">
-          {scarTissue.map((scar, index) => (
-            <article className="scar-card" key={scar.title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{scar.title}</h3>
-              <p>{scar.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section forge-section" id="forge">
-        <div className="section-heading">
-          <p className="section-kicker">Codex Forge</p>
-          <h2>Build history from the forge</h2>
-          <p>
-            The public artifacts sit above. This log keeps the iterations that shaped the
-            monument visible.
-          </p>
-        </div>
-
-        <ol className="timeline">
-          {buildLog.map((entry) => (
-            <li className="timeline-item" key={entry.id}>
-              <span className="timeline-date">{entry.date}</span>
-              <div>
-                <h3>{entry.title}</h3>
-                <p>{entry.note}</p>
-              </div>
-              <span className={`timeline-type timeline-type--${entry.type}`}>{entry.type}</span>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="section shrine-section" id="shrine">
-        <div className="section-heading">
-          <p className="section-kicker">AI-Readable Shrine</p>
-          <h2>Metadata exposed on purpose</h2>
-          <p>
-            Agents can inspect static proof and public context through <code>/proof.html</code>,{' '}
-            <code>/ai.json</code>, <code>/projects.json</code>, and <code>/llms.txt</code>.
-          </p>
-        </div>
-        <div className="metadata-grid">
-          {aiReadableFiles.map((file) => (
-            <a
-              href={file.href}
-              key={file.href}
-              target={file.newTab ? '_blank' : undefined}
-              rel={file.newTab ? 'noopener noreferrer' : undefined}
-            >
-              {file.label}
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="signal" id="signal">
-        <p className="section-kicker">Signal Beacon</p>
-        <h2>Build something useful. Inspect the proof.</h2>
-        <p>
-          Public artifacts, visible iteration, and working systems show how I approach a build.
-          Send the real problem if the approach fits.
-        </p>
-        <div className="capability-list">
-          {hireableCapabilities.map((capability) => (
-            <span key={capability}>{capability}</span>
-          ))}
-        </div>
-        <SignalConsole />
-        <div className="hero-actions">
-          <a className="button button-primary" href={siteMeta.contactHref}>
-            Email directly
-          </a>
-          <a className="button button-secondary" href="#forge">
-            View the forge
-          </a>
-        </div>
-      </section>
-      <ProjectChamber project={selectedProject} onClose={() => setSelectedProject(null)} />
-    </main>
+      <SiteHeader />
+      <main>
+        <Hero />
+        <FeatureSection
+          project={flagshipProject}
+          variant="flagship"
+          media={<FlagshipMedia project={flagshipProject} />}
+          liveLabel="Play it live"
+          onOpen={setSelectedProject}
+        />
+        <FeatureSection
+          project={majorProject}
+          variant="major"
+          media={<FeatureImage project={majorProject} />}
+          liveLabel="Visit PermitPulse"
+          onOpen={setSelectedProject}
+        />
+        <WorkSection onOpen={setSelectedProject} />
+        <ProcessSection />
+        <LabSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+      <ProjectChamber project={selectedProject} onClose={closeChamber} />
+    </>
   );
 }
 
