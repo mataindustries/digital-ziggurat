@@ -1,4 +1,5 @@
-import { writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { readFile, writeFile } from 'node:fs/promises';
 
 import {
   siteMeta,
@@ -15,7 +16,32 @@ import {
 } from '../src/data/projects.js';
 
 const publicDir = new URL('../public/', import.meta.url);
+const indexHtmlFile = new URL('../index.html', import.meta.url);
 const metadataName = siteMeta.metadataName ?? siteMeta.name;
+
+// Every media file the site references must exist in public/, so a missing render fails
+// the build instead of shipping a broken poster, video or Watch reel button.
+const mediaPaths = (media) =>
+  [media.poster?.webp, media.poster?.jpg, media.loop, media.reel].filter(Boolean);
+const socialPreviewPath = siteMeta.socialPreviewUrl.startsWith(`${siteMeta.publicUrl}/`)
+  ? siteMeta.socialPreviewUrl.slice(siteMeta.publicUrl.length)
+  : null;
+const missingFiles = [
+  ...publicProjects.flatMap((project) => (project.media ? mediaPaths(project.media) : [])),
+  ...(socialPreviewPath ? [socialPreviewPath] : []),
+].filter((path) => !existsSync(new URL(`.${path}`, publicDir)));
+
+if (missingFiles.length) {
+  throw new Error(`Referenced media is missing from public/: ${missingFiles.join(', ')}`);
+}
+
+// index.html is static, so its social preview tags must be updated together with siteMeta.
+const indexHtml = await readFile(indexHtmlFile, 'utf8');
+for (const tag of ['property="og:image"', 'name="twitter:image"']) {
+  if (!indexHtml.includes(`<meta ${tag} content="${siteMeta.socialPreviewUrl}" />`)) {
+    throw new Error(`index.html ${tag} must match siteMeta.socialPreviewUrl`);
+  }
+}
 
 // Archive projects are filtered out by publicProjects; everything below is public.
 const publicTiers = projectTiers.filter((tier) => tier !== 'archive');
@@ -50,18 +76,24 @@ const availableLinks = (links) =>
 
 const toVisualArtifact = (project) => {
   if (project.media) {
-    return project.media.poster
-      ? {
-          type: 'poster',
-          src: project.media.poster,
-          alt: project.media.alt,
-          width: project.media.width,
-          height: project.media.height,
-        }
-      : {
-          type: 'illustration',
-          status: 'No gameplay poster published yet; the site shows a CSS-only lunar horizon.',
-        };
+    const { media } = project;
+    const posterSrc = media.poster?.jpg ?? media.poster?.webp;
+    return {
+      ...(posterSrc
+        ? {
+            type: 'poster',
+            src: posterSrc,
+            alt: media.alt,
+            width: media.width,
+            height: media.height,
+          }
+        : {
+            type: 'illustration',
+            status: 'No gameplay poster published yet; the site shows a CSS-only lunar horizon.',
+          }),
+      ...(media.loop ? { previewLoop: media.loop } : {}),
+      ...(media.reel ? { reel: media.reel } : {}),
+    };
   }
 
   return project.image
@@ -287,6 +319,7 @@ const formatProject = (project) =>
           ...(project.additionalVisualArtifacts?.map((artifact) => artifact.src) ?? []),
         ].join(', ')}`
       : `  Visual artifacts: ${project.visualArtifact.status}`,
+    project.visualArtifact.reel ? `  Reel: ${project.visualArtifact.reel}` : null,
     project.operationalFlow ? `  Operational flow: ${project.operationalFlow.join(' → ')}` : null,
     project.milestones ? `  Milestones: ${project.milestones.join('; ')}` : null,
     project.engineeringNotes

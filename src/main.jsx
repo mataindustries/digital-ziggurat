@@ -18,6 +18,42 @@ const labProjects = projectsByTier('lab');
 
 const machineReadableFiles = ['/llms.txt', '/ai.json', '/projects.json'];
 
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+const prefersReducedMotion = () => window.matchMedia?.(reducedMotionQuery).matches ?? false;
+
+function usePrefersReducedMotion() {
+  const [reducedMotion, setReducedMotion] = useState(prefersReducedMotion);
+
+  useEffect(() => {
+    const query = window.matchMedia?.(reducedMotionQuery);
+    if (!query) {
+      return undefined;
+    }
+
+    const update = () => setReducedMotion(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  return reducedMotion;
+}
+
+// Locks page scroll behind a modal and returns the function that restores it.
+function lockBodyScroll() {
+  const { overflow, paddingRight } = document.body.style;
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  if (scrollbarWidth > 0) {
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+  }
+  document.body.style.overflow = 'hidden';
+
+  return () => {
+    document.body.style.overflow = overflow;
+    document.body.style.paddingRight = paddingRight;
+  };
+}
+
 const profileLinks = [
   { label: 'Résumé', href: siteMeta.resumeUrl },
   { label: 'GitHub', href: siteMeta.githubUrl },
@@ -91,22 +127,106 @@ function ProjectArtifact({ project }) {
   );
 }
 
-// 16:9 flagship media. Uses the real poster when one exists, otherwise a CSS-only
-// lunar horizon so no fake screenshot or placeholder text ever ships.
-function FlagshipMedia({ project, eager = true }) {
-  const { media } = project;
+// Silent preview loop layered over the poster. It is only requested once the poster
+// has settled (`ready`) and the frame is in view, never runs with reduced motion or
+// Save-Data, pauses off screen or behind a modal, and stays invisible until it is
+// actually playing, so a blocked autoplay leaves the poster in place.
+function FlagshipLoop({ src, poster, frameRef, ready, paused }) {
+  const videoRef = useRef(null);
+  const reducedMotion = usePrefersReducedMotion();
+  const enabled = !reducedMotion && navigator.connection?.saveData !== true;
+  const [inView, setInView] = useState(false);
+  const [requested, setRequested] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!enabled || !ready || !frame || !('IntersectionObserver' in window)) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setRequested(true);
+        }
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, [enabled, ready, frameRef]);
+
+  useEffect(() => {
+    if (!enabled) {
+      setPlaying(false);
+    }
+  }, [enabled]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (inView && !paused) {
+      video.play().catch(() => setPlaying(false));
+    } else {
+      video.pause();
+    }
+  }, [enabled, requested, inView, paused]);
+
+  if (!enabled || !requested) {
+    return null;
+  }
 
   return (
-    <div className="flagship-media">
-      {media?.poster ? (
-        <img
-          src={media.poster}
-          alt={media.alt}
-          width={media.width}
-          height={media.height}
-          loading={eager ? 'eager' : 'lazy'}
-          decoding="async"
-        />
+    <video
+      className={`flagship-media__loop ${playing ? 'is-playing' : ''}`}
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="auto"
+      disablePictureInPicture
+      aria-hidden="true"
+      onPlaying={() => setPlaying(true)}
+      onError={() => setPlaying(false)}
+    />
+  );
+}
+
+// 16:9 flagship media. Uses the real poster when one exists, otherwise a CSS-only
+// lunar horizon so no fake screenshot or placeholder text ever ships. With `preview`,
+// the silent loop, when one is set, plays over it.
+function FlagshipMedia({ media, preview = false, paused = false }) {
+  const frameRef = useRef(null);
+  const [posterLoaded, setPosterLoaded] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
+  const posterSrc = media.poster?.jpg ?? media.poster?.webp;
+  const showPoster = Boolean(posterSrc) && !posterFailed;
+
+  return (
+    <div className="flagship-media" ref={frameRef}>
+      {showPoster ? (
+        <picture>
+          {media.poster.webp && media.poster.jpg ? (
+            <source type="image/webp" srcSet={media.poster.webp} />
+          ) : null}
+          <img
+            src={posterSrc}
+            alt={media.alt}
+            width={media.width}
+            height={media.height}
+            loading="eager"
+            decoding="async"
+            onLoad={() => setPosterLoaded(true)}
+            onError={() => setPosterFailed(true)}
+          />
+        </picture>
       ) : (
         <div className="lunar-fallback" aria-hidden="true">
           <span className="lunar-fallback__stars" />
@@ -115,7 +235,99 @@ function FlagshipMedia({ project, eager = true }) {
           <span className="lunar-fallback__signal" />
         </div>
       )}
+      {preview && media.loop ? (
+        <FlagshipLoop
+          src={media.loop}
+          poster={showPoster ? media.poster.webp ?? media.poster.jpg : undefined}
+          frameRef={frameRef}
+          ready={!showPoster || posterLoaded}
+          paused={paused}
+        />
+      ) : null}
     </div>
+  );
+}
+
+function WatchReelButton({ project, onOpen, className }) {
+  return (
+    <button className={className} type="button" aria-haspopup="dialog" onClick={onOpen}>
+      <span className="play-glyph" aria-hidden="true" />
+      Watch reel
+      <VisuallyHidden> for {project.name}</VisuallyHidden>
+    </button>
+  );
+}
+
+// Full reel in a native modal dialog. The platform handles inert background, Escape and
+// Tab order through the video's own controls; this adds scroll lock and focus return.
+// Playback starts from the Watch reel click, or waits for the play control when the
+// visitor prefers reduced motion.
+function ReelDialog({ project, onClose }) {
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const videoRef = useRef(null);
+  const { media } = project;
+  const titleId = `${project.id}-reel-title`;
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const previouslyFocusedElement = document.activeElement;
+    const unlockScroll = lockBodyScroll();
+
+    dialog.addEventListener('close', onClose);
+    dialog.showModal();
+    closeButtonRef.current?.focus();
+    if (!prefersReducedMotion()) {
+      videoRef.current?.play().catch(() => {});
+    }
+
+    return () => {
+      dialog.removeEventListener('close', onClose);
+      if (dialog.open) {
+        dialog.close();
+      }
+      unlockScroll();
+      previouslyFocusedElement?.focus?.();
+    };
+  }, [onClose]);
+
+  return (
+    <dialog
+      className="reel-dialog"
+      aria-labelledby={titleId}
+      ref={dialogRef}
+      onClick={(event) => {
+        if (event.target === dialogRef.current) {
+          onClose();
+        }
+      }}
+    >
+      <div className="reel-dialog__panel">
+        <div className="reel-dialog__bar">
+          <h2 id={titleId}>{project.name} reel</h2>
+          <button
+            className="chamber-close reel-dialog__close"
+            type="button"
+            onClick={onClose}
+            aria-label="Close reel"
+            ref={closeButtonRef}
+          >
+            Close
+          </button>
+        </div>
+        <div className="reel-dialog__frame">
+          <video
+            ref={videoRef}
+            src={media.reel}
+            poster={media.poster?.webp ?? media.poster?.jpg}
+            controls
+            playsInline
+            preload="metadata"
+            aria-labelledby={titleId}
+          />
+        </div>
+      </div>
+    </dialog>
   );
 }
 
@@ -405,7 +617,7 @@ function FactChips({ project }) {
   );
 }
 
-function FeatureSection({ project, variant, media, liveLabel, onOpen }) {
+function FeatureSection({ project, variant, media, mediaAction, liveLabel, onOpen }) {
   const titleId = `${project.id}-title`;
   const live = project.links.live;
 
@@ -431,6 +643,7 @@ function FeatureSection({ project, variant, media, liveLabel, onOpen }) {
                 {liveLabel}
               </ExternalLink>
             ) : null}
+            {mediaAction}
             <DetailsButton project={project} onOpen={onOpen} />
           </div>
         </div>
@@ -670,13 +883,7 @@ function ProjectChamber({ project, onClose }) {
     }
 
     const previouslyFocusedElement = document.activeElement;
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousBodyPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
-    document.body.style.overflow = 'hidden';
+    const unlockScroll = lockBodyScroll();
     closeButtonRef.current?.focus();
 
     const handleKeyDown = (event) => {
@@ -712,8 +919,7 @@ function ProjectChamber({ project, onClose }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = previousBodyOverflow;
-      document.body.style.paddingRight = previousBodyPaddingRight;
+      unlockScroll();
       previouslyFocusedElement?.focus?.();
     };
   }, [project, onClose]);
@@ -764,7 +970,7 @@ function ProjectChamber({ project, onClose }) {
         <div className="chamber-category">{project.category}</div>
         {project.media ? (
           <div className="chamber-media">
-            <FlagshipMedia project={project} />
+            <FlagshipMedia media={project.media} />
           </div>
         ) : (
           <div className={`chamber-gallery ${project.detailImage ? 'has-pair' : ''}`}>
@@ -868,7 +1074,11 @@ function ProjectChamber({ project, onClose }) {
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [reelOpen, setReelOpen] = useState(false);
   const closeChamber = useCallback(() => setSelectedProject(null), []);
+  const openReel = useCallback(() => setReelOpen(true), []);
+  const closeReel = useCallback(() => setReelOpen(false), []);
+  const flagshipMedia = flagshipProject.media;
 
   return (
     <>
@@ -881,7 +1091,24 @@ function App() {
         <FeatureSection
           project={flagshipProject}
           variant="flagship"
-          media={<FlagshipMedia project={flagshipProject} />}
+          media={
+            <FlagshipMedia
+              media={flagshipMedia}
+              preview
+              paused={reelOpen || Boolean(selectedProject)}
+            />
+          }
+          mediaAction={
+            flagshipMedia.reel ? (
+              <WatchReelButton
+                project={flagshipProject}
+                onOpen={openReel}
+                className={`button ${
+                  flagshipProject.links.live?.href ? 'button-outline' : 'button-primary'
+                }`}
+              />
+            ) : null
+          }
           liveLabel="Play it live"
           onOpen={setSelectedProject}
         />
@@ -899,6 +1126,7 @@ function App() {
       </main>
       <SiteFooter />
       <ProjectChamber project={selectedProject} onClose={closeChamber} />
+      {reelOpen ? <ReelDialog project={flagshipProject} onClose={closeReel} /> : null}
     </>
   );
 }

@@ -168,12 +168,20 @@ export const projects = [
     status: 'Feature freeze',
     statusTone: 'gold',
     badge: 'Flagship project',
-    // Phase 1: no poster asset exists yet, so the page renders a CSS-only lunar fallback.
+    // 16:9 flagship media. Each slot stays null until its file is committed under
+    // public/media/shoot-the-moon/; the build fails if a set path is missing. With no
+    // poster the page renders a CSS-only lunar fallback, and with no loop or reel the
+    // related video and Watch reel controls do not render.
     media: {
-      poster: null,
       width: 1280,
       height: 720,
+      // { webp: '/media/shoot-the-moon/poster-1280.webp', jpg: '/media/shoot-the-moon/poster-1280.jpg' }
+      poster: null,
       alt: 'Shoot the Moon poster frame',
+      // Silent preview loop: '/media/shoot-the-moon/loop-13s-1280.mp4'
+      loop: null,
+      // Full reel with sound and native controls: '/media/shoot-the-moon/reel-57s-1080.mp4'
+      reel: null,
     },
     proofSignals: [
       '576 unit tests across 63 files',
