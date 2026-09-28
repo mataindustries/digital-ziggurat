@@ -17,6 +17,7 @@ import './case-study.css';
 const project = getProject('shoot-the-moon');
 const { media } = project;
 const live = project.links.live;
+const source = project.links.source;
 // "Work" in the site navigation lands on the flagship feature, so back goes there too.
 const workHref = '/#shoot-the-moon';
 
@@ -38,6 +39,14 @@ function SectionHeading({ index, kicker, id, title, children }) {
 function PlayLive({ className, children }) {
   return live?.href ? (
     <ExternalLink className={className} href={live.href}>
+      {children}
+    </ExternalLink>
+  ) : null;
+}
+
+function ViewSource({ className, children }) {
+  return source?.href ? (
+    <ExternalLink className={className} href={source.href}>
       {children}
     </ExternalLink>
   ) : null;
@@ -66,6 +75,7 @@ function CaseHero({ onOpenReel, paused }) {
               onOpen={onOpenReel}
               className="button button-outline"
             />
+            <ViewSource className="button button-secondary">View source</ViewSource>
           </div>
         </div>
         <div className="cs-hero__media">

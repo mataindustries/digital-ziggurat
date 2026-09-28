@@ -274,7 +274,10 @@
           "label": "Play Shoot the Moon",
           "href": "https://shootthemoon.pages.dev/"
         },
-        "source": null,
+        "source": {
+          "label": "View Shoot the Moon source",
+          "href": "https://github.com/mataindustries/shootthemoon"
+        },
         "caseStudy": {
           "label": "Shoot the Moon case study",
           "href": "https://ziggurat.pages.dev/work/shoot-the-moon/"
