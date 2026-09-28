@@ -36,7 +36,8 @@ Flagship project:
   Tags: React 19, TypeScript, Three.js, React Three Fiber, Vite, NASA lunar textures
   Visual artifacts: /media/shoot-the-moon/poster-1280.jpg
   Reel: /media/shoot-the-moon/reel-57s-1080.mp4
-  Public links: none published yet
+  Live: Play Shoot the Moon (https://shootthemoon.pages.dev/)
+  Case study: Shoot the Moon case study (https://ziggurat.pages.dev/work/shoot-the-moon/)
 
 Major project:
 - PermitPulse: Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.

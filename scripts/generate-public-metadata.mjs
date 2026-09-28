@@ -16,7 +16,8 @@ import {
 } from '../src/data/projects.js';
 
 const publicDir = new URL('../public/', import.meta.url);
-const indexHtmlFile = new URL('../index.html', import.meta.url);
+// Static HTML entries whose social preview tags must match siteMeta.socialPreviewUrl.
+const htmlEntries = ['../index.html', '../work/shoot-the-moon/index.html'];
 const metadataName = siteMeta.metadataName ?? siteMeta.name;
 
 // Every media file the site references must exist in public/, so a missing render fails
@@ -35,11 +36,14 @@ if (missingFiles.length) {
   throw new Error(`Referenced media is missing from public/: ${missingFiles.join(', ')}`);
 }
 
-// index.html is static, so its social preview tags must be updated together with siteMeta.
-const indexHtml = await readFile(indexHtmlFile, 'utf8');
-for (const tag of ['property="og:image"', 'name="twitter:image"']) {
-  if (!indexHtml.includes(`<meta ${tag} content="${siteMeta.socialPreviewUrl}" />`)) {
-    throw new Error(`index.html ${tag} must match siteMeta.socialPreviewUrl`);
+// The HTML entries are static, so their social preview tags must be updated together
+// with siteMeta.
+for (const entry of htmlEntries) {
+  const html = await readFile(new URL(entry, import.meta.url), 'utf8');
+  for (const tag of ['property="og:image"', 'name="twitter:image"']) {
+    if (!html.includes(`<meta ${tag} content="${siteMeta.socialPreviewUrl}" />`)) {
+      throw new Error(`${entry.slice(3)} ${tag} must match siteMeta.socialPreviewUrl`);
+    }
   }
 }
 
@@ -61,11 +65,14 @@ const linkTypes = [
   ['caseStudy', 'Case study'],
 ];
 
+// Site-relative links (a case study page) are published as absolute URLs.
+const absoluteUrl = (href) => (href.startsWith('/') ? `${siteMeta.publicUrl}${href}` : href);
+
 const toPublicLinks = (links) =>
   Object.fromEntries(
     linkTypes.map(([key]) => [
       key,
-      links[key]?.href ? { label: links[key].label, href: links[key].href } : null,
+      links[key]?.href ? { label: links[key].label, href: absoluteUrl(links[key].href) } : null,
     ]),
   );
 
@@ -266,6 +273,9 @@ const aiJson = {
   publicResources,
   primaryActions: [
     { label: `View ${flagship.name}`, href: `/#${flagship.id}` },
+    ...(flagship.links.caseStudy
+      ? [{ label: `Read the ${flagship.name} case study`, href: flagship.links.caseStudy.href }]
+      : []),
     ...(major.links.live ? [{ label: major.links.live.label, href: major.links.live.href }] : []),
     { label: 'Work with Sergio', href: '/#contact' },
     { label: 'Email Sergio', href: siteMeta.contactHref },
@@ -556,6 +566,15 @@ const proofHtml = `<!doctype html>
         <ul class="facts">
           ${flagship.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('\n          ')}
         </ul>
+        ${
+          availableLinks(flagship.links).length
+            ? `<ul class="actions">
+          ${availableLinks(flagship.links)
+            .map((link) => `<li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`)
+            .join('\n          ')}
+        </ul>`
+            : ''
+        }
       </section>
 
       <section aria-labelledby="major">

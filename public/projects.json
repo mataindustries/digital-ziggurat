@@ -138,9 +138,15 @@
         "Mobile-first game UI"
       ],
       "links": {
-        "live": null,
+        "live": {
+          "label": "Play Shoot the Moon",
+          "href": "https://shootthemoon.pages.dev/"
+        },
         "source": null,
-        "caseStudy": null
+        "caseStudy": {
+          "label": "Shoot the Moon case study",
+          "href": "https://ziggurat.pages.dev/work/shoot-the-moon/"
+        }
       }
     },
     {

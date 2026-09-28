@@ -270,9 +270,15 @@
         "Save schema v9 with v1 to v8 migrations"
       ],
       "links": {
-        "live": null,
+        "live": {
+          "label": "Play Shoot the Moon",
+          "href": "https://shootthemoon.pages.dev/"
+        },
         "source": null,
-        "caseStudy": null
+        "caseStudy": {
+          "label": "Shoot the Moon case study",
+          "href": "https://ziggurat.pages.dev/work/shoot-the-moon/"
+        }
       }
     },
     {
@@ -716,6 +722,10 @@
     {
       "label": "View Shoot the Moon",
       "href": "/#shoot-the-moon"
+    },
+    {
+      "label": "Read the Shoot the Moon case study",
+      "href": "https://ziggurat.pages.dev/work/shoot-the-moon/"
     },
     {
       "label": "Visit PermitPulse",
