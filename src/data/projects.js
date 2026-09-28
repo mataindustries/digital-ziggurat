@@ -17,9 +17,9 @@ export const siteMeta = {
   description:
     'Frontend and AI implementation engineer in Los Angeles. Flagship: Shoot the Moon, a tested 3D strategy game for phone browsers. Plus PermitPulse, source-backed permit research.',
   publicUrl: 'https://ziggurat.pages.dev',
-  socialPreviewUrl: 'https://ziggurat.pages.dev/the-ziggurat-og.png',
+  socialPreviewUrl: 'https://ziggurat.pages.dev/media/shoot-the-moon/og-home-1200x630.jpg',
   socialPreviewAlt:
-    'The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.',
+    'Shoot the Moon, a 3D lunar strategy game by Sergio Mata: a warhead trailing its exhaust across the lit edge of the Moon',
   preferredInterpretation:
     'An engineering portfolio. Sergio Mata builds ambitious frontend and AI implementation products, ships them, and proves they work.',
   purpose:
@@ -168,20 +168,22 @@ export const projects = [
     status: 'Feature freeze',
     statusTone: 'gold',
     badge: 'Flagship project',
-    // 16:9 flagship media. Each slot stays null until its file is committed under
-    // public/media/shoot-the-moon/; the build fails if a set path is missing. With no
-    // poster the page renders a CSS-only lunar fallback, and with no loop or reel the
-    // related video and Watch reel controls do not render.
+    // 16:9 flagship media from the Shoot the Moon final reel assembly, committed under
+    // public/media/shoot-the-moon/; the build fails if a set path is missing. A slot set
+    // to null drops its control: no poster renders the CSS-only lunar fallback, and no
+    // loop or reel hides the preview video or the Watch reel button.
     media: {
       width: 1280,
       height: 720,
-      // { webp: '/media/shoot-the-moon/poster-1280.webp', jpg: '/media/shoot-the-moon/poster-1280.jpg' }
-      poster: null,
-      alt: 'Shoot the Moon poster frame',
-      // Silent preview loop: '/media/shoot-the-moon/loop-13s-1280.mp4'
-      loop: null,
-      // Full reel with sound and native controls: '/media/shoot-the-moon/reel-57s-1080.mp4'
-      reel: null,
+      poster: {
+        webp: '/media/shoot-the-moon/poster-1280.webp',
+        jpg: '/media/shoot-the-moon/poster-1280.jpg',
+      },
+      alt: 'A Shoot the Moon warhead trailing its exhaust across the lit edge of the Moon',
+      // Silent 13.8s preview loop.
+      loop: '/media/shoot-the-moon/loop-13s-1280.mp4',
+      // Full 57.6s reel with native controls, loaded only from Watch reel. It has no audio.
+      reel: '/media/shoot-the-moon/reel-57s-1080.mp4',
     },
     proofSignals: [
       '576 unit tests across 63 files',

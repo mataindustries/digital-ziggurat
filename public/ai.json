@@ -10,8 +10,8 @@
   "publicUrl": "https://ziggurat.pages.dev",
   "canonicalUrl": "https://ziggurat.pages.dev",
   "staticProofPage": "https://ziggurat.pages.dev/proof.html",
-  "socialPreviewUrl": "https://ziggurat.pages.dev/the-ziggurat-og.png",
-  "socialPreviewAlt": "The Ziggurat social preview image showing a futuristic digital ziggurat and the tagline Human flaws. Machine leverage. Public proof.",
+  "socialPreviewUrl": "https://ziggurat.pages.dev/media/shoot-the-moon/og-home-1200x630.jpg",
+  "socialPreviewAlt": "Shoot the Moon, a 3D lunar strategy game by Sergio Mata: a warhead trailing its exhaust across the lit edge of the Moon",
   "contact": {
     "email": "matasergio741@gmail.com",
     "href": "mailto:matasergio741@gmail.com?subject=Work%20inquiry%20for%20Sergio",
@@ -133,8 +133,13 @@
       "id": "shoot-the-moon",
       "name": "Shoot the Moon",
       "visualArtifact": {
-        "type": "illustration",
-        "status": "No gameplay poster published yet; the site shows a CSS-only lunar horizon."
+        "type": "poster",
+        "src": "/media/shoot-the-moon/poster-1280.jpg",
+        "alt": "A Shoot the Moon warhead trailing its exhaust across the lit edge of the Moon",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/shoot-the-moon/loop-13s-1280.mp4",
+        "reel": "/media/shoot-the-moon/reel-57s-1080.mp4"
       }
     },
     {
@@ -242,8 +247,13 @@
       ],
       "whatItProves": "Ambitious 3D browser work can be built with real test coverage behind it.",
       "visualArtifact": {
-        "type": "illustration",
-        "status": "No gameplay poster published yet; the site shows a CSS-only lunar horizon."
+        "type": "poster",
+        "src": "/media/shoot-the-moon/poster-1280.jpg",
+        "alt": "A Shoot the Moon warhead trailing its exhaust across the lit edge of the Moon",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/shoot-the-moon/loop-13s-1280.mp4",
+        "reel": "/media/shoot-the-moon/reel-57s-1080.mp4"
       },
       "tags": [
         "React 19",
