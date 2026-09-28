@@ -31,6 +31,17 @@ Project cards, ziggurat tier mapping, and build log entries live in:
 src/data/projects.js
 ```
 
+The Shoot the Moon case study is a second Vite page entry at `/work/shoot-the-moon/`:
+
+```text
+work/shoot-the-moon/index.html      page title, canonical and social tags
+src/case-study.jsx                  page sections
+src/data/shootTheMoonCaseStudy.js   copy, with the commit its facts were verified against
+src/case-study.css                  page-only styles
+```
+
+Components shared by both pages live in `src/shared.jsx`.
+
 Public AI-readable files live in:
 
 ```text

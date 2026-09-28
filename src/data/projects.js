@@ -199,10 +199,17 @@ export const projects = [
     ],
     tags: ['React 19', 'TypeScript', 'Three.js', 'React Three Fiber', 'Vite', 'NASA lunar textures'],
     links: {
-      live: null,
+      live: {
+        label: 'Play Shoot the Moon',
+        href: 'https://shootthemoon.pages.dev/',
+      },
       // Held back until the public README drops its stale release-verification language.
       source: null,
-      caseStudy: null,
+      // Site-relative: rendered as an in-tab link and made absolute in public metadata.
+      caseStudy: {
+        label: 'Shoot the Moon case study',
+        href: '/work/shoot-the-moon/',
+      },
     },
   },
   {
