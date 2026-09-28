@@ -203,8 +203,10 @@ export const projects = [
         label: 'Play Shoot the Moon',
         href: 'https://shootthemoon.pages.dev/',
       },
-      // Held back until the public README drops its stale release-verification language.
-      source: null,
+      source: {
+        label: 'View Shoot the Moon source',
+        href: 'https://github.com/mataindustries/shootthemoon',
+      },
       // Site-relative: rendered as an in-tab link and made absolute in public metadata.
       caseStudy: {
         label: 'Shoot the Moon case study',
