@@ -34,7 +34,8 @@ Flagship project:
   Hard part: Keeping player saves compatible while the game kept growing. The save schema is at v9, with migration support for saves from v1 through v8.
   How it was built: React 19, TypeScript, Three.js and React Three Fiber on Vite. The game uses zero external 3D model files and two NASA lunar textures. Verification: 576 unit tests across 63 files and 24 Playwright spec files.
   Tags: React 19, TypeScript, Three.js, React Three Fiber, Vite, NASA lunar textures
-  Visual artifacts: No gameplay poster published yet; the site shows a CSS-only lunar horizon.
+  Visual artifacts: /media/shoot-the-moon/poster-1280.jpg
+  Reel: /media/shoot-the-moon/reel-57s-1080.mp4
   Public links: none published yet
 
 Major project:

@@ -109,8 +109,13 @@
       "hardPart": "Keeping player saves compatible while the game kept growing. The save schema is at v9, with migration support for saves from v1 through v8.",
       "howItWasBuilt": "React 19, TypeScript, Three.js and React Three Fiber on Vite. The game uses zero external 3D model files and two NASA lunar textures. Verification: 576 unit tests across 63 files and 24 Playwright spec files.",
       "visualArtifact": {
-        "type": "illustration",
-        "status": "No gameplay poster published yet; the site shows a CSS-only lunar horizon."
+        "type": "poster",
+        "src": "/media/shoot-the-moon/poster-1280.jpg",
+        "alt": "A Shoot the Moon warhead trailing its exhaust across the lit edge of the Moon",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/shoot-the-moon/loop-13s-1280.mp4",
+        "reel": "/media/shoot-the-moon/reel-57s-1080.mp4"
       },
       "tags": [
         "React 19",
