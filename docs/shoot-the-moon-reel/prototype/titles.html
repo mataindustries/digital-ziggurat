@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+/*FONTS*/
+html, body { margin: 0; padding: 0; background: transparent; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+svg { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="lift" x="-20%" y="-60%" width="140%" height="220%">
+        <feDropShadow dx="0" dy="0" stdDeviation="0.6" flood-color="#000" flood-opacity="0.55"/>
+        <feDropShadow dx="0" dy="1" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+      </filter>
+      <filter id="rimglow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="5"/>
+      </filter>
+      <linearGradient id="crescentFill" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0.55" stop-color="#F3E6CC"/>
+        <stop offset="1" stop-color="#EFAD58"/>
+      </linearGradient>
+    </defs>
+    <g id="plate"></g>
+    <g id="gfx"></g>
+  </svg>
+</div>
+<script>
+const CUES = /*CUES*/null;
+const NS = 'http://www.w3.org/2000/svg';
+const T = CUES.tokens;
+
+function bezier(p1x, p1y, p2x, p2y) {
+  const cx = 3 * p1x, bx = 3 * (p2x - p1x) - cx, ax = 1 - cx - bx;
+  const cy = 3 * p1y, by = 3 * (p2y - p1y) - cy, ay = 1 - cy - by;
+  const sx = (t) => ((ax * t + bx) * t + cx) * t;
+  const sy = (t) => ((ay * t + by) * t + cy) * t;
+  const dx = (t) => (3 * ax * t + 2 * bx) * t + cx;
+  return (x) => {
+    if (x <= 0) return 0; if (x >= 1) return 1;
+    let t = x;
+    for (let i = 0; i < 8; i++) { const e = sx(t) - x; const d = dx(t); if (Math.abs(e) < 1e-7 || Math.abs(d) < 1e-6) break; t -= e / d; }
+    let lo = 0, hi = 1; for (let i = 0; i < 30 && Math.abs(sx(t) - x) > 1e-7; i++) { if (sx(t) < x) lo = t; else hi = t; t = (lo + hi) / 2; }
+    return sy(t);
+  };
+}
+const EASE = { out: bezier(0.22, 1, 0.36, 1), inOut: bezier(0.65, 0, 0.35, 1), linear: (x) => Math.max(0, Math.min(1, x)) };
+const color = (c) => T.color[c] ?? c;
+
+function opacityAt(el, f) {
+  const firstIn = el.in ? el.in.f : (el.draw ? el.draw.f : (el.draws ? el.draws[0].f : (el.occluder ? el.occluder.f : 0)));
+  if (f < firstIn) return 0;
+  let a = 1;
+  if (el.in && el.in.fade) { const k = f - el.in.f; if (k < el.in.fade) a = EASE.out((k + 1) / el.in.fade); }
+  if (el.out) {
+    const k = f - el.out.f;
+    if (el.out.fade) { if (k >= el.out.fade - 1) return 0; if (k >= 0) a *= 1 - EASE.out((k + 1) / el.out.fade); }
+    else if (k >= 0) return 0;
+  }
+  return a;
+}
+function progress(spec, f, ease = 'out') {
+  if (!spec || f < spec.f) return 0;
+  const k = f - spec.f; const n = spec.n;
+  return k >= n ? 1 : EASE[spec.ease || ease]((k + 1) / n);
+}
+function trackingAt(el, f) {
+  const st = T.style[el.style];
+  const tracks = el.track ? (Array.isArray(el.track) ? el.track : [el.track]) : [];
+  let cur = null; for (const t of tracks) if (f >= t.f) cur = t;
+  if (!cur) return tracks.length ? tracks[0].from : st.tracking;
+  return cur.from + (cur.to - cur.from) * progress(cur, f);
+}
+function textAt(el, f) {
+  let s;
+  if (Array.isArray(el.text)) { s = el.text[0][1]; for (const [fr, str] of el.text) if (f >= fr) s = str; }
+  else s = el.text;
+  if (el.counter) {
+    const c = el.counter; const r = Math.max(0, Math.min(1, (f - c.f0) / (c.f1 - c.f0)));
+    let v = c.v0 + (c.v1 - c.v0) * r; v = Math.max(Math.min(c.v0, c.v1), Math.min(Math.max(c.v0, c.v1), v));
+    const cents = Math.floor(v * 100 + 1e-6); const ss = String(Math.floor(cents / 100)).padStart(2, '0'); const hh = String(cents % 100).padStart(2, '0');
+    s = s.replace('{' + c.token + '}', ss + '.' + hh);
+  }
+  return s;
+}
+function plateScale(id, f) {
+  const p = CUES.plateMoves.find((m) => m.id === id); if (!p) return { s: 1, ax: 960, ay: 540 };
+  const r = Math.max(0, Math.min(1, (f - p.from) / (p.to - p.from)));
+  return { s: p.scale[0] + (p.scale[1] - p.scale[0]) * r, ax: p.anchor[0], ay: p.anchor[1] };
+}
+function mk(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); (parent || gfx).appendChild(e); return e; }
+function textNode(el, f, a, parent) {
+  const st = T.style[el.style];
+  const trk = trackingAt(el, f);
+  const sizePx = st.size; const spacingPx = trk * sizePx;
+  const t = mk('text', {
+    x: el.anchor === 'middle' ? el.x + spacingPx / 2 : el.x, y: el.y,
+    'text-anchor': el.anchor === 'middle' ? 'middle' : 'start',
+    fill: color(st.fill), 'fill-opacity': st.opacity * a,
+  }, parent);
+  t.style.fontFamily = `'${st.family}'`;
+  t.style.fontSize = sizePx + 'px';
+  t.style.letterSpacing = spacingPx + 'px';
+  t.style.fontWeight = st.wght;
+  if (st.wdth) t.style.fontVariationSettings = `'wdth' ${st.wdth}, 'wght' ${st.wght}`;
+  t.style.fontKerning = 'normal';
+  t.style.whiteSpace = 'pre';
+  if (st.shadow) t.setAttribute('filter', 'url(#lift)');
+  const str = textAt(el, f);
+  if (el.hideGlyph !== undefined) {
+    [...str].forEach((ch, i) => { const ts = mk('tspan', {}, t); ts.textContent = ch; if (i === el.hideGlyph) ts.setAttribute('fill-opacity', '0'); });
+  } else t.textContent = str;
+  return { node: t, spacingPx, sizePx, str };
+}
+let gfx, plateG;
+window.renderFrame = function (f, opts = {}) {
+  gfx = document.getElementById('gfx'); plateG = document.getElementById('plate');
+  gfx.replaceChildren(); plateG.replaceChildren();
+  if (opts.plate) {
+    const move = CUES.plateMoves.find((m) => f >= m.from && f <= m.to);
+    const { s, ax, ay } = move ? plateScale(move.id, f) : { s: 1, ax: 960, ay: 540 };
+    const img = mk('image', { href: opts.plate, x: 0, y: 0, width: 1920, height: 1080, preserveAspectRatio: 'none',
+      transform: `translate(${ax} ${ay}) scale(${s}) translate(${-ax} ${-ay})` }, plateG);
+    img.style.imageRendering = 'auto';
+  }
+  if (opts.blackPlate) mk('rect', { x: 0, y: 0, width: 1920, height: 1080, fill: '#000' }, plateG);
+  const named = {};
+  for (const ev of CUES.events) {
+    for (const el of ev.elements) {
+      const a = opacityAt(el, f);
+      if (a <= 0 && el.role !== 'crescent') continue;
+      switch (el.role) {
+        case 'primary': case 'kicker': case 'data': case 'digits': case 'tagline': case 'cta': case 'url': case 'footer': case 'wordmarkTop': case 'the': {
+          named[el.role] = textNode(el, f, a); break;
+        }
+        case 'wordmarkBottom': { named[el.role] = textNode(el, f, a); break; }
+        case 'rule': {
+          const w = el.w * (el.draw ? progress(el.draw, f) : 1);
+          if (w > 0) mk('rect', { x: el.x, y: el.y, width: w, height: T.rule.thickness, fill: color(T.rule.fill), 'fill-opacity': T.rule.opacity * a, filter: 'url(#lift)' });
+          break;
+        }
+        case 'segmentRule': {
+          const segW = (el.w - el.gap * (el.segments - 1)) / el.segments;
+          for (let i = 0; i < el.segments; i++) {
+            const x = el.x + i * (segW + el.gap);
+            mk('rect', { x, y: el.y, width: segW, height: T.rule.thickness, fill: color(T.rule.fill), 'fill-opacity': el.unlitOpacity * a });
+            const p = progress(el.draws[i], f);
+            if (p > 0) mk('rect', { x, y: el.y, width: segW * p, height: T.rule.thickness, fill: color('amber'), 'fill-opacity': 0.9 * a });
+          }
+          break;
+        }
+        case 'chip': {
+          mk('rect', { x: el.x, y: el.y, width: T.chip.size, height: T.chip.size, fill: color(el.fill), 'fill-opacity': a });
+          break;
+        }
+        case 'brackets': {
+          let [x0, y0, x1, y1] = el.box;
+          const k = f - el.in.f; const p = k < el.in.fade ? EASE.out((k + 1) / el.in.fade) : 1;
+          const sc = el.in.scaleFrom + (1 - el.in.scaleFrom) * p;
+          const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+          [x0, x1] = [cx + (x0 - cx) * sc, cx + (x1 - cx) * sc]; [y0, y1] = [cy + (y0 - cy) * sc, cy + (y1 - cy) * sc];
+          if (el.followsPlate) { const ps = plateScale(el.followsPlate, f); const tx = (x) => ps.ax + (x - ps.ax) * ps.s, ty = (y) => ps.ay + (y - ps.ay) * ps.s; [x0, x1, y0, y1] = [tx(x0), tx(x1), ty(y0), ty(y1)]; }
+          const L = el.arm; const d = [
+            `M${x0} ${y0 + L}V${y0}H${x0 + L}`, `M${x1 - L} ${y0}H${x1}V${y0 + L}`,
+            `M${x1} ${y1 - L}V${y1}H${x1 - L}`, `M${x0 + L} ${y1}H${x0}V${y1 - L}`].join('');
+          mk('path', { d, fill: 'none', stroke: color(el.fill), 'stroke-width': el.stroke, 'stroke-opacity': el.opacity * a, 'stroke-linecap': 'square', filter: 'url(#lift)' });
+          break;
+        }
+      }
+    }
+  }
+  // second pass: elements positioned relative to measured text (end card)
+  for (const ev of CUES.events) for (const el of ev.elements) {
+    if (el.role === 'hairline') {
+      const the = ev.elements.find((e) => e.role === 'the');
+      const st = T.style[the.style];
+      const probe = textNode({ ...the, track: { f: 0, from: st.tracking, to: st.tracking, n: 1 } }, 99999, 0);
+      const w = probe.node.getComputedTextLength() - probe.spacingPx; probe.node.remove();
+      const left = 960 - w / 2, right = 960 + w / 2;
+      const p = progress(el.draw, f); if (p <= 0) continue;
+      const len = el.length * p;
+      const x = el.side === 'left' ? left - el.gapFromText - len : right + el.gapFromText;
+      mk('rect', { x, y: el.y, width: len, height: el.stroke, fill: color(el.fill), 'fill-opacity': el.opacity });
+    }
+    if (el.role === 'crescent') {
+      const host = named[el.inGlyphOf]; if (!host) continue;
+      const o = el.occluder; if (f < o.f) continue;
+      const p = progress(o, f, 'inOut');
+      const off = o.from + (o.to - o.from) * p;
+      const start = host.node.getStartPositionOfChar(el.glyph); const end = host.node.getEndPositionOfChar(el.glyph);
+      const cap0 = host.sizePx * 0.7; const cx = (start.x + end.x - host.spacingPx) / 2 + (el.opticalShift || 0) * cap0 * el.diameterOfCap;
+      const cap = host.sizePx * 0.7; const D = cap * el.diameterOfCap; const cy = host.node.getAttribute('y') - cap / 2; const r = D / 2;
+      const id = 'm' + f;
+      const mask = mk('mask', { id, maskUnits: 'userSpaceOnUse', x: cx - D, y: cy - D, width: 2 * D, height: 2 * D });
+      mk('circle', { cx, cy, r, fill: '#fff' }, mask);
+      mk('circle', { cx: cx + off * D, cy, r: r * 1.005, fill: '#000' }, mask);
+      const glow = mk('g', { filter: 'url(#rimglow)', opacity: el.rimGlow.opacity * p });
+      mk('circle', { cx, cy, r, fill: color('amber') }, mk('g', { mask: `url(#${id})` }, glow));
+      mk('circle', { cx, cy, r, fill: 'url(#crescentFill)' }, mk('g', { mask: `url(#${id})` }));
+    }
+  }
+  return true;
+};
+window.cuesReady = true;
+</script>
+</body>
+</html>
