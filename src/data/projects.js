@@ -34,35 +34,43 @@ export const siteMeta = {
   resumeUrl: null,
 };
 
+// Routes with a `summary` are the fixed-scope build offers shown as cards in the contact
+// section. The rest render as plain email routes.
 export const contactRoutes = [
   {
-    id: 'frontend',
-    label: 'I need a site or frontend built',
-    subject: 'Frontend project for Sergio',
+    id: 'launch-polish',
+    label: '48-Hour Launch Polish Sprint',
+    summary:
+      'Motion, responsive polish, interaction, presentation and product-demo cleanup for an existing web product.',
+    action: 'Start a polish sprint',
+    subject: 'Launch Polish Sprint for Sergio',
     body: `Hi Sergio,
 
-I have a frontend or web project I would like to discuss.
+I would like a 48-Hour Launch Polish Sprint.
 
-The problem:
+Product link:
 
-Timeline:
+What feels unfinished:
 
-Budget or scope:
+Launch or demo date:
 `,
   },
   {
-    id: 'ai-workflow',
-    label: 'I need an AI workflow implemented',
-    subject: 'AI implementation project for Sergio',
+    id: 'ai-build',
+    label: 'AI Build Sprint',
+    summary:
+      'One tightly scoped feature, prototype, workflow or backlog problem, taken from scope to tested implementation.',
+    action: 'Start a build sprint',
+    subject: 'AI Build Sprint for Sergio',
     body: `Hi Sergio,
 
-I have a workflow I think could be improved with AI or automation.
+I would like an AI Build Sprint.
 
-The current process:
+The feature, prototype or workflow:
 
-The biggest pain point:
+What done looks like:
 
-What I would like to improve:
+Stack and timeline:
 `,
   },
   {
@@ -157,7 +165,11 @@ export const projects = [
       'A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.',
     feature: {
       eyebrow: 'Flagship project',
-      facts: ['576 unit tests', '24 Playwright spec files', 'React + TypeScript + Three.js', 'Save schema v9'],
+      facts: ['576 unit tests', '24 Playwright spec files', 'React + TypeScript + Three.js'],
+      // One line each, so the homepage answers what was hard and what it proves at a glance.
+      hardPart:
+        'Deterministic real-time 3D in a phone browser, with every older save still migrating to schema v9.',
+      proves: 'Ambitious, cinematic browser work can be tested like production software.',
     },
     proves:
       'Ambitious 3D browser work can be built with real test coverage behind it.',
@@ -219,14 +231,19 @@ export const projects = [
     name: 'PermitPulse',
     tier: 'major',
     subtitle:
-      'Public-record software evolved into a human-reviewed California property research service.',
+      'Public-record software evolved into a human-reviewed Los Angeles parcel research service.',
     category: 'Permit + property research / evidence systems',
+    // Offer, labels and wording checked against the live site source,
+    // mataindustries/permitpulse-frontend at cafc876 (2026-10-04).
     description:
-      'Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.',
+      'Cited parcel research for Los Angeles properties. Every finding in a brief is labeled Supported, Conflict or Unknown, tied to its official source and reviewed by a person.',
     feature: {
       eyebrow: 'Real-world product',
-      body: 'Permit and development research gets messy when the answer is spread across city portals, PDFs, maps and conflicting records. PermitPulse follows the paper trail and separates what is verified from what still needs confirmation.',
-      facts: ['Source-backed research', 'Unknown stays unknown', 'Human scope review'],
+      body: 'A live parcel research service for Los Angeles, and the case workspace behind it. Each brief checks official zoning, permit and fire hazard sources, then labels every finding Supported, Conflict or Unknown, with its citation.',
+      facts: ['Every finding cited', 'Unknown stays unknown', 'Reviewed by a person'],
+      hardPart:
+        'Official sources disagree, go stale or go missing, and a gap can never be rounded up to a yes.',
+      proves: 'Real-world research software can stay honest: every claim sourced, every gap visible.',
     },
     proves:
       'A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.',
@@ -234,17 +251,21 @@ export const projects = [
       'Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.',
     howBuilt:
       'AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval. Briefs preserve source limits and unknowns and do not make legal, title, architectural, engineering, entitlement, code-compliance, or government determinations.',
-    status: 'Founding offer live',
+    status: 'Introductory offer live',
     currentStatus:
-      'Three California properties for $299 total. Target turnaround is within 48 business hours per address after scope confirmation.',
+      '$149 per property, or three properties for $299, City of Los Angeles first. Briefs are delivered within 48 business hours after scope and payment are confirmed.',
     statusTone: 'gold',
     badge: 'In market now',
-    image: '/projects/permitpulse/permitpulse-00-mission-control-collage.webp',
+    // Rendered from the live homepage's Parcel Research Brief component, which the site
+    // itself labels a fictional parcel illustration. Below 720px the findings crop is
+    // served instead, so the labels stay legible on a phone.
+    image: '/projects/permitpulse/permitpulse-parcel-brief-1500.webp',
+    imageMobile: '/projects/permitpulse/permitpulse-parcel-brief-findings-1200.webp',
     imageAlt:
-      'PermitPulse research system collage showing Mission Control, evidence records, review workflow, and client brief output',
-    imageWidth: 1200,
-    imageHeight: 800,
-    visualStatus: 'Research workflow + brief',
+      'PermitPulse Parcel Research Brief for a fictional Los Angeles parcel: zoning designation Supported by ZIMAS, fire hazard zone mapping in Conflict between CAL FIRE and ZIMAS, and older permit records Unknown at LADBS. Every finding cited and reviewed by a person.',
+    imageWidth: 1500,
+    imageHeight: 1000,
+    visualStatus: 'Parcel research brief',
     visualPosition: 'center center',
     chamberVariant: 'permitpulse',
     operationalFlow: [
@@ -333,7 +354,7 @@ export const projects = [
       'Anonymized real-property proof',
       'Human-reviewed briefs',
       'Decision-ready output',
-      'Live founding offer',
+      'Live introductory offer',
     ],
     engineeringNotes: {
       summary:
@@ -354,7 +375,7 @@ export const projects = [
     proofSignals: [
       'Anonymized real-property proof',
       'Human-reviewed research briefs',
-      'Live three-property founding offer',
+      'Live introductory offer',
       'Evidence-centered workflow',
     ],
     hireableCapabilities: [

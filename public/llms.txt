@@ -29,7 +29,7 @@ Read the site as an engineering portfolio. Shoot the Moon is the flagship projec
 Flagship project:
 - Shoot the Moon: A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.
   Status: Feature freeze
-  Key facts: 576 unit tests; 24 Playwright spec files; React + TypeScript + Three.js; Save schema v9
+  Key facts: 576 unit tests; 24 Playwright spec files; React + TypeScript + Three.js
   Proof: Ambitious 3D browser work can be built with real test coverage behind it.
   Hard part: Keeping player saves compatible while the game kept growing. The save schema is at v9, with migration support for saves from v1 through v8.
   How it was built: React 19, TypeScript, Three.js and React Three Fiber on Vite. The game uses zero external 3D model files and two NASA lunar textures. Verification: 576 unit tests across 63 files and 24 Playwright spec files.
@@ -41,17 +41,17 @@ Flagship project:
   Case study: Shoot the Moon case study (https://ziggurat.pages.dev/work/shoot-the-moon/)
 
 Major project:
-- PermitPulse: Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.
-  Status: Founding offer live
-  Current status: Three California properties for $299 total. Target turnaround is within 48 business hours per address after scope confirmation.
-  Key facts: Source-backed research; Unknown stays unknown; Human scope review
+- PermitPulse: Cited parcel research for Los Angeles properties. Every finding in a brief is labeled Supported, Conflict or Unknown, tied to its official source and reviewed by a person.
+  Status: Introductory offer live
+  Current status: $149 per property, or three properties for $299, City of Los Angeles first. Briefs are delivered within 48 business hours after scope and payment are confirmed.
+  Key facts: Every finding cited; Unknown stays unknown; Reviewed by a person
   Proof: A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.
   Hard part: Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.
   How it was built: AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval. Briefs preserve source limits and unknowns and do not make legal, title, architectural, engineering, entitlement, code-compliance, or government determinations.
   Tags: Civic operations, Evidence provenance, Reviewer workflow, Cloudflare infrastructure, Private storage, Deterministic rendering
-  Visual artifacts: /projects/permitpulse/permitpulse-00-mission-control-collage.webp, /projects/permitpulse/permitpulse-01-mission-control.png, /projects/permitpulse/permitpulse-02-evidence-register.png, /projects/permitpulse/permitpulse-03-case-timeline.png, /projects/permitpulse/permitpulse-04-packet-preview.png, /projects/permitpulse/permitpulse-05-review-packet-cover.png, /projects/permitpulse/permitpulse-06-executive-summary.png, /projects/permitpulse/permitpulse-07-dependency-map.png, /projects/permitpulse/permitpulse-08-supporting-evidence.png
+  Visual artifacts: /projects/permitpulse/permitpulse-parcel-brief-1500.webp, /projects/permitpulse/permitpulse-01-mission-control.png, /projects/permitpulse/permitpulse-02-evidence-register.png, /projects/permitpulse/permitpulse-03-case-timeline.png, /projects/permitpulse/permitpulse-04-packet-preview.png, /projects/permitpulse/permitpulse-05-review-packet-cover.png, /projects/permitpulse/permitpulse-06-executive-summary.png, /projects/permitpulse/permitpulse-07-dependency-map.png, /projects/permitpulse/permitpulse-08-supporting-evidence.png
   Operational flow: Research public sources → Separate certainty → Human review → Deliver concise brief
-  Milestones: Primary and public-source research; Facts, inference, conflicts, and unknowns separated; Anonymized real-property proof; Human-reviewed briefs; Decision-ready output; Live founding offer
+  Milestones: Primary and public-source research; Facts, inference, conflicts, and unknowns separated; Anonymized real-property proof; Human-reviewed briefs; Decision-ready output; Live introductory offer
   Engineering: React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.
   Technologies: React, TypeScript, Cloudflare Workers, Cloudflare D1, Cloudflare R2, Better Auth, Deterministic rendering, PDF generation, AI-assisted review, Human approval
   Live: Visit PermitPulse (https://getpermitpulse.com)
@@ -115,8 +115,8 @@ How I build with AI:
 Evidence: Shoot the Moon reached 576 passing unit tests before feature freeze.
 
 Contact routes:
-- I need a site or frontend built: mailto:matasergio741@gmail.com?subject=Frontend%20project%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20have%20a%20frontend%20or%20web%20project%20I%20would%20like%20to%20discuss.%0A%0AThe%20problem%3A%0A%0ATimeline%3A%0A%0ABudget%20or%20scope%3A%0A
-- I need an AI workflow implemented: mailto:matasergio741@gmail.com?subject=AI%20implementation%20project%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20have%20a%20workflow%20I%20think%20could%20be%20improved%20with%20AI%20or%20automation.%0A%0AThe%20current%20process%3A%0A%0AThe%20biggest%20pain%20point%3A%0A%0AWhat%20I%20would%20like%20to%20improve%3A%0A
+- 48-Hour Launch Polish Sprint: Motion, responsive polish, interaction, presentation and product-demo cleanup for an existing web product. mailto:matasergio741@gmail.com?subject=Launch%20Polish%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20a%2048-Hour%20Launch%20Polish%20Sprint.%0A%0AProduct%20link%3A%0A%0AWhat%20feels%20unfinished%3A%0A%0ALaunch%20or%20demo%20date%3A%0A
+- AI Build Sprint: One tightly scoped feature, prototype, workflow or backlog problem, taken from scope to tested implementation. mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20an%20AI%20Build%20Sprint.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A
 - I have overflow work: mailto:matasergio741@gmail.com?subject=Agency%20overflow%20work%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20am%20looking%20for%20implementation%20help%20on%20an%20existing%20project.%0A%0AStack%3A%0A%0AWork%20needed%3A%0A%0ATimeline%3A%0A
 
 Available implementation work:
