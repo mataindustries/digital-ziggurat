@@ -992,6 +992,50 @@ p {
   line-height: 1.6;
 }
 
+/* Hard part / Proves: two compact lines between the description and the fact chips. */
+.feature-readout {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 38rem;
+  margin: 0 0 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.feature-readout div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+@media (min-width: 720px) {
+  .feature-readout div {
+    grid-template-columns: 5.4rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+}
+
+.feature-readout dt {
+  color: #7fe3f2;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.feature-readout dd {
+  margin: 0;
+  color: #dbe7ea;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.feature--major .feature-readout dt {
+  color: #86e9bf;
+}
+
 .fact-chips {
   display: flex;
   flex-wrap: wrap;
@@ -1029,6 +1073,18 @@ p {
 .feature__actions .button {
   flex: 0 1 auto;
   min-width: 8.5rem;
+}
+
+/* Phones: the primary action takes its own full-width row, secondaries share the next. */
+@media (max-width: 719px) {
+  .feature__actions .button {
+    flex: 1 1 0;
+    min-width: max-content;
+  }
+
+  .feature__actions .button-primary {
+    flex-basis: 100%;
+  }
 }
 
 .flagship-media,
@@ -1072,6 +1128,7 @@ p {
 
 .flagship-media picture,
 .flagship-media img,
+.feature-image picture,
 .feature-image img {
   display: block;
   width: 100%;
@@ -1120,10 +1177,6 @@ p {
   box-shadow:
     0 26px 64px rgba(0, 0, 0, 0.44),
     0 0 38px rgba(55, 221, 155, 0.06);
-}
-
-.feature-image img {
-  filter: saturate(1.02) contrast(1.04) brightness(0.92);
 }
 
 /* CSS-only lunar horizon used until a real Shoot the Moon poster exists. */
@@ -1441,10 +1494,24 @@ p {
   text-underline-offset: 0.22em;
 }
 
-.contact-email__copy.button {
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  max-width: 26rem;
+  margin-top: 1.25rem;
+}
+
+.contact-actions .button {
+  flex: 1 1 auto;
+}
+
+.contact-actions__address {
+  display: inline-flex;
+  align-items: center;
   min-height: 44px;
-  padding: 0.5rem 0.9rem;
-  font-size: 0.88rem;
+  margin-top: 0.35rem;
+  font-size: 1rem;
 }
 
 .copy-status {
@@ -1453,6 +1520,35 @@ p {
   color: var(--cyan);
   font-size: 0.86rem;
   font-weight: 700;
+}
+
+.build-offers {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.build-offer {
+  padding: 1rem 1rem 0.35rem;
+  border: 1px solid var(--line);
+  border-top-color: rgba(32, 228, 255, 0.55);
+  background: rgba(4, 10, 13, 0.72);
+}
+
+.build-offer h3 {
+  margin-bottom: 0.4rem;
+  color: #f4f8f6;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.build-offer p {
+  margin-bottom: 0.15rem;
+  color: #b9cad2;
+  font-size: 0.93rem;
+  line-height: 1.5;
 }
 
 .contact-routes {
@@ -1745,6 +1841,11 @@ p {
   border-right: 1px solid rgba(244, 199, 107, 0.55);
   border-bottom: 1px solid rgba(244, 199, 107, 0.55);
   opacity: 0.72;
+}
+
+.project-artifact picture {
+  display: block;
+  min-width: 0;
 }
 
 .project-artifact img {

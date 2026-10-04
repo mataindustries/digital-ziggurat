@@ -177,8 +177,9 @@ const visualArtifacts = projectRecords.map((project) => ({
   visualArtifact: project.visualArtifact,
 }));
 
-const publicContactRoutes = contactRoutes.map(({ label, subject, href }) => ({
+const publicContactRoutes = contactRoutes.map(({ label, summary, subject, href }) => ({
   label,
+  ...(summary ? { summary } : {}),
   subject,
   href,
 }));
@@ -377,7 +378,9 @@ ${processSteps.map((step, index) => `${index + 1}. ${step.title}: ${step.body}`)
 Evidence: ${processEvidence}
 
 Contact routes:
-${publicContactRoutes.map((route) => `- ${route.label}: ${route.href}`).join('\n')}
+${publicContactRoutes
+  .map((route) => `- ${route.label}: ${route.summary ? `${route.summary} ` : ''}${route.href}`)
+  .join('\n')}
 
 Available implementation work:
 ${implementationServices
@@ -630,11 +633,16 @@ const proofHtml = `<!doctype html>
 
       <section aria-labelledby="contact">
         <h2 id="contact">Have something difficult to build?</h2>
-        <p class="note">I am open to contract work, agency overflow and full-time roles. If you have a workflow, product or web problem that needs a fast technical implementation, send me the problem.</p>
+        <p class="note">Open to contract work, agency overflow and full-time roles. Start with a focused sprint, or send me the problem.</p>
         <p><a href="${escapeHtml(siteMeta.contactHref)}">${escapeHtml(siteMeta.email)}</a></p>
         <ul class="actions">
           ${publicContactRoutes
-            .map((route) => `<li><a href="${escapeHtml(route.href)}">${escapeHtml(route.label)}</a></li>`)
+            .map(
+              (route) =>
+                `<li><a href="${escapeHtml(route.href)}">${escapeHtml(route.label)}</a>${
+                  route.summary ? ` ${escapeHtml(route.summary)}` : ''
+                }</li>`,
+            )
             .join('\n          ')}
           ${siteMeta.githubUrl ? `<li><a href="${escapeHtml(siteMeta.githubUrl)}">GitHub</a></li>` : ''}
           <li><a href="${escapeHtml(siteMeta.publicUrl)}">Open the visual site</a></li>

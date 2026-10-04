@@ -27,6 +27,9 @@ const majorProject = getProject('permitpulse');
 const supportingProjects = projectsByTier('supporting');
 const labProjects = projectsByTier('lab');
 
+const buildOffers = contactRoutes.filter((route) => route.summary);
+const emailRoutes = contactRoutes.filter((route) => !route.summary);
+
 const profileLinks = [
   { label: 'Résumé', href: siteMeta.resumeUrl },
   { label: 'GitHub', href: siteMeta.githubUrl },
@@ -42,6 +45,13 @@ function DetailsButton({ project, onOpen, className = 'button button-secondary' 
   );
 }
 
+// Phones get a tighter crop of the same image when a project has one, in the same frame.
+function MobileImageSource({ project }) {
+  return project.imageMobile ? (
+    <source media="(max-width: 719px)" srcSet={project.imageMobile} />
+  ) : null;
+}
+
 function ProjectArtifact({ project }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -52,22 +62,25 @@ function ProjectArtifact({ project }) {
       }`}
     >
       {project.image ? (
-        <img
-          className={imageLoaded ? 'is-loaded' : ''}
-          src={project.image}
-          alt={project.imageAlt}
-          width={project.imageWidth}
-          height={project.imageHeight}
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(true)}
-          style={{
-            objectFit: project.visualFit ?? 'cover',
-            objectPosition: project.visualPosition ?? 'center center',
-          }}
-        />
+        <picture>
+          <MobileImageSource project={project} />
+          <img
+            className={imageLoaded ? 'is-loaded' : ''}
+            src={project.image}
+            alt={project.imageAlt}
+            width={project.imageWidth}
+            height={project.imageHeight}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)}
+            style={{
+              objectFit: project.visualFit ?? 'cover',
+              objectPosition: project.visualPosition ?? 'center center',
+            }}
+          />
+        </picture>
       ) : (
         <div className="project-artifact__state">
           <span>{project.status}</span>
@@ -85,15 +98,18 @@ function ProjectArtifact({ project }) {
 function FeatureImage({ project }) {
   return (
     <div className="feature-image">
-      <img
-        src={project.image}
-        alt={project.imageAlt}
-        width={project.imageWidth}
-        height={project.imageHeight}
-        loading="lazy"
-        decoding="async"
-        style={{ objectPosition: project.visualPosition ?? 'center center' }}
-      />
+      <picture>
+        <MobileImageSource project={project} />
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          width={project.imageWidth}
+          height={project.imageHeight}
+          loading="lazy"
+          decoding="async"
+          style={{ objectPosition: project.visualPosition ?? 'center center' }}
+        />
+      </picture>
     </div>
   );
 }
@@ -338,6 +354,28 @@ function FactChips({ project }) {
   );
 }
 
+function FeatureReadout({ project }) {
+  const lines = [
+    ['Hard part', project.feature.hardPart],
+    ['Proves', project.feature.proves],
+  ].filter(([, text]) => text);
+
+  if (!lines.length) {
+    return null;
+  }
+
+  return (
+    <dl className="feature-readout">
+      {lines.map(([term, text]) => (
+        <div key={term}>
+          <dt>{term}</dt>
+          <dd>{text}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 function FeatureSection({ project, variant, media, mediaAction, liveLabel, onOpen }) {
   const titleId = `${project.id}-title`;
   const live = project.links.live;
@@ -358,6 +396,7 @@ function FeatureSection({ project, variant, media, mediaAction, liveLabel, onOpe
         <div className="feature__media">{media}</div>
         <div className="feature__body">
           <p className="feature__text">{project.feature.body ?? project.description}</p>
+          <FeatureReadout project={project} />
           <FactChips project={project} />
           <div className="feature__actions">
             {live?.href ? (
@@ -530,29 +569,45 @@ function ContactSection() {
     <section className="section contact-section" id="contact" aria-labelledby="contact-title">
       <div className="contact-panel">
         <div className="contact-panel__intro">
-          <p className="section-kicker">Work with me</p>
+          <p className="section-kicker">Available for select builds</p>
           <h2 id="contact-title">Have something difficult to build?</h2>
           <p>
-            I am open to contract work, agency overflow and full-time roles. If you have a
-            workflow, product or web problem that needs a fast technical implementation, send me
-            the problem.
+            Open to contract work, agency overflow and full-time roles. Start with a focused
+            sprint, or send me the problem.
           </p>
-          <div className="contact-email">
-            <a className="contact-email__address" href={siteMeta.contactHref}>
-              {siteMeta.email}
+          <div className="contact-actions">
+            <a className="button button-primary" href={siteMeta.contactHref}>
+              Start a conversation
+              <VisuallyHidden> (opens an email draft)</VisuallyHidden>
             </a>
-            <button className="button button-secondary contact-email__copy" type="button" onClick={copyEmail}>
+            <button className="button button-secondary" type="button" onClick={copyEmail}>
               Copy email
             </button>
           </div>
+          <a className="contact-email__address contact-actions__address" href={siteMeta.contactHref}>
+            {siteMeta.email}
+          </a>
           <p className="copy-status" role="status">
             {copyStatus}
           </p>
         </div>
 
         <div className="contact-panel__routes">
+          <ul className="build-offers" aria-label="Build sprints">
+            {buildOffers.map((offer) => (
+              <li className="build-offer" key={offer.id}>
+                <h3>{offer.label}</h3>
+                <p>{offer.summary}</p>
+                <a className="text-action build-offer__action" href={offer.href}>
+                  {offer.action}
+                  <VisuallyHidden> (opens an email draft)</VisuallyHidden>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
           <ul className="contact-routes">
-            {contactRoutes.map((route) => (
+            {emailRoutes.map((route) => (
               <li key={route.id}>
                 <a className="contact-route" href={route.href}>
                   <span>{route.label}</span>

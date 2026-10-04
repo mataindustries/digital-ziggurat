@@ -7,14 +7,16 @@
   "serviceArea": "Los Angeles / remote",
   "contactRoutes": [
     {
-      "label": "I need a site or frontend built",
-      "subject": "Frontend project for Sergio",
-      "href": "mailto:matasergio741@gmail.com?subject=Frontend%20project%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20have%20a%20frontend%20or%20web%20project%20I%20would%20like%20to%20discuss.%0A%0AThe%20problem%3A%0A%0ATimeline%3A%0A%0ABudget%20or%20scope%3A%0A"
+      "label": "48-Hour Launch Polish Sprint",
+      "summary": "Motion, responsive polish, interaction, presentation and product-demo cleanup for an existing web product.",
+      "subject": "Launch Polish Sprint for Sergio",
+      "href": "mailto:matasergio741@gmail.com?subject=Launch%20Polish%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20a%2048-Hour%20Launch%20Polish%20Sprint.%0A%0AProduct%20link%3A%0A%0AWhat%20feels%20unfinished%3A%0A%0ALaunch%20or%20demo%20date%3A%0A"
     },
     {
-      "label": "I need an AI workflow implemented",
-      "subject": "AI implementation project for Sergio",
-      "href": "mailto:matasergio741@gmail.com?subject=AI%20implementation%20project%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20have%20a%20workflow%20I%20think%20could%20be%20improved%20with%20AI%20or%20automation.%0A%0AThe%20current%20process%3A%0A%0AThe%20biggest%20pain%20point%3A%0A%0AWhat%20I%20would%20like%20to%20improve%3A%0A"
+      "label": "AI Build Sprint",
+      "summary": "One tightly scoped feature, prototype, workflow or backlog problem, taken from scope to tested implementation.",
+      "subject": "AI Build Sprint for Sergio",
+      "href": "mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20an%20AI%20Build%20Sprint.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A"
     },
     {
       "label": "I have overflow work",
@@ -102,8 +104,7 @@
       "keyFacts": [
         "576 unit tests",
         "24 Playwright spec files",
-        "React + TypeScript + Three.js",
-        "Save schema v9"
+        "React + TypeScript + Three.js"
       ],
       "whatItProves": "Ambitious 3D browser work can be built with real test coverage behind it.",
       "hardPart": "Keeping player saves compatible while the game kept growing. The save schema is at v9, with migration support for saves from v1 through v8.",
@@ -156,28 +157,28 @@
       "id": "permitpulse",
       "name": "PermitPulse",
       "tier": "major",
-      "subtitle": "Public-record software evolved into a human-reviewed California property research service.",
+      "subtitle": "Public-record software evolved into a human-reviewed Los Angeles parcel research service.",
       "category": "Permit + property research / evidence systems",
-      "status": "Founding offer live",
-      "currentStatus": "Three California properties for $299 total. Target turnaround is within 48 business hours per address after scope confirmation.",
+      "status": "Introductory offer live",
+      "currentStatus": "$149 per property, or three properties for $299, City of Los Angeles first. Briefs are delivered within 48 business hours after scope and payment are confirmed.",
       "badge": "In market now",
-      "summary": "Source-backed research distilled into concise briefs that separate verified facts, inference, conflicts, unknowns, and missing records.",
+      "summary": "Cited parcel research for Los Angeles properties. Every finding in a brief is labeled Supported, Conflict or Unknown, tied to its official source and reviewed by a person.",
       "keyFacts": [
-        "Source-backed research",
+        "Every finding cited",
         "Unknown stays unknown",
-        "Human scope review"
+        "Reviewed by a person"
       ],
       "whatItProves": "A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.",
       "hardPart": "Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.",
       "howItWasBuilt": "AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval. Briefs preserve source limits and unknowns and do not make legal, title, architectural, engineering, entitlement, code-compliance, or government determinations.",
       "visualArtifact": {
         "type": "screenshot",
-        "src": "/projects/permitpulse/permitpulse-00-mission-control-collage.webp",
-        "alt": "PermitPulse research system collage showing Mission Control, evidence records, review workflow, and client brief output",
-        "status": "Research workflow + brief",
+        "src": "/projects/permitpulse/permitpulse-parcel-brief-1500.webp",
+        "alt": "PermitPulse Parcel Research Brief for a fictional Los Angeles parcel: zoning designation Supported by ZIMAS, fire hazard zone mapping in Conflict between CAL FIRE and ZIMAS, and older permit records Unknown at LADBS. Every finding cited and reviewed by a person.",
+        "status": "Parcel research brief",
         "position": "center center",
-        "width": 1200,
-        "height": 800
+        "width": 1500,
+        "height": 1000
       },
       "additionalVisualArtifacts": [
         {
@@ -259,7 +260,7 @@
         "Anonymized real-property proof",
         "Human-reviewed briefs",
         "Decision-ready output",
-        "Live founding offer"
+        "Live introductory offer"
       ],
       "operationalFlow": [
         "Research public sources",
@@ -293,7 +294,7 @@
       "proofSignals": [
         "Anonymized real-property proof",
         "Human-reviewed research briefs",
-        "Live three-property founding offer",
+        "Live introductory offer",
         "Evidence-centered workflow"
       ],
       "hireableCapabilities": [
