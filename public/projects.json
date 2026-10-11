@@ -28,6 +28,7 @@
     "Frontend engineering with React and TypeScript",
     "3D web interfaces with Three.js and React Three Fiber",
     "AI-assisted workflow implementation",
+    "MCP servers and tools for coding agents",
     "Automated testing with unit tests and Playwright",
     "Cloudflare Workers, D1, and R2 systems",
     "Review workflows and deterministic PDF generation",
@@ -90,7 +91,7 @@
   "staticProofPage": "https://ziggurat.pages.dev/proof.html",
   "linkPolicy": "Only real public URLs are included. Unavailable destinations are null and are never rendered as buttons.",
   "tierPolicy": "Projects are tiered flagship, major, supporting and lab. Archived projects are not published.",
-  "visualArtifactPolicy": "Project visuals are screenshots or project images. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
+  "visualArtifactPolicy": "Project visuals are screenshots, project images, or posters and silent preview loops cut from a project's own video. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
   "projectCount": 8,
   "projects": [
     {
@@ -313,6 +314,73 @@
       }
     },
     {
+      "id": "daemonv12",
+      "name": "DaemonV12",
+      "tier": "major",
+      "subtitle": "Coding agents have code tools. DaemonV12 gives them instruments.",
+      "category": "Agent tooling / headless music engine",
+      "status": "Public beta",
+      "currentStatus": "Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.",
+      "badge": "v0.6 released",
+      "summary": "A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.",
+      "keyFacts": [
+        "9 MCP tools",
+        "Deterministic WAV + stems",
+        "v0.6 sample performance"
+      ],
+      "whatItProves": "Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.",
+      "hardPart": "Determinism while the engine grows. Version 0.6 adds per-note playback rate, glides and source offsets through band-limited interpolation that is bit-exact on every platform, and projects without the new fields still render byte-identical audio to 0.5.0, with the GLASS//FIRE master and stems pinned in the test suite.",
+      "howItWasBuilt": "Node and TypeScript, with FluidSynth and a SoundFont for General MIDI voices and FFmpeg for MP3, effects and analysis. Nine stdio MCP tools cover project create, read, validate and patch, instrument and kit discovery, render, analyze and render provenance. Each release came from a real piece of music: GLASS//FIRE needed samples performed, not just triggered, and that became v0.6.",
+      "visualArtifact": {
+        "type": "poster",
+        "src": "/media/daemonv12/glass-fire-poster-1280.jpg",
+        "alt": "GLASS//FIRE end card for DaemonV12: \"Give agents instruments.\" in white type on black",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/daemonv12/glass-fire-loop-7_5s-720.mp4",
+        "caption": "GLASS//FIRE · composed by an agent through MCP · silent excerpt"
+      },
+      "operationalFlow": [
+        "Connect one workspace",
+        "Compose as data",
+        "Process + automate",
+        "Render WAV, MP3, stems",
+        "Analyze the result"
+      ],
+      "tags": [
+        "Node.js",
+        "TypeScript",
+        "Model Context Protocol",
+        "FluidSynth",
+        "FFmpeg",
+        "Deterministic rendering",
+        "CC0 sound packs"
+      ],
+      "proofSignals": [
+        "Nine stdio MCP tools",
+        "SHA-256 provenance for every render",
+        "GLASS//FIRE pinned byte for byte in tests",
+        "Clean-room package test in CI"
+      ],
+      "hireableCapabilities": [
+        "MCP servers for coding agents",
+        "Deterministic render pipelines",
+        "Audio DSP and offline rendering",
+        "Validated, transactional tool APIs"
+      ],
+      "links": {
+        "live": {
+          "label": "Visit DaemonV12",
+          "href": "https://daemonv12.pages.dev"
+        },
+        "source": {
+          "label": "View DaemonV12 source",
+          "href": "https://github.com/mataindustries/daemonv12"
+        },
+        "caseStudy": null
+      }
+    },
+    {
       "id": "sgvturf",
       "name": "SGVTurf",
       "tier": "supporting",
@@ -442,56 +510,6 @@
         "live": {
           "label": "Play live",
           "href": "https://xibalba.pages.dev"
-        },
-        "source": null,
-        "caseStudy": null
-      }
-    },
-    {
-      "id": "bouncebox",
-      "name": "BounceBox",
-      "tier": "supporting",
-      "subtitle": "Physics Groovebox",
-      "category": "Experimental Browser Instrument",
-      "status": "Live instrument",
-      "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
-      "oneLiner": "A mobile music playground built with Web Audio, generative MIDI and dense touch controls.",
-      "stack": "TypeScript · Web Audio · Generative MIDI",
-      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.",
-      "hardPart": "Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.",
-      "howItWasBuilt": "TypeScript iteration with a custom ChatGPT MIDI Lab for generative pattern design, plus mobile UI passes, control naming, and performance-state testing. The taste work was making unusual mechanics feel intentional.",
-      "visualArtifact": {
-        "type": "screenshot",
-        "src": "/images/bouncebox/bouncebox-808-performance.png",
-        "alt": "BounceBox 808 performance screen",
-        "status": "Live performance",
-        "position": "center center",
-        "width": 720,
-        "height": 1342
-      },
-      "detailVisualArtifact": {
-        "type": "screenshot",
-        "src": "/images/bouncebox/bouncebox-midi-lab.png",
-        "alt": "BounceBox MIDI Lab screen",
-        "label": "MIDI Lab",
-        "width": 720,
-        "height": 1457
-      },
-      "proofSignals": [
-        "Physics groovebox",
-        "AI-generated MIDI",
-        "Mobile performance UI"
-      ],
-      "hireableCapabilities": [
-        "Creative coding",
-        "Interactive audio systems",
-        "Generative UI",
-        "Mobile-first web instruments"
-      ],
-      "links": {
-        "live": {
-          "label": "Open live instrument",
-          "href": "https://bouncebox.pages.dev"
         },
         "source": null,
         "caseStudy": null

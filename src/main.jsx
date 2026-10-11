@@ -23,7 +23,8 @@ import {
 import './styles.css';
 
 const flagshipProject = getProject('shoot-the-moon');
-const majorProject = getProject('permitpulse');
+const permitPulseProject = getProject('permitpulse');
+const daemonV12Project = getProject('daemonv12');
 const supportingProjects = projectsByTier('supporting');
 const labProjects = projectsByTier('lab');
 
@@ -198,6 +199,25 @@ function PermitPulseSystemNotes({ project }) {
   );
 }
 
+// The stone faces every tier shares, around its label.
+function TierFaces({ level, children }) {
+  return (
+    <>
+      <span className="tier-top-plane" aria-hidden="true" />
+      <span className="tier-side tier-side--left" aria-hidden="true" />
+      <span className="tier-side tier-side--right" aria-hidden="true" />
+      <span className="tier-surface">
+        <span className="tier-index" aria-hidden="true">
+          {String(level).padStart(2, '0')}
+        </span>
+        {children}
+        <span className="tier-etching" aria-hidden="true" />
+      </span>
+      <span className="tier-glow" aria-hidden="true" />
+    </>
+  );
+}
+
 function Ziggurat() {
   // Rendered top to bottom so keyboard and screen reader order matches page order.
   const tiersTopDown = zigguratTiers
@@ -271,27 +291,37 @@ function Ziggurat() {
       </svg>
 
       <nav className="ziggurat-core" aria-label="Page sections">
-        {tiersTopDown.map((tier) => (
-          <a
-            className={`tier tier-${tier.level} ${
-              tier.level === zigguratTiers.length ? 'is-summit' : ''
-            }`}
-            key={tier.id}
-            href={tier.href}
-          >
-            <span className="tier-top-plane" aria-hidden="true" />
-            <span className="tier-side tier-side--left" aria-hidden="true" />
-            <span className="tier-side tier-side--right" aria-hidden="true" />
-            <span className="tier-surface">
-              <span className="tier-index" aria-hidden="true">
-                {String(tier.level).padStart(2, '0')}
-              </span>
-              <span className="tier-label">{tier.name}</span>
-              <span className="tier-etching" aria-hidden="true" />
-            </span>
-            <span className="tier-glow" aria-hidden="true" />
-          </a>
-        ))}
+        {tiersTopDown.map((tier) => {
+          const className = `tier tier-${tier.level} ${
+            tier.level === zigguratTiers.length ? 'is-summit' : ''
+          }`;
+
+          // Peers share one step as a labelled group; each name is its own link.
+          return tier.links ? (
+            <div
+              className={`${className} tier--peers`}
+              key={tier.id}
+              role="group"
+              aria-label={tier.name}
+            >
+              <TierFaces level={tier.level}>
+                <span className="tier-label tier-label--peers">
+                  {tier.links.map((link) => (
+                    <a className="tier-peer" key={link.id} href={link.href}>
+                      {link.name}
+                    </a>
+                  ))}
+                </span>
+              </TierFaces>
+            </div>
+          ) : (
+            <a className={className} key={tier.id} href={tier.href}>
+              <TierFaces level={tier.level}>
+                <span className="tier-label">{tier.name}</span>
+              </TierFaces>
+            </a>
+          );
+        })}
         <div className="ceremonial-ascent" aria-hidden="true">
           {Array.from({ length: 11 }).map((_, index) => (
             <span key={`stair-${index}`} />
@@ -376,9 +406,10 @@ function FeatureReadout({ project }) {
   );
 }
 
-function FeatureSection({ project, variant, media, mediaAction, liveLabel, onOpen }) {
+function FeatureSection({ project, variant, media, mediaAction, liveLabel, sourceLabel, onOpen }) {
   const titleId = `${project.id}-title`;
   const live = project.links.live;
+  const source = project.links.source;
   const caseStudy = project.links.caseStudy;
 
   return (
@@ -405,6 +436,15 @@ function FeatureSection({ project, variant, media, mediaAction, liveLabel, onOpe
               </ExternalLink>
             ) : null}
             {mediaAction}
+            {sourceLabel && source?.href ? (
+              <ExternalLink
+                className="button button-outline"
+                href={source.href}
+                context={`for ${project.name}`}
+              >
+                {sourceLabel}
+              </ExternalLink>
+            ) : null}
             {/* A case study page supersedes the Details chamber for the same project. */}
             {caseStudy?.href ? (
               <a className="button button-secondary" href={caseStudy.href}>
@@ -851,6 +891,8 @@ function App() {
   const openReel = useCallback(() => setReelOpen(true), []);
   const closeReel = useCallback(() => setReelOpen(false), []);
   const flagshipMedia = flagshipProject.media;
+  // Preview loops pause behind any modal.
+  const loopsPaused = reelOpen || Boolean(selectedProject);
 
   return (
     <>
@@ -863,13 +905,7 @@ function App() {
         <FeatureSection
           project={flagshipProject}
           variant="flagship"
-          media={
-            <FlagshipMedia
-              media={flagshipMedia}
-              preview
-              paused={reelOpen || Boolean(selectedProject)}
-            />
-          }
+          media={<FlagshipMedia media={flagshipMedia} preview paused={loopsPaused} />}
           mediaAction={
             flagshipMedia.reel ? (
               <WatchReelButton
@@ -885,10 +921,18 @@ function App() {
           onOpen={setSelectedProject}
         />
         <FeatureSection
-          project={majorProject}
+          project={permitPulseProject}
           variant="major"
-          media={<FeatureImage project={majorProject} />}
+          media={<FeatureImage project={permitPulseProject} />}
           liveLabel="Visit PermitPulse"
+          onOpen={setSelectedProject}
+        />
+        <FeatureSection
+          project={daemonV12Project}
+          variant="daemonv12"
+          media={<FlagshipMedia media={daemonV12Project.media} preview paused={loopsPaused} />}
+          liveLabel="Visit DaemonV12"
+          sourceLabel="View source"
           onOpen={setSelectedProject}
         />
         <WorkSection onOpen={setSelectedProject} />

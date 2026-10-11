@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Frontend and AI implementation engineer in Los Angeles. Flagship: Shoot the Moon, a tested 3D strategy game for phone browsers. Plus PermitPulse, source-backed permit research." />
+    <meta name="description" content="Frontend and AI implementation engineer in Los Angeles. Flagship: Shoot the Moon, a tested 3D strategy game for phone browsers. Plus PermitPulse, source-backed permit research, and DaemonV12, a music engine for coding agents." />
     <meta name="author" content="Sergio Mata" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://ziggurat.pages.dev/proof.html" />
@@ -88,6 +88,7 @@
         text-transform: uppercase;
       }
       .note { color: #a9bec7; }
+      .major + .major { margin-top: 1.75rem; }
       .facts {
         display: flex;
         flex-wrap: wrap;
@@ -152,7 +153,7 @@
 
       <section aria-labelledby="what-this-is">
         <h2 id="what-this-is">What this is</h2>
-        <p>Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse is the main real-world product. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.</p>
+        <p>Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse (real-world product) and DaemonV12 (agent-native engine) are the major projects. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.</p>
       </section>
 
       <section aria-labelledby="flagship">
@@ -172,14 +173,28 @@
       </section>
 
       <section aria-labelledby="major">
-        <h2 id="major">Real-world product</h2>
-        <h3><a href="https://getpermitpulse.com">PermitPulse</a></h3>
-        <p>A live parcel research service for Los Angeles, and the case workspace behind it. Each brief checks official zoning, permit and fire hazard sources, then labels every finding Supported, Conflict or Unknown, with its citation.</p>
-        <ul class="facts">
-          <li>Every finding cited</li>
-          <li>Unknown stays unknown</li>
-          <li>Reviewed by a person</li>
-        </ul>
+        <h2 id="major">Major projects</h2>
+        <article class="major">
+          <h3><a href="https://getpermitpulse.com">PermitPulse</a></h3>
+          <p>A live parcel research service for Los Angeles, and the case workspace behind it. Each brief checks official zoning, permit and fire hazard sources, then labels every finding Supported, Conflict or Unknown, with its citation.</p>
+          <ul class="facts">
+            <li>Every finding cited</li>
+            <li>Unknown stays unknown</li>
+            <li>Reviewed by a person</li>
+          </ul>
+        </article>
+        <article class="major">
+          <h3><a href="https://daemonv12.pages.dev">DaemonV12</a></h3>
+          <p>A headless music engine built for coding agents. There is no model inside: the agent writes every note as data through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3 and stems, with effects and automation. GLASS//FIRE, a 24-second piece an agent composed entirely through MCP, is the production proof.</p>
+          <ul class="facts">
+            <li>9 MCP tools</li>
+            <li>Deterministic WAV + stems</li>
+            <li>v0.6 sample performance</li>
+          </ul>
+          <ul class="actions">
+            <li><a href="https://github.com/mataindustries/daemonv12">View DaemonV12 source</a></li>
+          </ul>
+        </article>
       </section>
 
       <section aria-labelledby="supporting">
@@ -188,7 +203,6 @@
           <li><a href="https://sgvturf.com"><strong>SGVTurf</strong></a>: A local-service site built around search intent, service-area pages and lead capture.</li>
           <li><a href="https://snapshot-studio.pages.dev"><strong>Snapshot Studio</strong></a>: Turns a business intake into a structured improvement snapshot and action plan.</li>
           <li><a href="https://xibalba.pages.dev"><strong>Xibalba Pinball</strong></a>: Browser pinball with physics, scoring and a global leaderboard.</li>
-          <li><a href="https://bouncebox.pages.dev"><strong>BounceBox</strong></a>: A mobile music playground built with Web Audio, generative MIDI and dense touch controls.</li>
         </ul>
       </section>
 

@@ -745,6 +745,7 @@ p {
 
 .tier:hover,
 .tier:focus-visible,
+.tier--peers:focus-within,
 .tier.is-summit {
   z-index: 2;
   color: #ffffff;
@@ -759,6 +760,7 @@ p {
 
 .tier:hover .tier-top-plane,
 .tier:focus-visible .tier-top-plane,
+.tier--peers:focus-within .tier-top-plane,
 .tier.is-summit .tier-top-plane {
   opacity: 1;
   transform: translateY(-1px);
@@ -770,6 +772,7 @@ p {
 
 .tier:hover .tier-surface,
 .tier:focus-visible .tier-surface,
+.tier--peers:focus-within .tier-surface,
 .tier.is-summit .tier-surface {
   border-color: rgba(32, 228, 255, 0.9);
   background:
@@ -1064,6 +1067,17 @@ p {
   color: #c4f5de;
 }
 
+/* DaemonV12 borrows GLASS//FIRE's monochrome: silver accents instead of a hue. */
+.feature--daemonv12 .feature-readout dt {
+  color: #dfe8eb;
+}
+
+.feature--daemonv12 .fact-chips li {
+  border-color: rgba(236, 242, 244, 0.3);
+  background: rgba(236, 242, 244, 0.06);
+  color: #f1f6f7;
+}
+
 .feature__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1152,6 +1166,37 @@ p {
 
 .flagship-media__loop.is-playing {
   opacity: 1;
+}
+
+/* The `glass` tone frames DaemonV12's GLASS//FIRE media: white hairlines on the film's
+   own black ground. */
+.flagship-media--glass {
+  border-color: rgba(236, 242, 244, 0.24);
+  background: #000;
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.5),
+    0 0 48px rgba(236, 242, 244, 0.04);
+}
+
+.flagship-media--glass::before {
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.flagship-media--glass::after {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.flagship-media-figure {
+  margin: 0;
+}
+
+.flagship-media__caption {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
 }
 
 .play-glyph {
@@ -1750,6 +1795,11 @@ p {
       ". media";
   }
 
+  /* Mirrors the major layout, so the features alternate sides down the page. */
+  .feature--daemonv12 .feature__layout {
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+  }
+
   .contact-panel {
     grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
     align-items: center;
@@ -1760,7 +1810,7 @@ p {
 
 @media (min-width: 1020px) {
   .work-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .process-steps {
@@ -1980,6 +2030,11 @@ p {
   font-size: 0.52rem;
   font-weight: 950;
   place-items: center;
+}
+
+/* An odd last step takes the whole row instead of leaving a gap beside it. */
+.permitpulse-flow li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .status {
@@ -2800,6 +2855,7 @@ p {
   .tier-surface,
   .tier-surface::before,
   .tier-glow,
+  .tier-peer,
   .project-artifact img,
   .chamber-link,
   .permitpulse-artifact,
@@ -3129,6 +3185,7 @@ p {
 
 .tier:hover,
 .tier:focus-visible,
+.tier--peers:focus-within,
 .tier.is-summit {
   transform: translateY(-5px) scale(1.008);
   filter: saturate(0.88) brightness(0.94);
@@ -3140,6 +3197,7 @@ p {
 
 .tier:hover .tier-surface,
 .tier:focus-visible .tier-surface,
+.tier--peers:focus-within .tier-surface,
 .tier.is-summit .tier-surface {
   border-color: rgba(94, 222, 216, 0.56);
   background:
@@ -3361,6 +3419,47 @@ p {
   transform: rotate(-3deg);
 }
 
+/* Peers share one step: the label splits into two links, each a full-height target.
+   This follows both tier blocks so the split label keeps its own padding. */
+.tier--peers {
+  cursor: default;
+}
+
+.tier-label--peers {
+  display: flex;
+  align-self: stretch;
+  padding: 0;
+}
+
+.tier-peer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.78rem 0.75rem 0.84rem;
+  pointer-events: auto;
+  transition: color 220ms ease;
+}
+
+.tier-peer + .tier-peer::before {
+  position: absolute;
+  top: 34%;
+  bottom: 36%;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(224, 178, 99, 0.7), transparent);
+  content: "";
+}
+
+.tier-peer:hover,
+.tier-peer:focus-visible {
+  color: #8ef1ea;
+}
+
+.tier-peer:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -4px;
+}
+
 /* Tiers are section links rendered top-down; z-index keeps the original
    bottom-to-top paint order so each upper tier sits on the one below it. */
 .ziggurat-core .tier-1 {
@@ -3384,7 +3483,8 @@ p {
 }
 
 .ziggurat-core .tier:hover,
-.ziggurat-core .tier:focus-visible {
+.ziggurat-core .tier:focus-visible,
+.ziggurat-core .tier--peers:focus-within {
   z-index: 6;
 }
 
