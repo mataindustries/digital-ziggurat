@@ -15,7 +15,7 @@ export const siteMeta = {
   tagline: 'Human flaws. Machine leverage. Public proof.',
   title: 'Sergio Mata | Frontend + AI Implementation',
   description:
-    'Frontend and AI implementation engineer in Los Angeles. Flagship: Shoot the Moon, a tested 3D strategy game for phone browsers. Plus PermitPulse, source-backed permit research.',
+    'Frontend and AI implementation engineer in Los Angeles. Flagship: Shoot the Moon, a tested 3D strategy game for phone browsers. Plus PermitPulse, source-backed permit research, and DaemonV12, a music engine for coding agents.',
   publicUrl: 'https://ziggurat.pages.dev',
   socialPreviewUrl: 'https://ziggurat.pages.dev/media/shoot-the-moon/og-home-1200x630.jpg',
   socialPreviewAlt:
@@ -402,6 +402,91 @@ export const projects = [
     },
   },
   {
+    id: 'daemonv12',
+    name: 'DaemonV12',
+    tier: 'major',
+    subtitle: 'Coding agents have code tools. DaemonV12 gives them instruments.',
+    category: 'Agent tooling / headless music engine',
+    // Release facts and wording checked against mataindustries/daemonv12 at ed75e9e
+    // (0.6.0, 2026-10-11) and the live site. Only WAV, stems and manifests repeat byte
+    // for byte; the project calls MP3 a listening copy.
+    description:
+      'A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.',
+    feature: {
+      eyebrow: 'Agent-native engine',
+      body: 'A headless music engine built for coding agents. There is no model inside: the agent writes every note as data through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3 and stems, with effects and automation. GLASS//FIRE, a 24-second piece an agent composed entirely through MCP, is the production proof.',
+      facts: ['9 MCP tools', 'Deterministic WAV + stems', 'v0.6 sample performance'],
+      hardPart:
+        'Keeping renders byte-identical while v0.6 taught samples to change speed, glide and start mid-file.',
+      proves: 'Agents can compose, render and verify real music when the instrument is built as a tool.',
+    },
+    proves:
+      'Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.',
+    hardPart:
+      'Determinism while the engine grows. Version 0.6 adds per-note playback rate, glides and source offsets through band-limited interpolation that is bit-exact on every platform, and projects without the new fields still render byte-identical audio to 0.5.0, with the GLASS//FIRE master and stems pinned in the test suite.',
+    howBuilt:
+      'Node and TypeScript, with FluidSynth and a SoundFont for General MIDI voices and FFmpeg for MP3, effects and analysis. Nine stdio MCP tools cover project create, read, validate and patch, instrument and kit discovery, render, analyze and render provenance. Each release came from a real piece of music: GLASS//FIRE needed samples performed, not just triggered, and that became v0.6.',
+    status: 'Public beta',
+    currentStatus:
+      'Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.',
+    statusTone: 'cyan',
+    badge: 'v0.6 released',
+    // GLASS//FIRE media under public/media/daemonv12/: the poster is the live site's own
+    // end card, and the loop is a silent 7.5-second cut (16.0–23.5 s, five bars at 160 BPM)
+    // of the 24-second showcase. `tone: 'glass'` gives the frame its monochrome treatment.
+    media: {
+      width: 1280,
+      height: 720,
+      tone: 'glass',
+      poster: {
+        jpg: '/media/daemonv12/glass-fire-poster-1280.jpg',
+      },
+      alt: 'GLASS//FIRE end card for DaemonV12: "Give agents instruments." in white type on black',
+      loop: '/media/daemonv12/glass-fire-loop-7_5s-720.mp4',
+      reel: null,
+      caption: 'GLASS//FIRE · composed by an agent through MCP · silent excerpt',
+    },
+    operationalFlow: [
+      'Connect one workspace',
+      'Compose as data',
+      'Process + automate',
+      'Render WAV, MP3, stems',
+      'Analyze the result',
+    ],
+    proofSignals: [
+      'Nine stdio MCP tools',
+      'SHA-256 provenance for every render',
+      'GLASS//FIRE pinned byte for byte in tests',
+      'Clean-room package test in CI',
+    ],
+    hireableCapabilities: [
+      'MCP servers for coding agents',
+      'Deterministic render pipelines',
+      'Audio DSP and offline rendering',
+      'Validated, transactional tool APIs',
+    ],
+    tags: [
+      'Node.js',
+      'TypeScript',
+      'Model Context Protocol',
+      'FluidSynth',
+      'FFmpeg',
+      'Deterministic rendering',
+      'CC0 sound packs',
+    ],
+    links: {
+      live: {
+        label: 'Visit DaemonV12',
+        href: 'https://daemonv12.pages.dev',
+      },
+      source: {
+        label: 'View DaemonV12 source',
+        href: 'https://github.com/mataindustries/daemonv12',
+      },
+      caseStudy: null,
+    },
+  },
+  {
     id: 'sgvturf',
     name: 'SGVTurf',
     tier: 'supporting',
@@ -542,7 +627,7 @@ export const projects = [
   {
     id: 'bouncebox',
     name: 'BounceBox',
-    tier: 'supporting',
+    tier: 'archive',
     subtitle: 'Physics Groovebox',
     category: 'Experimental Browser Instrument',
     oneLiner:
@@ -760,12 +845,21 @@ export const projectsByTier = (tier) => projects.filter((project) => project.tie
 
 export const getProject = (id) => projects.find((project) => project.id === id);
 
-// The visual Ziggurat tiers are section navigation, listed bottom to top.
+// The visual Ziggurat tiers are section navigation, listed bottom to top. A tier with
+// `links` instead of `href` holds peers: the two major projects share one step, and
+// each name links to its own section.
 export const zigguratTiers = [
   { id: 'lab', name: 'Lab', href: '#lab' },
   { id: 'process', name: 'How I build', href: '#process' },
   { id: 'work', name: 'Shipped work', href: '#work' },
-  { id: 'permitpulse', name: 'PermitPulse', href: '#permitpulse' },
+  {
+    id: 'major',
+    name: 'Major projects',
+    links: [
+      { id: 'permitpulse', name: 'PermitPulse', href: '#permitpulse' },
+      { id: 'daemonv12', name: 'DaemonV12', href: '#daemonv12' },
+    ],
+  },
   { id: 'shoot-the-moon', name: 'Shoot the Moon', href: '#shoot-the-moon' },
 ];
 
@@ -773,6 +867,7 @@ export const hireableCapabilities = [
   'Frontend engineering with React and TypeScript',
   '3D web interfaces with Three.js and React Three Fiber',
   'AI-assisted workflow implementation',
+  'MCP servers and tools for coding agents',
   'Automated testing with unit tests and Playwright',
   'Cloudflare Workers, D1, and R2 systems',
   'Review workflows and deterministic PDF generation',
@@ -788,6 +883,7 @@ export const proofSignals = [
   'Shoot the Moon: 576 unit tests across 63 files',
   'Shoot the Moon: 24 Playwright spec files',
   'PermitPulse: live source-backed research product',
+  'DaemonV12: reference renders pinned byte for byte in its tests',
   'Human review before research delivery',
   'Live deployed browser projects',
   'Structured public metadata',

@@ -24,7 +24,7 @@ GitHub: https://github.com/mataindustries
 
 Purpose: Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.
 
-Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse is the main real-world product. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.
+Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse (real-world product) and DaemonV12 (agent-native engine) are the major projects. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.
 
 Flagship project:
 - Shoot the Moon: A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.
@@ -40,7 +40,7 @@ Flagship project:
   Source: View Shoot the Moon source (https://github.com/mataindustries/shootthemoon)
   Case study: Shoot the Moon case study (https://ziggurat.pages.dev/work/shoot-the-moon/)
 
-Major project:
+Major projects:
 - PermitPulse: Cited parcel research for Los Angeles properties. Every finding in a brief is labeled Supported, Conflict or Unknown, tied to its official source and reviewed by a person.
   Status: Introductory offer live
   Current status: $149 per property, or three properties for $299, City of Los Angeles first. Briefs are delivered within 48 business hours after scope and payment are confirmed.
@@ -55,6 +55,18 @@ Major project:
   Engineering: React and TypeScript shape the operational interface. Cloudflare Workers run the application edge, D1 holds structured case state, R2 keeps evidence private, and Better Auth protects the workspace. The packet engine produces consistent HTML and PDF deliverables from reviewed records.
   Technologies: React, TypeScript, Cloudflare Workers, Cloudflare D1, Cloudflare R2, Better Auth, Deterministic rendering, PDF generation, AI-assisted review, Human approval
   Live: Visit PermitPulse (https://getpermitpulse.com)
+- DaemonV12: A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.
+  Status: Public beta
+  Current status: Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.
+  Key facts: 9 MCP tools; Deterministic WAV + stems; v0.6 sample performance
+  Proof: Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.
+  Hard part: Determinism while the engine grows. Version 0.6 adds per-note playback rate, glides and source offsets through band-limited interpolation that is bit-exact on every platform, and projects without the new fields still render byte-identical audio to 0.5.0, with the GLASS//FIRE master and stems pinned in the test suite.
+  How it was built: Node and TypeScript, with FluidSynth and a SoundFont for General MIDI voices and FFmpeg for MP3, effects and analysis. Nine stdio MCP tools cover project create, read, validate and patch, instrument and kit discovery, render, analyze and render provenance. Each release came from a real piece of music: GLASS//FIRE needed samples performed, not just triggered, and that became v0.6.
+  Tags: Node.js, TypeScript, Model Context Protocol, FluidSynth, FFmpeg, Deterministic rendering, CC0 sound packs
+  Visual artifacts: /media/daemonv12/glass-fire-poster-1280.jpg
+  Operational flow: Connect one workspace → Compose as data → Process + automate → Render WAV, MP3, stems → Analyze the result
+  Live: Visit DaemonV12 (https://daemonv12.pages.dev)
+  Source: View DaemonV12 source (https://github.com/mataindustries/daemonv12)
 
 Supporting projects:
 - SGVTurf: Connects local homeowner search intent to city guidance, official-source rebate context, a structured project brief, and relevant contractor discovery.
@@ -81,13 +93,6 @@ Supporting projects:
   How it was built: Built with AI support for physics implementation, Phaser iteration, asset direction prompts, debugging loops, and mobile polish. Table feel, collision edge cases, and taste decisions were earned through failed passes.
   Visual artifacts: /projects/xibalba.jpg
   Live: Play live (https://xibalba.pages.dev)
-- BounceBox: A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.
-  Status: Live instrument
-  Proof: Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.
-  Hard part: Rhythm feel, touch ergonomics, MIDI prompt boundaries, and dense performance controls all had to be tuned into something playable.
-  How it was built: TypeScript iteration with a custom ChatGPT MIDI Lab for generative pattern design, plus mobile UI passes, control naming, and performance-state testing. The taste work was making unusual mechanics feel intentional.
-  Visual artifacts: /images/bouncebox/bouncebox-808-performance.png
-  Live: Open live instrument (https://bouncebox.pages.dev)
 
 Lab:
 - Danger Close: A tactical browser survival game about piloting a salvage drone through dead zones, collecting resources, surviving enemy pressure, and upgrading hardware between runs.
@@ -133,6 +138,7 @@ Proof signals:
 - Shoot the Moon: 576 unit tests across 63 files
 - Shoot the Moon: 24 Playwright spec files
 - PermitPulse: live source-backed research product
+- DaemonV12: reference renders pinned byte for byte in its tests
 - Human review before research delivery
 - Live deployed browser projects
 - Structured public metadata
@@ -141,6 +147,7 @@ Hireable capabilities:
 - Frontend engineering with React and TypeScript
 - 3D web interfaces with Three.js and React Three Fiber
 - AI-assisted workflow implementation
+- MCP servers and tools for coding agents
 - Automated testing with unit tests and Playwright
 - Cloudflare Workers, D1, and R2 systems
 - Review workflows and deterministic PDF generation

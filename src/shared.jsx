@@ -132,9 +132,10 @@ function FlagshipLoop({ src, poster, frameRef, ready, paused }) {
   );
 }
 
-// 16:9 flagship media. Uses the real poster when one exists, otherwise a CSS-only
-// lunar horizon so no fake screenshot or placeholder text ever ships. With `preview`,
-// the silent loop, when one is set, plays over it.
+// 16:9 project media. Uses the real poster when one exists. Otherwise the default frame
+// shows a CSS-only lunar horizon, so no fake screenshot or placeholder text ever ships,
+// and a `tone` frame (DaemonV12's monochrome `glass`) keeps its own black ground. With
+// `preview`, the silent loop, when one is set, plays over it. A `caption` sits below.
 export function FlagshipMedia({ media, preview = false, paused = false }) {
   const frameRef = useRef(null);
   const [posterLoaded, setPosterLoaded] = useState(false);
@@ -142,8 +143,11 @@ export function FlagshipMedia({ media, preview = false, paused = false }) {
   const posterSrc = media.poster?.jpg ?? media.poster?.webp;
   const showPoster = Boolean(posterSrc) && !posterFailed;
 
-  return (
-    <div className="flagship-media" ref={frameRef}>
+  const frame = (
+    <div
+      className={`flagship-media${media.tone ? ` flagship-media--${media.tone}` : ''}`}
+      ref={frameRef}
+    >
       {showPoster ? (
         <picture>
           {media.poster.webp && media.poster.jpg ? (
@@ -160,7 +164,7 @@ export function FlagshipMedia({ media, preview = false, paused = false }) {
             onError={() => setPosterFailed(true)}
           />
         </picture>
-      ) : (
+      ) : media.tone ? null : (
         <div className="lunar-fallback" aria-hidden="true">
           <span className="lunar-fallback__stars" />
           <span className="lunar-fallback__mass" />
@@ -178,6 +182,15 @@ export function FlagshipMedia({ media, preview = false, paused = false }) {
         />
       ) : null}
     </div>
+  );
+
+  return media.caption ? (
+    <figure className="flagship-media-figure">
+      {frame}
+      <figcaption className="flagship-media__caption">{media.caption}</figcaption>
+    </figure>
+  ) : (
+    frame
   );
 }
 

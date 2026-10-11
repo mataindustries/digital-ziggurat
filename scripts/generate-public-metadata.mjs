@@ -47,6 +47,20 @@ for (const entry of htmlEntries) {
   }
 }
 
+// The homepage's description tags are static too; the case study keeps its own.
+const homepageHtml = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+const descriptionTags = [
+  'name="description"',
+  'property="og:description"',
+  'name="twitter:description"',
+];
+for (const tag of descriptionTags) {
+  const content = homepageHtml.match(new RegExp(`<meta\\s+${tag}\\s+content="([^"]*)"`))?.[1];
+  if (content !== siteMeta.description) {
+    throw new Error(`index.html ${tag} must match siteMeta.description`);
+  }
+}
+
 // Archive projects are filtered out by publicProjects; everything below is public.
 const publicTiers = projectTiers.filter((tier) => tier !== 'archive');
 const orderedProjects = [...publicProjects].sort(
@@ -54,7 +68,7 @@ const orderedProjects = [...publicProjects].sort(
 );
 const tierLabels = {
   flagship: 'Flagship project',
-  major: 'Major project',
+  major: 'Major projects',
   supporting: 'Supporting projects',
   lab: 'Lab',
 };
@@ -100,6 +114,7 @@ const toVisualArtifact = (project) => {
           }),
       ...(media.loop ? { previewLoop: media.loop } : {}),
       ...(media.reel ? { reel: media.reel } : {}),
+      ...(media.caption ? { caption: media.caption } : {}),
     };
   }
 
@@ -169,7 +184,11 @@ const projectRecords = orderedProjects.map((project) => ({
 
 const recordsByTier = (tier) => projectRecords.filter((project) => project.tier === tier);
 const flagship = recordsByTier('flagship')[0];
-const major = recordsByTier('major')[0];
+// Major projects are peers, in source order.
+const majors = recordsByTier('major');
+// The project a record was built from, for homepage copy such as the feature body.
+const sourceProject = (record) => orderedProjects.find((project) => project.id === record.id);
+const listFormat = new Intl.ListFormat('en', { type: 'conjunction' });
 
 const visualArtifacts = projectRecords.map((project) => ({
   id: project.id,
@@ -201,7 +220,14 @@ const publicResources = [
   { type: 'AI-readable summary', path: '/llms.txt' },
 ];
 
-const publicRead = `Read the site as an engineering portfolio. ${flagship.name} is the flagship project. ${major.name} is the main real-world product. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.`;
+const majorRoles = listFormat.format(
+  majors.map(
+    (project) => `${project.name} (${sourceProject(project).feature.eyebrow.toLowerCase()})`,
+  ),
+);
+const publicRead = `Read the site as an engineering portfolio. ${flagship.name} is the flagship project. ${majorRoles} ${
+  majors.length === 1 ? 'is the major project' : 'are the major projects'
+}. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.`;
 
 const escapeHtml = (value) =>
   String(value)
@@ -268,8 +294,15 @@ const aiJson = {
     links: project.links,
   })),
   sectionNavigation: {
-    description: 'The Ziggurat tiers link to page sections, listed bottom to top.',
-    tiers: zigguratTiers.map((tier) => ({ id: tier.id, name: tier.name, href: `/${tier.href}` })),
+    description:
+      'The Ziggurat tiers link to page sections, listed bottom to top. The major projects share one tier, with a link to each.',
+    tiers: zigguratTiers.map(({ id, name, href, links }) => ({
+      id,
+      name,
+      ...(links
+        ? { links: links.map((link) => ({ name: link.name, href: `/${link.href}` })) }
+        : { href: `/${href}` }),
+    })),
   },
   publicResources,
   primaryActions: [
@@ -277,7 +310,9 @@ const aiJson = {
     ...(flagship.links.caseStudy
       ? [{ label: `Read the ${flagship.name} case study`, href: flagship.links.caseStudy.href }]
       : []),
-    ...(major.links.live ? [{ label: major.links.live.label, href: major.links.live.href }] : []),
+    ...majors
+      .filter((project) => project.links.live)
+      .map(({ links }) => ({ label: links.live.label, href: links.live.href })),
     { label: 'Work with Sergio', href: '/#contact' },
     { label: 'Email Sergio', href: siteMeta.contactHref },
     ...(siteMeta.githubUrl ? [{ label: 'GitHub', href: siteMeta.githubUrl }] : []),
@@ -302,7 +337,7 @@ const projectsJson = {
   tierPolicy:
     'Projects are tiered flagship, major, supporting and lab. Archived projects are not published.',
   visualArtifactPolicy:
-    'Project visuals are screenshots or project images. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.',
+    "Project visuals are screenshots, project images, or posters and silent preview loops cut from a project's own video. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
   projectCount: projectRecords.length,
   projects: projectRecords,
 };
@@ -405,6 +440,31 @@ const renderProjectItem = (project) => {
   return `<li>${name}: ${escapeHtml(project.oneLiner ?? project.summary)}</li>`;
 };
 
+// A major project's name links to its live product; its other public links follow.
+const renderMajorProject = (project) => {
+  const live = project.links.live;
+  const otherLinks = availableLinks(project.links).filter((link) => link.type !== 'Live');
+  const name = live
+    ? `<a href="${escapeHtml(live.href)}">${escapeHtml(project.name)}</a>`
+    : escapeHtml(project.name);
+  return `<article class="major">
+          <h3>${name}</h3>
+          <p>${escapeHtml(sourceProject(project).feature.body ?? project.summary)}</p>
+          <ul class="facts">
+            ${project.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('\n            ')}
+          </ul>${
+            otherLinks.length
+              ? `
+          <ul class="actions">
+            ${otherLinks
+              .map((link) => `<li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`)
+              .join('\n            ')}
+          </ul>`
+              : ''
+          }
+        </article>`;
+};
+
 const proofHtml = `<!doctype html>
 <html lang="en">
   <head>
@@ -495,6 +555,7 @@ const proofHtml = `<!doctype html>
         text-transform: uppercase;
       }
       .note { color: #a9bec7; }
+      .major + .major { margin-top: 1.75rem; }
       .facts {
         display: flex;
         flex-wrap: wrap;
@@ -581,16 +642,8 @@ const proofHtml = `<!doctype html>
       </section>
 
       <section aria-labelledby="major">
-        <h2 id="major">Real-world product</h2>
-        <h3>${
-          major.links.live
-            ? `<a href="${escapeHtml(major.links.live.href)}">${escapeHtml(major.name)}</a>`
-            : escapeHtml(major.name)
-        }</h3>
-        <p>${escapeHtml(orderedProjects.find((project) => project.id === major.id).feature.body)}</p>
-        <ul class="facts">
-          ${major.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('\n          ')}
-        </ul>
+        <h2 id="major">Major projects</h2>
+        ${majors.map(renderMajorProject).join('\n        ')}
       </section>
 
       <section aria-labelledby="supporting">

@@ -40,7 +40,7 @@
   },
   "preferredInterpretation": "An engineering portfolio. Sergio Mata builds ambitious frontend and AI implementation products, ships them, and proves they work.",
   "sitePurpose": "Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.",
-  "publicRead": "Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse is the main real-world product. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.",
+  "publicRead": "Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse (real-world product) and DaemonV12 (agent-native engine) are the major projects. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.",
   "howIBuildWithAi": {
     "steps": [
       {
@@ -71,10 +71,10 @@
   "projectCategories": [
     "3D strategy game / phone browsers",
     "Permit + property research / evidence systems",
+    "Agent tooling / headless music engine",
     "Local search / homeowner acquisition system",
     "Local business / AI search audit tool",
     "Physics game / premium browser toy",
-    "Experimental Browser Instrument",
     "Browser game / drone survival prototype",
     "Editorial resource / local endurance guide"
   ],
@@ -82,6 +82,7 @@
     "Shoot the Moon: 576 unit tests across 63 files",
     "Shoot the Moon: 24 Playwright spec files",
     "PermitPulse: live source-backed research product",
+    "DaemonV12: reference renders pinned byte for byte in its tests",
     "Human review before research delivery",
     "Live deployed browser projects",
     "Structured public metadata"
@@ -90,6 +91,7 @@
     "Frontend engineering with React and TypeScript",
     "3D web interfaces with Three.js and React Three Fiber",
     "AI-assisted workflow implementation",
+    "MCP servers and tools for coding agents",
     "Automated testing with unit tests and Playwright",
     "Cloudflare Workers, D1, and R2 systems",
     "Review workflows and deterministic PDF generation",
@@ -158,6 +160,19 @@
       }
     },
     {
+      "id": "daemonv12",
+      "name": "DaemonV12",
+      "visualArtifact": {
+        "type": "poster",
+        "src": "/media/daemonv12/glass-fire-poster-1280.jpg",
+        "alt": "GLASS//FIRE end card for DaemonV12: \"Give agents instruments.\" in white type on black",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/daemonv12/glass-fire-loop-7_5s-720.mp4",
+        "caption": "GLASS//FIRE · composed by an agent through MCP · silent excerpt"
+      }
+    },
+    {
       "id": "sgvturf",
       "name": "SGVTurf",
       "visualArtifact": {
@@ -191,19 +206,6 @@
         "alt": "Xibalba Pinball live game screenshot",
         "width": 720,
         "height": 1319
-      }
-    },
-    {
-      "id": "bouncebox",
-      "name": "BounceBox",
-      "visualArtifact": {
-        "type": "screenshot",
-        "src": "/images/bouncebox/bouncebox-808-performance.png",
-        "alt": "BounceBox 808 performance screen",
-        "status": "Live performance",
-        "position": "center center",
-        "width": 720,
-        "height": 1342
       }
     },
     {
@@ -436,6 +438,64 @@
       }
     },
     {
+      "id": "daemonv12",
+      "name": "DaemonV12",
+      "tier": "major",
+      "category": "Agent tooling / headless music engine",
+      "status": "Public beta",
+      "badge": "v0.6 released",
+      "currentStatus": "Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.",
+      "summary": "A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.",
+      "keyFacts": [
+        "9 MCP tools",
+        "Deterministic WAV + stems",
+        "v0.6 sample performance"
+      ],
+      "whatItProves": "Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.",
+      "visualArtifact": {
+        "type": "poster",
+        "src": "/media/daemonv12/glass-fire-poster-1280.jpg",
+        "alt": "GLASS//FIRE end card for DaemonV12: \"Give agents instruments.\" in white type on black",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/daemonv12/glass-fire-loop-7_5s-720.mp4",
+        "caption": "GLASS//FIRE · composed by an agent through MCP · silent excerpt"
+      },
+      "tags": [
+        "Node.js",
+        "TypeScript",
+        "Model Context Protocol",
+        "FluidSynth",
+        "FFmpeg",
+        "Deterministic rendering",
+        "CC0 sound packs"
+      ],
+      "operationalFlow": [
+        "Connect one workspace",
+        "Compose as data",
+        "Process + automate",
+        "Render WAV, MP3, stems",
+        "Analyze the result"
+      ],
+      "proofSignals": [
+        "Nine stdio MCP tools",
+        "SHA-256 provenance for every render",
+        "GLASS//FIRE pinned byte for byte in tests",
+        "Clean-room package test in CI"
+      ],
+      "links": {
+        "live": {
+          "label": "Visit DaemonV12",
+          "href": "https://daemonv12.pages.dev"
+        },
+        "source": {
+          "label": "View DaemonV12 source",
+          "href": "https://github.com/mataindustries/daemonv12"
+        },
+        "caseStudy": null
+      }
+    },
+    {
       "id": "sgvturf",
       "name": "SGVTurf",
       "tier": "supporting",
@@ -543,38 +603,6 @@
       }
     },
     {
-      "id": "bouncebox",
-      "name": "BounceBox",
-      "tier": "supporting",
-      "category": "Experimental Browser Instrument",
-      "status": "Live instrument",
-      "summary": "A mobile-first physics groovebox that turns bouncing balls and AI-generated MIDI patterns into a playable instrument.",
-      "oneLiner": "A mobile music playground built with Web Audio, generative MIDI and dense touch controls.",
-      "whatItProves": "Browser-native physics, audio, generative controls, and mobile UI can become a distinctive playable instrument.",
-      "visualArtifact": {
-        "type": "screenshot",
-        "src": "/images/bouncebox/bouncebox-808-performance.png",
-        "alt": "BounceBox 808 performance screen",
-        "status": "Live performance",
-        "position": "center center",
-        "width": 720,
-        "height": 1342
-      },
-      "proofSignals": [
-        "Physics groovebox",
-        "AI-generated MIDI",
-        "Mobile performance UI"
-      ],
-      "links": {
-        "live": {
-          "label": "Open live instrument",
-          "href": "https://bouncebox.pages.dev"
-        },
-        "source": null,
-        "caseStudy": null
-      }
-    },
-    {
       "id": "danger-close",
       "name": "Danger Close",
       "tier": "lab",
@@ -675,7 +703,7 @@
     }
   ],
   "sectionNavigation": {
-    "description": "The Ziggurat tiers link to page sections, listed bottom to top.",
+    "description": "The Ziggurat tiers link to page sections, listed bottom to top. The major projects share one tier, with a link to each.",
     "tiers": [
       {
         "id": "lab",
@@ -693,9 +721,18 @@
         "href": "/#work"
       },
       {
-        "id": "permitpulse",
-        "name": "PermitPulse",
-        "href": "/#permitpulse"
+        "id": "major",
+        "name": "Major projects",
+        "links": [
+          {
+            "name": "PermitPulse",
+            "href": "/#permitpulse"
+          },
+          {
+            "name": "DaemonV12",
+            "href": "/#daemonv12"
+          }
+        ]
       },
       {
         "id": "shoot-the-moon",
@@ -734,6 +771,10 @@
     {
       "label": "Visit PermitPulse",
       "href": "https://getpermitpulse.com"
+    },
+    {
+      "label": "Visit DaemonV12",
+      "href": "https://daemonv12.pages.dev"
     },
     {
       "label": "Work with Sergio",
