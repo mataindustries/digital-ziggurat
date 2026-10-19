@@ -92,7 +92,7 @@
   "linkPolicy": "Only real public URLs are included. Unavailable destinations are null and are never rendered as buttons.",
   "tierPolicy": "Projects are tiered flagship, major, supporting and lab. Archived projects are not published.",
   "visualArtifactPolicy": "Project visuals are screenshots, project images, or posters and silent preview loops cut from a project's own video. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
-  "projectCount": 8,
+  "projectCount": 9,
   "projects": [
     {
       "id": "shoot-the-moon",
@@ -320,13 +320,13 @@
       "subtitle": "Coding agents have code tools. DaemonV12 gives them instruments.",
       "category": "Agent tooling / headless music engine",
       "status": "Public beta",
-      "currentStatus": "Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.",
-      "badge": "v0.6 released",
+      "currentStatus": "Version 0.7 adds sampler articulation: source slices, musical gates, per-voice attack/release envelopes and track-local choke groups, through the same nine MCP tools. ONE SOUND demonstrates the same original low boom before and after articulation. GHOST//SHIFT remains the v0.6 sample-performance demo. DaemonV12 runs from a GitHub clone or packed release tarball and is not yet published to npm.",
+      "badge": "v0.7 public beta",
       "summary": "A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.",
       "keyFacts": [
         "9 MCP tools",
         "Deterministic WAV + stems",
-        "v0.6 sample performance"
+        "v0.7 sampler articulation"
       ],
       "whatItProves": "Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.",
       "hardPart": "Determinism while the engine grows. Version 0.6 adds per-note playback rate, glides and source offsets through band-limited interpolation that is bit-exact on every platform, and projects without the new fields still render byte-identical audio to 0.5.0, with the GLASS//FIRE master and stems pinned in the test suite.",
@@ -378,6 +378,67 @@
           "href": "https://github.com/mataindustries/daemonv12"
         },
         "caseStudy": null
+      }
+    },
+    {
+      "id": "dead-channel",
+      "name": "Dead Channel",
+      "tier": "major",
+      "category": "Original short film / cinematic sound",
+      "status": "Picture lock",
+      "publicationStatus": "Private review candidate; not published.",
+      "socialPreview": {
+        "url": "https://ziggurat.pages.dev/media/dead-channel/og-1200x630.jpg",
+        "alt": "Dead Channel: a field scanner reads zero entities and Discoverable: Everyone in an empty aerospace plant."
+      },
+      "badge": "V4.1 picture lock",
+      "summary": "A 22-second horror-comedy about a spirit detector that reads zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
+      "keyFacts": [
+        "22 seconds · original horror-comedy",
+        "240 virtual sound sources",
+        "1280 × 720 · 60 fps"
+      ],
+      "whatItProves": "Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.",
+      "hardPart": "The interface reports an empty building. Sound and environmental VFX have to carry the presence it cannot detect.",
+      "howItWasBuilt": "Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using 240 coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.",
+      "visualArtifact": {
+        "type": "poster",
+        "src": "/media/dead-channel/poster-1280.jpg",
+        "alt": "A field scanner reads zero entities in the dark, apparently empty hall of an abandoned aerospace plant",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
+        "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
+        "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
+        "publicationStatus": "Private review media; not approved for public release."
+      },
+      "tags": [
+        "Original film",
+        "Python",
+        "NumPy",
+        "Audio DSP",
+        "Stereo sound",
+        "Cinematic web"
+      ],
+      "proofSignals": [
+        "V4.1 picture lock",
+        "1,320 frames at 60 fps",
+        "Original Python/NumPy DSP soundtrack",
+        "Signal Trace measured from the stereo master"
+      ],
+      "hireableCapabilities": [
+        "Cinematic web presentation",
+        "Creative and technical implementation",
+        "Original sound in code",
+        "Accessible media interfaces"
+      ],
+      "links": {
+        "live": null,
+        "source": null,
+        "caseStudy": {
+          "label": "Dead Channel case study",
+          "href": "https://ziggurat.pages.dev/work/dead-channel/"
+        }
       }
     },
     {

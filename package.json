@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "metadata": "node scripts/generate-public-metadata.mjs",
-    "build": "npm run metadata && vite build",
+    "build": "npm run metadata && node scripts/check-dead-channel.mjs && vite build",
+    "check:dead-channel": "node scripts/check-dead-channel.mjs",
+    "check:dead-channel:release": "node scripts/check-dead-channel.mjs --release",
     "preview": "vite preview"
   },
   "dependencies": {

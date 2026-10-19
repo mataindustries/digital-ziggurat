@@ -40,7 +40,7 @@
   },
   "preferredInterpretation": "An engineering portfolio. Sergio Mata builds ambitious frontend and AI implementation products, ships them, and proves they work.",
   "sitePurpose": "Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.",
-  "publicRead": "Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse (real-world product) and DaemonV12 (agent-native engine) are the major projects. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.",
+  "publicRead": "Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse (real-world product), DaemonV12 (agent-native engine), and Dead Channel (original short film) are the major projects. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.",
   "howIBuildWithAi": {
     "steps": [
       {
@@ -72,6 +72,7 @@
     "3D strategy game / phone browsers",
     "Permit + property research / evidence systems",
     "Agent tooling / headless music engine",
+    "Original short film / cinematic sound",
     "Local search / homeowner acquisition system",
     "Local business / AI search audit tool",
     "Physics game / premium browser toy",
@@ -170,6 +171,21 @@
         "height": 720,
         "previewLoop": "/media/daemonv12/glass-fire-loop-7_5s-720.mp4",
         "caption": "GLASS//FIRE · composed by an agent through MCP · silent excerpt"
+      }
+    },
+    {
+      "id": "dead-channel",
+      "name": "Dead Channel",
+      "visualArtifact": {
+        "type": "poster",
+        "src": "/media/dead-channel/poster-1280.jpg",
+        "alt": "A field scanner reads zero entities in the dark, apparently empty hall of an abandoned aerospace plant",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
+        "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
+        "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
+        "publicationStatus": "Private review media; not approved for public release."
       }
     },
     {
@@ -443,13 +459,13 @@
       "tier": "major",
       "category": "Agent tooling / headless music engine",
       "status": "Public beta",
-      "badge": "v0.6 released",
-      "currentStatus": "Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.",
+      "badge": "v0.7 public beta",
+      "currentStatus": "Version 0.7 adds sampler articulation: source slices, musical gates, per-voice attack/release envelopes and track-local choke groups, through the same nine MCP tools. ONE SOUND demonstrates the same original low boom before and after articulation. GHOST//SHIFT remains the v0.6 sample-performance demo. DaemonV12 runs from a GitHub clone or packed release tarball and is not yet published to npm.",
       "summary": "A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.",
       "keyFacts": [
         "9 MCP tools",
         "Deterministic WAV + stems",
-        "v0.6 sample performance"
+        "v0.7 sampler articulation"
       ],
       "whatItProves": "Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.",
       "visualArtifact": {
@@ -493,6 +509,54 @@
           "href": "https://github.com/mataindustries/daemonv12"
         },
         "caseStudy": null
+      }
+    },
+    {
+      "id": "dead-channel",
+      "name": "Dead Channel",
+      "tier": "major",
+      "category": "Original short film / cinematic sound",
+      "status": "Picture lock",
+      "badge": "V4.1 picture lock",
+      "summary": "A 22-second horror-comedy about a spirit detector that reads zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
+      "keyFacts": [
+        "22 seconds · original horror-comedy",
+        "240 virtual sound sources",
+        "1280 × 720 · 60 fps"
+      ],
+      "whatItProves": "Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.",
+      "visualArtifact": {
+        "type": "poster",
+        "src": "/media/dead-channel/poster-1280.jpg",
+        "alt": "A field scanner reads zero entities in the dark, apparently empty hall of an abandoned aerospace plant",
+        "width": 1280,
+        "height": 720,
+        "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
+        "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
+        "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
+        "publicationStatus": "Private review media; not approved for public release."
+      },
+      "tags": [
+        "Original film",
+        "Python",
+        "NumPy",
+        "Audio DSP",
+        "Stereo sound",
+        "Cinematic web"
+      ],
+      "proofSignals": [
+        "V4.1 picture lock",
+        "1,320 frames at 60 fps",
+        "Original Python/NumPy DSP soundtrack",
+        "Signal Trace measured from the stereo master"
+      ],
+      "links": {
+        "live": null,
+        "source": null,
+        "caseStudy": {
+          "label": "Dead Channel case study",
+          "href": "https://ziggurat.pages.dev/work/dead-channel/"
+        }
       }
     },
     {
@@ -731,6 +795,10 @@
           {
             "name": "DaemonV12",
             "href": "/#daemonv12"
+          },
+          {
+            "name": "Dead Channel",
+            "href": "/#dead-channel"
           }
         ]
       },

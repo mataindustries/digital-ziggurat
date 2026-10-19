@@ -3,3 +3,12 @@ dist/
 .vite/
 .DS_Store
 *.local
+__pycache__/
+
+# DEAD CHANNEL is a private review candidate. Publishing needs explicit owner approval.
+/public/media/dead-channel/
+/work/dead-channel-private/
+/work/dead-channel-inputs/
+/tools/dead-channel/private/
+*DEAD_CHANNEL*PICTURE_LOCK*.mp4
+*EVENT_MAP*.json

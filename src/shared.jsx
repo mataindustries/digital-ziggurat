@@ -1,6 +1,6 @@
 // Components shared by the homepage (main.jsx) and the case study pages. Keep page-specific
 // sections in their own entry so neither page ships the other's code.
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { siteMeta } from './data/projects';
 
 const machineReadableFiles = ['/llms.txt', '/ai.json', '/projects.json'];
@@ -71,6 +71,13 @@ function FlagshipLoop({ src, poster, frameRef, ready, paused }) {
   const [inView, setInView] = useState(false);
   const [requested, setRequested] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [pageVisible, setPageVisible] = useState(() => !document.hidden);
+
+  useEffect(() => {
+    const updateVisibility = () => setPageVisible(!document.hidden);
+    document.addEventListener('visibilitychange', updateVisibility);
+    return () => document.removeEventListener('visibilitychange', updateVisibility);
+  }, []);
 
   useEffect(() => {
     const frame = frameRef.current;
@@ -103,12 +110,12 @@ function FlagshipLoop({ src, poster, frameRef, ready, paused }) {
       return;
     }
 
-    if (inView && !paused) {
+    if (inView && !paused && pageVisible) {
       video.play().catch(() => setPlaying(false));
     } else {
       video.pause();
     }
-  }, [enabled, requested, inView, paused]);
+  }, [enabled, requested, inView, paused, pageVisible]);
 
   if (!enabled || !requested) {
     return null;
@@ -194,11 +201,11 @@ export function FlagshipMedia({ media, preview = false, paused = false }) {
   );
 }
 
-export function WatchReelButton({ project, onOpen, className }) {
+export function WatchReelButton({ project, onOpen, className, label = 'Watch reel' }) {
   return (
     <button className={className} type="button" aria-haspopup="dialog" onClick={onOpen}>
       <span className="play-glyph" aria-hidden="true" />
-      Watch reel
+      {label}
       <VisuallyHidden> for {project.name}</VisuallyHidden>
     </button>
   );
@@ -206,14 +213,36 @@ export function WatchReelButton({ project, onOpen, className }) {
 
 // Full reel in a native modal dialog. The platform handles inert background, Escape and
 // Tab order through the video's own controls; this adds scroll lock and focus return.
-// Playback starts from the Watch reel click, or waits for the play control when the
-// visitor prefers reduced motion.
-export function ReelDialog({ project, onClose }) {
+// Silent reels keep their existing reduced-motion behavior. Sound-led films expose
+// playFromGesture so the caller can mount synchronously and play inside the user's
+// click handler; an effect cannot reliably retain audible-play permission on mobile.
+export const ReelDialog = forwardRef(function ReelDialog({ project, onClose, startAt = 0 }, ref) {
   const dialogRef = useRef(null);
   const closeButtonRef = useRef(null);
   const videoRef = useRef(null);
+  const [playbackError, setPlaybackError] = useState('');
   const { media } = project;
   const titleId = `${project.id}-reel-title`;
+  const noteId = `${project.id}-reel-note`;
+  const seekToStart = () => {
+    if (videoRef.current && Number.isFinite(startAt) && startAt > 0) {
+      videoRef.current.currentTime = startAt;
+    }
+  };
+
+  useImperativeHandle(ref, () => ({
+    playFromGesture() {
+      const video = videoRef.current;
+      if (!video) return;
+      setPlaybackError('');
+      // This method is called only by the explicit Watch with sound action.
+      video.muted = false;
+      seekToStart();
+      return video.play().catch(() => {
+        setPlaybackError('Playback could not start. Use the video play control to try again.');
+      });
+    },
+  }));
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -223,8 +252,11 @@ export function ReelDialog({ project, onClose }) {
     dialog.addEventListener('close', onClose);
     dialog.showModal();
     closeButtonRef.current?.focus();
-    if (!prefersReducedMotion()) {
-      videoRef.current?.play().catch(() => {});
+    if (!media.playWithSound && !prefersReducedMotion()) {
+      seekToStart();
+      videoRef.current?.play().catch(() => {
+        setPlaybackError('Playback could not start. Use the video play control to try again.');
+      });
     }
 
     return () => {
@@ -241,6 +273,7 @@ export function ReelDialog({ project, onClose }) {
     <dialog
       className="reel-dialog"
       aria-labelledby={titleId}
+      aria-describedby={media.contentNote ? noteId : undefined}
       ref={dialogRef}
       onClick={(event) => {
         if (event.target === dialogRef.current) {
@@ -250,17 +283,18 @@ export function ReelDialog({ project, onClose }) {
     >
       <div className="reel-dialog__panel">
         <div className="reel-dialog__bar">
-          <h2 id={titleId}>{project.name} reel</h2>
+          <h2 id={titleId}>{media.reelTitle ?? `${project.name} reel`}</h2>
           <button
             className="chamber-close reel-dialog__close"
             type="button"
             onClick={onClose}
-            aria-label="Close reel"
+            aria-label={media.playWithSound ? 'Close film' : 'Close reel'}
             ref={closeButtonRef}
           >
             Close
           </button>
         </div>
+        {media.contentNote ? <p className="reel-dialog__note" id={noteId}>{media.contentNote}</p> : null}
         <div className="reel-dialog__frame">
           <video
             ref={videoRef}
@@ -268,14 +302,22 @@ export function ReelDialog({ project, onClose }) {
             poster={media.poster?.webp ?? media.poster?.jpg}
             controls
             playsInline
-            preload="metadata"
+            preload={navigator.connection?.saveData ? 'none' : 'metadata'}
             aria-labelledby={titleId}
-          />
+            onLoadedMetadata={seekToStart}
+            onPlaying={() => setPlaybackError('')}
+            onError={() => setPlaybackError(media.unavailableMessage ?? 'The video could not be loaded. Please try again later.')}
+          >
+            {media.captions ? (
+              <track kind="captions" src={media.captions} srcLang="en" label="English" default />
+            ) : null}
+          </video>
         </div>
+        {playbackError ? <p className="reel-dialog__status" role="status">{playbackError}</p> : null}
       </div>
     </dialog>
   );
-}
+});
 
 // `home` prefixes the in-page anchors, so a page other than the homepage passes '/' to
 // link back into the homepage sections. `contactHref` lets a page with its own contact

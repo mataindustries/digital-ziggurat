@@ -1,0 +1,141 @@
+{
+  "status": "PRIVATE REVIEW ONLY — NO PUBLIC RELEASE APPROVAL",
+  "master": {
+    "file": "DEAD_CHANNEL_V4_1_PICTURE_LOCK.mp4",
+    "bytes": 15602141,
+    "sha256Before": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+    "sha256After": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+    "unchanged": true,
+    "streams": {
+      "video": "a8356ec98694cec944dfad36cd2bdce724761475a4f0b8baa5f23bcdbfc8c649",
+      "audio": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628"
+    }
+  },
+  "filmCopy": {
+    "file": "film-22s-1280x720p60.mp4",
+    "byteIdenticalToMaster": true,
+    "containerRewrite": false,
+    "metadataRewrite": false
+  },
+  "derivations": {
+    "poster": {
+      "frame": 594
+    },
+    "loop": {
+      "startFrame": 408,
+      "endFrameExclusive": 899,
+      "audio": false
+    },
+    "openGraph": {
+      "frame": 1230,
+      "pictureScale": [
+        1120,
+        630
+      ],
+      "canvas": [
+        1200,
+        630
+      ],
+      "upscaled": false
+    }
+  },
+  "assets": [
+    {
+      "file": "film-22s-1280x720p60.mp4",
+      "bytes": 15602141,
+      "sha256": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "60/1",
+          "nb_read_frames": "1320"
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "aac",
+          "r_frame_rate": "0/0",
+          "nb_read_frames": "948"
+        }
+      ],
+      "duration": 22.0
+    },
+    {
+      "file": "loop-8s-1280.mp4",
+      "bytes": 924838,
+      "sha256": "85f8130c489e717c41eb3bd88058b32295c1840dc555e7aced0904d12fc83fa8",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "60/1",
+          "nb_read_frames": "491"
+        }
+      ],
+      "duration": 8.166667
+    },
+    {
+      "file": "og-1200x630.jpg",
+      "bytes": 105125,
+      "sha256": "68df34c6fe13cbfc8b130589bc547c968defe717de2e348eb41ca849ece0333e",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "mjpeg",
+          "width": 1200,
+          "height": 630,
+          "r_frame_rate": "25/1",
+          "nb_read_frames": "1"
+        }
+      ],
+      "duration": 0.04
+    },
+    {
+      "file": "poster-1280.jpg",
+      "bytes": 54581,
+      "sha256": "f0179f2607d8e382cd028a59d6987e747a5a91e3257252f19dc837e325f31937",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "mjpeg",
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "25/1",
+          "nb_read_frames": "1"
+        }
+      ],
+      "duration": 0.04
+    },
+    {
+      "file": "poster-1280.webp",
+      "bytes": 28308,
+      "sha256": "dad219fbf4153c1568cc26a07eb6ed88721498ba38ea791baf2c0779549fdd42",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "webp",
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "25/1",
+          "nb_read_frames": "1"
+        }
+      ]
+    }
+  ],
+  "releaseBlockers": [
+    "Explicit owner public-film release approval",
+    "Owner-approved verbatim tutorial transcript and descriptive captions",
+    "Owner review of approximately 20 dB right-weighted tutorial audio",
+    "Final credits and publication date"
+  ],
+  "deferred": [
+    "Transmission Room: original EVENT_MAP.json unavailable",
+    "Teaser",
+    "Behind-the-scenes film",
+    "Map poster"
+  ]
+}
