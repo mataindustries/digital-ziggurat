@@ -1,4 +1,4 @@
-// Private review copy, grounded in the supplied launch handoff and V4.1 measurements.
+// Private review copy, grounded in V4.2 picture checks and the unchanged original audio.
 // Film identity and measurements live in deadChannelSignal.json. No event-map data,
 // publication date, detailed production credits, or unapproved dialog is inferred.
 import signal from './deadChannelSignal.json';
@@ -8,7 +8,7 @@ const { film } = signal;
 export const deadChannelCaseStudy = {
   positioning: `A ${film.duration}-second horror-comedy about a spirit detector that can't see anything, and can be heard by everything.`,
   summary:
-    'An investigator enters a fictional abandoned aerospace plant with a vibe-coded spirit detector. It reports nothing. It broadcasts to everything. The swarm that answers is carried by original sound and the air of the building.',
+    'An investigator enters a fictional abandoned aerospace plant with a vibe-coded spirit detector. Its readout glitches during the approach, then returns to zero. It has been broadcasting all along. The unseen swarm is carried by original sound and the air of the building.',
   thesis: `0 detected. ${film.sourceCount} present.`,
   specs: [
     {
@@ -29,7 +29,7 @@ export const deadChannelCaseStudy = {
     },
     {
       title: 'DISCOVERY ON',
-      body: 'The display reports zero entities. The building answers.',
+      body: 'The building answers. During the approach, the readout glitches before returning to zero.',
     },
     {
       title: 'DISCOVERABLE: EVERYONE',
@@ -47,7 +47,7 @@ export const deadChannelCaseStudy = {
     },
     {
       title: 'Finish',
-      body: `The ${film.version} master stays at its native ${film.width} × ${film.height} and ${film.fps} fps. The private screening uses the original file, with picture and sound unchanged.`,
+      body: `The ${film.version} movie stays at its native ${film.width} × ${film.height} and ${film.fps} fps. The private screening uses the supplied file without re-encoding or changing its original audio and ending. V4.1 remains backed up.`,
     },
   ],
   // Reuse the site's existing paid-work offer; the proposed new service cards await

@@ -495,10 +495,10 @@ export const projects = [
     tier: 'major',
     category: 'Original short film / cinematic sound',
     description:
-      `A ${deadChannelFilm.duration}-second horror-comedy about a spirit detector that reads zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with ${deadChannelFilm.sourceCount} coordinated virtual sound sources.`,
+      `A ${deadChannelFilm.duration}-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with ${deadChannelFilm.sourceCount} coordinated virtual sound sources.`,
     feature: {
       eyebrow: 'Original short film',
-      body: `An investigator enters an abandoned aerospace plant with a vibe-coded spirit detector. It reads zero because it is broadcasting. The swarm stays unseen, carried by ${deadChannelFilm.sourceCount} synthesized sound sources and the air of the building.`,
+      body: `An investigator enters an abandoned aerospace plant with a vibe-coded spirit detector. Its readout glitches during the approach, then returns to zero. It has been broadcasting all along. The swarm stays unseen, carried by ${deadChannelFilm.sourceCount} synthesized sound sources and the air of the building.`,
       facts: [
         `${deadChannelFilm.duration} seconds · original horror-comedy`,
         `${deadChannelFilm.sourceCount} virtual sound sources`,
@@ -510,10 +510,10 @@ export const projects = [
     proves:
       'Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.',
     hardPart:
-      'The interface reports an empty building. Sound and environmental VFX have to carry the presence it cannot detect.',
+      'The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.',
     howBuilt:
       `Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using ${deadChannelFilm.sourceCount} coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.`,
-    status: 'Picture lock',
+    status: 'Private review',
     statusTone: 'gold',
     badge: deadChannelFilm.version,
     // Private review media is ignored by git. Publishing these files needs the owner's
@@ -527,7 +527,7 @@ export const projects = [
         webp: '/media/dead-channel/poster-1280.webp',
         jpg: '/media/dead-channel/poster-1280.jpg',
       },
-      alt: 'A field scanner reads zero entities in the dark, apparently empty hall of an abandoned aerospace plant',
+      alt: 'A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant',
       loop: '/media/dead-channel/loop-8s-1280.mp4',
       reel: '/media/dead-channel/film-22s-1280x720p60.mp4',
       reelTitle: 'Dead Channel · watch with sound',

@@ -1,13 +1,13 @@
 {
   "status": "PRIVATE REVIEW ONLY — NO PUBLIC RELEASE APPROVAL",
   "master": {
-    "file": "DEAD_CHANNEL_V4_1_PICTURE_LOCK.mp4",
-    "bytes": 15602141,
-    "sha256Before": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
-    "sha256After": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+    "file": "DEAD_CHANNEL_V4_2_REVIEW.mp4",
+    "bytes": 20554922,
+    "sha256Before": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
+    "sha256After": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
     "unchanged": true,
     "streams": {
-      "video": "a8356ec98694cec944dfad36cd2bdce724761475a4f0b8baa5f23bcdbfc8c649",
+      "video": "8e8015acdbb7fd4e32e256dddcaa10e85004cb26f4a63b3ea72b31fe0e42b104",
       "audio": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628"
     }
   },
@@ -42,8 +42,8 @@
   "assets": [
     {
       "file": "film-22s-1280x720p60.mp4",
-      "bytes": 15602141,
-      "sha256": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+      "bytes": 20554922,
+      "sha256": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
       "streams": [
         {
           "codec_type": "video",
@@ -64,8 +64,8 @@
     },
     {
       "file": "loop-8s-1280.mp4",
-      "bytes": 924838,
-      "sha256": "85f8130c489e717c41eb3bd88058b32295c1840dc555e7aced0904d12fc83fa8",
+      "bytes": 930098,
+      "sha256": "fac78dfbd5223b0df5136380320b488773c25b11bfb22d446988821b47d41b9d",
       "streams": [
         {
           "codec_type": "video",
@@ -80,8 +80,8 @@
     },
     {
       "file": "og-1200x630.jpg",
-      "bytes": 105125,
-      "sha256": "68df34c6fe13cbfc8b130589bc547c968defe717de2e348eb41ca849ece0333e",
+      "bytes": 105107,
+      "sha256": "5e497dfb45ea5c6b126580c25fbc109f1d7f92f91bab613a5a0e595e5f32bf56",
       "streams": [
         {
           "codec_type": "video",
@@ -96,8 +96,8 @@
     },
     {
       "file": "poster-1280.jpg",
-      "bytes": 54581,
-      "sha256": "f0179f2607d8e382cd028a59d6987e747a5a91e3257252f19dc837e325f31937",
+      "bytes": 55498,
+      "sha256": "f3f4db379b495bd5a3766c258c298bb0b48c22eea762459a6eb64dd0f37a0d87",
       "streams": [
         {
           "codec_type": "video",
@@ -112,8 +112,8 @@
     },
     {
       "file": "poster-1280.webp",
-      "bytes": 28308,
-      "sha256": "dad219fbf4153c1568cc26a07eb6ed88721498ba38ea791baf2c0779549fdd42",
+      "bytes": 28908,
+      "sha256": "f259a5cc0cc6a4b7a3fa38ab417527081ba81c21d649c19b2ba35c11ede57ad0",
       "streams": [
         {
           "codec_type": "video",

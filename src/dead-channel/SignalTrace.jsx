@@ -19,8 +19,8 @@ const balancePath = windows
 const markerIds = [
   'discovery',
   'surge',
-  'range-zero',
-  'convergence',
+  'detector-glitch',
+  'entity-zero',
   'silence',
   'tutorial',
 ];
@@ -140,7 +140,8 @@ export function SignalTrace({ time, onSeek }) {
         The shaded band uses stereo correlation as a width proxy. The cyan line
         shows channel balance, with left above and right below the reference.
         These are audio measurements, not positions of the virtual sources.
-        Selecting a moment pauses and seeks the film.
+        Picture-event markers also identify the detector glitch and its return
+        to zero. Selecting a moment pauses and seeks the film.
       </p>
       <details className="dc-details">
         <summary>Read the measured values</summary>

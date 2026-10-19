@@ -16,13 +16,13 @@ def ffmpeg(source, target, *options):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", type=Path, required=True, help="Privately staged V4.1 master")
+    parser.add_argument("--input", type=Path, required=True, help="Privately staged V4.2 master")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "public/media/dead-channel")
     parser.add_argument("--font", type=Path, default=Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"))
     args = parser.parse_args()
     source, target = args.input.resolve(), args.output_dir.resolve()
     if sha256(source) != EXPECTED_SHA:
-        raise SystemExit("Master SHA-256 is not the approved picture lock")
+        raise SystemExit("Master SHA-256 does not match the supplied V4.2 review")
     if source == target or source.parent == target:
         raise SystemExit("Use a distinct output directory; never write beside the archived master")
     ignored = subprocess.run(["git", "check-ignore", "-q", str(target / ".private-review")], cwd=ROOT)

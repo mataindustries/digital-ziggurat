@@ -104,9 +104,9 @@ function DeadChannelPage() {
           <details className="dc-details dc-viewing-notes">
             <summary>Picture and sound notes · contains the reveal</summary>
             <p>
-              These viewing notes come from the supplied storyboard and
-              measurements. They are not a complete transcript or a replacement
-              for approved descriptive captions.
+              These viewing notes combine V4.2 picture checks with measurements
+              of the unchanged original audio. They are not a complete
+              transcript or a replacement for approved descriptive captions.
             </p>
             <ol>
               {signal.events.map((event) => (
@@ -192,11 +192,13 @@ function DeadChannelPage() {
               <p className="dc-evidence__label">Measured in the master</p>
               <h3>Convergence</h3>
               <p>
-                The device reads RANGE: 0.00 m from{' '}
-                {measured.rangeZero.time.toFixed(2)} s. The climax follows at{' '}
-                {measured.convergence.time.toFixed(2)} s, with correlation
-                rising to about {measured.convergence.correlationMax.toFixed(1)}{' '}
-                near the end.
+                The detector glitches during the approach. Its entity readout
+                returns to zero at frame {measured.entityZero.frame} (
+                {measured.entityZero.time.toFixed(2)} s), after RANGE: 0.00 m
+                appears at {measured.rangeZero.time.toFixed(2)} s. The climax
+                follows at {measured.convergence.time.toFixed(2)} s, with
+                correlation rising to about{' '}
+                {measured.convergence.correlationMax.toFixed(1)} near the end.
               </p>
             </article>
           </div>
@@ -223,10 +225,11 @@ function DeadChannelPage() {
           <details className="dc-details dc-provenance">
             <summary>Picture-lock provenance</summary>
             <p>
-              The private film file matches the supplied master SHA-256. The
-              measurements use the supplied{' '}
-              {signal.provenance.profile.windowSeconds * 1000} ms stereo
-              profile. This is not an event map.
+              The private film matches the supplied V4.2 SHA-256. Its original
+              audio matches V4.1 byte for byte, so the independently verified{' '}
+              {signal.provenance.profile.windowSeconds * 1000} ms stereo profile
+              is retained. Picture events are checked against V4.2. This is not
+              an event map.
             </p>
             <dl>
               <div>

@@ -67,11 +67,11 @@ Major projects:
   Operational flow: Connect one workspace → Compose as data → Process + automate → Render WAV, MP3, stems → Analyze the result
   Live: Visit DaemonV12 (https://daemonv12.pages.dev)
   Source: View DaemonV12 source (https://github.com/mataindustries/daemonv12)
-- Dead Channel: A 22-second horror-comedy about a spirit detector that reads zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.
-  Status: Picture lock
+- Dead Channel: A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.
+  Status: Private review
   Key facts: 22 seconds · original horror-comedy; 240 virtual sound sources; 1280 × 720 · 60 fps
   Proof: Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.
-  Hard part: The interface reports an empty building. Sound and environmental VFX have to carry the presence it cannot detect.
+  Hard part: The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.
   How it was built: Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using 240 coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.
   Tags: Original film, Python, NumPy, Audio DSP, Stereo sound, Cinematic web
   Visual artifacts: /media/dead-channel/poster-1280.jpg

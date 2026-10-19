@@ -385,26 +385,26 @@
       "name": "Dead Channel",
       "tier": "major",
       "category": "Original short film / cinematic sound",
-      "status": "Picture lock",
+      "status": "Private review",
       "publicationStatus": "Private review candidate; not published.",
       "socialPreview": {
         "url": "https://ziggurat.pages.dev/media/dead-channel/og-1200x630.jpg",
         "alt": "Dead Channel: a field scanner reads zero entities and Discoverable: Everyone in an empty aerospace plant."
       },
-      "badge": "V4.1 picture lock",
-      "summary": "A 22-second horror-comedy about a spirit detector that reads zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
+      "badge": "V4.2 review",
+      "summary": "A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
       "keyFacts": [
         "22 seconds · original horror-comedy",
         "240 virtual sound sources",
         "1280 × 720 · 60 fps"
       ],
       "whatItProves": "Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.",
-      "hardPart": "The interface reports an empty building. Sound and environmental VFX have to carry the presence it cannot detect.",
+      "hardPart": "The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.",
       "howItWasBuilt": "Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using 240 coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.",
       "visualArtifact": {
         "type": "poster",
         "src": "/media/dead-channel/poster-1280.jpg",
-        "alt": "A field scanner reads zero entities in the dark, apparently empty hall of an abandoned aerospace plant",
+        "alt": "A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant",
         "width": 1280,
         "height": 720,
         "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
@@ -421,7 +421,7 @@
         "Cinematic web"
       ],
       "proofSignals": [
-        "V4.1 picture lock",
+        "V4.2 review",
         "1,320 frames at 60 fps",
         "Original Python/NumPy DSP soundtrack",
         "Signal Trace measured from the stereo master"

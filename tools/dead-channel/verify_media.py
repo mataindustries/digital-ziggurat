@@ -39,7 +39,7 @@ def main():
     args = parser.parse_args()
     film = args.media_dir / "film-22s-1280x720p60.mp4"
     if sha256(args.input) != EXPECTED_SHA or sha256(film) != EXPECTED_SHA:
-        raise SystemExit("Master or private film copy is not byte-identical to the supplied lock")
+        raise SystemExit("Master or private film copy is not byte-identical to the supplied V4.2 review")
     streams = streamhash(args.input)
     streamhash(film)
     master_probe = probe(args.input)
@@ -70,12 +70,12 @@ def main():
     loudness_output = command("ffmpeg", "-hide_banner", "-i", str(args.input), "-af", "ebur128=peak=true", "-f", "null", "-").stderr
     # Keep only the summary, without command logs or private input paths.
     loudness_summary = loudness_output[loudness_output.rfind("Summary:"):].strip()
-    loudness_summary = loudness_summary.split("\n[out#")[0].strip()
+    loudness_summary = loudness_summary.split("\n[out#")[0].split("\nframe=")[0].strip()
     assert "I:         -21.1 LUFS" in loudness_summary
     assert sha256(args.input) == EXPECTED_SHA
     report = {
         "status": "PRIVATE REVIEW ONLY — NO PUBLIC RELEASE APPROVAL",
-        "master": {"file": "DEAD_CHANNEL_V4_1_PICTURE_LOCK.mp4", "bytes": args.input.stat().st_size,
+        "master": {"file": "DEAD_CHANNEL_V4_2_REVIEW.mp4", "bytes": args.input.stat().st_size,
                    "sha256Before": EXPECTED_SHA, "sha256After": sha256(args.input), "unchanged": True,
                    "streams": streams},
         "filmCopy": {"file": film.name, "byteIdenticalToMaster": True,

@@ -11,8 +11,8 @@ import math
 from pathlib import Path
 import subprocess
 
-EXPECTED_SHA = "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35"
-VIDEO_SHA = "a8356ec98694cec944dfad36cd2bdce724761475a4f0b8baa5f23bcdbfc8c649"
+EXPECTED_SHA = "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9"
+VIDEO_SHA = "8e8015acdbb7fd4e32e256dddcaa10e85004cb26f4a63b3ea72b31fe0e42b104"
 AUDIO_SHA = "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628"
 ROOT = Path(__file__).resolve().parents[2]
 FIELDS = ("t0", "t1", "rmsL", "rmsR", "balance", "correlation", "sideMid", "centroid", "hfPercent")
@@ -85,7 +85,7 @@ def main():
     windows = parse_profile(args.profile)
     if args.input:
         if sha256(args.input) != EXPECTED_SHA:
-            raise SystemExit("Master SHA-256 differs from the supplied picture lock; refusing")
+            raise SystemExit("Master SHA-256 differs from the supplied V4.2 review; refusing")
         repeated = remeasure(args.input)
         differences = [(i, field, row[field], repeated[i][field])
                        for i, row in enumerate(windows) for field in FIELDS
@@ -99,7 +99,9 @@ def main():
         {"id": "surge", "time": 9.79, "pictureTime": 9.8, "label": "First surge", "detail": "Measured sound onset precedes the 9.800 s picture boundary by 0.010 s.", "basis": "blueprint 10 ms onset analysis; profile bins 9.50–10.00 s"},
         {"id": "flanks", "time": 13.25, "end": 14.5, "label": "Stereo flanks", "detail": "Right +5.76 dB at 13.25–13.50 s; left +3.81 dB at 14.25–14.50 s.", "basis": "250 ms stereo profile"},
         {"id": "shutdown", "time": 15, "frame": 900, "label": "Shutdown requested", "detail": "Device close-up begins; the broadcast persists.", "basis": "blueprint frame inspection"},
-        {"id": "range-zero", "time": 19.05, "frame": 1143, "label": "Range: 0.00 m", "detail": "The device reaches zero range before the sound climax.", "basis": "blueprint frame inspection"},
+        {"id": "detector-glitch", "time": 15, "frame": 900, "label": "Detector glitches", "detail": "A sampled approach close-up shows ERR at frame 900 and -- at frame 960; this marker is not a claim about glitch onset.", "basis": "V4.2 direct source-frame inspection, frames 900 and 960"},
+        {"id": "range-zero", "time": 19.05, "frame": 1143, "label": "Range: 0.00 m", "detail": "The range readout reaches 0.00 m while the entity count still shows ERR; this is distinct from the count returning to 0 at frame 1192.", "basis": "Blueprint timing confirmed by V4.2 source-frame inspection, frames 1142 and 1143"},
+        {"id": "entity-zero", "time": 1192 / 60, "frame": 1192, "label": "Detector returns to 0", "detail": "The entity count changes from ERR at frame 1191 to 0 at frame 1192, after glitching during the approach. Range already reads 0.00 m.", "basis": "V4.2 direct source-frame inspection, frames 1191 and 1192"},
         {"id": "convergence", "time": 19.91, "label": "Convergence", "detail": "The sixth hit; correlation rises to 0.767–0.805 in the adjacent 250 ms windows.", "basis": "blueprint 10 ms onset analysis; 250 ms stereo profile"},
         {"id": "silence", "time": 20.15, "end": 20.4, "label": "Pre-reveal silence", "detail": "The original quarter-second silence; the coarser 250 ms bins also include neighboring sound.", "basis": "blueprint fine-window analysis"},
         {"id": "tutorial", "time": 20.45, "end": 21.85, "label": "Tutorial audio", "detail": "Audio pre-laps the picture cut by 0.30 s; approximately 20 dB right-weighted, awaiting owner intent review.", "basis": "blueprint fine-window analysis; 250 ms stereo profile"},
@@ -110,14 +112,21 @@ def main():
     document = {
         "schemaVersion": 1,
         "film": {"duration": 22, "fps": 60, "frames": 1320, "width": 1280, "height": 720,
-                 "sourceCount": 240, "version": "V4.1 picture lock", "sha256": EXPECTED_SHA,
+                 "sourceCount": 240, "version": "V4.2 review", "sha256": EXPECTED_SHA,
                  "streams": {"video": VIDEO_SHA, "audio": AUDIO_SHA}},
         "provenance": {
             "profile": {"fileName": args.profile.name, "sha256": sha256(args.profile), "windowSeconds": 0.25, "windowCount": 88},
             "measurementScript": {"fileName": args.reference_script.name, "sha256": sha256(args.reference_script)},
             "blueprint": {"fileName": args.blueprint.name, "sha256": sha256(args.blueprint)},
             "generator": "tools/dead-channel/measure_master.py",
-            "basis": "Supplied master measurements and blueprint. Source count is a supplied production fact, not a recovered event map.",
+            "basis": "Supplied V4.1 audio measurements retained after V4.2 AAC/decoded-PCM identity and all 88 independently decoded bins were verified. V4.2 picture events use direct source-frame inspection. Source count is a supplied production fact, not a recovered event map.",
+            "referenceFilm": {"version": "V4.1 picture lock", "sha256": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35", "audioSha256": AUDIO_SHA},
+            "pictureRevision": {"version": "V4.2 review", "sha256": EXPECTED_SHA,
+                                "frameNumbering": "Zero-based source frames at 60 fps",
+                                "basis": "Owner-supplied detector correction, independently inspected in V4.2 source frames",
+                                "glitchSamples": [{"frame": 408, "readout": "--"}, {"frame": 480, "readout": "ERR"}, {"frame": 900, "readout": "ERR"}, {"frame": 960, "readout": "--"}, {"frame": 1191, "readout": "ERR"}],
+                                "rangeZero": {"frame": 1143, "readout": "0.00 m", "entityReadout": "ERR"},
+                                "entityCountReturn": {"previousFrame": 1191, "previousReadout": "ERR", "frame": 1192, "readout": "0"}},
             "eventMap": None,
             "balanceConvention": "rmsL minus rmsR, dB; positive is left-weighted",
             "missingCorrelation": "null means undefined; never zero-filled or interpolated",
@@ -129,7 +138,9 @@ def main():
             "discovery": {"t0": 7.25, "t1": 8.5, "correlationFrom": 0.431, "correlationTo": 0.159},
             "surge": {"time": 9.79, "pictureTime": 9.8, "leftRiseDb": 11.4, "rightRiseDb": 7.3},
             "flanks": {"right": {"t0": 13.25, "t1": 13.5, "advantageDb": 5.76}, "left": {"t0": 14.25, "t1": 14.5, "advantageDb": 3.81}},
+            "detectorGlitch": {"time": 15, "frame": 900, "sampledFrame": True, "onsetClaimed": False, "readout": "ERR", "otherSample": {"time": 16, "frame": 960, "readout": "--"}},
             "rangeZero": {"time": 19.05, "frame": 1143},
+            "entityZero": {"time": 1192 / 60, "frame": 1192, "previousFrame": 1191, "previousReadout": "ERR", "readout": "0"},
             "convergence": {"time": 19.91, "correlationMin": 0.767, "correlationMax": 0.805, "windowT0": 19.75, "windowT1": 20.25, "hitTimes": [16.99, 17.62, 18.2, 18.73, 19.48, 19.91]},
             "silence": {"t0": 20.15, "t1": 20.4},
             "tutorial": {"t0": 20.45, "t1": 21.85, "pictureCut": 20.75, "rightBiasDb": 20, "artisticIntent": "pending owner review"},

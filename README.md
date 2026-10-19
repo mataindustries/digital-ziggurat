@@ -44,6 +44,12 @@ Components shared by all pages live in `src/shared.jsx`.
 
 ## DEAD CHANNEL private review
 
+The current candidate uses the supplied V4.2 review movie. The detector glitches
+during the approach, then its entity count returns from `ERR` to `0` at frame
+1192 (19.8667 s at 60 fps). This is distinct from `RANGE: 0.00 m` at frame 1143.
+The original audio is preserved. V4.1 media, data and evidence remain backed up
+privately outside `public/`, and the original private review archive is retained.
+
 The local `feature/dead-channel-showcase` candidate adds DEAD CHANNEL as the third
 major project and `/work/dead-channel/` as a real Vite entry. Shoot the Moon remains
 the sole flagship. Analytics draft PR #10 is independent and is not included here.
