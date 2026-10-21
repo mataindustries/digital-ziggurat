@@ -530,6 +530,7 @@ export const projects = [
       alt: 'A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant',
       loop: '/media/dead-channel/loop-8s-1280.mp4',
       reel: '/media/dead-channel/film-22s-1280x720p60.mp4',
+      captions: '/media/dead-channel/captions-en.vtt',
       reelTitle: 'Dead Channel · watch with sound',
       watchLabel: 'Watch with sound',
       playWithSound: true,

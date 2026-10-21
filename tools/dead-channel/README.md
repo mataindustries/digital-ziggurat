@@ -7,7 +7,7 @@ Requirements: Python 3.11+, FFmpeg/ffprobe and NumPy (for independent signal rem
 ```sh
 bash tools/dead-channel/prepare_media.sh --input /private/path/DEAD_CHANNEL_V4_2_REVIEW.mp4
 bash tools/dead-channel/verify_media.sh --input /private/path/DEAD_CHANNEL_V4_2_REVIEW.mp4
-python3 -I tools/dead-channel/prepare_captions.py
+node scripts/generate-dead-channel-captions.mjs
 python3 -I tools/dead-channel/measure_master.py \
   --input /private/path/DEAD_CHANNEL_V4_2_REVIEW.mp4 \
   --profile /private/path/master_stereo_profile_250ms.txt \
@@ -21,7 +21,7 @@ node scripts/check-dead-channel.mjs
 node scripts/check-dead-channel.mjs --release
 ```
 
-Before replacing media, preserve V4.1 media, data and verification logs in a private directory outside `public/` and `dist/`, with a SHA-256 manifest. Never overwrite that backup or the original private review package. The active V4.2 review source must match SHA-256 `43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9` (20,554,922 bytes). The version label is **V4.2 review**; this integration does not approve a picture lock or public release.
+Before replacing media, preserve V4.1 media, data and verification logs in a private directory outside `public/` and `dist/`, with a SHA-256 manifest. Never overwrite that backup or the original private review package. The active V4.2 review source must match SHA-256 `43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9` (20,554,922 bytes). The version label is **V4.2 review**; the owner has approved the picture correction for final preparation, while public release remains unapproved.
 
 The last command intentionally fails while release gates remain unresolved. It cannot be used to approve a release. `--check` on `measure_master.py` compares both generated JSON files without writing them. `deadChannelFilm.json` is the small shared film-identity projection for the homepage; measurement windows remain in the case-study bundle. Re-decoding all 88 windows is independent of the supplied profile parser and uses the reference algorithm and rounding precision; any mismatch fails. Missing/undefined correlations serialize as `null`, never fabricated zeros.
 
@@ -38,6 +38,8 @@ The last command intentionally fails while release gates remain unresolved. It c
 
 `src/data/deadChannelSignal.json` retains all 88 supplied 250 ms audio bins and their input hashes after V4.2 remeasurement. Original audio event timings come from the blueprint's finer-window analysis. New picture events come from direct zero-based V4.2 source-frame inspection: the detector alternates between `--` and `ERR` during the approach. The trace samples `ERR` at frame 900 (15 s), with `--` at frame 960 (16 s); this is a sampled glitch marker, not an onset claim. The entity count changes from `ERR` at frame 1191 to `0` at frame 1192 (19.866666666666667 s). The separate range readout reaches `0.00 m` at frame 1143 (19.050 s) while the entity display reads `ERR`. The 19.910 s sound climax is a third distinct event. The JSON records the V4.1 audio reference and V4.2 picture provenance separately. The quarter-second pre-reveal silence comes from fine-window analysis, not invented detail within the coarser bins. The number 240 is a supplied production fact about the separately synthesized Python/NumPy score. No original source positions, event map, interactive spatial rendering or Transmission Room are claimed.
 
-The tutorial audio remains approximately 20 dB right-weighted; its artistic intent needs owner review. Captions/transcript require the owner's approved verbatim tutorial line and descriptive sound text. Preparation notes stay in ignored `work/dead-channel-private/`; no empty or invented public VTT is generated.
+The original right-sided stereo mix is preserved exactly as approved by Sergio Mata. The three owner-supplied credits live in `src/data/deadChannelRelease.json` and are reproduced verbatim in the case page and no-JavaScript fallback.
 
-Publication remains blocked on explicit film release approval, approved captions/transcript, tutorial stereo-intent review, credits and an actual publication date. Teaser, BTS, map poster and Transmission Room remain deferred. Build output includes ignored local media when present; **do not upload `dist/`** as part of private review. Use local preview or an explicitly authorized private hosting target only.
+`src/data/deadChannelCaptions.json` supplies nine draft English SDH cues and a descriptive transcript. `scripts/generate-dead-channel-captions.mjs` validates duration, ordering, reading speed and source identity, then generates the ignored VTT sidecar only when the private film is present. It also synchronizes the accessible no-JavaScript transcript and credits. Tutorial audio 20.45–21.85 s is indistinct; independent unprompted recognition did not establish a reliable quote. The draft marks it `[Indistinct tutorial audio]`, held to 22.00 s for readability. Visible tutorial text is labeled as on-screen text, never used as dialogue. The older `prepare_captions.py` scaffold is retained for provenance and is not the active caption generator.
+
+`npm run build:release` intentionally fails until the owner approves final captions/tutorial transcription status and the final candidate's public media release. Credits, picture and preservation of the original mix are already approved; no publication date is invented or required by the existing CreativeWork metadata. Teaser, BTS, map poster and Transmission Room remain deferred. Build output includes ignored local media when present: **do not upload `dist/`** before explicit release approval. Use local review or owner-only storage.

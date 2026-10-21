@@ -50,44 +50,49 @@ during the approach, then its entity count returns from `ERR` to `0` at frame
 The original audio is preserved. V4.1 media, data and evidence remain backed up
 privately outside `public/`, and the original private review archive is retained.
 
-The local `feature/dead-channel-showcase` candidate adds DEAD CHANNEL as the third
-major project and `/work/dead-channel/` as a real Vite entry. Shoot the Moon remains
-the sole flagship. Analytics draft PR #10 is independent and is not included here.
+The local `release/dead-channel-v4.2` branch starts from current main's GA4
+merge `136d1f1` and replays the two completed showcase commits. The original
+`feature/dead-channel-showcase` branch remains at `89c51e0`. Shoot the Moon stays
+the sole flagship; DEAD CHANNEL is the third major project. All three HTML
+entrypoints use the approved GA4 measurement ID `G-QBSGMKSJLT` exactly once.
 
-This candidate has **not been published**. The film, extracted stills and silent
-preview are ignored under `public/media/dead-channel/`. A code-only checkout builds
-without them; audiovisual review requires privately staging the owner's master.
-See [the media workflow](tools/dead-channel/README.md) for exact preparation and
-verification commands. Never add these ignored files to the public repository
-without explicit release approval.
+This candidate has **not been published**. The film, stills, silent preview and
+caption sidecar remain ignored under `public/media/dead-channel/`. A code-only
+checkout builds without the private media; audiovisual review requires staging
+the owner's unchanged V4.2 master. See [the media workflow](tools/dead-channel/README.md).
+Never add private media to public Git or upload `dist/` before release approval.
 
 ```sh
 npm run build
 npm run preview -- --host 127.0.0.1
 # Local review: http://127.0.0.1:4173/work/dead-channel/
-npm run check:dead-channel:release
+npm run build:release # intentionally blocked pending final approvals
 ```
 
-The release check intentionally fails until the owner approves publication,
-credits, a complete transcript and descriptive captions, and the tutorial's
-approximately 20 dB right-channel bias. The original mix is unchanged. `noindex`
-is a crawler hint, not access control; keep review local or behind a separately
-approved authenticated private host. Do not deploy this candidate to public Pages.
+Owner-supplied credits, picture correction and preservation of the original
+right-sided stereo mix are approved. `src/data/deadChannelRelease.json` records
+that scope. Final captions and public release remain unapproved; the release
+check must fail until those decisions are explicitly granted. `noindex` is a
+crawler hint, not access control: review stays local or in owner-only storage.
 
-`src/data/deadChannelSignal.json` contains the supplied 250 ms stereo observations
-and separately attributed fine-window/frame events. `deadChannelFilm.json` is its
-generated small identity manifest, used by the homepage without loading the entire
-measurement dataset. The source count is a supplied production fact, not a map.
-Signal Trace exposes the measurements and silent seeking; it makes no claim of
-interactive spatial rendering. The unavailable original EVENT_MAP.json blocks only
-the deferred Transmission Room and map-based artwork. No source dots are drawn.
+`src/data/deadChannelCaptions.json` is the single source for nine English SDH
+cues and the descriptive transcript. The metadata build validates cue timing,
+reading speed and the 22-second film identity, generates the private VTT when
+the film is staged, and synchronizes the no-JavaScript transcript and credits.
+The tutorial audio at 20.45–21.85 s remains indistinct after independent local
+recognition attempts. No spoken quote is inferred from its visible title.
+The final draft uses `[Indistinct tutorial audio]` and requires owner review.
 
-Captions support is wired but no VTT or spoken dialog is fabricated. The page's
-viewing notes are explicitly incomplete. After caption approval, set the project's
-`media.captions` to the reviewed VTT and replace the private caption status with the
-approved transcript. Public release also requires approved delivery metadata,
-removing the private robots tag, adding the sitemap URL, and using an actual
-publication date if adding VideoObject structured data.
+`src/data/deadChannelSignal.json` retains all 88 supplied 250 ms stereo bins and
+separately attributed fine-window/frame events. The homepage uses its generated
+small identity manifest `deadChannelFilm.json`. Signal Trace provides measured
+observations and silent seeking. The unavailable EVENT_MAP.json continues to
+defer only the Transmission Room and map artwork; no source positions are invented.
+
+Public activation must update private labels, robots and sitemap, verify complete
+media injection in a private deployment workspace, and use `npm run build:release`.
+The media can remain excluded from public Git. No VideoObject upload date is
+invented; the existing CreativeWork metadata does not need one.
 
 Public AI-readable files live in:
 

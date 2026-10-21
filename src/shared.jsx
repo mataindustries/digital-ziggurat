@@ -309,7 +309,7 @@ export const ReelDialog = forwardRef(function ReelDialog({ project, onClose, sta
             onError={() => setPlaybackError(media.unavailableMessage ?? 'The video could not be loaded. Please try again later.')}
           >
             {media.captions ? (
-              <track kind="captions" src={media.captions} srcLang="en" label="English" default />
+              <track kind="captions" src={media.captions} srcLang="en" label="English SDH" default />
             ) : null}
           </video>
         </div>

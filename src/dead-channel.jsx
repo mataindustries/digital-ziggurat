@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { getProject, siteMeta } from './data/projects';
 import signal from './data/deadChannelSignal.json';
+import captions from './data/deadChannelCaptions.json';
+import release from './data/deadChannelRelease.json';
 import { deadChannelCaseStudy as study } from './data/deadChannelCaseStudy';
 import { SiteHeader, SiteFooter, VisuallyHidden } from './shared';
 import { FilmPlayer } from './dead-channel/FilmPlayer';
@@ -78,8 +80,8 @@ function DeadChannelPage() {
             onPlaying={onPlaying}
           />
           <p className="dc-caption-status" id="dc-caption-status">
-            Private screening · captions and verbatim transcript await owner
-            review.
+            Private screening · English SDH draft available in CC. Tutorial
+            audio is indistinct; captions await owner approval.
           </p>
           <SignalTrace
             time={time}
@@ -102,26 +104,19 @@ function DeadChannelPage() {
             ))}
           </dl>
           <details className="dc-details dc-viewing-notes">
-            <summary>Picture and sound notes · contains the reveal</summary>
-            <p>
-              These viewing notes combine V4.2 picture checks with measurements
-              of the unchanged original audio. They are not a complete
-              transcript or a replacement for approved descriptive captions.
-            </p>
+            <summary>Descriptive transcript · contains the reveal</summary>
+            <p>{captions.speechReviewNote}</p>
             <ol>
-              {signal.events.map((event) => (
-                <li key={event.id}>
-                  <strong>
-                    {event.time.toFixed(2)} s · {event.label}.
-                  </strong>{' '}
-                  {event.detail}
+              {captions.transcript.map((entry) => (
+                <li key={entry.time}>
+                  <strong>{entry.time}.</strong> {entry.text}
                 </li>
               ))}
             </ol>
             <p>
-              The film ends on the fictional LOOP tutorial page. LOOP and Ellis
-              Builds are fictional. Spoken dialog will be added only after
-              transcription and approval.
+              These descriptions supplement the English SDH captions. LOOP and
+              Ellis Builds are fictional. The source movie and original stereo
+              soundtrack are unchanged.
             </p>
           </details>
         </section>
@@ -222,6 +217,12 @@ function DeadChannelPage() {
               </li>
             ))}
           </ol>
+          <div className="dc-credits" aria-label="Film credits">
+            <h3>Credits</h3>
+            {release.credits.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
           <details className="dc-details dc-provenance">
             <summary>Picture-lock provenance</summary>
             <p>

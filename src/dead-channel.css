@@ -386,3 +386,12 @@
     display: none;
   }
 }
+
+.dc-credits {
+  margin-top: 2rem;
+}
+
+.dc-credits p {
+  color: var(--muted);
+  max-width: 75ch;
+}

@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const media = resolve(root, 'public/media/dead-channel');
 const data = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelSignal.json'), 'utf8'));
+const release = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelRelease.json'), 'utf8'));
+const captions = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelCaptions.json'), 'utf8'));
 const filmIdentity = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelFilm.json'), 'utf8'));
 const expected = '43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9';
 const sha256 = (path) => createHash('sha256').update(readFileSync(path)).digest('hex');
@@ -120,8 +122,13 @@ if (available.length) {
   console.log('DEAD CHANNEL: code-only checks passed; private film assets must be staged for audiovisual review.');
 }
 
-// A successful private build must never be mistaken for publication authorization.
-// This guard is intentionally changed only after the owner explicitly approves release.
+// Private preparation and public-release authorization are separate checks.
 if (process.argv.includes('--release')) {
-  throw new Error('PUBLIC RELEASE BLOCKED: explicit owner approval to publish V4.2, approved verbatim transcript/SDH captions, tutorial stereo-intent review, final credits and publication date are pending. A private build does not grant release approval.');
+  const blockers = [];
+  if (!release.captionsApproved) blockers.push('owner approval of final English SDH captions and tutorial transcription status');
+  if (!release.publicReleaseApproved) blockers.push('explicit owner approval of the final candidate and public media release');
+  if (available.length !== assets.length || !existsSync(resolve(media, 'captions-en.vtt'))) blockers.push('complete verified release media and caption sidecar');
+  assert.ok(release.pictureApproved && release.creditsApproved && release.originalMixPreservationApproved, 'Preserve the approved picture, credits and original stereo mix');
+  assert.equal(captions.filmSha256, expected);
+  if (blockers.length) throw new Error(`PUBLIC RELEASE BLOCKED: ${blockers.join('; ')}. Private build success is not publication authorization.`);
 }

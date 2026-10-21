@@ -1,6 +1,6 @@
 // Private review copy, grounded in V4.2 picture checks and the unchanged original audio.
 // Film identity and measurements live in deadChannelSignal.json. No event-map data,
-// publication date, detailed production credits, or unapproved dialog is inferred.
+// publication date or unapproved dialogue is inferred. Credits are owner-supplied.
 import signal from './deadChannelSignal.json';
 import { buildMailto } from './projects';
 

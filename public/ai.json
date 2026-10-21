@@ -184,6 +184,7 @@
         "height": 720,
         "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
         "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
+        "captions": "/media/dead-channel/captions-en.vtt",
         "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
         "publicationStatus": "Private review media; not approved for public release."
       }
@@ -533,6 +534,7 @@
         "height": 720,
         "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
         "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
+        "captions": "/media/dead-channel/captions-en.vtt",
         "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
         "publicationStatus": "Private review media; not approved for public release."
       },

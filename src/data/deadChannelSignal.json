@@ -1126,7 +1126,7 @@
       "time": 20.45,
       "end": 21.85,
       "label": "Tutorial audio",
-      "detail": "Audio pre-laps the picture cut by 0.30 s; approximately 20 dB right-weighted, awaiting owner intent review.",
+      "detail": "Audio pre-laps the picture cut by 0.30 s; approximately 20 dB right-weighted. The original mix is preserved as approved.",
       "basis": "blueprint fine-window analysis; 250 ms stereo profile"
     },
     {
@@ -1252,7 +1252,7 @@
       "t1": 21.85,
       "pictureCut": 20.75,
       "rightBiasDb": 20,
-      "artisticIntent": "pending owner review"
+      "artisticIntent": "Original stereo mix preservation approved by Sergio Mata; no rebalance."
     },
     "loudness": {
       "integratedLufs": -21.1,

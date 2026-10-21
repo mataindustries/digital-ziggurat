@@ -79,7 +79,8 @@ export const FilmPlayer = forwardRef(function FilmPlayer(
               kind="captions"
               src={media.captions}
               srcLang="en"
-              label="English"
+              label="English SDH"
+              default
             />
           ) : null}
         </video>

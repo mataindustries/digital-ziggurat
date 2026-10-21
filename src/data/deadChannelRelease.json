@@ -1,0 +1,12 @@
+{
+  "pictureApproved": true,
+  "creditsApproved": true,
+  "originalMixPreservationApproved": true,
+  "captionsApproved": false,
+  "publicReleaseApproved": false,
+  "credits": [
+    "Created and directed by Sergio Mata.",
+    "AI-assisted visual production.",
+    "Original procedural sound design synthesized with Python under Sergio Mata's creative direction, using Claude-assisted production."
+  ]
+}
