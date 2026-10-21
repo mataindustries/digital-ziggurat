@@ -1,9 +1,11 @@
 // Single source of truth for the homepage, project chambers, ziggurat section
 // navigation, contact routes, and generated public metadata.
 
+import deadChannelFilm from './deadChannelFilm.json' with { type: 'json' };
+
 const contactEmail = 'matasergio741@gmail.com';
 
-const buildMailto = (subject, body) =>
+export const buildMailto = (subject, body) =>
   `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}${
     body ? `&body=${encodeURIComponent(body)}` : ''
   }`;
@@ -407,15 +409,16 @@ export const projects = [
     tier: 'major',
     subtitle: 'Coding agents have code tools. DaemonV12 gives them instruments.',
     category: 'Agent tooling / headless music engine',
-    // Release facts and wording checked against mataindustries/daemonv12 at ed75e9e
-    // (0.6.0, 2026-10-11) and the live site. Only WAV, stems and manifests repeat byte
-    // for byte; the project calls MP3 a listening copy.
+    // Current release checked against mataindustries/daemonv12 package.json (blob
+    // 838434b) and README (blob a1790fc), 2026-10-19: public beta 0.7.0. GLASS//FIRE
+    // and GHOST//SHIFT remain historical v0.6 proof. Only WAV, stems and manifests
+    // repeat byte for byte; the project calls MP3 a listening copy.
     description:
       'A headless, deterministic music engine for coding agents. Agents write music as JSON through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3, MIDI and sample-aligned stems, with effects, automation, loudness analysis and a SHA-256 provenance manifest.',
     feature: {
       eyebrow: 'Agent-native engine',
       body: 'A headless music engine built for coding agents. There is no model inside: the agent writes every note as data through nine MCP tools, and DaemonV12 renders it offline to WAV, MP3 and stems, with effects and automation. GLASS//FIRE, a 24-second piece an agent composed entirely through MCP, is the production proof.',
-      facts: ['9 MCP tools', 'Deterministic WAV + stems', 'v0.6 sample performance'],
+      facts: ['9 MCP tools', 'Deterministic WAV + stems', 'v0.7 sampler articulation'],
       hardPart:
         'Keeping renders byte-identical while v0.6 taught samples to change speed, glide and start mid-file.',
       proves: 'Agents can compose, render and verify real music when the instrument is built as a tool.',
@@ -428,9 +431,9 @@ export const projects = [
       'Node and TypeScript, with FluidSynth and a SoundFont for General MIDI voices and FFmpeg for MP3, effects and analysis. Nine stdio MCP tools cover project create, read, validate and patch, instrument and kit discovery, render, analyze and render provenance. Each release came from a real piece of music: GLASS//FIRE needed samples performed, not just triggered, and that became v0.6.',
     status: 'Public beta',
     currentStatus:
-      'Version 0.6 adds sample performance: per-note playback rate from 0.25 to 4×, playback-rate glides and source offsets, through the same nine MCP tools. GHOST//SHIFT, a 12-second demo, performs a whole lead from one 0.95-second vocal sample. DaemonV12 runs from a GitHub clone and is not yet published to npm.',
+      'Version 0.7 adds sampler articulation: source slices, musical gates, per-voice attack/release envelopes and track-local choke groups, through the same nine MCP tools. ONE SOUND demonstrates the same original low boom before and after articulation. GHOST//SHIFT remains the v0.6 sample-performance demo. DaemonV12 runs from a GitHub clone or packed release tarball and is not yet published to npm.',
     statusTone: 'cyan',
-    badge: 'v0.6 released',
+    badge: 'v0.7 public beta',
     // GLASS//FIRE media under public/media/daemonv12/: the poster is the live site's own
     // end card, and the loop is a silent 7.5-second cut (16.0–23.5 s, five bars at 160 BPM)
     // of the 24-second showcase. `tone: 'glass'` gives the frame its monochrome treatment.
@@ -484,6 +487,80 @@ export const projects = [
         href: 'https://github.com/mataindustries/daemonv12',
       },
       caseStudy: null,
+    },
+  },
+  {
+    id: 'dead-channel',
+    name: 'Dead Channel',
+    tier: 'major',
+    category: 'Original short film / cinematic sound',
+    description:
+      `A ${deadChannelFilm.duration}-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with ${deadChannelFilm.sourceCount} coordinated virtual sound sources.`,
+    feature: {
+      eyebrow: 'Original short film',
+      body: `An investigator enters an abandoned aerospace plant with a vibe-coded spirit detector. Its readout glitches during the approach, then returns to zero. It has been broadcasting all along. The swarm stays unseen, carried by ${deadChannelFilm.sourceCount} synthesized sound sources and the air of the building.`,
+      facts: [
+        `${deadChannelFilm.duration} seconds · original horror-comedy`,
+        `${deadChannelFilm.sourceCount} virtual sound sources`,
+        `${deadChannelFilm.width} × ${deadChannelFilm.height} · ${deadChannelFilm.fps} fps`,
+      ],
+      hardPart: 'Making an invisible threat feel present through original sound, environmental VFX and precise timing.',
+      proves: 'Cinematic storytelling and technical implementation can work as one finished experience.',
+    },
+    proves:
+      'Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.',
+    hardPart:
+      'The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.',
+    howBuilt:
+      `Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using ${deadChannelFilm.sourceCount} coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.`,
+    status: 'Released',
+    statusTone: 'gold',
+    badge: deadChannelFilm.version.replace(' review', ''),
+    // Approved release media is staged separately from the public Git repository.
+    // The film path holds the unchanged master bytes; keep it ignored by Git.
+    media: {
+      width: deadChannelFilm.width,
+      height: deadChannelFilm.height,
+      tone: 'channel',
+      privateReview: false,
+      poster: {
+        webp: '/media/dead-channel/poster-1280.webp',
+        jpg: '/media/dead-channel/poster-1280.jpg',
+      },
+      alt: 'A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant',
+      loop: '/media/dead-channel/loop-8s-1280.mp4',
+      reel: '/media/dead-channel/film-22s-1280x720p60.mp4',
+      captions: '/media/dead-channel/captions-en.vtt',
+      reelTitle: 'Dead Channel · watch with sound',
+      watchLabel: 'Watch with sound',
+      playWithSound: true,
+      caption: `● TX ACTIVE · sound off: an empty building · ${deadChannelFilm.duration} s`,
+      contentNote: 'Horror-comedy · sudden loud sounds near the end · best with headphones',
+    },
+    socialPreview: {
+      url: `${siteMeta.publicUrl}/media/dead-channel/og-1200x630.jpg`,
+      alt: 'Dead Channel: a field scanner reads zero entities and Discoverable: Everyone in an empty aerospace plant.',
+    },
+    proofSignals: [
+      deadChannelFilm.version.replace(' review', ''),
+      `${deadChannelFilm.frames.toLocaleString('en-US')} frames at ${deadChannelFilm.fps} fps`,
+      'Original Python/NumPy DSP soundtrack',
+      'Signal Trace measured from the stereo master',
+    ],
+    hireableCapabilities: [
+      'Cinematic web presentation',
+      'Creative and technical implementation',
+      'Original sound in code',
+      'Accessible media interfaces',
+    ],
+    tags: ['Original film', 'Python', 'NumPy', 'Audio DSP', 'Stereo sound', 'Cinematic web'],
+    links: {
+      live: null,
+      source: null,
+      caseStudy: {
+        label: 'Dead Channel case study',
+        href: '/work/dead-channel/',
+      },
     },
   },
   {
@@ -846,7 +923,7 @@ export const projectsByTier = (tier) => projects.filter((project) => project.tie
 export const getProject = (id) => projects.find((project) => project.id === id);
 
 // The visual Ziggurat tiers are section navigation, listed bottom to top. A tier with
-// `links` instead of `href` holds peers: the two major projects share one step, and
+// `links` instead of `href` holds peers: the major projects share one step, and
 // each name links to its own section.
 export const zigguratTiers = [
   { id: 'lab', name: 'Lab', href: '#lab' },
@@ -858,6 +935,7 @@ export const zigguratTiers = [
     links: [
       { id: 'permitpulse', name: 'PermitPulse', href: '#permitpulse' },
       { id: 'daemonv12', name: 'DaemonV12', href: '#daemonv12' },
+      { id: 'dead-channel', name: 'Dead Channel', href: '#dead-channel' },
     ],
   },
   { id: 'shoot-the-moon', name: 'Shoot the Moon', href: '#shoot-the-moon' },

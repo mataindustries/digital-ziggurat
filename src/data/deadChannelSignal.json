@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": 1,
+  "film": {
+    "duration": 22,
+    "fps": 60,
+    "frames": 1320,
+    "width": 1280,
+    "height": 720,
+    "sourceCount": 240,
+    "version": "V4.2 review",
+    "sha256": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
+    "streams": {
+      "video": "8e8015acdbb7fd4e32e256dddcaa10e85004cb26f4a63b3ea72b31fe0e42b104",
+      "audio": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628"
+    }
+  },
+  "provenance": {
+    "profile": {
+      "fileName": "master_stereo_profile_250ms.txt",
+      "sha256": "742b9c64fd6e3c7743b0d9e49d9d8106b2674677e7f0506fe8ee2a511c78372a",
+      "windowSeconds": 0.25,
+      "windowCount": 88
+    },
+    "measurementScript": {
+      "fileName": "measure_master_reference.py",
+      "sha256": "6f988a57e6239df792ba993b27e834975215412a67ca5d8eb2630e6298023b28"
+    },
+    "blueprint": {
+      "fileName": "DEAD_CHANNEL_ZIGGURAT_BLUEPRINT.md",
+      "sha256": "2b8834993dd1085706d6c66d5585c374f44d459a00f3a6dc7375718aefd461fd"
+    },
+    "generator": "tools/dead-channel/measure_master.py",
+    "basis": "Supplied V4.1 audio measurements retained after V4.2 AAC/decoded-PCM identity and all 88 independently decoded bins were verified. V4.2 picture events use direct source-frame inspection. Source count is a supplied production fact, not a recovered event map.",
+    "referenceFilm": {
+      "version": "V4.1 picture lock",
+      "sha256": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+      "audioSha256": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628"
+    },
+    "pictureRevision": {
+      "version": "V4.2 review",
+      "sha256": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
+      "frameNumbering": "Zero-based source frames at 60 fps",
+      "basis": "Owner-supplied detector correction, independently inspected in V4.2 source frames",
+      "glitchSamples": [
+        {
+          "frame": 408,
+          "readout": "--"
+        },
+        {
+          "frame": 480,
+          "readout": "ERR"
+        },
+        {
+          "frame": 900,
+          "readout": "ERR"
+        },
+        {
+          "frame": 960,
+          "readout": "--"
+        },
+        {
+          "frame": 1191,
+          "readout": "ERR"
+        }
+      ],
+      "rangeZero": {
+        "frame": 1143,
+        "readout": "0.00 m",
+        "entityReadout": "ERR"
+      },
+      "entityCountReturn": {
+        "previousFrame": 1191,
+        "previousReadout": "ERR",
+        "frame": 1192,
+        "readout": "0"
+      }
+    },
+    "eventMap": null,
+    "balanceConvention": "rmsL minus rmsR, dB; positive is left-weighted",
+    "missingCorrelation": "null means undefined; never zero-filled or interpolated"
+  },
+  "windows": [
+    {
+      "t0": 0.0,
+      "t1": 0.25,
+      "rmsL": -49.4,
+      "rmsR": -49.6,
+      "balance": 0.14,
+      "correlation": 0.935,
+      "sideMid": -14.7,
+      "centroid": 136.0,
+      "hfPercent": 0.3
+    },
+    {
+      "t0": 0.25,
+      "t1": 0.5,
+      "rmsL": -40.5,
+      "rmsR": -41.6,
+      "balance": 1.02,
+      "correlation": 0.841,
+      "sideMid": -10.5,
+      "centroid": 312.0,
+      "hfPercent": 0.3
+    },
+    {
+      "t0": 0.5,
+      "t1": 0.75,
+      "rmsL": -31.1,
+      "rmsR": -32.0,
+      "balance": 0.91,
+      "correlation": 0.612,
+      "sideMid": -6.1,
+      "centroid": 1638.0,
+      "hfPercent": 0.2
+    },
+    {
+      "t0": 0.75,
+      "t1": 1.0,
+      "rmsL": -30.1,
+      "rmsR": -31.7,
+      "balance": 1.53,
+      "correlation": 0.713,
+      "sideMid": -7.6,
+      "centroid": 1485.0,
+      "hfPercent": 0.2
+    },
+    {
+      "t0": 1.0,
+      "t1": 1.25,
+      "rmsL": -42.7,
+      "rmsR": -41.4,
+      "balance": -1.33,
+      "correlation": -0.159,
+      "sideMid": 1.4,
+      "centroid": 901.0,
+      "hfPercent": 0.7
+    },
+    {
+      "t0": 1.25,
+      "t1": 1.5,
+      "rmsL": -46.5,
+      "rmsR": -47.2,
+      "balance": 0.66,
+      "correlation": 0.509,
+      "sideMid": -4.9,
+      "centroid": 433.0,
+      "hfPercent": 0.3
+    },
+    {
+      "t0": 1.5,
+      "t1": 1.75,
+      "rmsL": -41.7,
+      "rmsR": -41.2,
+      "balance": -0.51,
+      "correlation": 0.671,
+      "sideMid": -7.0,
+      "centroid": 379.0,
+      "hfPercent": 0.0
+    },
+    {
+      "t0": 1.75,
+      "t1": 2.0,
+      "rmsL": -37.6,
+      "rmsR": -37.2,
+      "balance": -0.43,
+      "correlation": 0.517,
+      "sideMid": -5.0,
+      "centroid": 643.0,
+      "hfPercent": 1.3
+    },
+    {
+      "t0": 2.0,
+      "t1": 2.25,
+      "rmsL": -33.9,
+      "rmsR": -34.4,
+      "balance": 0.48,
+      "correlation": 0.23,
+      "sideMid": -2.0,
+      "centroid": 1722.0,
+      "hfPercent": 8.9
+    },
+    {
+      "t0": 2.25,
+      "t1": 2.5,
+      "rmsL": -35.1,
+      "rmsR": -34.6,
+      "balance": -0.43,
+      "correlation": 0.305,
+      "sideMid": -2.7,
+      "centroid": 1878.0,
+      "hfPercent": 6.3
+    },
+    {
+      "t0": 2.5,
+      "t1": 2.75,
+      "rmsL": -30.3,
+      "rmsR": -30.9,
+      "balance": 0.62,
+      "correlation": 0.523,
+      "sideMid": -5.0,
+      "centroid": 1897.0,
+      "hfPercent": 1.4
+    },
+    {
+      "t0": 2.75,
+      "t1": 3.0,
+      "rmsL": -31.7,
+      "rmsR": -32.3,
+      "balance": 0.65,
+      "correlation": 0.551,
+      "sideMid": -5.4,
+      "centroid": 1473.0,
+      "hfPercent": 0.2
+    },
+    {
+      "t0": 3.0,
+      "t1": 3.25,
+      "rmsL": -31.2,
+      "rmsR": -32.9,
+      "balance": 1.65,
+      "correlation": 0.619,
+      "sideMid": -6.1,
+      "centroid": 1574.0,
+      "hfPercent": 0.4
+    },
+    {
+      "t0": 3.25,
+      "t1": 3.5,
+      "rmsL": -34.5,
+      "rmsR": -34.8,
+      "balance": 0.28,
+      "correlation": 0.46,
+      "sideMid": -4.3,
+      "centroid": 771.0,
+      "hfPercent": 0.1
+    },
+    {
+      "t0": 3.5,
+      "t1": 3.75,
+      "rmsL": -33.7,
+      "rmsR": -33.3,
+      "balance": -0.43,
+      "correlation": 0.513,
+      "sideMid": -4.9,
+      "centroid": 541.0,
+      "hfPercent": 0.4
+    },
+    {
+      "t0": 3.75,
+      "t1": 4.0,
+      "rmsL": -30.2,
+      "rmsR": -30.4,
+      "balance": 0.12,
+      "correlation": 0.543,
+      "sideMid": -5.3,
+      "centroid": 653.0,
+      "hfPercent": 0.4
+    },
+    {
+      "t0": 4.0,
+      "t1": 4.25,
+      "rmsL": -29.1,
+      "rmsR": -29.3,
+      "balance": 0.19,
+      "correlation": 0.513,
+      "sideMid": -4.9,
+      "centroid": 1125.0,
+      "hfPercent": 0.3
+    },
+    {
+      "t0": 4.25,
+      "t1": 4.5,
+      "rmsL": -29.7,
+      "rmsR": -31.1,
+      "balance": 1.35,
+      "correlation": 0.583,
+      "sideMid": -5.7,
+      "centroid": 1412.0,
+      "hfPercent": 0.2
+    },
+    {
+      "t0": 4.5,
+      "t1": 4.75,
+      "rmsL": -30.9,
+      "rmsR": -31.3,
+      "balance": 0.43,
+      "correlation": 0.523,
+      "sideMid": -5.0,
+      "centroid": 1424.0,
+      "hfPercent": 0.1
+    },
+    {
+      "t0": 4.75,
+      "t1": 5.0,
+      "rmsL": -28.7,
+      "rmsR": -28.6,
+      "balance": -0.01,
+      "correlation": 0.528,
+      "sideMid": -5.1,
+      "centroid": 1361.0,
+      "hfPercent": 0.2
+    },
+    {
+      "t0": 5.0,
+      "t1": 5.25,
+      "rmsL": -32.3,
+      "rmsR": -31.8,
+      "balance": -0.51,
+      "correlation": 0.427,
+      "sideMid": -4.0,
+      "centroid": 714.0,
+      "hfPercent": 0.2
+    },
+    {
+      "t0": 5.25,
+      "t1": 5.5,
+      "rmsL": -32.3,
+      "rmsR": -32.0,
+      "balance": -0.37,
+      "correlation": 0.612,
+      "sideMid": -6.2,
+      "centroid": 1456.0,
+      "hfPercent": 3.7
+    },
+    {
+      "t0": 5.5,
+      "t1": 5.75,
+      "rmsL": -31.2,
+      "rmsR": -31.4,
+      "balance": 0.21,
+      "correlation": 0.484,
+      "sideMid": -4.6,
+      "centroid": 1216.0,
+      "hfPercent": 2.4
+    },
+    {
+      "t0": 5.75,
+      "t1": 6.0,
+      "rmsL": -29.9,
+      "rmsR": -30.2,
+      "balance": 0.32,
+      "correlation": 0.496,
+      "sideMid": -4.7,
+      "centroid": 965.0,
+      "hfPercent": 1.4
+    },
+    {
+      "t0": 6.0,
+      "t1": 6.25,
+      "rmsL": -30.2,
+      "rmsR": -30.3,
+      "balance": 0.13,
+      "correlation": 0.426,
+      "sideMid": -4.0,
+      "centroid": 1042.0,
+      "hfPercent": 3.5
+    },
+    {
+      "t0": 6.25,
+      "t1": 6.5,
+      "rmsL": -30.7,
+      "rmsR": -30.3,
+      "balance": -0.34,
+      "correlation": 0.443,
+      "sideMid": -4.1,
+      "centroid": 812.0,
+      "hfPercent": 1.1
+    },
+    {
+      "t0": 6.5,
+      "t1": 6.75,
+      "rmsL": -28.6,
+      "rmsR": -29.3,
+      "balance": 0.65,
+      "correlation": 0.592,
+      "sideMid": -5.9,
+      "centroid": 1165.0,
+      "hfPercent": 1.5
+    },
+    {
+      "t0": 6.75,
+      "t1": 7.0,
+      "rmsL": -31.5,
+      "rmsR": -31.2,
+      "balance": -0.33,
+      "correlation": 0.299,
+      "sideMid": -2.7,
+      "centroid": 1049.0,
+      "hfPercent": 2.7
+    },
+    {
+      "t0": 7.0,
+      "t1": 7.25,
+      "rmsL": -31.2,
+      "rmsR": -31.3,
+      "balance": 0.08,
+      "correlation": 0.409,
+      "sideMid": -3.8,
+      "centroid": 998.0,
+      "hfPercent": 2.7
+    },
+    {
+      "t0": 7.25,
+      "t1": 7.5,
+      "rmsL": -29.7,
+      "rmsR": -29.6,
+      "balance": -0.12,
+      "correlation": 0.431,
+      "sideMid": -4.0,
+      "centroid": 1021.0,
+      "hfPercent": 2.3
+    },
+    {
+      "t0": 7.5,
+      "t1": 7.75,
+      "rmsL": -25.1,
+      "rmsR": -26.5,
+      "balance": 1.34,
+      "correlation": 0.348,
+      "sideMid": -3.1,
+      "centroid": 1300.0,
+      "hfPercent": 1.8
+    },
+    {
+      "t0": 7.75,
+      "t1": 8.0,
+      "rmsL": -27.3,
+      "rmsR": -28.2,
+      "balance": 0.95,
+      "correlation": 0.277,
+      "sideMid": -2.5,
+      "centroid": 1643.0,
+      "hfPercent": 8.6
+    },
+    {
+      "t0": 8.0,
+      "t1": 8.25,
+      "rmsL": -24.3,
+      "rmsR": -24.1,
+      "balance": -0.15,
+      "correlation": 0.196,
+      "sideMid": -1.7,
+      "centroid": 1269.0,
+      "hfPercent": 2.2
+    },
+    {
+      "t0": 8.25,
+      "t1": 8.5,
+      "rmsL": -24.9,
+      "rmsR": -24.8,
+      "balance": -0.15,
+      "correlation": 0.159,
+      "sideMid": -1.4,
+      "centroid": 1328.0,
+      "hfPercent": 2.1
+    },
+    {
+      "t0": 8.5,
+      "t1": 8.75,
+      "rmsL": -25.9,
+      "rmsR": -26.9,
+      "balance": 0.96,
+      "correlation": 0.175,
+      "sideMid": -1.5,
+      "centroid": 1322.0,
+      "hfPercent": 1.8
+    },
+    {
+      "t0": 8.75,
+      "t1": 9.0,
+      "rmsL": -25.1,
+      "rmsR": -29.0,
+      "balance": 3.89,
+      "correlation": 0.176,
+      "sideMid": -1.4,
+      "centroid": 2340.0,
+      "hfPercent": 4.9
+    },
+    {
+      "t0": 9.0,
+      "t1": 9.25,
+      "rmsL": -31.2,
+      "rmsR": -30.1,
+      "balance": -1.1,
+      "correlation": 0.226,
+      "sideMid": -2.0,
+      "centroid": 1359.0,
+      "hfPercent": 3.5
+    },
+    {
+      "t0": 9.25,
+      "t1": 9.5,
+      "rmsL": -29.1,
+      "rmsR": -30.0,
+      "balance": 0.83,
+      "correlation": 0.395,
+      "sideMid": -3.6,
+      "centroid": 1685.0,
+      "hfPercent": 3.3
+    },
+    {
+      "t0": 9.5,
+      "t1": 9.75,
+      "rmsL": -31.2,
+      "rmsR": -29.0,
+      "balance": -2.21,
+      "correlation": 0.014,
+      "sideMid": -0.1,
+      "centroid": 1916.0,
+      "hfPercent": 6.3
+    },
+    {
+      "t0": 9.75,
+      "t1": 10.0,
+      "rmsL": -19.8,
+      "rmsR": -21.7,
+      "balance": 1.88,
+      "correlation": 0.123,
+      "sideMid": -1.1,
+      "centroid": 1841.0,
+      "hfPercent": 4.7
+    },
+    {
+      "t0": 10.0,
+      "t1": 10.25,
+      "rmsL": -19.7,
+      "rmsR": -22.6,
+      "balance": 2.85,
+      "correlation": -0.085,
+      "sideMid": 0.7,
+      "centroid": 1941.0,
+      "hfPercent": 6.1
+    },
+    {
+      "t0": 10.25,
+      "t1": 10.5,
+      "rmsL": -22.8,
+      "rmsR": -25.6,
+      "balance": 2.85,
+      "correlation": 0.022,
+      "sideMid": -0.2,
+      "centroid": 1756.0,
+      "hfPercent": 3.5
+    },
+    {
+      "t0": 10.5,
+      "t1": 10.75,
+      "rmsL": -25.2,
+      "rmsR": -29.7,
+      "balance": 4.51,
+      "correlation": -0.096,
+      "sideMid": 0.7,
+      "centroid": 2124.0,
+      "hfPercent": 4.2
+    },
+    {
+      "t0": 10.75,
+      "t1": 11.0,
+      "rmsL": -26.5,
+      "rmsR": -31.3,
+      "balance": 4.76,
+      "correlation": 0.112,
+      "sideMid": -0.8,
+      "centroid": 2250.0,
+      "hfPercent": 10.1
+    },
+    {
+      "t0": 11.0,
+      "t1": 11.25,
+      "rmsL": -30.2,
+      "rmsR": -33.4,
+      "balance": 3.14,
+      "correlation": 0.201,
+      "sideMid": -1.7,
+      "centroid": 2064.0,
+      "hfPercent": 14.7
+    },
+    {
+      "t0": 11.25,
+      "t1": 11.5,
+      "rmsL": -32.2,
+      "rmsR": -31.9,
+      "balance": -0.25,
+      "correlation": 0.455,
+      "sideMid": -4.3,
+      "centroid": 1497.0,
+      "hfPercent": 8.2
+    },
+    {
+      "t0": 11.5,
+      "t1": 11.75,
+      "rmsL": -33.4,
+      "rmsR": -30.5,
+      "balance": -2.89,
+      "correlation": 0.047,
+      "sideMid": -0.4,
+      "centroid": 2142.0,
+      "hfPercent": 13.6
+    },
+    {
+      "t0": 11.75,
+      "t1": 12.0,
+      "rmsL": -32.4,
+      "rmsR": -33.4,
+      "balance": 1.0,
+      "correlation": 0.187,
+      "sideMid": -1.6,
+      "centroid": 1688.0,
+      "hfPercent": 7.8
+    },
+    {
+      "t0": 12.0,
+      "t1": 12.25,
+      "rmsL": -31.2,
+      "rmsR": -31.7,
+      "balance": 0.47,
+      "correlation": 0.39,
+      "sideMid": -3.6,
+      "centroid": 1690.0,
+      "hfPercent": 8.8
+    },
+    {
+      "t0": 12.25,
+      "t1": 12.5,
+      "rmsL": -30.9,
+      "rmsR": -31.3,
+      "balance": 0.36,
+      "correlation": 0.103,
+      "sideMid": -0.9,
+      "centroid": 1550.0,
+      "hfPercent": 9.2
+    },
+    {
+      "t0": 12.5,
+      "t1": 12.75,
+      "rmsL": -27.3,
+      "rmsR": -28.3,
+      "balance": 1.09,
+      "correlation": 0.086,
+      "sideMid": -0.7,
+      "centroid": 1671.0,
+      "hfPercent": 6.1
+    },
+    {
+      "t0": 12.75,
+      "t1": 13.0,
+      "rmsL": -26.9,
+      "rmsR": -25.6,
+      "balance": -1.37,
+      "correlation": -0.034,
+      "sideMid": 0.3,
+      "centroid": 1636.0,
+      "hfPercent": 6.2
+    },
+    {
+      "t0": 13.0,
+      "t1": 13.25,
+      "rmsL": -26.7,
+      "rmsR": -22.5,
+      "balance": -4.17,
+      "correlation": 0.113,
+      "sideMid": -0.9,
+      "centroid": 2085.0,
+      "hfPercent": 13.1
+    },
+    {
+      "t0": 13.25,
+      "t1": 13.5,
+      "rmsL": -24.7,
+      "rmsR": -18.9,
+      "balance": -5.76,
+      "correlation": 0.068,
+      "sideMid": -0.5,
+      "centroid": 2852.0,
+      "hfPercent": 22.2
+    },
+    {
+      "t0": 13.5,
+      "t1": 13.75,
+      "rmsL": -24.5,
+      "rmsR": -21.0,
+      "balance": -3.49,
+      "correlation": 0.161,
+      "sideMid": -1.3,
+      "centroid": 1761.0,
+      "hfPercent": 12.3
+    },
+    {
+      "t0": 13.75,
+      "t1": 14.0,
+      "rmsL": -25.8,
+      "rmsR": -26.6,
+      "balance": 0.73,
+      "correlation": 0.459,
+      "sideMid": -4.3,
+      "centroid": 918.0,
+      "hfPercent": 3.7
+    },
+    {
+      "t0": 14.0,
+      "t1": 14.25,
+      "rmsL": -19.9,
+      "rmsR": -22.4,
+      "balance": 2.48,
+      "correlation": 0.071,
+      "sideMid": -0.6,
+      "centroid": 2697.0,
+      "hfPercent": 16.2
+    },
+    {
+      "t0": 14.25,
+      "t1": 14.5,
+      "rmsL": -19.0,
+      "rmsR": -22.9,
+      "balance": 3.81,
+      "correlation": 0.059,
+      "sideMid": -0.5,
+      "centroid": 3212.0,
+      "hfPercent": 31.4
+    },
+    {
+      "t0": 14.5,
+      "t1": 14.75,
+      "rmsL": -24.9,
+      "rmsR": -25.2,
+      "balance": 0.29,
+      "correlation": 0.053,
+      "sideMid": -0.5,
+      "centroid": 1678.0,
+      "hfPercent": 4.6
+    },
+    {
+      "t0": 14.75,
+      "t1": 15.0,
+      "rmsL": -26.9,
+      "rmsR": -27.7,
+      "balance": 0.74,
+      "correlation": 0.221,
+      "sideMid": -1.9,
+      "centroid": 1490.0,
+      "hfPercent": 8.2
+    },
+    {
+      "t0": 15.0,
+      "t1": 15.25,
+      "rmsL": -21.7,
+      "rmsR": -21.7,
+      "balance": -0.0,
+      "correlation": -0.061,
+      "sideMid": 0.5,
+      "centroid": 2067.0,
+      "hfPercent": 9.1
+    },
+    {
+      "t0": 15.25,
+      "t1": 15.5,
+      "rmsL": -21.4,
+      "rmsR": -20.8,
+      "balance": -0.56,
+      "correlation": 0.141,
+      "sideMid": -1.2,
+      "centroid": 2046.0,
+      "hfPercent": 11.1
+    },
+    {
+      "t0": 15.5,
+      "t1": 15.75,
+      "rmsL": -24.3,
+      "rmsR": -24.1,
+      "balance": -0.18,
+      "correlation": 0.198,
+      "sideMid": -1.7,
+      "centroid": 1870.0,
+      "hfPercent": 10.7
+    },
+    {
+      "t0": 15.75,
+      "t1": 16.0,
+      "rmsL": -24.2,
+      "rmsR": -22.1,
+      "balance": -2.03,
+      "correlation": -0.134,
+      "sideMid": 1.1,
+      "centroid": 2231.0,
+      "hfPercent": 13.0
+    },
+    {
+      "t0": 16.0,
+      "t1": 16.25,
+      "rmsL": -23.5,
+      "rmsR": -20.3,
+      "balance": -3.2,
+      "correlation": 0.005,
+      "sideMid": -0.0,
+      "centroid": 2555.0,
+      "hfPercent": 10.3
+    },
+    {
+      "t0": 16.25,
+      "t1": 16.5,
+      "rmsL": -26.8,
+      "rmsR": -22.6,
+      "balance": -4.22,
+      "correlation": 0.123,
+      "sideMid": -1.0,
+      "centroid": 1706.0,
+      "hfPercent": 1.7
+    },
+    {
+      "t0": 16.5,
+      "t1": 16.75,
+      "rmsL": -31.3,
+      "rmsR": -29.9,
+      "balance": -1.44,
+      "correlation": 0.192,
+      "sideMid": -1.7,
+      "centroid": 2109.0,
+      "hfPercent": 1.3
+    },
+    {
+      "t0": 16.75,
+      "t1": 17.0,
+      "rmsL": -32.7,
+      "rmsR": -32.3,
+      "balance": -0.47,
+      "correlation": 0.522,
+      "sideMid": -5.0,
+      "centroid": 1302.0,
+      "hfPercent": 2.2
+    },
+    {
+      "t0": 17.0,
+      "t1": 17.25,
+      "rmsL": -20.6,
+      "rmsR": -20.3,
+      "balance": -0.27,
+      "correlation": 0.05,
+      "sideMid": -0.4,
+      "centroid": 2284.0,
+      "hfPercent": 13.2
+    },
+    {
+      "t0": 17.25,
+      "t1": 17.5,
+      "rmsL": -34.5,
+      "rmsR": -34.4,
+      "balance": -0.05,
+      "correlation": 0.218,
+      "sideMid": -1.9,
+      "centroid": 1238.0,
+      "hfPercent": 3.4
+    },
+    {
+      "t0": 17.5,
+      "t1": 17.75,
+      "rmsL": -22.3,
+      "rmsR": -23.3,
+      "balance": 1.01,
+      "correlation": 0.028,
+      "sideMid": -0.2,
+      "centroid": 2604.0,
+      "hfPercent": 16.7
+    },
+    {
+      "t0": 17.75,
+      "t1": 18.0,
+      "rmsL": -23.2,
+      "rmsR": -24.8,
+      "balance": 1.64,
+      "correlation": -0.004,
+      "sideMid": 0.0,
+      "centroid": 2484.0,
+      "hfPercent": 17.6
+    },
+    {
+      "t0": 18.0,
+      "t1": 18.25,
+      "rmsL": -28.4,
+      "rmsR": -28.0,
+      "balance": -0.36,
+      "correlation": 0.115,
+      "sideMid": -1.0,
+      "centroid": 1074.0,
+      "hfPercent": 6.6
+    },
+    {
+      "t0": 18.25,
+      "t1": 18.5,
+      "rmsL": -19.5,
+      "rmsR": -20.4,
+      "balance": 0.99,
+      "correlation": 0.107,
+      "sideMid": -0.9,
+      "centroid": 2673.0,
+      "hfPercent": 18.8
+    },
+    {
+      "t0": 18.5,
+      "t1": 18.75,
+      "rmsL": -34.0,
+      "rmsR": -35.4,
+      "balance": 1.38,
+      "correlation": 0.378,
+      "sideMid": -3.4,
+      "centroid": 587.0,
+      "hfPercent": 2.4
+    },
+    {
+      "t0": 18.75,
+      "t1": 19.0,
+      "rmsL": -19.0,
+      "rmsR": -20.4,
+      "balance": 1.32,
+      "correlation": -0.005,
+      "sideMid": 0.0,
+      "centroid": 3400.0,
+      "hfPercent": 25.5
+    },
+    {
+      "t0": 19.0,
+      "t1": 19.25,
+      "rmsL": -32.4,
+      "rmsR": -33.7,
+      "balance": 1.28,
+      "correlation": 0.594,
+      "sideMid": -5.8,
+      "centroid": 1727.0,
+      "hfPercent": 0.6
+    },
+    {
+      "t0": 19.25,
+      "t1": 19.5,
+      "rmsL": -32.9,
+      "rmsR": -34.1,
+      "balance": 1.2,
+      "correlation": 0.652,
+      "sideMid": -6.7,
+      "centroid": 1077.0,
+      "hfPercent": 2.6
+    },
+    {
+      "t0": 19.5,
+      "t1": 19.75,
+      "rmsL": -28.6,
+      "rmsR": -29.0,
+      "balance": 0.42,
+      "correlation": 0.173,
+      "sideMid": -1.5,
+      "centroid": 1885.0,
+      "hfPercent": 1.7
+    },
+    {
+      "t0": 19.75,
+      "t1": 20.0,
+      "rmsL": -19.2,
+      "rmsR": -18.7,
+      "balance": -0.47,
+      "correlation": 0.767,
+      "sideMid": -8.8,
+      "centroid": 1386.0,
+      "hfPercent": 3.7
+    },
+    {
+      "t0": 20.0,
+      "t1": 20.25,
+      "rmsL": -38.1,
+      "rmsR": -37.0,
+      "balance": -1.13,
+      "correlation": 0.805,
+      "sideMid": -9.5,
+      "centroid": 1173.0,
+      "hfPercent": 1.2
+    },
+    {
+      "t0": 20.25,
+      "t1": 20.5,
+      "rmsL": -92.7,
+      "rmsR": -72.8,
+      "balance": -19.92,
+      "correlation": -0.157,
+      "sideMid": 0.3,
+      "centroid": 3556.0,
+      "hfPercent": 30.2
+    },
+    {
+      "t0": 20.5,
+      "t1": 20.75,
+      "rmsL": -56.3,
+      "rmsR": -36.1,
+      "balance": -20.12,
+      "correlation": -0.133,
+      "sideMid": 0.2,
+      "centroid": 3452.0,
+      "hfPercent": 23.5
+    },
+    {
+      "t0": 20.75,
+      "t1": 21.0,
+      "rmsL": -47.4,
+      "rmsR": -27.2,
+      "balance": -20.13,
+      "correlation": -0.222,
+      "sideMid": 0.4,
+      "centroid": 3548.0,
+      "hfPercent": 23.6
+    },
+    {
+      "t0": 21.0,
+      "t1": 21.25,
+      "rmsL": -50.9,
+      "rmsR": -31.1,
+      "balance": -19.83,
+      "correlation": -0.226,
+      "sideMid": 0.4,
+      "centroid": 3625.0,
+      "hfPercent": 30.8
+    },
+    {
+      "t0": 21.25,
+      "t1": 21.5,
+      "rmsL": -48.7,
+      "rmsR": -28.3,
+      "balance": -20.43,
+      "correlation": -0.25,
+      "sideMid": 0.4,
+      "centroid": 4083.0,
+      "hfPercent": 32.8
+    },
+    {
+      "t0": 21.5,
+      "t1": 21.75,
+      "rmsL": -50.9,
+      "rmsR": -30.4,
+      "balance": -20.55,
+      "correlation": -0.185,
+      "sideMid": 0.3,
+      "centroid": 4304.0,
+      "hfPercent": 43.5
+    },
+    {
+      "t0": 21.75,
+      "t1": 22.0,
+      "rmsL": -63.5,
+      "rmsR": -43.3,
+      "balance": -20.19,
+      "correlation": -0.193,
+      "sideMid": 0.3,
+      "centroid": 4426.0,
+      "hfPercent": 46.8
+    }
+  ],
+  "events": [
+    {
+      "id": "discovery",
+      "time": 7.25,
+      "end": 8.5,
+      "label": "Discovery on",
+      "detail": "Stereo correlation falls from 0.431 to 0.159.",
+      "basis": "250 ms stereo profile"
+    },
+    {
+      "id": "surge",
+      "time": 9.79,
+      "pictureTime": 9.8,
+      "label": "First surge",
+      "detail": "Measured sound onset precedes the 9.800 s picture boundary by 0.010 s.",
+      "basis": "blueprint 10 ms onset analysis; profile bins 9.50–10.00 s"
+    },
+    {
+      "id": "flanks",
+      "time": 13.25,
+      "end": 14.5,
+      "label": "Stereo flanks",
+      "detail": "Right +5.76 dB at 13.25–13.50 s; left +3.81 dB at 14.25–14.50 s.",
+      "basis": "250 ms stereo profile"
+    },
+    {
+      "id": "shutdown",
+      "time": 15,
+      "frame": 900,
+      "label": "Shutdown requested",
+      "detail": "Device close-up begins; the broadcast persists.",
+      "basis": "blueprint frame inspection"
+    },
+    {
+      "id": "detector-glitch",
+      "time": 15,
+      "frame": 900,
+      "label": "Detector glitches",
+      "detail": "A sampled approach close-up shows ERR at frame 900 and -- at frame 960; this marker is not a claim about glitch onset.",
+      "basis": "V4.2 direct source-frame inspection, frames 900 and 960"
+    },
+    {
+      "id": "range-zero",
+      "time": 19.05,
+      "frame": 1143,
+      "label": "Range: 0.00 m",
+      "detail": "The range readout reaches 0.00 m while the entity count still shows ERR; this is distinct from the count returning to 0 at frame 1192.",
+      "basis": "Blueprint timing confirmed by V4.2 source-frame inspection, frames 1142 and 1143"
+    },
+    {
+      "id": "entity-zero",
+      "time": 19.866666666666667,
+      "frame": 1192,
+      "label": "Detector returns to 0",
+      "detail": "The entity count changes from ERR at frame 1191 to 0 at frame 1192, after glitching during the approach. Range already reads 0.00 m.",
+      "basis": "V4.2 direct source-frame inspection, frames 1191 and 1192"
+    },
+    {
+      "id": "convergence",
+      "time": 19.91,
+      "label": "Convergence",
+      "detail": "The sixth hit; correlation rises to 0.767–0.805 in the adjacent 250 ms windows.",
+      "basis": "blueprint 10 ms onset analysis; 250 ms stereo profile"
+    },
+    {
+      "id": "silence",
+      "time": 20.15,
+      "end": 20.4,
+      "label": "Pre-reveal silence",
+      "detail": "The original quarter-second silence; the coarser 250 ms bins also include neighboring sound.",
+      "basis": "blueprint fine-window analysis"
+    },
+    {
+      "id": "tutorial",
+      "time": 20.45,
+      "end": 21.85,
+      "label": "Spirits swarm on the right",
+      "detail": "Owner-identified spirit convergence effect, intentionally right-weighted. The sound begins 0.30 s before the fictional tutorial picture cut; the tutorial is the visual punchline, not the audio source. The original mix is preserved.",
+      "basis": "Owner-confirmed sound attribution; blueprint fine-window analysis; 250 ms stereo profile"
+    },
+    {
+      "id": "reveal",
+      "time": 20.75,
+      "frame": 1245,
+      "label": "Tutorial reveal",
+      "detail": "Hard picture cut to the fictional tutorial.",
+      "basis": "blueprint frame inspection"
+    }
+  ],
+  "segments": [
+    {
+      "t0": 0,
+      "t1": 4,
+      "label": "Hall"
+    },
+    {
+      "t0": 4,
+      "t1": 6.8,
+      "label": "Build log"
+    },
+    {
+      "t0": 6.8,
+      "t1": 9.8,
+      "label": "Discovery"
+    },
+    {
+      "t0": 9.8,
+      "t1": 15,
+      "label": "First surge"
+    },
+    {
+      "t0": 15,
+      "t1": 17,
+      "label": "Shutdown"
+    },
+    {
+      "t0": 17,
+      "t1": 20.017,
+      "label": "No response"
+    },
+    {
+      "t0": 20.017,
+      "t1": 20.75,
+      "label": "Discoverable: everyone"
+    },
+    {
+      "t0": 20.75,
+      "t1": 22,
+      "label": "Tutorial"
+    }
+  ],
+  "measurements": {
+    "discovery": {
+      "t0": 7.25,
+      "t1": 8.5,
+      "correlationFrom": 0.431,
+      "correlationTo": 0.159
+    },
+    "surge": {
+      "time": 9.79,
+      "pictureTime": 9.8,
+      "leftRiseDb": 11.4,
+      "rightRiseDb": 7.3
+    },
+    "flanks": {
+      "right": {
+        "t0": 13.25,
+        "t1": 13.5,
+        "advantageDb": 5.76
+      },
+      "left": {
+        "t0": 14.25,
+        "t1": 14.5,
+        "advantageDb": 3.81
+      }
+    },
+    "detectorGlitch": {
+      "time": 15,
+      "frame": 900,
+      "sampledFrame": true,
+      "onsetClaimed": false,
+      "readout": "ERR",
+      "otherSample": {
+        "time": 16,
+        "frame": 960,
+        "readout": "--"
+      }
+    },
+    "rangeZero": {
+      "time": 19.05,
+      "frame": 1143
+    },
+    "entityZero": {
+      "time": 19.866666666666667,
+      "frame": 1192,
+      "previousFrame": 1191,
+      "previousReadout": "ERR",
+      "readout": "0"
+    },
+    "convergence": {
+      "time": 19.91,
+      "correlationMin": 0.767,
+      "correlationMax": 0.805,
+      "windowT0": 19.75,
+      "windowT1": 20.25,
+      "hitTimes": [
+        16.99,
+        17.62,
+        18.2,
+        18.73,
+        19.48,
+        19.91
+      ]
+    },
+    "silence": {
+      "t0": 20.15,
+      "t1": 20.4
+    },
+    "tutorial": {
+      "t0": 20.45,
+      "t1": 21.85,
+      "pictureCut": 20.75,
+      "rightBiasDb": 20,
+      "artisticIntent": "Original stereo mix preservation approved by Sergio Mata; no rebalance."
+    },
+    "loudness": {
+      "integratedLufs": -21.1,
+      "rangeLu": 9.8,
+      "truePeakDbtp": -1.9,
+      "basis": "blueprint EBU R128 analysis"
+    }
+  }
+}

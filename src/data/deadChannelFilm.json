@@ -1,0 +1,14 @@
+{
+  "duration": 22,
+  "fps": 60,
+  "frames": 1320,
+  "width": 1280,
+  "height": 720,
+  "sourceCount": 240,
+  "version": "V4.2 review",
+  "sha256": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
+  "streams": {
+    "video": "8e8015acdbb7fd4e32e256dddcaa10e85004cb26f4a63b3ea72b31fe0e42b104",
+    "audio": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628"
+  }
+}

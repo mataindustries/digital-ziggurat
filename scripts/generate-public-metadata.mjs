@@ -16,33 +16,63 @@ import {
 } from '../src/data/projects.js';
 
 const publicDir = new URL('../public/', import.meta.url);
-// Static HTML entries whose social preview tags must match siteMeta.socialPreviewUrl.
-const htmlEntries = ['../index.html', '../work/shoot-the-moon/index.html'];
+// Each case study can carry its own social card. The homepage keeps the flagship's
+// card; adding a project never changes the site's title or description.
+const htmlEntries = [
+  { file: '../index.html' },
+  { file: '../work/shoot-the-moon/index.html', projectId: 'shoot-the-moon' },
+  { file: '../work/dead-channel/index.html', projectId: 'dead-channel' },
+];
 const metadataName = siteMeta.metadataName ?? siteMeta.name;
 
-// Every media file the site references must exist in public/, so a missing render fails
-// the build instead of shipping a broken poster, video or Watch reel button.
+// Published media remains fail-fast. Private review files are deliberately ignored
+// by git: code-only review must build without copying a private film into the repo.
+// The separate release check enforces completeness before publication.
 const mediaPaths = (media) =>
-  [media.poster?.webp, media.poster?.jpg, media.loop, media.reel].filter(Boolean);
-const socialPreviewPath = siteMeta.socialPreviewUrl.startsWith(`${siteMeta.publicUrl}/`)
-  ? siteMeta.socialPreviewUrl.slice(siteMeta.publicUrl.length)
-  : null;
-const missingFiles = [
-  ...publicProjects.flatMap((project) => (project.media ? mediaPaths(project.media) : [])),
-  ...(socialPreviewPath ? [socialPreviewPath] : []),
-].filter((path) => !existsSync(new URL(`.${path}`, publicDir)));
+  [media.poster?.webp, media.poster?.jpg, media.loop, media.reel, media.captions].filter(Boolean);
+const localPath = (url) =>
+  url?.startsWith(`${siteMeta.publicUrl}/`)
+    ? url.slice(siteMeta.publicUrl.length)
+    : url?.startsWith('/') ? url : null;
+const referencedAssets = [
+  ...publicProjects.flatMap((project) =>
+    [...(project.media ? mediaPaths(project.media) : []), project.socialPreview?.url]
+      .filter(Boolean)
+      .map((url) => ({ path: localPath(url), privateReview: project.media?.privateReview === true })),
+  ),
+  { path: localPath(siteMeta.socialPreviewUrl), privateReview: false },
+];
+const missingAssets = referencedAssets.filter(
+  ({ path }) => path && !existsSync(new URL(`.${path}`, publicDir)),
+);
+const missingFiles = missingAssets.filter(({ privateReview }) => !privateReview).map(({ path }) => path);
 
 if (missingFiles.length) {
   throw new Error(`Referenced media is missing from public/: ${missingFiles.join(', ')}`);
 }
+const privateMissing = [...new Set(missingAssets.filter(({ privateReview }) => privateReview).map(({ path }) => path))];
+if (privateMissing.length) {
+  console.warn(`PRIVATE REVIEW ONLY: media has not been staged (${privateMissing.join(', ')}). Publication is blocked.`);
+}
 
-// The HTML entries are static, so their social preview tags must be updated together
-// with siteMeta.
-for (const entry of htmlEntries) {
-  const html = await readFile(new URL(entry, import.meta.url), 'utf8');
-  for (const tag of ['property="og:image"', 'name="twitter:image"']) {
-    if (!html.includes(`<meta ${tag} content="${siteMeta.socialPreviewUrl}" />`)) {
-      throw new Error(`${entry.slice(3)} ${tag} must match siteMeta.socialPreviewUrl`);
+// Validate image URLs and accessible image descriptions, including multiline tags.
+for (const { file, projectId } of htmlEntries) {
+  const project = publicProjects.find(({ id }) => id === projectId);
+  const socialPreview = project?.socialPreview ?? {
+    url: siteMeta.socialPreviewUrl,
+    alt: siteMeta.socialPreviewAlt,
+  };
+  const html = await readFile(new URL(file, import.meta.url), 'utf8');
+  for (const [tag, expected] of [
+    ['property="og:image"', socialPreview.url],
+    ['property="og:image:secure_url"', socialPreview.url],
+    ['name="twitter:image"', socialPreview.url],
+    ['property="og:image:alt"', socialPreview.alt],
+    ['name="twitter:image:alt"', socialPreview.alt],
+  ]) {
+    const content = html.match(new RegExp(`<meta\\s+${tag}\\s+content="([^"]*)"`))?.[1];
+    if (content !== expected) {
+      throw new Error(`${file.slice(3)} ${tag} must match its configured social preview`);
     }
   }
 }
@@ -114,7 +144,9 @@ const toVisualArtifact = (project) => {
           }),
       ...(media.loop ? { previewLoop: media.loop } : {}),
       ...(media.reel ? { reel: media.reel } : {}),
+      ...(media.captions ? { captions: media.captions } : {}),
       ...(media.caption ? { caption: media.caption } : {}),
+      ...(media.privateReview ? { publicationStatus: 'Private review media; not approved for public release.' } : {}),
     };
   }
 
@@ -138,6 +170,8 @@ const projectRecords = orderedProjects.map((project) => ({
   ...(project.subtitle ? { subtitle: project.subtitle } : {}),
   category: project.category,
   status: project.status,
+  ...(project.media?.privateReview ? { publicationStatus: 'Private review candidate; not published.' } : {}),
+  ...(project.socialPreview ? { socialPreview: project.socialPreview } : {}),
   ...(project.currentStatus ? { currentStatus: project.currentStatus } : {}),
   ...(project.badge ? { badge: project.badge } : {}),
   summary: project.description,

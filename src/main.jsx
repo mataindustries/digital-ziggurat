@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import {
   siteMeta,
@@ -25,6 +26,7 @@ import './styles.css';
 const flagshipProject = getProject('shoot-the-moon');
 const permitPulseProject = getProject('permitpulse');
 const daemonV12Project = getProject('daemonv12');
+const deadChannelProject = getProject('dead-channel');
 const supportingProjects = projectsByTier('supporting');
 const labProjects = projectsByTier('lab');
 
@@ -429,6 +431,9 @@ function FeatureSection({ project, variant, media, mediaAction, liveLabel, sourc
           <p className="feature__text">{project.feature.body ?? project.description}</p>
           <FeatureReadout project={project} />
           <FactChips project={project} />
+          {project.media?.contentNote ? (
+            <p className="feature__content-note">{project.media.contentNote}</p>
+          ) : null}
           <div className="feature__actions">
             {live?.href ? (
               <ExternalLink className="button button-primary" href={live.href}>
@@ -886,13 +891,22 @@ function ProjectChamber({ project, onClose }) {
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [reelOpen, setReelOpen] = useState(false);
+  const [reelProject, setReelProject] = useState(null);
+  const reelDialogRef = useRef(null);
   const closeChamber = useCallback(() => setSelectedProject(null), []);
-  const openReel = useCallback(() => setReelOpen(true), []);
-  const closeReel = useCallback(() => setReelOpen(false), []);
+  const openReel = useCallback((project) => {
+    if (project.media.playWithSound) {
+      // Mount and play within the original tap so mobile browsers retain the audio gesture.
+      flushSync(() => setReelProject(project));
+      reelDialogRef.current?.playFromGesture();
+    } else {
+      setReelProject(project);
+    }
+  }, []);
+  const closeReel = useCallback(() => setReelProject(null), []);
   const flagshipMedia = flagshipProject.media;
   // Preview loops pause behind any modal.
-  const loopsPaused = reelOpen || Boolean(selectedProject);
+  const loopsPaused = Boolean(reelProject || selectedProject);
 
   return (
     <>
@@ -910,7 +924,7 @@ function App() {
             flagshipMedia.reel ? (
               <WatchReelButton
                 project={flagshipProject}
-                onOpen={openReel}
+                onOpen={() => openReel(flagshipProject)}
                 className={`button ${
                   flagshipProject.links.live?.href ? 'button-outline' : 'button-primary'
                 }`}
@@ -935,6 +949,20 @@ function App() {
           sourceLabel="View source"
           onOpen={setSelectedProject}
         />
+        <FeatureSection
+          project={deadChannelProject}
+          variant="channel"
+          media={<FlagshipMedia media={deadChannelProject.media} preview paused={loopsPaused} />}
+          mediaAction={
+            <WatchReelButton
+              project={deadChannelProject}
+              onOpen={() => openReel(deadChannelProject)}
+              label={deadChannelProject.media.watchLabel}
+              className="button button-primary"
+            />
+          }
+          onOpen={setSelectedProject}
+        />
         <WorkSection onOpen={setSelectedProject} />
         <ProcessSection />
         <LabSection />
@@ -942,7 +970,9 @@ function App() {
       </main>
       <SiteFooter />
       <ProjectChamber project={selectedProject} onClose={closeChamber} />
-      {reelOpen ? <ReelDialog project={flagshipProject} onClose={closeReel} /> : null}
+      {reelProject ? (
+        <ReelDialog ref={reelDialogRef} project={reelProject} onClose={closeReel} />
+      ) : null}
     </>
   );
 }

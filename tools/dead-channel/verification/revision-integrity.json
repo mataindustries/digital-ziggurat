@@ -1,0 +1,36 @@
+{
+  "status": "PRIVATE REVIEW ONLY — NO PUBLIC RELEASE APPROVAL",
+  "sources": {
+    "v41": {
+      "sha256": "3c997931dec814fa37aa19b926fcda9862987d3ce7f52f70603586b68185ba35",
+      "bytes": 15602141
+    },
+    "v42": {
+      "sha256": "43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9",
+      "bytes": 20554922
+    },
+    "unchanged": true
+  },
+  "audio": {
+    "elementaryStreamV41": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628",
+    "elementaryStreamV42": "931f68c9667487217b8d3921f7724b51ee89ba683a9b1a10df7af726ae611628",
+    "decodedPcmV41": "1a1bb34f8ab262264cfbb1f1e523b53da3f0be023a133f7341aeb501cd9e085b",
+    "decodedPcmV42": "1a1bb34f8ab262264cfbb1f1e523b53da3f0be023a133f7341aeb501cd9e085b",
+    "elementaryStreamIdentical": true,
+    "decodedPcmIdentical": true,
+    "measurementWindowsVerified": 88,
+    "measurementWindowsUnchanged": true
+  },
+  "ending": {
+    "startFrame": 1245,
+    "endFrameExclusive": 1320,
+    "framesCompared": 75,
+    "pixelIdenticalFrames": 75,
+    "pixelIdentical": true,
+    "meanAbsoluteRgbDifference": 0.0,
+    "maximumAbsoluteRgbDifference": 0,
+    "rootMeanSquareRgbDifference": 0.0,
+    "psnrDb": null,
+    "interpretation": "All decoded ending frames are identical."
+  }
+}

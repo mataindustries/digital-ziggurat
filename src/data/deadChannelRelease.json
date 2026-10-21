@@ -1,0 +1,18 @@
+{
+  "pictureApproved": true,
+  "creditsApproved": true,
+  "originalMixPreservationApproved": true,
+  "captionsApproved": true,
+  "publicReleaseApproved": true,
+  "authorization": {
+    "owner": "Sergio Mata",
+    "recordedOn": "2026-10-21",
+    "approvedReleaseCommit": "b72a10bfd534e7421648f71ada4496931f2a8a04",
+    "scope": "Complete V4.2 candidate, corrected captions, GitHub push/PR/merge and production deployment. Media remains excluded from public Git."
+  },
+  "credits": [
+    "Created and directed by Sergio Mata.",
+    "AI-assisted visual production.",
+    "Original procedural sound design synthesized with Python under Sergio Mata's creative direction, using Claude-assisted production."
+  ]
+}
