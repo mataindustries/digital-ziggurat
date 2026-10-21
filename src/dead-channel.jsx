@@ -80,8 +80,8 @@ function DeadChannelPage() {
             onPlaying={onPlaying}
           />
           <p className="dc-caption-status" id="dc-caption-status">
-            Private screening · English SDH draft available in CC. Tutorial
-            audio is indistinct; captions await owner approval.
+            Private screening · English SDH available in CC. The final sound is
+            the intentionally right-weighted spirit convergence effect.
           </p>
           <SignalTrace
             time={time}
@@ -105,7 +105,7 @@ function DeadChannelPage() {
           </dl>
           <details className="dc-details dc-viewing-notes">
             <summary>Descriptive transcript · contains the reveal</summary>
-            <p>{captions.speechReviewNote}</p>
+            <p>{captions.soundDescriptionNote}</p>
             <ol>
               {captions.transcript.map((entry) => (
                 <li key={entry.time}>

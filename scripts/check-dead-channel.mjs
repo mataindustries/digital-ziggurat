@@ -125,7 +125,7 @@ if (available.length) {
 // Private preparation and public-release authorization are separate checks.
 if (process.argv.includes('--release')) {
   const blockers = [];
-  if (!release.captionsApproved) blockers.push('owner approval of final English SDH captions and tutorial transcription status');
+  if (!release.captionsApproved) blockers.push('owner approval of the complete final captioned candidate');
   if (!release.publicReleaseApproved) blockers.push('explicit owner approval of the final candidate and public media release');
   if (available.length !== assets.length || !existsSync(resolve(media, 'captions-en.vtt'))) blockers.push('complete verified release media and caption sidecar');
   assert.ok(release.pictureApproved && release.creditsApproved && release.originalMixPreservationApproved, 'Preserve the approved picture, credits and original stereo mix');

@@ -79,9 +79,10 @@ crawler hint, not access control: review stays local or in owner-only storage.
 cues and the descriptive transcript. The metadata build validates cue timing,
 reading speed and the 22-second film identity, generates the private VTT when
 the film is staged, and synchronizes the no-JavaScript transcript and credits.
-The tutorial audio at 20.45–21.85 s remains indistinct after independent local
-recognition attempts. No spoken quote is inferred from its visible title.
-The final draft uses `[Indistinct tutorial audio]` and requires owner review.
+The owner identifies the final sound as the intentionally right-weighted spirit
+convergence effect. The final cue is `[Spirits swarm on the right]` at
+20.450–22.000 s. The fictional tutorial is the visual punchline, not an identified
+audio source. No speech transcription is pending for this effect.
 
 `src/data/deadChannelSignal.json` retains all 88 supplied 250 ms stereo bins and
 separately attributed fine-window/frame events. The homepage uses its generated

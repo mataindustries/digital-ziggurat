@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const captions = JSON.parse(
@@ -45,12 +44,14 @@ for (const cue of captions.cues) {
   );
   previousEnd = cue.end;
 }
-const tutorial = captions.cues.find(({ id }) => id === 'tutorial');
-assert.equal(tutorial.start, 20.45);
-assert.equal(tutorial.end, 22);
-assert.ok(
-  captions.speechVerified || tutorial.text === '[Indistinct tutorial audio]',
-  'Do not infer speech from picture text',
+const convergence = captions.cues.find(({ id }) => id === 'right-convergence');
+assert.equal(convergence.start, 20.45);
+assert.equal(convergence.end, 22);
+assert.equal(convergence.text, '[Spirits swarm on the right]');
+assert.equal(
+  captions.dialoguePresent,
+  false,
+  'The owner identified the final sound as the spirit convergence effect',
 );
 // Only stage the sidecar when the owner has staged the private movie. Code-only
 // checkouts still build; their missing media cannot pass the public-release gate.
@@ -70,7 +71,7 @@ if (existsSync(new URL('film-22s-1280x720p60.mp4', media))) {
 const entry = new URL('work/dead-channel/index.html', root);
 const block = `<!-- BEGIN GENERATED ACCESSIBLE FILM TEXT -->
       <h2>Descriptive transcript</h2>
-      <p>${escape(captions.speechReviewNote)}</p>
+      <p>${escape(captions.soundDescriptionNote)}</p>
       <ol>${captions.transcript.map(({ time, text }) => `<li><strong>${escape(time)}.</strong> ${escape(text)}</li>`).join('')}</ol>
       <p><a href="/media/dead-channel/captions-en.vtt">English SDH captions (${escape(captions.status)})</a></p>
       <h2>Credits</h2>
@@ -85,5 +86,5 @@ writeFileSync(
   ),
 );
 console.log(
-  `DEAD CHANNEL: ${captions.cues.length} readable, nonoverlapping English SDH cues validated against ${film.duration} s; speech status: ${captions.speechVerified ? 'verified' : 'indistinct, owner review pending'}.`,
+  `DEAD CHANNEL: ${captions.cues.length} readable, nonoverlapping English SDH cues validated against ${film.duration} s; final sound: owner-confirmed right-weighted spirit convergence.`,
 );

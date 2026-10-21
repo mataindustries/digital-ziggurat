@@ -1125,9 +1125,9 @@
       "id": "tutorial",
       "time": 20.45,
       "end": 21.85,
-      "label": "Tutorial audio",
-      "detail": "Audio pre-laps the picture cut by 0.30 s; approximately 20 dB right-weighted. The original mix is preserved as approved.",
-      "basis": "blueprint fine-window analysis; 250 ms stereo profile"
+      "label": "Spirits swarm on the right",
+      "detail": "Owner-identified spirit convergence effect, intentionally right-weighted. The sound begins 0.30 s before the fictional tutorial picture cut; the tutorial is the visual punchline, not the audio source. The original mix is preserved.",
+      "basis": "Owner-confirmed sound attribution; blueprint fine-window analysis; 250 ms stereo profile"
     },
     {
       "id": "reveal",
