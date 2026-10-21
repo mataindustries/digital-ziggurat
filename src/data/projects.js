@@ -513,16 +513,16 @@ export const projects = [
       'The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.',
     howBuilt:
       `Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using ${deadChannelFilm.sourceCount} coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.`,
-    status: 'Private review',
+    status: 'Released',
     statusTone: 'gold',
-    badge: deadChannelFilm.version,
-    // Private review media is ignored by git. Publishing these files needs the owner's
-    // explicit release approval; the film path holds the unchanged master bytes.
+    badge: deadChannelFilm.version.replace(' review', ''),
+    // Approved release media is staged separately from the public Git repository.
+    // The film path holds the unchanged master bytes; keep it ignored by Git.
     media: {
       width: deadChannelFilm.width,
       height: deadChannelFilm.height,
       tone: 'channel',
-      privateReview: true,
+      privateReview: false,
       poster: {
         webp: '/media/dead-channel/poster-1280.webp',
         jpg: '/media/dead-channel/poster-1280.jpg',
@@ -542,7 +542,7 @@ export const projects = [
       alt: 'Dead Channel: a field scanner reads zero entities and Discoverable: Everyone in an empty aerospace plant.',
     },
     proofSignals: [
-      deadChannelFilm.version,
+      deadChannelFilm.version.replace(' review', ''),
       `${deadChannelFilm.frames.toLocaleString('en-US')} frames at ${deadChannelFilm.fps} fps`,
       'Original Python/NumPy DSP soundtrack',
       'Signal Trace measured from the stereo master',

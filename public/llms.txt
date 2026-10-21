@@ -68,7 +68,7 @@ Major projects:
   Live: Visit DaemonV12 (https://daemonv12.pages.dev)
   Source: View DaemonV12 source (https://github.com/mataindustries/daemonv12)
 - Dead Channel: A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.
-  Status: Private review
+  Status: Released
   Key facts: 22 seconds · original horror-comedy; 240 virtual sound sources; 1280 × 720 · 60 fps
   Proof: Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.
   Hard part: The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.

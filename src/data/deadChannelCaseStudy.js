@@ -1,4 +1,4 @@
-// Private review copy, grounded in V4.2 picture checks and the unchanged original audio.
+// Film copy grounded in V4.2 picture checks and the unchanged original audio.
 // Film identity and measurements live in deadChannelSignal.json. No event-map data,
 // publication date or unapproved dialogue is inferred. Credits are owner-supplied.
 import signal from './deadChannelSignal.json';
@@ -20,7 +20,7 @@ export const deadChannelCaseStudy = {
       value: `${film.width} × ${film.height} · ${film.fps} fps`,
     },
     { label: 'Sound', value: `Stereo · ${film.sourceCount} virtual sources` },
-    { label: 'Version', value: film.version },
+    { label: 'Version', value: film.version.replace(' review', '') },
   ],
   beats: [
     {
@@ -47,7 +47,7 @@ export const deadChannelCaseStudy = {
     },
     {
       title: 'Finish',
-      body: `The ${film.version} movie stays at its native ${film.width} × ${film.height} and ${film.fps} fps. The private screening uses the supplied file without re-encoding or changing its original audio and ending. V4.1 remains backed up.`,
+      body: `The ${film.version.replace(' review', '')} movie stays at its native ${film.width} × ${film.height} and ${film.fps} fps. The screening uses the supplied file without re-encoding or changing its original audio and ending.`,
     },
   ],
   // Reuse the site's existing paid-work offer; the proposed new service cards await

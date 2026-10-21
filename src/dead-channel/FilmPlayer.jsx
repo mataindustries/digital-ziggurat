@@ -70,7 +70,7 @@ export const FilmPlayer = forwardRef(function FilmPlayer(
           onPause={() => onPlaying(false)}
           onEnded={() => onPlaying(false)}
           onError={() => {
-            setError('The private film is unavailable in this preview.');
+            setError('The film is unavailable. Use the controls to retry.');
             onPlaying(false);
           }}
         >

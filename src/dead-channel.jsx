@@ -80,8 +80,8 @@ function DeadChannelPage() {
             onPlaying={onPlaying}
           />
           <p className="dc-caption-status" id="dc-caption-status">
-            Private screening · English SDH available in CC. The final sound is
-            the intentionally right-weighted spirit convergence effect.
+            English SDH available in CC. The final sound is the intentionally
+            right-weighted spirit convergence effect.
           </p>
           <SignalTrace
             time={time}
@@ -226,7 +226,7 @@ function DeadChannelPage() {
           <details className="dc-details dc-provenance">
             <summary>Picture-lock provenance</summary>
             <p>
-              The private film matches the supplied V4.2 SHA-256. Its original
+              The film matches the supplied V4.2 SHA-256. Its original
               audio matches V4.1 byte for byte, so the independently verified{' '}
               {signal.provenance.profile.windowSeconds * 1000} ms stereo profile
               is retained. Picture events are checked against V4.2. This is not

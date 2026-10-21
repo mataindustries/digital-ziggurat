@@ -1,5 +1,10 @@
 # DEAD CHANNEL private media and measurement tools
 
+This document records the original private preparation workflow. The owner has
+since authorized the complete corrected V4.2 public release; follow
+[RELEASE.md](RELEASE.md) for the current deployment procedure. Do not regenerate
+the approved film, preview, posters or audio during the release handoff.
+
 These tools prepare a **private local review**, not a publication. The repository is public; film bytes, stills and derivatives are ignored before preparation. There is no owner approval to commit media, push, merge or deploy. The original is never modified, remuxed, normalized, retitled or upscaled. The local film is an exact file copy, including its original private metadata.
 
 Requirements: Python 3.11+, FFmpeg/ffprobe and NumPy (for independent signal remeasurement and revision comparison). No runtime JavaScript dependency is added. Commands accept private input paths; no staging location or credential is embedded in code.

@@ -185,8 +185,7 @@
         "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
         "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
         "captions": "/media/dead-channel/captions-en.vtt",
-        "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
-        "publicationStatus": "Private review media; not approved for public release."
+        "caption": "● TX ACTIVE · sound off: an empty building · 22 s"
       }
     },
     {
@@ -517,8 +516,8 @@
       "name": "Dead Channel",
       "tier": "major",
       "category": "Original short film / cinematic sound",
-      "status": "Private review",
-      "badge": "V4.2 review",
+      "status": "Released",
+      "badge": "V4.2",
       "summary": "A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
       "keyFacts": [
         "22 seconds · original horror-comedy",
@@ -535,8 +534,7 @@
         "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
         "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
         "captions": "/media/dead-channel/captions-en.vtt",
-        "caption": "● TX ACTIVE · sound off: an empty building · 22 s",
-        "publicationStatus": "Private review media; not approved for public release."
+        "caption": "● TX ACTIVE · sound off: an empty building · 22 s"
       },
       "tags": [
         "Original film",
@@ -547,7 +545,7 @@
         "Cinematic web"
       ],
       "proofSignals": [
-        "V4.2 review",
+        "V4.2",
         "1,320 frames at 60 fps",
         "Original Python/NumPy DSP soundtrack",
         "Signal Trace measured from the stereo master"

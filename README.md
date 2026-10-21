@@ -15,13 +15,17 @@ npm run dev
 npm run build
 ```
 
-The generated `dist/` folder is compatible with Cloudflare Pages.
+The generated `dist/` folder is compatible with Cloudflare Pages. The approved
+DEAD CHANNEL media must be staged separately before building the public site.
 
 ## Cloudflare Pages
 
-- Build command: `npm run build`
+- Build command: `npm run build:release`
 - Build output directory: `dist`
 - Framework preset: Vite
+- Automatic production and preview Git deployments: disabled
+
+Use the guarded [V4.2 release procedure](tools/dead-channel/RELEASE.md).
 
 ## Editing content
 
@@ -42,9 +46,9 @@ src/case-study.css                  page-only styles
 
 Components shared by all pages live in `src/shared.jsx`.
 
-## DEAD CHANNEL private review
+## DEAD CHANNEL V4.2
 
-The current candidate uses the supplied V4.2 review movie. The detector glitches
+The approved release uses the supplied V4.2 movie. The detector glitches
 during the approach, then its entity count returns from `ERR` to `0` at frame
 1192 (19.8667 s at 60 fps). This is distinct from `RANGE: 0.00 m` at frame 1143.
 The original audio is preserved. V4.1 media, data and evidence remain backed up
@@ -56,24 +60,23 @@ merge `136d1f1` and replays the two completed showcase commits. The original
 the sole flagship; DEAD CHANNEL is the third major project. All three HTML
 entrypoints use the approved GA4 measurement ID `G-QBSGMKSJLT` exactly once.
 
-This candidate has **not been published**. The film, stills, silent preview and
+The owner has authorized public release of the complete corrected candidate.
+The film, stills, silent preview and
 caption sidecar remain ignored under `public/media/dead-channel/`. A code-only
-checkout builds without the private media; audiovisual review requires staging
+checkout must fail the public build without those media; deployment requires staging
 the owner's unchanged V4.2 master. See [the media workflow](tools/dead-channel/README.md).
-Never add private media to public Git or upload `dist/` before release approval.
+Never add the movie or private review package to public Git.
 
 ```sh
-npm run build
+npm run build:release
 npm run preview -- --host 127.0.0.1
-# Local review: http://127.0.0.1:4173/work/dead-channel/
-npm run build:release # intentionally blocked pending final approvals
+# Local verification: http://127.0.0.1:4173/work/dead-channel/
 ```
 
-Owner-supplied credits, picture correction and preservation of the original
-right-sided stereo mix are approved. `src/data/deadChannelRelease.json` records
-that scope. Final captions and public release remain unapproved; the release
-check must fail until those decisions are explicitly granted. `noindex` is a
-crawler hint, not access control: review stays local or in owner-only storage.
+Owner-supplied credits, picture correction, preservation of the original
+right-sided stereo mix, corrected captions and public release are approved.
+`src/data/deadChannelRelease.json` records that authorization. The release
+check still fails if the complete verified media and captions are absent.
 
 `src/data/deadChannelCaptions.json` is the single source for nine English SDH
 cues and the descriptive transcript. The metadata build validates cue timing,
@@ -90,9 +93,9 @@ small identity manifest `deadChannelFilm.json`. Signal Trace provides measured
 observations and silent seeking. The unavailable EVENT_MAP.json continues to
 defer only the Transmission Room and map artwork; no source positions are invented.
 
-Public activation must update private labels, robots and sitemap, verify complete
-media injection in a private deployment workspace, and use `npm run build:release`.
-The media can remain excluded from public Git. No VideoObject upload date is
+Public activation uses the approved patch for labels, robots and sitemap. Verify
+complete media staging in a private deployment workspace and use `npm run build:release`.
+The media remains excluded from public Git. No VideoObject upload date is
 invented; the existing CreativeWork metadata does not need one.
 
 Public AI-readable files live in:
