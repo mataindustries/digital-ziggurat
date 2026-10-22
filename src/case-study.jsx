@@ -285,12 +285,9 @@ function NextSection({ onOpenReel }) {
     <section className="section cs-next" id="contact" aria-labelledby="next-title">
       <div className="contact-panel">
         <div className="contact-panel__intro">
-          <p className="section-kicker">Work with me</p>
-          <h2 id="next-title">Need something this ambitious built?</h2>
-          <p>
-            I build frontend systems, interactive products and AI-assisted workflows. I am open
-            to contract work, agency overflow and full-time roles.
-          </p>
+          <p className="section-kicker">Commission inquiries</p>
+          <h2 id="next-title">{siteMeta.contactHeading}</h2>
+          <p>{siteMeta.contactGuidance}</p>
           <div className="contact-email">
             <a className="contact-email__address" href={siteMeta.contactHref}>
               {siteMeta.email}
@@ -308,8 +305,8 @@ function NextSection({ onOpenReel }) {
             Back to work
           </a>
           <a className="button button-secondary" href={siteMeta.contactHref}>
-            Contact
-            <VisuallyHidden> Sergio (opens an email draft)</VisuallyHidden>
+            {siteMeta.commissionCta}
+            <VisuallyHidden> (opens an email draft)</VisuallyHidden>
           </a>
         </div>
       </div>

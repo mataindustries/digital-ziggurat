@@ -287,13 +287,13 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  max-width: 25rem;
+  max-width: 34rem;
 }
 
 .hero-actions .button {
-  flex: 1 1 9.5rem;
+  flex: 1 1 auto;
   padding-inline: 0.7rem;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .availability {
@@ -1596,6 +1596,30 @@ p {
 
 .contact-actions .button {
   flex: 1 1 auto;
+}
+
+.contact-services {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-services strong,
+.contact-services span {
+  display: block;
+}
+
+.contact-services strong {
+  color: #f4f8f6;
+  font-size: 0.93rem;
+}
+
+.contact-services span {
+  color: #b9cad2;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .contact-actions__address {

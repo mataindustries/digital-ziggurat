@@ -13,23 +13,44 @@ export const buildMailto = (subject, body) =>
 export const siteMeta = {
   name: 'The Ziggurat',
   owner: 'Sergio Mata',
-  role: 'Frontend + AI implementation',
+  role: 'Creative Technologist & AI Builder',
   tagline: 'Human flaws. Machine leverage. Public proof.',
-  title: 'Sergio Mata | Frontend + AI Implementation',
+  title: 'Sergio Mata | Creative Technologist & AI Builder',
   description:
-    'Frontend and AI implementation engineer in Los Angeles. Flagship: Shoot the Moon, a tested 3D strategy game for phone browsers. Plus PermitPulse, source-backed permit research, and DaemonV12, a music engine for coding agents.',
+    'Creative Technologist & AI Builder in Los Angeles. Custom software, interactive experiences, prototypes and creative tools, with tested browser-game and media work. Open to commissions and agency overflow.',
+  heroHeadline: 'I turn ambitious ideas into software and interactive experiences.',
+  heroSummary:
+    'I help founders and creative teams build custom tools, playable demos and cinematic web experiences. I direct AI agents across implementation and creative production, then review, test and refine the result.',
+  commissionCta: 'Tell me what you want to build',
+  workCta: 'Explore the work',
+  contactHeading: 'What do you want to bring to life?',
+  contactGuidance:
+    'Send the idea, who it is for, what needs to work, and your timeline. We can define a focused paid first step with a clear deliverable and quote.',
   publicUrl: 'https://ziggurat.pages.dev',
   socialPreviewUrl: 'https://ziggurat.pages.dev/media/shoot-the-moon/og-home-1200x630.jpg',
   socialPreviewAlt:
     'Shoot the Moon, a 3D lunar strategy game by Sergio Mata: a warhead trailing its exhaust across the lit edge of the Moon',
   preferredInterpretation:
-    'An engineering portfolio. Sergio Mata builds ambitious frontend and AI implementation products, ships them, and proves they work.',
+    'A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results.',
   purpose:
-    'Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.',
-  availability: 'Open to contract work, agency overflow and full-time roles.',
+    'Show working software and creative projects, explain Sergio Mata’s ownership and testing, and help founders and creative teams scope a paid commission or agency-overflow task.',
+  availability: 'Open to scoped commissions and agency overflow.',
   serviceArea: 'Los Angeles / remote',
   email: contactEmail,
-  contactHref: buildMailto('Work inquiry for Sergio'),
+  contactHref: buildMailto('Commission inquiry for Sergio', `Hi Sergio,
+
+I would like to discuss a project.
+
+The idea:
+
+Who it is for:
+
+What needs to work:
+
+Timeline:
+
+Links, assets or access available:
+`),
   githubUrl: 'https://github.com/mataindustries',
   // Only set these once a verified, current destination exists.
   linkedinUrl: null,
@@ -41,93 +62,90 @@ export const siteMeta = {
 export const contactRoutes = [
   {
     id: 'launch-polish',
-    label: '48-Hour Launch Polish Sprint',
+    label: 'Launch Polish Sprint',
     summary:
-      'Motion, responsive polish, interaction, presentation and product-demo cleanup for an existing web product.',
-    action: 'Start a polish sprint',
+      'A focused pass on an existing demo or web experience: responsive layout, motion, interaction and presentation, checked at agreed screen sizes. Send the link, rough edges, deadline and ready assets/access. We agree the deliverable and quote first; a 48-hour turnaround depends on a confirmed small scope and everything being ready.',
+    action: 'Scope a polish sprint',
     subject: 'Launch Polish Sprint for Sergio',
     body: `Hi Sergio,
 
-I would like a 48-Hour Launch Polish Sprint.
+I would like to scope a Launch Polish Sprint and receive a quote.
 
 Product link:
 
 What feels unfinished:
 
+Audience and required behavior:
+
+Ready assets and access:
+
 Launch or demo date:
+
+If a 48-hour turnaround is possible for this scope, please confirm after review.
 `,
   },
   {
     id: 'ai-build',
-    label: 'AI Build Sprint',
+    label: 'Prototype / Tool Sprint',
     summary:
-      'One tightly scoped feature, prototype, workflow or backlog problem, taken from scope to tested implementation.',
-    action: 'Start a build sprint',
+      'One working prototype, custom tool or AI-assisted workflow with agreed acceptance checks and a handoff. Send the idea, audience, required behavior, stack and timeline. We define a paid first step and quote after reviewing the scope.',
+    action: 'Scope a prototype or tool',
     subject: 'AI Build Sprint for Sergio',
     body: `Hi Sergio,
 
-I would like an AI Build Sprint.
+I would like to scope a prototype or custom tool and receive a quote.
 
 The feature, prototype or workflow:
+
+Who it is for:
 
 What done looks like:
 
 Stack and timeline:
+
+Existing tools, sample inputs and available access:
 `,
   },
   {
     id: 'overflow',
-    label: 'I have overflow work',
+    label: 'Agency overflow / frontend implementation',
     subject: 'Agency overflow work for Sergio',
     body: `Hi Sergio,
 
 I am looking for implementation help on an existing project.
 
+Project link and audience:
+
 Stack:
 
 Work needed:
 
+Acceptance criteria and handoff:
+
+Available assets and access:
+
 Timeline:
+
+Please suggest a focused first task and quote after reviewing the scope.
 `,
   },
 ].map((route) => ({ ...route, href: buildMailto(route.subject, route.body) }));
 
 export const implementationServices = [
   {
-    title: 'WordPress / Elementor fixes',
-    description: 'Layout problems, mobile cleanup, content updates, and broken sections.',
-  },
-  {
-    title: 'Contact forms + email routing',
+    title: 'Interactive demos & launch experiences',
     description:
-      'Form notifications, forwarding problems, aliases, missed leads, and delivery testing.',
+      'Playable browser concepts, cinematic web presentation and launch polish.',
   },
   {
-    title: 'Landing pages',
-    description: 'Focused service, campaign, intake, booking, or quote-request pages.',
-  },
-  {
-    title: 'AI-assisted workflow cleanup',
-    description: 'Research, drafting, sorting, reporting, and repetitive internal processes.',
-  },
-  {
-    title: 'Google Business + website audit',
+    title: 'Custom tools & AI workflows',
     description:
-      'Find conversion friction, inconsistent information, and missing calls to action.',
+      'Focused prototypes, creative tools and reviewed workflows with clear inputs and outputs.',
   },
   {
-    title: 'Permit + property research briefs',
+    title: 'Frontend implementation & agency overflow',
     description:
-      'Source-backed research that separates verified facts, inference, conflicts, and gaps.',
-  },
-  {
-    title: 'Frontend prototypes',
-    description: 'Interactive concepts, browser tools, playable demos, and unusual interfaces.',
-  },
-  {
-    title: 'Small business automation',
-    description:
-      'Lead intake, follow-up, report generation, and lightweight operational tools.',
+      'Responsive interfaces, interaction fixes and a defined task delivered into an existing project.',
   },
 ];
 
@@ -163,6 +181,14 @@ export const projects = [
     name: 'Shoot the Moon',
     tier: 'flagship',
     category: '3D strategy game / phone browsers',
+    ownership: {
+      objective: 'Make a cinematic strategy game playable in a phone browser.',
+      decisions: 'I own the product scope, visual direction, architecture, performance budget and acceptance of each milestone.',
+      aiRole: 'Coding agents implement written briefs. I review their output, run verification and decide what is accepted.',
+      verification: 'Recorded at feature freeze: 576 unit tests across 63 files, 24 Playwright spec files, save migrations and frame-by-frame reel checks.',
+      result: 'A feature-frozen browser game with a playable public build, source and a CI-rendered reel.',
+      buyerUse: 'Playable demos and ambitious browser experiences with testable behavior.',
+    },
     description:
       'A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.',
     feature: {
@@ -235,6 +261,14 @@ export const projects = [
     subtitle:
       'Public-record software evolved into a human-reviewed Los Angeles parcel research service.',
     category: 'Permit + property research / evidence systems',
+    ownership: {
+      objective: 'Turn inconsistent public records into cited parcel research with visible uncertainty.',
+      decisions: 'I shape the research workflow and evidence boundaries: findings stay Supported, Conflict or Unknown, and delivery requires human review.',
+      aiRole: 'AI helps organize case material, implement the workspace and run quality checks. It does not make permit decisions.',
+      verification: 'Findings are tied to official sources and reviewed by a person; packet outputs retain citations, conflicts and gaps.',
+      result: 'A live research offer and case workspace with evidence records, timelines and reviewed HTML/PDF packets.',
+      buyerUse: 'Custom research tools, operational interfaces and reports people can inspect.',
+    },
     // Offer, labels and wording checked against the live site source,
     // mataindustries/permitpulse-frontend at cafc876 (2026-10-04).
     description:
@@ -406,6 +440,14 @@ export const projects = [
   {
     id: 'daemonv12',
     name: 'DaemonV12',
+    ownership: {
+      objective: 'Give coding agents instruments they can control through structured data and a validated tool interface.',
+      decisions: 'My tool design keeps composition as data, rendering deterministic and the language model outside the engine.',
+      aiRole: 'Agents compose through nine MCP tools. The engine validates their inputs and renders the audio.',
+      verification: 'The documented proof includes pinned GLASS//FIRE audio tests, SHA-256 render provenance and a clean-room package test in CI.',
+      result: 'The v0.7 public beta provides an instrument and rendering tool for coding agents. GLASS//FIRE is the earlier v0.6 proof.',
+      buyerUse: 'Creative tools, MCP integrations and reproducible media workflows.',
+    },
     tier: 'major',
     subtitle: 'Coding agents have code tools. DaemonV12 gives them instruments.',
     category: 'Agent tooling / headless music engine',
@@ -494,6 +536,14 @@ export const projects = [
     name: 'Dead Channel',
     tier: 'major',
     category: 'Original short film / cinematic sound',
+    ownership: {
+      objective: 'Make an invisible threat feel present through sound, environmental effects and timing.',
+      decisions: 'I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.',
+      aiRole: 'AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.',
+      verification: 'The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.',
+      result: 'An approved 22-second V4.2 horror-comedy with an accessible screening page and measured Signal Trace.',
+      buyerUse: 'Cinematic web experiences, technical creative production and accessible media presentation.',
+    },
     description:
       `A ${deadChannelFilm.duration}-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with ${deadChannelFilm.sourceCount} coordinated virtual sound sources.`,
     feature: {
