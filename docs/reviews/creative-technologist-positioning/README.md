@@ -3,6 +3,10 @@
 Review date: October 22, 2026 (America/Los_Angeles).
 Base: `25838be66e7ca8c55ddbfdf97191e45e2f2232ed`, verified against current `origin/main`.
 
+**Release-preparation update:** the caption blocker below is resolved. The approved
+sidecar is staged; five media files and Cloudflare access remain outstanding. See
+[current release evidence and the exact resume point](RELEASE_PREPARATION.md).
+
 The portfolio now leads with **Creative Technologist & AI Builder**, explains the
 software and interactive experiences a buyer can commission, and starts inquiries
 with a scoped paid first step and quote. Shoot the Moon remains the sole flagship.
@@ -28,7 +32,7 @@ used in these comparison images.
 | Contact / 390 px | [Before](before-contact-390.png) | [After](after-contact-390.png) |
 | Contact / 1440 px | [Before](before-contact-1440.png) | [After](after-contact-1440.png) |
 
-## Completed checks
+## Completed positioning checks at `5d24f0c`
 
 - Browser inspection at 360, 390, 768 and 1440 px: homepage, contact offers and both
   case-study routes. Headline, navigation and CTA text fit without horizontal overflow.
@@ -48,9 +52,9 @@ used in these comparison images.
   media, mismatched homepage title/description and unknown flags. Default metadata
   generation still rejects missing approved film media.
 - `npm run check:dead-channel` passes its code-only checks. No private film assets
-  or review packages are tracked or staged.
+  or review packages are tracked or staged in Git.
 
-## Existing validation blockers
+## Initial validation blockers at `5d24f0c`
 
 Baseline checks recorded the caption and missing-media failures before editing.
 Final validation confirms these blockers remain:
@@ -83,6 +87,7 @@ This is a draft for review. The review commit uses Cloudflare’s documented
 could not be read with the available credentials; they were not changed. No merge,
 manual deployment or production publication was performed.
 
-Before a later release, resolve the existing caption inconsistency, stage the exact
-approved media, confirm actual Cloudflare deployment settings and pass
-`npm run build:release`.
+The caption inconsistency is now resolved. Before a later release, stage the five
+remaining approved media files, confirm actual Cloudflare deployment settings and
+pass the standard release build. See [current release evidence](RELEASE_PREPARATION.md)
+and the [publication procedure](../../../tools/dead-channel/RELEASE.md).

@@ -9,94 +9,94 @@
       "id": "tone-1",
       "start": 0.74,
       "end": 2.5,
-      "text": "[A distant, wavering wail rises]",
+      "text": "[Rising electronic tone]",
       "basis": "Measured device-tone/glissando onset0.74s in supplied blueprint; unchanged V4.2 audio."
     },
     {
       "id": "tone-2",
       "start": 2.85,
       "end": 4.5,
-      "text": "[Another eerie call answers]",
+      "text": "[Rising electronic tone]",
       "basis": "Measured device-tone/glissando onset2.85s."
     },
     {
       "id": "tone-3",
       "start": 5.78,
       "end": 7.15,
-      "text": "[The wail returns, closer]",
+      "text": "[Rising electronic tone]",
       "basis": "Measured device-tone/glissando onset5.78s; ends before layered-bed arrival7.25s."
     },
     {
       "id": "bed",
       "start": 7.25,
       "end": 9.65,
-      "text": "[Overlapping calls swell into a chorus]",
+      "text": "[Layered electronic sound swells]",
       "basis": "Swarm-bed arrival7.25–8.50s, increasing levels and lower interchannel correlation. No voice/source-identity claim."
     },
     {
       "id": "surge",
       "start": 9.79,
       "end": 11.3,
-      "text": "[A sudden rush surges through the hall]",
+      "text": "[Electronic sound surges]",
       "basis": "Measured sound onset9.79s and RMS jump beside haze/picture boundary9.80s."
     },
     {
       "id": "flanks",
       "start": 13.25,
       "end": 14.75,
-      "text": "[The sound sweeps from right to left]",
+      "text": "[Sound shifts right to left]",
       "basis": "Right+5.76dB at13.25–13.50; left+3.81dB at14.25–14.50. Describes fixed stereo; no interactive/spatial-rendering claim."
     },
     {
       "id": "persistent-signal",
       "start": 15,
       "end": 16.8,
-      "text": "[The eerie chorus lingers]",
+      "text": "[Electronic sound continues]",
       "basis": "Sound persists during SHUTDOWN REQUESTED/unstable readout, before first late hit16.99s."
     },
     {
       "id": "hits",
       "start": 16.99,
       "end": 20.15,
-      "text": "[Six heavy pulses build toward a climax]",
+      "text": "[Electronic hits build]",
       "basis": "Six measured hit onsets16.99,17.62,18.20,18.73,19.48,19.91; stops at known silence20.15s."
     },
     {
       "id": "right-convergence",
       "start": 20.45,
       "end": 22,
-      "text": "[A swarm rushes in from the right]",
+      "text": "[Spirits swarm on the right]",
       "basis": "Owner-confirmed designed spatial sound: the intentionally right-weighted spirit convergence effect. Approved SDH cue timing:20.450–22.000 s. The original soundtrack is unchanged."
     }
   ],
   "transcript": [
     {
       "time": "0.000–4.000 s",
-      "text": "A figure holds the field-scanner device in a dark corridor. Device screen: ENTITIES DETECTED; --; SCAN RANGE: 40m; Listening…; TX ACTIVE. (Verified at frame 239, 3.983 s.) Distant, wavering wails begin at 0.740 s and 2.850 s."
+      "text": "A figure holds the field-scanner device in a dark corridor. Device screen: ENTITIES DETECTED; --; SCAN RANGE: 40m; Listening…; TX ACTIVE. (Verified at frame 239, 3.983 s.) Rising electronic tones begin at 0.740 s and 2.850 s."
     },
     {
       "time": "4.000–6.800 s",
-      "text": "A close view of the device shows its build log. Device screen: FIELD SCANNER / 001; BUILD LOG; SOURCE: AI WEB GUIDE; SETUP COMPLETE; DISCOVERY ENABLED; READING --; TX ACTIVE. (Verified at frame 240, 4.000 s.) Another eerie call begins at 5.780 s."
+      "text": "A close view of the device shows its build log. Device screen: FIELD SCANNER / 001; BUILD LOG; SOURCE: AI WEB GUIDE; SETUP COMPLETE; DISCOVERY ENABLED; READING --; TX ACTIVE. (Verified at frame 240, 4.000 s.) Another rising electronic tone begins at 5.780 s."
     },
     {
       "time": "6.800–9.800 s",
-      "text": "The corridor view returns. The detector readout glitches during the approach. Device screen: ENTITIES --; DISCOVERY ON at frame 408, 6.800 s. Device screen: ENTITIES ERR; DISCOVERY ON at frame 480, 8.000 s. These are sampled states, not a claim about the first glitch frame. Overlapping eerie calls build from approximately 7.250–8.500 s."
+      "text": "The corridor view returns. The detector readout glitches during the approach. Device screen: ENTITIES --; DISCOVERY ON at frame 408, 6.800 s. Device screen: ENTITIES ERR; DISCOVERY ON at frame 480, 8.000 s. These are sampled states, not a claim about the first glitch frame. Layered electronic sound swells from approximately 7.250–8.500 s."
     },
     {
       "time": "9.800–15.000 s",
-      "text": "Haze fills the corridor as the approach continues. Device screen: ERR persists in verified sampled frames including 588 (9.800 s) and 700 (11.667 s). A sudden rush begins at approximately 9.790 s. Later passages are right-weighted around 13.250–13.500 s and left-weighted around 14.250–14.500 s."
+      "text": "Haze fills the corridor as the approach continues. Device screen: ERR persists in verified sampled frames including 588 (9.800 s) and 700 (11.667 s). Electronic sound surges at approximately 9.790 s. Later passages are right-weighted around 13.250–13.500 s and left-weighted around 14.250–14.500 s."
     },
     {
       "time": "15.000–17.000 s",
-      "text": "A close view shows a shutdown request while the detector continues transmitting. Device screen at frame 900 (15.000 s): ENTITIES DETECTED; ERR; SHUTDOWN REQUESTED; Awaiting response…; TX ACTIVE. Device screen at frame 960 (16.000 s): ENTITIES DETECTED --; SHUTDOWN REQUESTED. The eerie chorus lingers."
+      "text": "A close view shows a shutdown request while the detector continues transmitting. Device screen at frame 900 (15.000 s): ENTITIES DETECTED; ERR; SHUTDOWN REQUESTED; Awaiting response…; TX ACTIVE. Device screen at frame 960 (16.000 s): ENTITIES DETECTED --; SHUTDOWN REQUESTED. Electronic sound continues."
     },
     {
       "time": "17.000–20.017 s",
-      "text": "The corridor view shows the detector still broadcasting. Its count remains unstable before returning to zero. Device screen at frame 1020 (17.000 s): ENTITIES DETECTED; ERR; NO RESPONSE; Broadcast persists; TX ACTIVE. RANGE: 0.00m first appears at frame 1143 (19.050 s), while the count remains ERR. The entity count returns from ERR to 0 at frame 1192 (19.866667 s), zero-based. This differs from the earlier range reading. At that frame the screen also shows RANGE: 0.00m; NO RESPONSE; TX ACTIVE. Six heavy pulses begin at 16.990, 17.620, 18.200, 18.730, 19.480 and 19.910 s."
+      "text": "The corridor view shows the detector still broadcasting. Its count remains unstable before returning to zero. Device screen at frame 1020 (17.000 s): ENTITIES DETECTED; ERR; NO RESPONSE; Broadcast persists; TX ACTIVE. RANGE: 0.00m first appears at frame 1143 (19.050 s), while the count remains ERR. The entity count returns from ERR to 0 at frame 1192 (19.866667 s), zero-based. This differs from the earlier range reading. At that frame the screen also shows RANGE: 0.00m; NO RESPONSE; TX ACTIVE. Six electronic hits begin at 16.990, 17.620, 18.200, 18.730, 19.480 and 19.910 s."
     },
     {
       "time": "20.017–20.750 s",
-      "text": "An extreme close-up shows the zero count and the device discoverability setting. Device screen at frame 1201 (20.016667 s): FIELD SCANNER / 001; ENTITIES DETECTED; 0; DISCOVERABLE: EVERYONE; TX ACTIVE. The wailing stops. A brief silence lasts approximately 20.150–20.400 s. The designed spirit convergence effect begins at approximately 20.450 s, swarming on the right before the picture cuts."
+      "text": "An extreme close-up shows the zero count and the device discoverability setting. Device screen at frame 1201 (20.016667 s): FIELD SCANNER / 001; ENTITIES DETECTED; 0; DISCOVERABLE: EVERYONE; TX ACTIVE. The electronic sound stops. A brief silence lasts approximately 20.150–20.400 s. The designed spirit convergence effect begins at approximately 20.450 s, swarming on the right before the picture cuts."
     },
     {
       "time": "20.750–22.000 s",
