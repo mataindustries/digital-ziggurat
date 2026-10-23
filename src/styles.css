@@ -1727,6 +1727,10 @@ p {
   font-weight: 700;
 }
 
+.site-footer__business {
+  margin: 0 0 0.5rem;
+}
+
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;

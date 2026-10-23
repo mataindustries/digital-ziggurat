@@ -358,6 +358,9 @@ export function SiteFooter() {
       <p className="site-footer__line">
         {siteMeta.name}. {siteMeta.tagline}
       </p>
+      <p className="site-footer__business">
+        Software and creative services provided by ENM Ventures LLC.
+      </p>
       <nav aria-label="Machine-readable files">
         <ul className="site-footer__links">
           {machineReadableFiles.map((path) => (
