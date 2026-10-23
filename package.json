@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "metadata": "node scripts/generate-dead-channel-captions.mjs && node scripts/generate-public-metadata.mjs",
+    "metadata:code": "node scripts/generate-public-metadata.mjs --code-only",
     "build": "npm run metadata && node scripts/check-dead-channel.mjs && vite build",
     "check:dead-channel": "node scripts/check-dead-channel.mjs",
     "check:dead-channel:release": "node scripts/check-dead-channel.mjs --release",

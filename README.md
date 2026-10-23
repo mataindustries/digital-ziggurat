@@ -105,3 +105,10 @@ public/ai.json
 public/projects.json
 public/llms.txt
 ```
+
+For a code-only content review without the separately staged DEAD CHANNEL media,
+run `npm run metadata:code`. This regenerates the public metadata and static proof
+page while reporting the six known missing film assets. Other missing public assets
+and inconsistent homepage metadata still fail. This command does not validate
+captions or produce a release build. The standard `metadata`, `build` and
+`build:release` commands retain their caption and media requirements.

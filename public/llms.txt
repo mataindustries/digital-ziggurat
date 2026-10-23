@@ -1,16 +1,20 @@
 # The Ziggurat
 
-Sergio Mata | Frontend + AI Implementation
+Sergio Mata | Creative Technologist & AI Builder
 
-Preferred interpretation: An engineering portfolio. Sergio Mata builds ambitious frontend and AI implementation products, ships them, and proves they work.
+Preferred interpretation: A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results.
 
 Tagline: Human flaws. Machine leverage. Public proof.
 
 Builder: Sergio Mata
 
-Role: Frontend + AI implementation
+Role: Creative Technologist & AI Builder
 
-Availability: Open to contract work, agency overflow and full-time roles.
+I turn ambitious ideas into software and interactive experiences.
+
+I help founders and creative teams build custom tools, playable demos and cinematic web experiences. I direct AI agents across implementation and creative production, then review, test and refine the result.
+
+Availability: Open to scoped commissions and agency overflow.
 
 Service area: Los Angeles / remote
 
@@ -22,9 +26,9 @@ Email: matasergio741@gmail.com
 
 GitHub: https://github.com/mataindustries
 
-Purpose: Show how Sergio Mata turns research, product thinking, frontend implementation, data, and AI-assisted development into working public systems.
+Purpose: Show working software and creative projects, explain Sergio Mata’s ownership and testing, and help founders and creative teams scope a paid commission or agency-overflow task.
 
-Read the site as an engineering portfolio. Shoot the Moon is the flagship project. PermitPulse (real-world product), DaemonV12 (agent-native engine), and Dead Channel (original short film) are the major projects. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.
+A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results. Shoot the Moon is the sole flagship project. PermitPulse (real-world product), DaemonV12 (agent-native engine), and Dead Channel (original short film) are the major projects. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.
 
 Flagship project:
 - Shoot the Moon: A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.
@@ -33,6 +37,12 @@ Flagship project:
   Proof: Ambitious 3D browser work can be built with real test coverage behind it.
   Hard part: Keeping player saves compatible while the game kept growing. The save schema is at v9, with migration support for saves from v1 through v8.
   How it was built: React 19, TypeScript, Three.js and React Three Fiber on Vite. The game uses zero external 3D model files and two NASA lunar textures. Verification: 576 unit tests across 63 files and 24 Playwright spec files.
+  Goal: Make a cinematic strategy game playable in a phone browser.
+  My decisions: I own the product scope, visual direction, architecture, performance budget and acceptance of each milestone.
+  AI contributions: Coding agents implement written briefs. I review their output, run verification and decide what is accepted.
+  Verification: Recorded at feature freeze: 576 unit tests across 63 files, 24 Playwright spec files, save migrations and frame-by-frame reel checks.
+  Working result: A feature-frozen browser game with a playable public build, source and a CI-rendered reel.
+  Useful for: Playable demos and ambitious browser experiences with testable behavior.
   Tags: React 19, TypeScript, Three.js, React Three Fiber, Vite, NASA lunar textures
   Visual artifacts: /media/shoot-the-moon/poster-1280.jpg
   Reel: /media/shoot-the-moon/reel-57s-1080.mp4
@@ -48,6 +58,12 @@ Major projects:
   Proof: A software and data experiment can become a disciplined research workflow, real-property proof, and paid-service offer.
   Hard part: Jurisdiction records arrived with inconsistent structure, incomplete ownership signals, stale portal states, and chronology that had to be reconstructed rather than assumed.
   How it was built: AI assists with organizing and reviewing case material, implementation passes, and quality checks. It never approves evidence or acts as an autonomous permit reviewer; findings and delivery require human approval. Briefs preserve source limits and unknowns and do not make legal, title, architectural, engineering, entitlement, code-compliance, or government determinations.
+  Goal: Turn inconsistent public records into cited parcel research with visible uncertainty.
+  My decisions: I shape the research workflow and evidence boundaries: findings stay Supported, Conflict or Unknown, and delivery requires human review.
+  AI contributions: AI helps organize case material, implement the workspace and run quality checks. It does not make permit decisions.
+  Verification: Findings are tied to official sources and reviewed by a person; packet outputs retain citations, conflicts and gaps.
+  Working result: A live research offer and case workspace with evidence records, timelines and reviewed HTML/PDF packets.
+  Useful for: Custom research tools, operational interfaces and reports people can inspect.
   Tags: Civic operations, Evidence provenance, Reviewer workflow, Cloudflare infrastructure, Private storage, Deterministic rendering
   Visual artifacts: /projects/permitpulse/permitpulse-parcel-brief-1500.webp, /projects/permitpulse/permitpulse-01-mission-control.png, /projects/permitpulse/permitpulse-02-evidence-register.png, /projects/permitpulse/permitpulse-03-case-timeline.png, /projects/permitpulse/permitpulse-04-packet-preview.png, /projects/permitpulse/permitpulse-05-review-packet-cover.png, /projects/permitpulse/permitpulse-06-executive-summary.png, /projects/permitpulse/permitpulse-07-dependency-map.png, /projects/permitpulse/permitpulse-08-supporting-evidence.png
   Operational flow: Research public sources → Separate certainty → Human review → Deliver concise brief
@@ -62,6 +78,12 @@ Major projects:
   Proof: Agent tooling can be held to production standards: validated, revision-checked edits, exact timelines, sample-aligned stems and a provenance hash for every render.
   Hard part: Determinism while the engine grows. Version 0.6 adds per-note playback rate, glides and source offsets through band-limited interpolation that is bit-exact on every platform, and projects without the new fields still render byte-identical audio to 0.5.0, with the GLASS//FIRE master and stems pinned in the test suite.
   How it was built: Node and TypeScript, with FluidSynth and a SoundFont for General MIDI voices and FFmpeg for MP3, effects and analysis. Nine stdio MCP tools cover project create, read, validate and patch, instrument and kit discovery, render, analyze and render provenance. Each release came from a real piece of music: GLASS//FIRE needed samples performed, not just triggered, and that became v0.6.
+  Goal: Give coding agents instruments they can control through structured data and a validated tool interface.
+  My decisions: My tool design keeps composition as data, rendering deterministic and the language model outside the engine.
+  AI contributions: Agents compose through nine MCP tools. The engine validates their inputs and renders the audio.
+  Verification: The documented proof includes pinned GLASS//FIRE audio tests, SHA-256 render provenance and a clean-room package test in CI.
+  Working result: The v0.7 public beta provides an instrument and rendering tool for coding agents. GLASS//FIRE is the earlier v0.6 proof.
+  Useful for: Creative tools, MCP integrations and reproducible media workflows.
   Tags: Node.js, TypeScript, Model Context Protocol, FluidSynth, FFmpeg, Deterministic rendering, CC0 sound packs
   Visual artifacts: /media/daemonv12/glass-fire-poster-1280.jpg
   Operational flow: Connect one workspace → Compose as data → Process + automate → Render WAV, MP3, stems → Analyze the result
@@ -73,6 +95,12 @@ Major projects:
   Proof: Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.
   Hard part: The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.
   How it was built: Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using 240 coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.
+  Goal: Make an invisible threat feel present through sound, environmental effects and timing.
+  My decisions: I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.
+  AI contributions: AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.
+  Verification: The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.
+  Working result: An approved 22-second V4.2 horror-comedy with an accessible screening page and measured Signal Trace.
+  Useful for: Cinematic web experiences, technical creative production and accessible media presentation.
   Tags: Original film, Python, NumPy, Audio DSP, Stereo sound, Cinematic web
   Visual artifacts: /media/dead-channel/poster-1280.jpg
   Reel: /media/dead-channel/film-22s-1280x720p60.mp4
@@ -129,20 +157,18 @@ How I build with AI:
 4. Verify before it ships: Run the tests, inspect the output and keep the evidence.
 Evidence: Shoot the Moon reached 576 passing unit tests before feature freeze.
 
-Contact routes:
-- 48-Hour Launch Polish Sprint: Motion, responsive polish, interaction, presentation and product-demo cleanup for an existing web product. mailto:matasergio741@gmail.com?subject=Launch%20Polish%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20a%2048-Hour%20Launch%20Polish%20Sprint.%0A%0AProduct%20link%3A%0A%0AWhat%20feels%20unfinished%3A%0A%0ALaunch%20or%20demo%20date%3A%0A
-- AI Build Sprint: One tightly scoped feature, prototype, workflow or backlog problem, taken from scope to tested implementation. mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20an%20AI%20Build%20Sprint.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A
-- I have overflow work: mailto:matasergio741@gmail.com?subject=Agency%20overflow%20work%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20am%20looking%20for%20implementation%20help%20on%20an%20existing%20project.%0A%0AStack%3A%0A%0AWork%20needed%3A%0A%0ATimeline%3A%0A
+Commission inquiries: What do you want to bring to life?
+Send the idea, who it is for, what needs to work, and your timeline. We can define a focused paid first step with a clear deliverable and quote.
 
-Available implementation work:
-- WordPress / Elementor fixes: Layout problems, mobile cleanup, content updates, and broken sections.
-- Contact forms + email routing: Form notifications, forwarding problems, aliases, missed leads, and delivery testing.
-- Landing pages: Focused service, campaign, intake, booking, or quote-request pages.
-- AI-assisted workflow cleanup: Research, drafting, sorting, reporting, and repetitive internal processes.
-- Google Business + website audit: Find conversion friction, inconsistent information, and missing calls to action.
-- Permit + property research briefs: Source-backed research that separates verified facts, inference, conflicts, and gaps.
-- Frontend prototypes: Interactive concepts, browser tools, playable demos, and unusual interfaces.
-- Small business automation: Lead intake, follow-up, report generation, and lightweight operational tools.
+Contact routes:
+- Launch Polish Sprint: A focused pass on an existing demo or web experience: responsive layout, motion, interaction and presentation, checked at agreed screen sizes. Send the link, rough edges, deadline and ready assets/access. We agree the deliverable and quote first; a 48-hour turnaround depends on a confirmed small scope and everything being ready. mailto:matasergio741@gmail.com?subject=Launch%20Polish%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20scope%20a%20Launch%20Polish%20Sprint%20and%20receive%20a%20quote.%0A%0AProduct%20link%3A%0A%0AWhat%20feels%20unfinished%3A%0A%0AAudience%20and%20required%20behavior%3A%0A%0AReady%20assets%20and%20access%3A%0A%0ALaunch%20or%20demo%20date%3A%0A%0AIf%20a%2048-hour%20turnaround%20is%20possible%20for%20this%20scope%2C%20please%20confirm%20after%20review.%0A
+- Prototype / Tool Sprint: One working prototype, custom tool or AI-assisted workflow with agreed acceptance checks and a handoff. Send the idea, audience, required behavior, stack and timeline. We define a paid first step and quote after reviewing the scope. mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20scope%20a%20prototype%20or%20custom%20tool%20and%20receive%20a%20quote.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWho%20it%20is%20for%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A%0AExisting%20tools%2C%20sample%20inputs%20and%20available%20access%3A%0A
+- Agency overflow / frontend implementation: mailto:matasergio741@gmail.com?subject=Agency%20overflow%20work%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20am%20looking%20for%20implementation%20help%20on%20an%20existing%20project.%0A%0AProject%20link%20and%20audience%3A%0A%0AStack%3A%0A%0AWork%20needed%3A%0A%0AAcceptance%20criteria%20and%20handoff%3A%0A%0AAvailable%20assets%20and%20access%3A%0A%0ATimeline%3A%0A%0APlease%20suggest%20a%20focused%20first%20task%20and%20quote%20after%20reviewing%20the%20scope.%0A
+
+Available commission work:
+- Interactive demos & launch experiences: Playable browser concepts, cinematic web presentation and launch polish.
+- Custom tools & AI workflows: Focused prototypes, creative tools and reviewed workflows with clear inputs and outputs.
+- Frontend implementation & agency overflow: Responsive interfaces, interaction fixes and a defined task delivered into an existing project.
 
 Proof signals:
 - Shoot the Moon: 576 unit tests across 63 files

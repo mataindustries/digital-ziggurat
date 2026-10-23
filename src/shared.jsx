@@ -321,7 +321,7 @@ export const ReelDialog = forwardRef(function ReelDialog({ project, onClose, sta
 
 // `home` prefixes the in-page anchors, so a page other than the homepage passes '/' to
 // link back into the homepage sections. `contactHref` lets a page with its own contact
-// panel keep the Work with me button on the page.
+// panel keep the commission button on the page.
 export function SiteHeader({ home = '', contactHref = `${home}#contact` }) {
   return (
     <header className="site-header">
@@ -344,7 +344,7 @@ export function SiteHeader({ home = '', contactHref = `${home}#contact` }) {
             GitHub
           </ExternalLink>
           <a className="button button-outline nav-cta" href={contactHref}>
-            Work with me
+            Start a project
           </a>
         </nav>
       </div>

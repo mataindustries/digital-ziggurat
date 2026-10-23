@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import {
   siteMeta,
   contactRoutes,
+  implementationServices,
   processSteps,
   processEvidence,
   projectsByTier,
@@ -348,18 +349,15 @@ function Hero() {
     <section className="hero" id="top" aria-labelledby="hero-title">
       <div className="hero-content">
         <div className="hero-copy">
-          <p className="eyebrow">Frontend + AI implementation</p>
-          <h1 id="hero-title">I build ambitious web products that actually work.</h1>
-          <p className="hero-subhead">
-            Frontend systems, AI-assisted workflows and interactive products for real business
-            problems.
-          </p>
+          <p className="eyebrow">{siteMeta.role}</p>
+          <h1 id="hero-title">{siteMeta.heroHeadline}</h1>
+          <p className="hero-subhead">{siteMeta.heroSummary}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#shoot-the-moon">
-              View the work
+            <a className="button button-primary" href="#contact">
+              {siteMeta.commissionCta}
             </a>
-            <a className="button button-secondary" href="#contact">
-              Work with me
+            <a className="button button-secondary" href="#shoot-the-moon">
+              {siteMeta.workCta}
             </a>
           </div>
           <p className="availability">
@@ -614,15 +612,20 @@ function ContactSection() {
     <section className="section contact-section" id="contact" aria-labelledby="contact-title">
       <div className="contact-panel">
         <div className="contact-panel__intro">
-          <p className="section-kicker">Available for select builds</p>
-          <h2 id="contact-title">Have something difficult to build?</h2>
-          <p>
-            Open to contract work, agency overflow and full-time roles. Start with a focused
-            sprint, or send me the problem.
-          </p>
+          <p className="section-kicker">Commissions & agency overflow</p>
+          <h2 id="contact-title">{siteMeta.contactHeading}</h2>
+          <p>{siteMeta.contactGuidance}</p>
+          <ul className="contact-services" aria-label="Commission work">
+            {implementationServices.map((service) => (
+              <li key={service.title}>
+                <strong>{service.title}</strong>
+                <span>{service.description}</span>
+              </li>
+            ))}
+          </ul>
           <div className="contact-actions">
             <a className="button button-primary" href={siteMeta.contactHref}>
-              Start a conversation
+              {siteMeta.commissionCta}
               <VisuallyHidden> (opens an email draft)</VisuallyHidden>
             </a>
             <button className="button button-secondary" type="button" onClick={copyEmail}>
@@ -842,6 +845,23 @@ function ProjectChamber({ project, onClose }) {
         {isPermitPulse ? <PermitPulseArtifactStory project={project} /> : null}
 
         <div className="chamber-grid">
+          {project.ownership ? (
+            <>
+              {[
+                ['objective', 'The objective'],
+                ['decisions', 'My decisions & responsibilities'],
+                ['aiRole', 'How AI contributed'],
+                ['verification', 'What was checked'],
+                ['result', 'Working result'],
+                ['buyerUse', 'What I can build for you'],
+              ].map(([key, label]) => (
+                <div className="chamber-block" key={key}>
+                  <span>{label}</span>
+                  <p>{project.ownership[key]}</p>
+                </div>
+              ))}
+            </>
+          ) : null}
           <div className="chamber-block chamber-block--wide">
             <span>What it proves</span>
             <p>{project.proves}</p>

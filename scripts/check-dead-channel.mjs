@@ -10,7 +10,9 @@ const data = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelSignal.j
 const release = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelRelease.json'), 'utf8'));
 const captions = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelCaptions.json'), 'utf8'));
 const filmIdentity = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelFilm.json'), 'utf8'));
+const mediaIntegrity = JSON.parse(readFileSync(resolve(root, 'tools/dead-channel/verification/media-integrity.json'), 'utf8'));
 const expected = '43cab0916f52519afcb67c96a3d69aa3ff6e891ba7cd0a43e9f104aefa918fc9';
+const expectedCaptions = '93256314ee49a60a034d6b3b731bc3a951c08e302f934658ba9ac36e324e38cb';
 const sha256 = (path) => createHash('sha256').update(readFileSync(path)).digest('hex');
 const hashPattern = /^[a-f0-9]{64}$/;
 const finite = (value) => typeof value === 'number' && Number.isFinite(value);
@@ -113,11 +115,23 @@ const assets = [
   ['og-1200x630.jpg', 500_000],
 ];
 const available = assets.filter(([name]) => existsSync(resolve(media, name)));
+// Validate every present asset before checking completeness, so partial staging
+// cannot conceal an altered derivative or caption sidecar.
+for (const [name, maximum] of available) {
+  const path = resolve(media, name);
+  const approved = mediaIntegrity.assets.find((asset) => asset.file === name);
+  assert.ok(approved, `${name} is missing from the approved media integrity record`);
+  assert.ok(statSync(path).size <= maximum, `${name} exceeds its budget`);
+  assert.equal(statSync(path).size, approved.bytes, `${name} must retain its approved byte count`);
+  assert.equal(sha256(path), approved.sha256, `${name} SHA-256 must match the approved V4.2 asset`);
+}
+if (existsSync(resolve(media, 'captions-en.vtt'))) {
+  assert.equal(sha256(resolve(media, 'captions-en.vtt')), expectedCaptions, 'captions-en.vtt SHA-256 must match the approved corrected sidecar');
+}
 if (available.length) {
-  assert.equal(available.length, assets.length, 'Private local review assets are incomplete; run prepare_media.sh');
-  for (const [name, maximum] of assets) assert.ok(statSync(resolve(media, name)).size <= maximum, `${name} exceeds its budget`);
+  assert.equal(available.length, assets.length, 'Release media is incomplete; stage the unchanged approved V4.2 files');
   assert.equal(sha256(resolve(media, assets[0][0])), expected, 'Do not silently remux or alter the supplied V4.2 review');
-  console.log('DEAD CHANNEL: private film hash, media budgets, 88 measured bins and no tracked media verified.');
+  console.log('DEAD CHANNEL: all five approved media hashes and byte counts, media budgets, 88 measured bins and no tracked media verified.');
 } else {
   console.log('DEAD CHANNEL: code-only checks passed; private film assets must be staged for audiovisual review.');
 }

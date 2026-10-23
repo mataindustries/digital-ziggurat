@@ -24,10 +24,23 @@ const htmlEntries = [
   { file: '../work/dead-channel/index.html', projectId: 'dead-channel' },
 ];
 const metadataName = siteMeta.metadataName ?? siteMeta.name;
+const codeOnly = process.argv.slice(2).includes('--code-only');
+if (process.argv.slice(2).some((argument) => argument !== '--code-only')) {
+  throw new Error('Only --code-only is supported for metadata review.');
+}
+// Review can regenerate content without the separately supplied film. This flag is
+// never used by metadata, build or build:release and exempts only these known assets.
+const codeOnlyMedia = new Set([
+  '/media/dead-channel/poster-1280.webp',
+  '/media/dead-channel/poster-1280.jpg',
+  '/media/dead-channel/loop-8s-1280.mp4',
+  '/media/dead-channel/film-22s-1280x720p60.mp4',
+  '/media/dead-channel/captions-en.vtt',
+  '/media/dead-channel/og-1200x630.jpg',
+]);
 
-// Published media remains fail-fast. Private review files are deliberately ignored
-// by git: code-only review must build without copying a private film into the repo.
-// The separate release check enforces completeness before publication.
+// Default metadata generation requires every published asset. Private candidates
+// may omit their media; the release check enforces completeness before publication.
 const mediaPaths = (media) =>
   [media.poster?.webp, media.poster?.jpg, media.loop, media.reel, media.captions].filter(Boolean);
 const localPath = (url) =>
@@ -47,8 +60,12 @@ const missingAssets = referencedAssets.filter(
 );
 const missingFiles = missingAssets.filter(({ privateReview }) => !privateReview).map(({ path }) => path);
 
-if (missingFiles.length) {
-  throw new Error(`Referenced media is missing from public/: ${missingFiles.join(', ')}`);
+const missingRequired = missingFiles.filter((path) => !codeOnly || !codeOnlyMedia.has(path));
+if (missingRequired.length) {
+  throw new Error(`Referenced media is missing from public/: ${missingRequired.join(', ')}`);
+}
+if (codeOnly) {
+  console.warn(`CODE-ONLY METADATA: content review only; captions and release media are not validated. Publication remains blocked until the standard release build passes. Missing approved assets: ${[...new Set(missingFiles)].join(', ') || 'none'}`);
 }
 const privateMissing = [...new Set(missingAssets.filter(({ privateReview }) => privateReview).map(({ path }) => path))];
 if (privateMissing.length) {
@@ -79,6 +96,12 @@ for (const { file, projectId } of htmlEntries) {
 
 // The homepage's description tags are static too; the case study keeps its own.
 const homepageHtml = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+const decodeMeta = (value) => value
+  ?.replaceAll('&quot;', '"')
+  .replaceAll('&#039;', "'")
+  .replaceAll('&lt;', '<')
+  .replaceAll('&gt;', '>')
+  .replaceAll('&amp;', '&');
 const descriptionTags = [
   'name="description"',
   'property="og:description"',
@@ -86,9 +109,18 @@ const descriptionTags = [
 ];
 for (const tag of descriptionTags) {
   const content = homepageHtml.match(new RegExp(`<meta\\s+${tag}\\s+content="([^"]*)"`))?.[1];
-  if (content !== siteMeta.description) {
+  if (decodeMeta(content) !== siteMeta.description) {
     throw new Error(`index.html ${tag} must match siteMeta.description`);
   }
+}
+for (const tag of ['property="og:title"', 'name="twitter:title"']) {
+  const content = homepageHtml.match(new RegExp(`<meta\\s+${tag}\\s+content="([^"]*)"`))?.[1];
+  if (decodeMeta(content) !== siteMeta.title) {
+    throw new Error(`index.html ${tag} must match siteMeta.title`);
+  }
+}
+if (decodeMeta(homepageHtml.match(/<title>([^<]*)<\/title>/)?.[1]) !== siteMeta.title) {
+  throw new Error('index.html title must match siteMeta.title');
 }
 
 // Archive projects are filtered out by publicProjects; everything below is public.
@@ -181,6 +213,7 @@ const projectRecords = orderedProjects.map((project) => ({
   whatItProves: project.proves,
   hardPart: project.hardPart,
   howItWasBuilt: project.howBuilt,
+  ...(project.ownership ? { ownership: project.ownership } : {}),
   visualArtifact: toVisualArtifact(project),
   ...(project.detailImage
     ? {
@@ -230,9 +263,11 @@ const visualArtifacts = projectRecords.map((project) => ({
   visualArtifact: project.visualArtifact,
 }));
 
-const publicContactRoutes = contactRoutes.map(({ label, summary, subject, href }) => ({
+const publicContactRoutes = contactRoutes.map(({ id, label, summary, action, subject, href }) => ({
+  id,
   label,
   ...(summary ? { summary } : {}),
+  ...(action ? { action } : {}),
   subject,
   href,
 }));
@@ -259,9 +294,9 @@ const majorRoles = listFormat.format(
     (project) => `${project.name} (${sourceProject(project).feature.eyebrow.toLowerCase()})`,
   ),
 );
-const publicRead = `Read the site as an engineering portfolio. ${flagship.name} is the flagship project. ${majorRoles} ${
+const publicRead = `${siteMeta.preferredInterpretation} ${flagship.name} is the sole flagship project. ${majorRoles} ${
   majors.length === 1 ? 'is the major project' : 'are the major projects'
-}. Supporting and lab projects show range across the stack. Links appear only when a real public URL exists.`;
+}. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.`;
 
 const escapeHtml = (value) =>
   String(value)
@@ -316,6 +351,7 @@ const aiJson = {
     ...(project.oneLiner ? { oneLiner: project.oneLiner } : {}),
     ...(project.keyFacts ? { keyFacts: project.keyFacts } : {}),
     whatItProves: project.whatItProves,
+    ...(project.ownership ? { ownership: project.ownership } : {}),
     visualArtifact: project.visualArtifact,
     ...(project.additionalVisualArtifacts
       ? { additionalVisualArtifacts: project.additionalVisualArtifacts }
@@ -340,14 +376,14 @@ const aiJson = {
   },
   publicResources,
   primaryActions: [
-    { label: `View ${flagship.name}`, href: `/#${flagship.id}` },
+    { label: siteMeta.commissionCta, href: '/#contact' },
+    { label: siteMeta.workCta, href: `/#${flagship.id}` },
     ...(flagship.links.caseStudy
       ? [{ label: `Read the ${flagship.name} case study`, href: flagship.links.caseStudy.href }]
       : []),
     ...majors
       .filter((project) => project.links.live)
       .map(({ links }) => ({ label: links.live.label, href: links.live.href })),
-    { label: 'Work with Sergio', href: '/#contact' },
     { label: 'Email Sergio', href: siteMeta.contactHref },
     ...(siteMeta.githubUrl ? [{ label: 'GitHub', href: siteMeta.githubUrl }] : []),
   ],
@@ -383,6 +419,20 @@ const formatProjectLinks = (project) => {
     : '  Public links: none published yet';
 };
 
+const ownershipLabels = [
+  ['objective', 'Goal'],
+  ['decisions', 'My decisions'],
+  ['aiRole', 'AI contributions'],
+  ['verification', 'Verification'],
+  ['result', 'Working result'],
+  ['buyerUse', 'Useful for'],
+];
+
+const ownershipEntries = (project) =>
+  ownershipLabels
+    .filter(([key]) => project.ownership?.[key])
+    .map(([key, label]) => ({ label, value: project.ownership[key] }));
+
 const formatProject = (project) =>
   [
     `- ${project.name}: ${project.summary}`,
@@ -392,6 +442,7 @@ const formatProject = (project) =>
     `  Proof: ${project.whatItProves}`,
     `  Hard part: ${project.hardPart}`,
     `  How it was built: ${project.howItWasBuilt}`,
+    ...ownershipEntries(project).map(({ label, value }) => `  ${label}: ${value}`),
     project.tags ? `  Tags: ${project.tags.join(', ')}` : null,
     project.visualArtifact.src
       ? `  Visual artifacts: ${[
@@ -422,6 +473,10 @@ Builder: ${siteMeta.owner}
 
 Role: ${siteMeta.role}
 
+${siteMeta.heroHeadline}
+
+${siteMeta.heroSummary}
+
 Availability: ${siteMeta.availability}
 
 Service area: ${siteMeta.serviceArea}
@@ -446,12 +501,15 @@ How I build with AI:
 ${processSteps.map((step, index) => `${index + 1}. ${step.title}: ${step.body}`).join('\n')}
 Evidence: ${processEvidence}
 
+Commission inquiries: ${siteMeta.contactHeading}
+${siteMeta.contactGuidance}
+
 Contact routes:
 ${publicContactRoutes
   .map((route) => `- ${route.label}: ${route.summary ? `${route.summary} ` : ''}${route.href}`)
   .join('\n')}
 
-Available implementation work:
+Available commission work:
 ${implementationServices
   .map((service) => `- ${service.title}: ${service.description}`)
   .join('\n')}
@@ -474,6 +532,15 @@ const renderProjectItem = (project) => {
   return `<li>${name}: ${escapeHtml(project.oneLiner ?? project.summary)}</li>`;
 };
 
+const renderOwnership = (project) => {
+  const entries = ownershipEntries(project);
+  return entries.length
+    ? `<div class="ownership note">${entries
+        .map(({ label, value }) => `<p><strong>${escapeHtml(label)}.</strong> ${escapeHtml(value)}</p>`)
+        .join('\n          ')}</div>`
+    : '';
+};
+
 // A major project's name links to its live product; its other public links follow.
 const renderMajorProject = (project) => {
   const live = project.links.live;
@@ -486,7 +553,8 @@ const renderMajorProject = (project) => {
           <p>${escapeHtml(sourceProject(project).feature.body ?? project.summary)}</p>
           <ul class="facts">
             ${project.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('\n            ')}
-          </ul>${
+          </ul>
+          ${renderOwnership(project)}${
             otherLinks.length
               ? `
           <ul class="actions">
@@ -589,6 +657,8 @@ const proofHtml = `<!doctype html>
         text-transform: uppercase;
       }
       .note { color: #a9bec7; }
+      .ownership { margin-top: 1rem; }
+      .ownership p + p { margin-top: 0.45rem; }
       .major + .major { margin-top: 1.75rem; }
       .facts {
         display: flex;
@@ -646,10 +716,14 @@ const proofHtml = `<!doctype html>
     <main>
       <header>
         <p class="eyebrow">${escapeHtml(siteMeta.role)}</p>
-        <h1>I build ambitious web products that actually work.</h1>
-        <p class="subtitle">Frontend systems, AI-assisted workflows and interactive products for real business problems.</p>
+        <h1>${escapeHtml(siteMeta.heroHeadline)}</h1>
+        <p class="subtitle">${escapeHtml(siteMeta.heroSummary)}</p>
         <p class="byline">${escapeHtml(siteMeta.owner)} · ${escapeHtml(siteMeta.role)} · ${escapeHtml(siteMeta.serviceArea)}</p>
         <span class="status">${escapeHtml(siteMeta.availability)}</span>
+        <ul class="actions">
+          <li><a href="#contact">${escapeHtml(siteMeta.commissionCta)}</a></li>
+          <li><a href="#flagship">${escapeHtml(siteMeta.workCta)}</a></li>
+        </ul>
       </header>
 
       <section aria-labelledby="what-this-is">
@@ -664,6 +738,7 @@ const proofHtml = `<!doctype html>
         <ul class="facts">
           ${flagship.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('\n          ')}
         </ul>
+        ${renderOwnership(flagship)}
         ${
           availableLinks(flagship.links).length
             ? `<ul class="actions">
@@ -705,7 +780,7 @@ const proofHtml = `<!doctype html>
       </section>
 
       <section aria-labelledby="implementation">
-        <h2 id="implementation">Implementation work</h2>
+        <h2 id="implementation">Commission work</h2>
         <div class="service-grid">
           ${implementationServices
             .map(
@@ -719,8 +794,11 @@ const proofHtml = `<!doctype html>
       </section>
 
       <section aria-labelledby="contact">
-        <h2 id="contact">Have something difficult to build?</h2>
-        <p class="note">Open to contract work, agency overflow and full-time roles. Start with a focused sprint, or send me the problem.</p>
+        <h2 id="contact">${escapeHtml(siteMeta.contactHeading)}</h2>
+        <p class="note">${escapeHtml(siteMeta.contactGuidance)}</p>
+        <ul class="actions">
+          <li><a href="${escapeHtml(siteMeta.contactHref)}">${escapeHtml(siteMeta.commissionCta)}</a></li>
+        </ul>
         <p><a href="${escapeHtml(siteMeta.contactHref)}">${escapeHtml(siteMeta.email)}</a></p>
         <ul class="actions">
           ${publicContactRoutes
