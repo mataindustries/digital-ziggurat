@@ -55,7 +55,7 @@ export const behindTheBuild = {
       id: 'sandbox',
       label: 'ENM Sandbox',
       summary: 'Scene descriptions place named camera moves, looks and props in 3D. The tool validates each scene, then renders it.',
-      proof: '21 camera moves · 8 looks · 23 props',
+      proof: '22 camera moves · 8 looks · 25 props',
     },
     {
       id: 'daemonv12',
@@ -80,12 +80,12 @@ export const behindTheBuild = {
     {
       id: 'camera',
       name: '3D camera moves',
-      body: '21 named moves, from drone orbit and tornado POV to scale reveal and freefall dive, each with settings you can tune.',
+      body: '22 named moves, from drone orbit and tornado POV to scale reveal and freefall dive, each with settings you can tune.',
     },
     {
       id: 'environments',
       name: 'Environments',
-      body: 'Eight looks, from chrome and gold to neon and toxic, with 23 props. One continuous take can pass through several rooms.',
+      body: 'Eight looks, from chrome and gold to neon and toxic, with 25 props. One continuous take can pass through several rooms.',
     },
     {
       id: 'instruments',

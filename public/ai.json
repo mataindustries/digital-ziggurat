@@ -202,11 +202,11 @@
         },
         {
           "name": "3D camera moves",
-          "description": "21 named moves, from drone orbit and tornado POV to scale reveal and freefall dive, each with settings you can tune."
+          "description": "22 named moves, from drone orbit and tornado POV to scale reveal and freefall dive, each with settings you can tune."
         },
         {
           "name": "Environments",
-          "description": "Eight looks, from chrome and gold to neon and toxic, with 23 props. One continuous take can pass through several rooms."
+          "description": "Eight looks, from chrome and gold to neon and toxic, with 25 props. One continuous take can pass through several rooms."
         },
         {
           "name": "Custom instruments",
