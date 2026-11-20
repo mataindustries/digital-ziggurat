@@ -23,6 +23,12 @@
       "href": "mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20scope%20a%20prototype%20or%20custom%20tool%20and%20receive%20a%20quote.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWho%20it%20is%20for%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A%0AExisting%20tools%2C%20sample%20inputs%20and%20available%20access%3A%0A"
     },
     {
+      "id": "creative-production",
+      "label": "Interactive experiences, cinematic launch work & data visualization",
+      "subject": "Creative production inquiry for Sergio",
+      "href": "mailto:matasergio741@gmail.com?subject=Creative%20production%20inquiry%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20discuss%20an%20interactive%20experience%2C%20cinematic%20launch%20project%20or%20data-driven%20visualization.%0A%0AProject%20and%20audience%3A%0A%0AWhat%20the%20audience%20should%20see%2C%20hear%20or%20do%3A%0A%0AAvailable%20assets%20or%20data%3A%0A%0ADelivery%20format%20and%20timeline%3A%0A"
+    },
+    {
       "id": "overflow",
       "label": "Agency overflow / frontend implementation",
       "subject": "Agency overflow work for Sergio",
@@ -77,6 +83,55 @@
   "linkPolicy": "Only real public URLs are included. Unavailable destinations are null and are never rendered as buttons.",
   "tierPolicy": "Projects are tiered flagship, major, supporting and lab. Archived projects are not published.",
   "visualArtifactPolicy": "Project visuals are screenshots, project images, or posters and silent preview loops cut from a project's own video. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
+  "latestCreativeWork": [
+    {
+      "id": "gmerica",
+      "title": "GMErica",
+      "identity": "GMErica — GameStop, 2021",
+      "headline": "I turned a stock chart into a roller coaster.",
+      "type": "Original short film",
+      "status": "Released",
+      "url": "https://youtube.com/shorts/iJUDgjDFoWg",
+      "duration": "PT30S",
+      "width": 1080,
+      "height": 1920,
+      "format": "30 seconds · 1080 × 1920",
+      "tools": [
+        "ENM Sandbox",
+        "DaemonV12"
+      ],
+      "poster": "/media/gmerica/gmerica-chart-reveal-1080x1920.webp",
+      "posterAlt": "GMErica poster. A glowing neon ribbon traces GameStop’s daily closing price through a dark city of skyscrapers like a roller-coaster track, climbing from $17.25 on January 4, 2021 to $347.51 on January 27 and $325 on January 29.",
+      "posterCaption": "Chart-reveal poster · final film",
+      "description": "Historical GameStop price movements become a first-person 3D roller-coaster ride, and the original music follows the chart’s rises and falls.",
+      "approach": "The film interprets price movement for dramatic effect. The same workflow can map other datasets to 3D motion and musical cues.",
+      "facts": [
+        "30 seconds",
+        "1080 × 1920",
+        "Original music",
+        "Daily closes · Jan 4 – Feb 19, 2021"
+      ],
+      "readoutLabel": "Read the track",
+      "readout": [
+        {
+          "date": "Jan 4",
+          "price": "$17.25",
+          "note": "The ride starts"
+        },
+        {
+          "date": "Jan 27",
+          "price": "$347.51",
+          "note": "First crest"
+        },
+        {
+          "date": "Jan 29",
+          "price": "$325",
+          "note": "Second crest"
+        }
+      ],
+      "readoutNote": "As labelled on the poster: ride path smoothed, big days given more track."
+    }
+  ],
   "projectCount": 9,
   "projects": [
     {

@@ -107,6 +107,23 @@ Existing tools, sample inputs and available access:
 `,
   },
   {
+    id: 'creative-production',
+    label: 'Interactive experiences, cinematic launch work & data visualization',
+    subject: 'Creative production inquiry for Sergio',
+    body: `Hi Sergio,
+
+I would like to discuss an interactive experience, cinematic launch project or data-driven visualization.
+
+Project and audience:
+
+What the audience should see, hear or do:
+
+Available assets or data:
+
+Delivery format and timeline:
+`,
+  },
+  {
     id: 'overflow',
     label: 'Agency overflow / frontend implementation',
     subject: 'Agency overflow work for Sergio',

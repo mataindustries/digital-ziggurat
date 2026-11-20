@@ -33,6 +33,12 @@
         "href": "mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20scope%20a%20prototype%20or%20custom%20tool%20and%20receive%20a%20quote.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWho%20it%20is%20for%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A%0AExisting%20tools%2C%20sample%20inputs%20and%20available%20access%3A%0A"
       },
       {
+        "id": "creative-production",
+        "label": "Interactive experiences, cinematic launch work & data visualization",
+        "subject": "Creative production inquiry for Sergio",
+        "href": "mailto:matasergio741@gmail.com?subject=Creative%20production%20inquiry%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20discuss%20an%20interactive%20experience%2C%20cinematic%20launch%20project%20or%20data-driven%20visualization.%0A%0AProject%20and%20audience%3A%0A%0AWhat%20the%20audience%20should%20see%2C%20hear%20or%20do%3A%0A%0AAvailable%20assets%20or%20data%3A%0A%0ADelivery%20format%20and%20timeline%3A%0A"
+      },
+      {
         "id": "overflow",
         "label": "Agency overflow / frontend implementation",
         "subject": "Agency overflow work for Sergio",
@@ -118,6 +124,129 @@
       "description": "Responsive interfaces, interaction fixes and a defined task delivered into an existing project."
     }
   ],
+  "latestCreativeWork": [
+    {
+      "id": "gmerica",
+      "title": "GMErica",
+      "identity": "GMErica — GameStop, 2021",
+      "headline": "I turned a stock chart into a roller coaster.",
+      "type": "Original short film",
+      "status": "Released",
+      "url": "https://youtube.com/shorts/iJUDgjDFoWg",
+      "duration": "PT30S",
+      "width": 1080,
+      "height": 1920,
+      "format": "30 seconds · 1080 × 1920",
+      "tools": [
+        "ENM Sandbox",
+        "DaemonV12"
+      ],
+      "poster": "/media/gmerica/gmerica-chart-reveal-1080x1920.webp",
+      "posterAlt": "GMErica poster. A glowing neon ribbon traces GameStop’s daily closing price through a dark city of skyscrapers like a roller-coaster track, climbing from $17.25 on January 4, 2021 to $347.51 on January 27 and $325 on January 29.",
+      "posterCaption": "Chart-reveal poster · final film",
+      "description": "Historical GameStop price movements become a first-person 3D roller-coaster ride, and the original music follows the chart’s rises and falls.",
+      "approach": "The film interprets price movement for dramatic effect. The same workflow can map other datasets to 3D motion and musical cues.",
+      "facts": [
+        "30 seconds",
+        "1080 × 1920",
+        "Original music",
+        "Daily closes · Jan 4 – Feb 19, 2021"
+      ],
+      "readoutLabel": "Read the track",
+      "readout": [
+        {
+          "date": "Jan 4",
+          "price": "$17.25",
+          "note": "The ride starts"
+        },
+        {
+          "date": "Jan 27",
+          "price": "$347.51",
+          "note": "First crest"
+        },
+        {
+          "date": "Jan 29",
+          "price": "$325",
+          "note": "Second crest"
+        }
+      ],
+      "readoutNote": "As labelled on the poster: ride path smoothed, big days given more track."
+    }
+  ],
+  "creativeProduction": {
+    "behindTheBuild": {
+      "title": "From historical data to a verified film.",
+      "intro": "GMErica was made with ENM Sandbox, my 3D scene and camera toolkit, and DaemonV12, my music engine. Each stage is a reusable tool, so a new dataset or product can take the same path.",
+      "pipeline": [
+        {
+          "label": "Historical data",
+          "summary": "Daily closes from January 4 to February 19, 2021. The ride path is smoothed, and big days get more track."
+        },
+        {
+          "label": "ENM Sandbox",
+          "summary": "Scene descriptions place named camera moves, looks and props in 3D. The tool validates each scene, then renders it."
+        },
+        {
+          "label": "DaemonV12",
+          "summary": "Original music written as data and rendered the same way every time, with cues timed to the picture."
+        },
+        {
+          "label": "Verified film",
+          "summary": "Each rendered frame is checked and hashed before the film is assembled, and the soundtrack’s sync is measured against its master."
+        }
+      ],
+      "reusableTools": [
+        {
+          "name": "Scene descriptions",
+          "description": "A scene is one small JSON file. It names the camera moves, a look and props, and the tool writes a valid scene with cuts on the bars."
+        },
+        {
+          "name": "3D camera moves",
+          "description": "22 named moves, from drone orbit and tornado POV to scale reveal and freefall dive, each with settings you can tune."
+        },
+        {
+          "name": "Environments",
+          "description": "Eight looks, from chrome and gold to neon and toxic, with 25 props. One continuous take can pass through several rooms."
+        },
+        {
+          "name": "Custom instruments",
+          "description": "DaemonV12 instruments are played as data, so an agent can compose a score and render it offline to WAV and stems."
+        },
+        {
+          "name": "Cue sheets",
+          "description": "Sound briefs list each score event in seconds from the first visible frame, tied to camera moves, hits and loop points."
+        },
+        {
+          "name": "Frame verification",
+          "description": "Scenes are validated and loop seams checked. Every rendered frame is verified and hashed before assembly."
+        }
+      ],
+      "imageNote": "ENM Sandbox renders from its one-take studio tour. Each stage pairs a look with a camera move over a range of bars. These are Sandbox test scenes, not GMErica footage."
+    },
+    "productionVelocity": {
+      "claim": "About 24 hours",
+      "summary": "GMErica went from initial concept to a published film in about 24 hours, as reported by the creator, Sergio Mata. This describes one individual production run. It is not a guaranteed turnaround for client projects; commission timelines are scoped and agreed for each project."
+    },
+    "applications": [
+      {
+        "title": "Cinematic product launches & spec advertising",
+        "description": "Camera-led product films with end cards and store-ready loops, built on reusable spec-ad templates."
+      },
+      {
+        "title": "Interactive brand experiences",
+        "description": "3D scenes that run in the browser, so a launch can be something people explore, not only watch."
+      },
+      {
+        "title": "Data-driven animations",
+        "description": "Prices, growth curves or timelines drive the camera and the pacing, the way the chart drove GMErica."
+      },
+      {
+        "title": "Original music-synchronized short films",
+        "description": "Original scores timed to the picture with cue sheets, so cuts, hits and loops land on the beat."
+      }
+    ],
+    "specAdNote": "Weight of Gold, a Sandbox spec-ad template, rendered for Sample Co., a fictional client. It is a template demonstration, not client work."
+  },
   "visualArtifacts": [
     {
       "id": "shoot-the-moon",
