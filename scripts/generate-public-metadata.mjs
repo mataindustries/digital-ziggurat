@@ -15,6 +15,8 @@ import {
   proofSignals,
 } from '../src/data/projects.js';
 
+import { latestCreativeWork } from '../src/data/creativeWork.js';
+
 const publicDir = new URL('../public/', import.meta.url);
 // Each case study can carry its own social card. The homepage keeps the flagship's
 // card; adding a project never changes the site's title or description.
@@ -53,6 +55,9 @@ const referencedAssets = [
       .filter(Boolean)
       .map((url) => ({ path: localPath(url), privateReview: project.media?.privateReview === true })),
   ),
+  ...latestCreativeWork
+    .filter(({ poster }) => poster)
+    .map(({ poster }) => ({ path: localPath(poster), privateReview: false })),
   { path: localPath(siteMeta.socialPreviewUrl), privateReview: false },
 ];
 const missingAssets = referencedAssets.filter(
@@ -338,6 +343,7 @@ const aiJson = {
   proofSignals,
   hireableCapabilities,
   implementationServices,
+  latestCreativeWork,
   visualArtifacts,
   projects: projectRecords.map((project) => ({
     id: project.id,
@@ -408,6 +414,7 @@ const projectsJson = {
     'Projects are tiered flagship, major, supporting and lab. Archived projects are not published.',
   visualArtifactPolicy:
     "Project visuals are screenshots, project images, or posters and silent preview loops cut from a project's own video. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
+  latestCreativeWork,
   projectCount: projectRecords.length,
   projects: projectRecords,
 };
@@ -492,6 +499,12 @@ ${Object.entries(profiles)
 Purpose: ${siteMeta.purpose}
 
 ${publicRead}
+
+Latest Creative Work:
+${latestCreativeWork.map((project) =>
+  `- ${project.title} (${project.status}, ${project.type}, ${project.format}): ${project.description} Made with ${listFormat.format(project.tools)}. ${project.approach}
+  Watch: ${project.url}`,
+).join('\n')}
 
 ${publicTiers
   .map((tier) => `${tierLabels[tier]}:\n${recordsByTier(tier).map(formatProject).join('\n')}`)
@@ -729,6 +742,15 @@ const proofHtml = `<!doctype html>
       <section aria-labelledby="what-this-is">
         <h2 id="what-this-is">What this is</h2>
         <p>${escapeHtml(publicRead)}</p>
+      </section>
+
+      <section aria-labelledby="latest-creative-work">
+        <h2 id="latest-creative-work">Latest Creative Work</h2>
+        ${latestCreativeWork.map((project) => `<article class="major">
+          <h3><a href="${escapeHtml(project.url)}">${escapeHtml(project.title)}</a></h3>
+          <p class="note">${escapeHtml(project.type)} · ${escapeHtml(project.format)}</p>
+          <p>${escapeHtml(project.description)} Made with ${escapeHtml(listFormat.format(project.tools))}. ${escapeHtml(project.approach)}</p>
+        </article>`).join('\n        ')}
       </section>
 
       <section aria-labelledby="flagship">

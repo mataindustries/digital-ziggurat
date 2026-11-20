@@ -22,6 +22,7 @@ import {
   WatchReelButton,
   lockBodyScroll,
 } from './shared';
+import { latestCreativeWork } from './data/creativeWork';
 import './styles.css';
 
 const flagshipProject = getProject('shoot-the-moon');
@@ -32,6 +33,7 @@ const supportingProjects = projectsByTier('supporting');
 const labProjects = projectsByTier('lab');
 
 const buildOffers = contactRoutes.filter((route) => route.summary);
+const creativeInquiry = contactRoutes.find(({ id }) => id === 'creative-production');
 const emailRoutes = contactRoutes.filter((route) => !route.summary);
 
 const profileLinks = [
@@ -356,6 +358,9 @@ function Hero() {
             <a className="button button-primary" href="#contact">
               {siteMeta.commissionCta}
             </a>
+            <a className="button button-outline" href="#latest-creative-work">
+              Latest creative work
+            </a>
             <a className="button button-secondary" href="#shoot-the-moon">
               {siteMeta.workCta}
             </a>
@@ -369,6 +374,48 @@ function Hero() {
         <div className="hero-art">
           <Ziggurat />
         </div>
+      </div>
+    </section>
+  );
+}
+
+function LatestCreativeWork() {
+  return (
+    <section
+      className="section creative-work"
+      id="latest-creative-work"
+      aria-labelledby="creative-work-title"
+      tabIndex={-1}
+    >
+      <div className="section-heading">
+        <h2 id="creative-work-title">Latest Creative Work</h2>
+      </div>
+      {latestCreativeWork.map((project) => (
+        <article className="creative-work__project" key={project.id} id={project.id}>
+          <div className="creative-work__preview" aria-hidden="true">
+            {project.poster ? (
+              <img src={project.poster} alt="" loading="lazy" decoding="async" />
+            ) : (
+              <span>{project.title}</span>
+            )}
+          </div>
+          <div className="creative-work__copy">
+            <p className="section-kicker">{project.type} · {project.format}</p>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <p>Made with {project.tools.join(' and ')}. {project.approach}</p>
+            <ExternalLink className="button button-primary" href={project.url}>
+              Watch {project.title} on YouTube
+            </ExternalLink>
+          </div>
+        </article>
+      ))}
+      <div className="creative-work__inquiry">
+        <p>I work with founders and creative agencies on interactive experiences, cinematic launch work and data-driven visualizations.</p>
+        <a className="button button-secondary" href={creativeInquiry.href}>
+          Discuss a creative project
+          <VisuallyHidden> (opens an email draft)</VisuallyHidden>
+        </a>
       </div>
     </section>
   );
@@ -930,12 +977,13 @@ function App() {
 
   return (
     <>
-      <a className="skip-link" href="#shoot-the-moon">
-        Skip to flagship project
+      <a className="skip-link" href="#latest-creative-work">
+        Skip to latest creative work
       </a>
       <SiteHeader />
       <main>
         <Hero />
+        <LatestCreativeWork />
         <FeatureSection
           project={flagshipProject}
           variant="flagship"

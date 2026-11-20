@@ -23,6 +23,12 @@
       "href": "mailto:matasergio741@gmail.com?subject=AI%20Build%20Sprint%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20scope%20a%20prototype%20or%20custom%20tool%20and%20receive%20a%20quote.%0A%0AThe%20feature%2C%20prototype%20or%20workflow%3A%0A%0AWho%20it%20is%20for%3A%0A%0AWhat%20done%20looks%20like%3A%0A%0AStack%20and%20timeline%3A%0A%0AExisting%20tools%2C%20sample%20inputs%20and%20available%20access%3A%0A"
     },
     {
+      "id": "creative-production",
+      "label": "Interactive experiences, cinematic launch work & data visualization",
+      "subject": "Creative production inquiry for Sergio",
+      "href": "mailto:matasergio741@gmail.com?subject=Creative%20production%20inquiry%20for%20Sergio&body=Hi%20Sergio%2C%0A%0AI%20would%20like%20to%20discuss%20an%20interactive%20experience%2C%20cinematic%20launch%20project%20or%20data-driven%20visualization.%0A%0AProject%20and%20audience%3A%0A%0AWhat%20the%20audience%20should%20see%2C%20hear%20or%20do%3A%0A%0AAvailable%20assets%20or%20data%3A%0A%0ADelivery%20format%20and%20timeline%3A%0A"
+    },
+    {
       "id": "overflow",
       "label": "Agency overflow / frontend implementation",
       "subject": "Agency overflow work for Sergio",
@@ -77,6 +83,25 @@
   "linkPolicy": "Only real public URLs are included. Unavailable destinations are null and are never rendered as buttons.",
   "tierPolicy": "Projects are tiered flagship, major, supporting and lab. Archived projects are not published.",
   "visualArtifactPolicy": "Project visuals are screenshots, project images, or posters and silent preview loops cut from a project's own video. Where no poster exists yet, the site shows a CSS-only illustration rather than a fake screenshot.",
+  "latestCreativeWork": [
+    {
+      "id": "gmerica",
+      "title": "GMErica",
+      "type": "Original short film",
+      "status": "Released",
+      "url": "https://youtube.com/shorts/iJUDgjDFoWg",
+      "duration": "PT30S",
+      "width": 1080,
+      "height": 1920,
+      "format": "30 seconds · 1080 × 1920",
+      "tools": [
+        "ENM Studio",
+        "DaemonV12"
+      ],
+      "description": "A 3D ride through the rises and falls of historical price data. The same data shapes the musical contour, so the motion and score tell the story together.",
+      "approach": "The film interprets price movement for dramatic effect. The workflow can map other datasets to 3D motion and musical cues, then bring both together in a short film."
+    }
+  ],
   "projectCount": 9,
   "projects": [
     {
