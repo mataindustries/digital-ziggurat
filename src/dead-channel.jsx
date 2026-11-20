@@ -4,6 +4,7 @@ import { getProject, siteMeta } from './data/projects';
 import signal from './data/deadChannelSignal.json';
 import captions from './data/deadChannelCaptions.json';
 import release from './data/deadChannelRelease.json';
+import { deadChannelArchived } from './data/deadChannelPublication';
 import { deadChannelCaseStudy as study } from './data/deadChannelCaseStudy';
 import { SiteHeader, SiteFooter, VisuallyHidden } from './shared';
 import { FilmPlayer } from './dead-channel/FilmPlayer';
@@ -29,6 +30,22 @@ function SectionHeading({ index, kicker, id, title }) {
   );
 }
 
+// Archived mode: the film is not hosted, so the page leads with text instead of a player.
+function ArchiveNotice() {
+  return (
+    <section className="dc-archive" aria-labelledby="dc-archive-title">
+      <p className="dc-archive__kicker">Archived case study</p>
+      <h2 id="dc-archive-title">The film is no longer shown on this site.</h2>
+      <p>
+        This page keeps the case study as text: the logline, a descriptive
+        transcript of the film, the credits, the measured Signal Trace and the
+        integrity record for the approved V4.2 master. The original film is held
+        privately.
+      </p>
+    </section>
+  );
+}
+
 function DeadChannelPage() {
   const playerRef = useRef(null);
   const [time, setTime] = useState(0);
@@ -47,7 +64,7 @@ function DeadChannelPage() {
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to film
+        {deadChannelArchived ? 'Skip to main content' : 'Skip to film'}
       </a>
       <SiteHeader home="/" contactHref="#contact" />
       <main className="cs-main dc-main" id="main" tabIndex={-1}>
@@ -55,37 +72,55 @@ function DeadChannelPage() {
           <nav className="cs-crumbs" aria-label="Breadcrumb">
             <ol>
               <li>
-                <a href="/#dead-channel">Work</a>
+                {deadChannelArchived ? (
+                  <a href="/">Home</a>
+                ) : (
+                  <a href="/#dead-channel">Work</a>
+                )}
               </li>
               <li aria-current="page">Dead Channel</li>
             </ol>
           </nav>
           <div className="dc-title-row">
             <div>
-              <p className="section-kicker">Original short film</p>
+              <p className="section-kicker">
+                {deadChannelArchived
+                  ? 'Archived case study · original short film'
+                  : 'Original short film'}
+              </p>
               <h1 id="dc-title">Dead Channel</h1>
               <p className="dc-thesis">{study.thesis}</p>
             </div>
             <p className="dc-logline">{study.positioning}</p>
           </div>
-          <p className="dc-content-note" id="dc-content-note">
-            Horror-comedy · sudden loud sounds near the end · best with
-            headphones
-          </p>
-          <FilmPlayer
-            ref={playerRef}
-            media={project.media}
-            duration={film.duration}
-            onTime={onTime}
-            onPlaying={onPlaying}
-          />
-          <p className="dc-caption-status" id="dc-caption-status">
-            English SDH available in CC. The final sound is the intentionally
-            right-weighted spirit convergence effect.
-          </p>
+          {deadChannelArchived ? (
+            <ArchiveNotice />
+          ) : (
+            <>
+              <p className="dc-content-note" id="dc-content-note">
+                Horror-comedy · sudden loud sounds near the end · best with
+                headphones
+              </p>
+              <FilmPlayer
+                ref={playerRef}
+                media={project.media}
+                duration={film.duration}
+                onTime={onTime}
+                onPlaying={onPlaying}
+              />
+              <p className="dc-caption-status" id="dc-caption-status">
+                English SDH available in CC. The final sound is the intentionally
+                right-weighted spirit convergence effect.
+              </p>
+            </>
+          )}
           <SignalTrace
-            time={time}
-            onSeek={(nextTime) => playerRef.current?.seek(nextTime)}
+            time={deadChannelArchived ? null : time}
+            onSeek={
+              deadChannelArchived
+                ? undefined
+                : (nextTime) => playerRef.current?.seek(nextTime)
+            }
           />
           <div className="cs-actions dc-screening__actions">
             <a className="button button-outline" href="#contact">
@@ -103,7 +138,7 @@ function DeadChannelPage() {
               </div>
             ))}
           </dl>
-          <details className="dc-details dc-viewing-notes">
+          <details className="dc-details dc-viewing-notes" open={deadChannelArchived}>
             <summary>Descriptive transcript · contains the reveal</summary>
             <p>{captions.soundDescriptionNote}</p>
             <ol>
@@ -114,9 +149,11 @@ function DeadChannelPage() {
               ))}
             </ol>
             <p>
-              These descriptions supplement the English SDH captions. LOOP and
-              Ellis Builds are fictional. The source movie and original stereo
-              soundtrack are unchanged.
+              {deadChannelArchived
+                ? 'These descriptions stand in for the film, which is no longer shown on this site.'
+                : 'These descriptions supplement the English SDH captions.'}{' '}
+              LOOP and Ellis Builds are fictional. The source movie and original
+              stereo soundtrack are unchanged.
             </p>
           </details>
         </section>

@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
+import { deadChannelArchived } from '../src/data/deadChannelPublication.js';
+
 const root = new URL('../', import.meta.url);
 const captions = JSON.parse(
   readFileSync(new URL('src/data/deadChannelCaptions.json', root)),
@@ -55,8 +57,10 @@ assert.equal(
 );
 // Only stage the sidecar when the owner has staged the private movie. Code-only
 // checkouts still build; their missing media cannot pass the public-release gate.
+// An archived release publishes no film, so it never stages a sidecar either. All
+// caption validation above runs in both modes.
 const media = new URL('public/media/dead-channel/', root);
-if (existsSync(new URL('film-22s-1280x720p60.mp4', media))) {
+if (!deadChannelArchived && existsSync(new URL('film-22s-1280x720p60.mp4', media))) {
   mkdirSync(media, { recursive: true });
   const vtt =
     'WEBVTT\n\n' +
@@ -73,8 +77,8 @@ const block = `<!-- BEGIN GENERATED ACCESSIBLE FILM TEXT -->
       <h2>Descriptive transcript</h2>
       <p>${escape(captions.soundDescriptionNote)}</p>
       <ol>${captions.transcript.map(({ time, text }) => `<li><strong>${escape(time)}.</strong> ${escape(text)}</li>`).join('')}</ol>
-      <p><a href="/media/dead-channel/captions-en.vtt">English SDH captions (${escape(captions.status)})</a></p>
-      <h2>Credits</h2>
+${deadChannelArchived ? '' : `      <p><a href="/media/dead-channel/captions-en.vtt">English SDH captions (${escape(captions.status)})</a></p>
+`}      <h2>Credits</h2>
       ${release.credits.map((line) => `<p>${escape(line)}</p>`).join('\n      ')}
       <!-- END GENERATED ACCESSIBLE FILM TEXT -->`;
 const html = readFileSync(entry, 'utf8');
@@ -86,5 +90,5 @@ writeFileSync(
   ),
 );
 console.log(
-  `DEAD CHANNEL: ${captions.cues.length} readable, nonoverlapping English SDH cues validated against ${film.duration} s; final sound: owner-confirmed right-weighted spirit convergence.`,
+  `DEAD CHANNEL: ${captions.cues.length} readable, nonoverlapping English SDH cues validated against ${film.duration} s; final sound: owner-confirmed right-weighted spirit convergence. Mode: ${deadChannelArchived ? 'archived (no sidecar or film link published)' : 'film'}.`,
 );

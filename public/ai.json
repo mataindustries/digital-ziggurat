@@ -51,7 +51,7 @@
   },
   "preferredInterpretation": "A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results.",
   "sitePurpose": "Show working software and creative projects, explain Sergio Mata’s ownership and testing, and help founders and creative teams scope a paid commission or agency-overflow task.",
-  "publicRead": "A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results. Shoot the Moon is the sole flagship project. PermitPulse (real-world product), DaemonV12 (agent-native engine), and Dead Channel (original short film) are the major projects. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.",
+  "publicRead": "A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results. Shoot the Moon is the sole flagship project. PermitPulse (real-world product) and DaemonV12 (agent-native engine) are the major projects. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.",
   "howIBuildWithAi": {
     "steps": [
       {
@@ -77,7 +77,8 @@
     "flagship",
     "major",
     "supporting",
-    "lab"
+    "lab",
+    "archived"
   ],
   "projectCategories": [
     "3D strategy game / phone browsers",
@@ -288,21 +289,6 @@
       }
     },
     {
-      "id": "dead-channel",
-      "name": "Dead Channel",
-      "visualArtifact": {
-        "type": "poster",
-        "src": "/media/dead-channel/poster-1280.jpg",
-        "alt": "A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant",
-        "width": 1280,
-        "height": 720,
-        "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
-        "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
-        "captions": "/media/dead-channel/captions-en.vtt",
-        "caption": "● TX ACTIVE · sound off: an empty building · 22 s"
-      }
-    },
-    {
       "id": "sgvturf",
       "name": "SGVTurf",
       "visualArtifact": {
@@ -361,6 +347,14 @@
         "status": "Draft editorial guide",
         "width": 719,
         "height": 1348
+      }
+    },
+    {
+      "id": "dead-channel",
+      "name": "Dead Channel",
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Text-only archive; no film, poster or image is published."
       }
     }
   ],
@@ -650,62 +644,6 @@
       }
     },
     {
-      "id": "dead-channel",
-      "name": "Dead Channel",
-      "tier": "major",
-      "category": "Original short film / cinematic sound",
-      "status": "Released",
-      "badge": "V4.2",
-      "summary": "A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
-      "keyFacts": [
-        "22 seconds · original horror-comedy",
-        "240 virtual sound sources",
-        "1280 × 720 · 60 fps"
-      ],
-      "whatItProves": "Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.",
-      "ownership": {
-        "objective": "Make an invisible threat feel present through sound, environmental effects and timing.",
-        "decisions": "I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.",
-        "aiRole": "AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.",
-        "verification": "The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.",
-        "result": "An approved 22-second V4.2 horror-comedy with an accessible screening page and measured Signal Trace.",
-        "buyerUse": "Cinematic web experiences, technical creative production and accessible media presentation."
-      },
-      "visualArtifact": {
-        "type": "poster",
-        "src": "/media/dead-channel/poster-1280.jpg",
-        "alt": "A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant",
-        "width": 1280,
-        "height": 720,
-        "previewLoop": "/media/dead-channel/loop-8s-1280.mp4",
-        "reel": "/media/dead-channel/film-22s-1280x720p60.mp4",
-        "captions": "/media/dead-channel/captions-en.vtt",
-        "caption": "● TX ACTIVE · sound off: an empty building · 22 s"
-      },
-      "tags": [
-        "Original film",
-        "Python",
-        "NumPy",
-        "Audio DSP",
-        "Stereo sound",
-        "Cinematic web"
-      ],
-      "proofSignals": [
-        "V4.2",
-        "1,320 frames at 60 fps",
-        "Original Python/NumPy DSP soundtrack",
-        "Signal Trace measured from the stereo master"
-      ],
-      "links": {
-        "live": null,
-        "source": null,
-        "caseStudy": {
-          "label": "Dead Channel case study",
-          "href": "https://ziggurat.pages.dev/work/dead-channel/"
-        }
-      }
-    },
-    {
       "id": "sgvturf",
       "name": "SGVTurf",
       "tier": "supporting",
@@ -910,6 +848,56 @@
         "source": null,
         "caseStudy": null
       }
+    },
+    {
+      "id": "dead-channel",
+      "name": "Dead Channel",
+      "tier": "archived",
+      "category": "Original short film / cinematic sound",
+      "status": "Archived",
+      "badge": "V4.2",
+      "currentStatus": "Archived. The original film is held privately and is not hosted on this site. The case study stays public as text, with its descriptive transcript, credits, measured Signal Trace and the approved integrity hashes.",
+      "summary": "A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.",
+      "keyFacts": [
+        "22 seconds · original horror-comedy",
+        "240 virtual sound sources",
+        "1280 × 720 · 60 fps"
+      ],
+      "whatItProves": "Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.",
+      "ownership": {
+        "objective": "Make an invisible threat feel present through sound, environmental effects and timing.",
+        "decisions": "I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.",
+        "aiRole": "AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.",
+        "verification": "The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.",
+        "result": "An approved 22-second V4.2 horror-comedy, kept as an archived case study with its measured Signal Trace and integrity record.",
+        "buyerUse": "Cinematic web experiences, technical creative production and accessible media presentation."
+      },
+      "visualArtifact": {
+        "type": "intentional-status",
+        "status": "Text-only archive; no film, poster or image is published."
+      },
+      "tags": [
+        "Original film",
+        "Python",
+        "NumPy",
+        "Audio DSP",
+        "Stereo sound",
+        "Cinematic web"
+      ],
+      "proofSignals": [
+        "V4.2",
+        "1,320 frames at 60 fps",
+        "Original Python/NumPy DSP soundtrack",
+        "Signal Trace measured from the stereo master"
+      ],
+      "links": {
+        "live": null,
+        "source": null,
+        "caseStudy": {
+          "label": "Dead Channel archived case study",
+          "href": "https://ziggurat.pages.dev/work/dead-channel/"
+        }
+      }
     }
   ],
   "sectionNavigation": {
@@ -941,10 +929,6 @@
           {
             "name": "DaemonV12",
             "href": "/#daemonv12"
-          },
-          {
-            "name": "Dead Channel",
-            "href": "/#dead-channel"
           }
         ]
       },

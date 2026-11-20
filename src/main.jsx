@@ -22,6 +22,7 @@ import {
   WatchReelButton,
   lockBodyScroll,
 } from './shared';
+import { deadChannelArchived } from './data/deadChannelPublication';
 import {
   behindTheBuild,
   creativeApplications,
@@ -1187,20 +1188,23 @@ function App() {
           sourceLabel="View source"
           onOpen={setSelectedProject}
         />
-        <FeatureSection
-          project={deadChannelProject}
-          variant="channel"
-          media={<FlagshipMedia media={deadChannelProject.media} preview paused={loopsPaused} />}
-          mediaAction={
-            <WatchReelButton
-              project={deadChannelProject}
-              onOpen={() => openReel(deadChannelProject)}
-              label={deadChannelProject.media.watchLabel}
-              className="button button-primary"
-            />
-          }
-          onOpen={setSelectedProject}
-        />
+        {/* Archived mode retires the showcase: no film media exists to show. See deadChannelPublication.json. */}
+        {deadChannelArchived ? null : (
+          <FeatureSection
+            project={deadChannelProject}
+            variant="channel"
+            media={<FlagshipMedia media={deadChannelProject.media} preview paused={loopsPaused} />}
+            mediaAction={
+              <WatchReelButton
+                project={deadChannelProject}
+                onOpen={() => openReel(deadChannelProject)}
+                label={deadChannelProject.media.watchLabel}
+                className="button button-primary"
+              />
+            }
+            onOpen={setSelectedProject}
+          />
+        )}
         <WorkSection onOpen={setSelectedProject} />
         <ProcessSection />
         <LabSection />

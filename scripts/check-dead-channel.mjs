@@ -4,6 +4,23 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { deadChannelPublication } from '../src/data/deadChannelPublication.js';
+import { getProject } from '../src/data/projects.js';
+
+// Two publication modes (src/data/deadChannelPublication.json):
+//   film      Everything below applies, exactly as before the archive: the complete,
+//             hash- and byte-verified media, the caption sidecar and the owner
+//             approvals are required for a public release.
+//   archived  The film is not part of the release. Every data, hash, git-protection and
+//             caption assertion still runs, and any staged file is still verified. What
+//             is no longer required is what only a published film needs (complete
+//             media, sidecar, publication approval). Instead no published page may
+//             reference the film's media, and none may be staged for upload.
+// `--require-film` asks the strict film question while the config says archived, so
+// staged media can be proven releasable before the mode is switched back.
+const mode = deadChannelPublication.mode;
+const filmRequired = mode === 'film' || process.argv.includes('--require-film');
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const media = resolve(root, 'public/media/dead-channel');
 const data = JSON.parse(readFileSync(resolve(root, 'src/data/deadChannelSignal.json'), 'utf8'));
@@ -128,21 +145,65 @@ for (const [name, maximum] of available) {
 if (existsSync(resolve(media, 'captions-en.vtt'))) {
   assert.equal(sha256(resolve(media, 'captions-en.vtt')), expectedCaptions, 'captions-en.vtt SHA-256 must match the approved corrected sidecar');
 }
-if (available.length) {
+if (available.length && filmRequired) {
   assert.equal(available.length, assets.length, 'Release media is incomplete; stage the unchanged approved V4.2 files');
   assert.equal(sha256(resolve(media, assets[0][0])), expected, 'Do not silently remux or alter the supplied V4.2 review');
   console.log('DEAD CHANNEL: all five approved media hashes and byte counts, media budgets, 88 measured bins and no tracked media verified.');
-} else {
+} else if (available.length) {
+  console.log(`DEAD CHANNEL (archived): ${available.length} staged media file(s) match their approved byte counts and hashes; the archived release does not publish them.`);
+} else if (filmRequired) {
   console.log('DEAD CHANNEL: code-only checks passed; private film assets must be staged for audiovisual review.');
+} else {
+  console.log('DEAD CHANNEL (archived): data, caption and git-protection checks passed; no film media is required or published.');
+}
+
+// Archived mode must be self-consistent: nothing published may point at the film.
+if (mode === 'archived') {
+  const project = getProject('dead-channel');
+  assert.equal(project.tier, 'archived', 'Archived mode requires the dead-channel project to be in the archived tier');
+  assert.ok(!project.media && !project.socialPreview, 'Archived mode must not define film media or a social card');
+  assert.ok(!project.links.live && project.links.caseStudy?.href === '/work/dead-channel/', 'The archived case study must stay at /work/dead-channel/');
+  for (const file of [
+    'index.html',
+    'work/shoot-the-moon/index.html',
+    'work/dead-channel/index.html',
+    'public/ai.json',
+    'public/projects.json',
+    'public/llms.txt',
+    'public/proof.html',
+    'public/sitemap.xml',
+    'public/robots.txt',
+  ]) {
+    assert.ok(
+      !readFileSync(resolve(root, file), 'utf8').includes('/media/dead-channel/'),
+      `${file} references private DEAD CHANNEL media, but the release is archived`,
+    );
+  }
+  // Archiving must stay reversible: the approved film-mode page is kept verbatim.
+  assert.match(
+    readFileSync(resolve(root, 'tools/dead-channel/pages/film.html'), 'utf8'),
+    /og-1200x630\.jpg/,
+    'tools/dead-channel/pages/film.html must remain the approved film-mode case-study page',
+  );
+} else {
+  const project = getProject('dead-channel');
+  assert.equal(project.tier, 'major', 'Film mode requires the dead-channel project in the major tier');
+  assert.ok(project.media?.reel && project.media?.captions && project.socialPreview, 'Film mode must define the approved media and social card');
 }
 
 // Private preparation and public-release authorization are separate checks.
 if (process.argv.includes('--release')) {
   const blockers = [];
-  if (!release.captionsApproved) blockers.push('owner approval of the complete final captioned candidate');
-  if (!release.publicReleaseApproved) blockers.push('explicit owner approval of the final candidate and public media release');
-  if (available.length !== assets.length || !existsSync(resolve(media, 'captions-en.vtt'))) blockers.push('complete verified release media and caption sidecar');
+  if (filmRequired) {
+    if (!release.captionsApproved) blockers.push('owner approval of the complete final captioned candidate');
+    if (!release.publicReleaseApproved) blockers.push('explicit owner approval of the final candidate and public media release');
+    if (available.length !== assets.length || !existsSync(resolve(media, 'captions-en.vtt'))) blockers.push('complete verified release media and caption sidecar');
+  } else if (available.length || existsSync(resolve(media, 'captions-en.vtt'))) {
+    // vite copies public/ into dist, so a staged film would be published unreferenced.
+    blockers.push('staged DEAD CHANNEL media would be copied into dist, but the archived release must not publish the film (move it out of public/media/dead-channel/, or restore film mode)');
+  }
   assert.ok(release.pictureApproved && release.creditsApproved && release.originalMixPreservationApproved, 'Preserve the approved picture, credits and original stereo mix');
   assert.equal(captions.filmSha256, expected);
   if (blockers.length) throw new Error(`PUBLIC RELEASE BLOCKED: ${blockers.join('; ')}. Private build success is not publication authorization.`);
+  if (!filmRequired) console.log('DEAD CHANNEL (archived release): no film media is required, referenced or staged for upload.');
 }

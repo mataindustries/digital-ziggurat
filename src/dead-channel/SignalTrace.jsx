@@ -28,6 +28,8 @@ const markers = markerIds
   .map((id) => signal.events.find((event) => event.id === id))
   .filter(Boolean);
 
+// `time` is the player's position. With no player (archived case study) pass null: the
+// trace is then a static measurement, with no playhead and no playback key.
 export function SignalTrace({ time, onSeek }) {
   const [selected, setSelected] = useState('discovery');
   const event =
@@ -82,15 +84,17 @@ export function SignalTrace({ time, onSeek }) {
             stroke="#b7d5b5"
             strokeOpacity="0.2"
           />
-          <line
-            className="dc-trace__playhead"
-            x1={x(time)}
-            x2={x(time)}
-            y1="0"
-            y2="80"
-            stroke="#f4c76b"
-            strokeWidth="2"
-          />
+          {time === null ? null : (
+            <line
+              className="dc-trace__playhead"
+              x1={x(time)}
+              x2={x(time)}
+              y1="0"
+              y2="80"
+              stroke="#f4c76b"
+              strokeWidth="2"
+            />
+          )}
         </svg>
         <div className="dc-trace__axis">
           <span>0 s</span>
@@ -106,10 +110,12 @@ export function SignalTrace({ time, onSeek }) {
         <span>
           <i className="dc-key dc-key--balance" />L − R level (dB)
         </span>
-        <span>
-          <i className="dc-key dc-key--playhead" />
-          Playback
-        </span>
+        {time === null ? null : (
+          <span>
+            <i className="dc-key dc-key--playhead" />
+            Playback
+          </span>
+        )}
       </div>
       <div
         className="dc-trace__markers"
@@ -122,7 +128,7 @@ export function SignalTrace({ time, onSeek }) {
             aria-pressed={selected === marker.id}
             onClick={() => {
               setSelected(marker.id);
-              onSeek(marker.time);
+              onSeek?.(marker.time);
             }}
           >
             <span>{marker.time.toFixed(2)} s</span>
@@ -141,7 +147,10 @@ export function SignalTrace({ time, onSeek }) {
         shows channel balance, with left above and right below the reference.
         These are audio measurements, not positions of the virtual sources.
         Picture-event markers also identify the detector glitch and its return
-        to zero. Selecting a moment pauses and seeks the film.
+        to zero.{' '}
+        {time === null
+          ? 'Select a moment to read its measurement.'
+          : 'Selecting a moment pauses and seeks the film.'}
       </p>
       <details className="dc-details">
         <summary>Read the measured values</summary>
