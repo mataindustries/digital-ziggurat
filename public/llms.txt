@@ -31,8 +31,28 @@ Purpose: Show working software and creative projects, explain Sergio Mata’s ow
 A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results. Shoot the Moon is the sole flagship project. PermitPulse (real-world product), DaemonV12 (agent-native engine), and Dead Channel (original short film) are the major projects. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.
 
 Latest Creative Work:
-- GMErica (Released, Original short film, 30 seconds · 1080 × 1920): A 3D ride through the rises and falls of historical price data. The same data shapes the musical contour, so the motion and score tell the story together. Made with ENM Studio and DaemonV12. The film interprets price movement for dramatic effect. The workflow can map other datasets to 3D motion and musical cues, then bring both together in a short film.
+- GMErica — GameStop, 2021 (Released, Original short film, 30 seconds · 1080 × 1920): "I turned a stock chart into a roller coaster." Historical GameStop price movements become a first-person 3D roller-coaster ride, and the original music follows the chart’s rises and falls. Made with ENM Sandbox and DaemonV12. The film interprets price movement for dramatic effect. The same workflow can map other datasets to 3D motion and musical cues.
   Watch: https://youtube.com/shorts/iJUDgjDFoWg
+
+Behind the build (Historical data → ENM Sandbox → DaemonV12 → Verified film):
+GMErica was made with ENM Sandbox, my 3D scene and camera toolkit, and DaemonV12, my music engine. Each stage is a reusable tool, so a new dataset or product can take the same path.
+- Scene descriptions: A scene is one small JSON file. It names the camera moves, a look and props, and the tool writes a valid scene with cuts on the bars.
+- 3D camera moves: 21 named moves, from drone orbit and tornado POV to scale reveal and freefall dive, each with settings you can tune.
+- Environments: Eight looks, from chrome and gold to neon and toxic, with 23 props. One continuous take can pass through several rooms.
+- Custom instruments: DaemonV12 instruments are played as data, so an agent can compose a score and render it offline to WAV and stems.
+- Cue sheets: Sound briefs list each score event in seconds from the first visible frame, tied to camera moves, hits and loop points.
+- Frame verification: Scenes are validated and loop seams checked. Every rendered frame is verified and hashed before assembly.
+ENM Sandbox renders from its one-take studio tour. Each stage pairs a look with a camera move over a range of bars. These are Sandbox test scenes, not GMErica footage.
+
+Production velocity:
+GMErica went from initial concept to a published film in about 24 hours, as reported by the creator, Sergio Mata. This describes one individual production run. It is not a guaranteed turnaround for client projects; commission timelines are scoped and agreed for each project.
+
+Where it applies:
+- Cinematic product launches & spec advertising: Camera-led product films with end cards and store-ready loops, built on reusable spec-ad templates.
+- Interactive brand experiences: 3D scenes that run in the browser, so a launch can be something people explore, not only watch.
+- Data-driven animations: Prices, growth curves or timelines drive the camera and the pacing, the way the chart drove GMErica.
+- Original music-synchronized short films: Original scores timed to the picture with cue sheets, so cuts, hits and loops land on the beat.
+Weight of Gold, a Sandbox spec-ad template, rendered for Sample Co., a fictional client. It is a template demonstration, not client work.
 
 Flagship project:
 - Shoot the Moon: A 3D lunar strategy game built for phone browsers. Land, mine, build, strike, survive the counterattack and defend your claim on the Moon.

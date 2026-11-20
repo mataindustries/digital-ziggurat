@@ -22,7 +22,12 @@ import {
   WatchReelButton,
   lockBodyScroll,
 } from './shared';
-import { latestCreativeWork } from './data/creativeWork';
+import {
+  behindTheBuild,
+  creativeApplications,
+  latestCreativeWork,
+  productionVelocity,
+} from './data/creativeWork';
 import './styles.css';
 
 const flagshipProject = getProject('shoot-the-moon');
@@ -33,7 +38,6 @@ const supportingProjects = projectsByTier('supporting');
 const labProjects = projectsByTier('lab');
 
 const buildOffers = contactRoutes.filter((route) => route.summary);
-const creativeInquiry = contactRoutes.find(({ id }) => id === 'creative-production');
 const emailRoutes = contactRoutes.filter((route) => !route.summary);
 
 const profileLinks = [
@@ -384,38 +388,202 @@ function LatestCreativeWork() {
     <section
       className="section creative-work"
       id="latest-creative-work"
-      aria-labelledby="creative-work-title"
+      aria-label="Latest creative work"
       tabIndex={-1}
     >
-      <div className="section-heading">
-        <h2 id="creative-work-title">Latest Creative Work</h2>
-      </div>
       {latestCreativeWork.map((project) => (
-        <article className="creative-work__project" key={project.id} id={project.id}>
-          <div className="creative-work__preview" aria-hidden="true">
-            {project.poster ? (
-              <img src={project.poster} alt="" loading="lazy" decoding="async" />
-            ) : (
-              <span>{project.title}</span>
-            )}
-          </div>
-          <div className="creative-work__copy">
-            <p className="section-kicker">{project.type} · {project.format}</p>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <p>Made with {project.tools.join(' and ')}. {project.approach}</p>
-            <ExternalLink className="button button-primary" href={project.url}>
-              Watch {project.title} on YouTube
+        <article
+          className="gmerica"
+          key={project.id}
+          id={project.id}
+          aria-labelledby={`${project.id}-title`}
+        >
+          <header className="gmerica__head">
+            <p className="section-kicker">Latest creative work · {project.type}</p>
+            <h2 id={`${project.id}-title`}>{project.headline}</h2>
+            <p className="gmerica__identity">{project.identity}</p>
+          </header>
+
+          <figure className="gmerica__poster">
+            <img
+              src={project.poster}
+              width={project.width}
+              height={project.height}
+              alt={project.posterAlt}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span>{project.posterCaption}</span>
+              <span aria-hidden="true">9:16</span>
+            </figcaption>
+          </figure>
+
+          <div className="gmerica__body">
+            <p className="gmerica__lede">{project.description}</p>
+            <ExternalLink className="button button-primary gmerica__watch" href={project.url}>
+              Watch {project.title} on YouTube Shorts
             </ExternalLink>
+            <ul className="fact-chips" aria-label={`${project.title} facts`}>
+              {project.facts.map((fact) => (
+                <li key={fact}>{fact}</li>
+              ))}
+            </ul>
+            <div className="gmerica-readout">
+              <p className="gmerica-readout__label">{project.readoutLabel}</p>
+              <ol className="gmerica-readout__list" aria-label="Chart points labelled on the poster">
+                {project.readout.map((point) => (
+                  <li key={point.date}>
+                    <span className="gmerica-readout__date">{point.date}</span>
+                    <span className="gmerica-readout__price">{point.price}</span>
+                    <span className="gmerica-readout__note">{point.note}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="gmerica-readout__caption">{project.readoutNote}</p>
+            </div>
+            <p className="gmerica__approach">{project.approach}</p>
           </div>
         </article>
       ))}
-      <div className="creative-work__inquiry">
-        <p>I work with founders and creative agencies on interactive experiences, cinematic launch work and data-driven visualizations.</p>
-        <a className="button button-secondary" href={creativeInquiry.href}>
-          Discuss a creative project
-          <VisuallyHidden> (opens an email draft)</VisuallyHidden>
-        </a>
+    </section>
+  );
+}
+
+function BehindTheBuild() {
+  return (
+    <section
+      className="section build-story"
+      id="behind-the-build"
+      aria-labelledby="build-story-title"
+      tabIndex={-1}
+    >
+      <div className="section-heading">
+        <p className="section-kicker">{behindTheBuild.kicker}</p>
+        <h2 id="build-story-title">{behindTheBuild.title}</h2>
+        <p>{behindTheBuild.intro}</p>
+      </div>
+
+      <ol className="build-pipeline" aria-label={behindTheBuild.stagesLabel}>
+        {behindTheBuild.stages.map((stage, index) => (
+          <li className="build-stage" key={stage.id}>
+            <span className="build-stage__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3>{stage.label}</h3>
+            <p>{stage.summary}</p>
+            <p className="build-stage__proof">{stage.proof}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="build-lab">
+        <figure className="build-renders">
+          <ul className="build-renders__grid">
+            {behindTheBuild.stageRenders.map((render) => (
+              <li key={render.id}>
+                <img
+                  src={render.src}
+                  width="432"
+                  height="768"
+                  alt={render.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="build-renders__name">{render.name}</span>
+                <span className="build-renders__setting">{render.setting}</span>
+              </li>
+            ))}
+          </ul>
+          <figcaption>{behindTheBuild.stageRendersCaption}</figcaption>
+        </figure>
+
+        <ul className="build-toolkit" aria-label={behindTheBuild.toolkitLabel}>
+          {behindTheBuild.toolkit.map((tool) => (
+            <li key={tool.id}>
+              <strong>{tool.name}</strong>
+              <span>{tool.body}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="velocity">
+        <div className="velocity__headline">
+          <p className="section-kicker">{productionVelocity.kicker}</p>
+          <h3>
+            <span className="velocity__figure">{productionVelocity.figure}</span>{' '}
+            <span className="velocity__label">{productionVelocity.label}</span>
+          </h3>
+        </div>
+        <div className="velocity__detail">
+          <p>{productionVelocity.body}</p>
+          <div className="velocity__track" aria-hidden="true">
+            <span>{productionVelocity.trackStart}</span>
+            <i />
+            <span>{productionVelocity.trackEnd}</span>
+          </div>
+          <p className="velocity__caveat">{productionVelocity.caveat}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CreativeApplications() {
+  return (
+    <section
+      className="section applications"
+      id="creative-applications"
+      aria-labelledby="applications-title"
+      tabIndex={-1}
+    >
+      <div className="section-heading">
+        <p className="section-kicker">{creativeApplications.kicker}</p>
+        <h2 id="applications-title">{creativeApplications.title}</h2>
+        <p>{creativeApplications.intro}</p>
+      </div>
+
+      <div className="applications__layout">
+        <ul className="applications__list" aria-label={creativeApplications.listLabel}>
+          {creativeApplications.items.map((item) => (
+            <li key={item.id}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ul>
+
+        <figure className="applications__figure">
+          <ul className="applications__frames">
+            {creativeApplications.specAdFrames.map((frame) => (
+              <li key={frame.id}>
+                <img
+                  src={frame.src}
+                  width="250"
+                  height="444"
+                  alt={frame.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="applications__time">{frame.time}</span>
+                <span className="applications__name">{frame.name}</span>
+              </li>
+            ))}
+          </ul>
+          <figcaption>{creativeApplications.specAdCaption}</figcaption>
+        </figure>
+
+        <div className="applications__cta">
+          <div>
+            <h3>{creativeApplications.ctaHeading}</h3>
+            <p>{creativeApplications.ctaNote}</p>
+          </div>
+          <a className="button button-primary" href={siteMeta.contactHref}>
+            {siteMeta.commissionCta}
+            <VisuallyHidden> (opens an email draft)</VisuallyHidden>
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -984,6 +1152,8 @@ function App() {
       <main>
         <Hero />
         <LatestCreativeWork />
+        <BehindTheBuild />
+        <CreativeApplications />
         <FeatureSection
           project={flagshipProject}
           variant="flagship"

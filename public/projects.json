@@ -87,6 +87,8 @@
     {
       "id": "gmerica",
       "title": "GMErica",
+      "identity": "GMErica — GameStop, 2021",
+      "headline": "I turned a stock chart into a roller coaster.",
       "type": "Original short film",
       "status": "Released",
       "url": "https://youtube.com/shorts/iJUDgjDFoWg",
@@ -95,11 +97,39 @@
       "height": 1920,
       "format": "30 seconds · 1080 × 1920",
       "tools": [
-        "ENM Studio",
+        "ENM Sandbox",
         "DaemonV12"
       ],
-      "description": "A 3D ride through the rises and falls of historical price data. The same data shapes the musical contour, so the motion and score tell the story together.",
-      "approach": "The film interprets price movement for dramatic effect. The workflow can map other datasets to 3D motion and musical cues, then bring both together in a short film."
+      "poster": "/media/gmerica/gmerica-chart-reveal-1080x1920.webp",
+      "posterAlt": "GMErica poster. A glowing neon ribbon traces GameStop’s daily closing price through a dark city of skyscrapers like a roller-coaster track, climbing from $17.25 on January 4, 2021 to $347.51 on January 27 and $325 on January 29.",
+      "posterCaption": "Chart-reveal poster · final film",
+      "description": "Historical GameStop price movements become a first-person 3D roller-coaster ride, and the original music follows the chart’s rises and falls.",
+      "approach": "The film interprets price movement for dramatic effect. The same workflow can map other datasets to 3D motion and musical cues.",
+      "facts": [
+        "30 seconds",
+        "1080 × 1920",
+        "Original music",
+        "Daily closes · Jan 4 – Feb 19, 2021"
+      ],
+      "readoutLabel": "Read the track",
+      "readout": [
+        {
+          "date": "Jan 4",
+          "price": "$17.25",
+          "note": "The ride starts"
+        },
+        {
+          "date": "Jan 27",
+          "price": "$347.51",
+          "note": "First crest"
+        },
+        {
+          "date": "Jan 29",
+          "price": "$325",
+          "note": "Second crest"
+        }
+      ],
+      "readoutNote": "As labelled on the poster: ride path smoothed, big days given more track."
     }
   ],
   "projectCount": 9,

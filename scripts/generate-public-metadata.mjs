@@ -15,7 +15,13 @@ import {
   proofSignals,
 } from '../src/data/projects.js';
 
-import { latestCreativeWork } from '../src/data/creativeWork.js';
+import {
+  behindTheBuild,
+  creativeApplications,
+  creativeProductionAssets,
+  latestCreativeWork,
+  productionVelocity,
+} from '../src/data/creativeWork.js';
 
 const publicDir = new URL('../public/', import.meta.url);
 // Each case study can carry its own social card. The homepage keeps the flagship's
@@ -55,9 +61,7 @@ const referencedAssets = [
       .filter(Boolean)
       .map((url) => ({ path: localPath(url), privateReview: project.media?.privateReview === true })),
   ),
-  ...latestCreativeWork
-    .filter(({ poster }) => poster)
-    .map(({ poster }) => ({ path: localPath(poster), privateReview: false })),
+  ...creativeProductionAssets.map((asset) => ({ path: localPath(asset), privateReview: false })),
   { path: localPath(siteMeta.socialPreviewUrl), privateReview: false },
 ];
 const missingAssets = referencedAssets.filter(
@@ -344,6 +348,21 @@ const aiJson = {
   hireableCapabilities,
   implementationServices,
   latestCreativeWork,
+  creativeProduction: {
+    behindTheBuild: {
+      title: behindTheBuild.title,
+      intro: behindTheBuild.intro,
+      pipeline: behindTheBuild.stages.map(({ label, summary }) => ({ label, summary })),
+      reusableTools: behindTheBuild.toolkit.map(({ name, body }) => ({ name, description: body })),
+      imageNote: behindTheBuild.stageRendersCaption,
+    },
+    productionVelocity: {
+      claim: productionVelocity.figure,
+      summary: productionVelocity.summary,
+    },
+    applications: creativeApplications.items.map(({ title, body }) => ({ title, description: body })),
+    specAdNote: creativeApplications.specAdCaption,
+  },
   visualArtifacts,
   projects: projectRecords.map((project) => ({
     id: project.id,
@@ -502,9 +521,21 @@ ${publicRead}
 
 Latest Creative Work:
 ${latestCreativeWork.map((project) =>
-  `- ${project.title} (${project.status}, ${project.type}, ${project.format}): ${project.description} Made with ${listFormat.format(project.tools)}. ${project.approach}
+  `- ${project.identity} (${project.status}, ${project.type}, ${project.format}): "${project.headline}" ${project.description} Made with ${listFormat.format(project.tools)}. ${project.approach}
   Watch: ${project.url}`,
 ).join('\n')}
+
+Behind the build (${behindTheBuild.stages.map(({ label }) => label).join(' → ')}):
+${behindTheBuild.intro}
+${behindTheBuild.toolkit.map(({ name, body }) => `- ${name}: ${body}`).join('\n')}
+${behindTheBuild.stageRendersCaption}
+
+Production velocity:
+${productionVelocity.summary}
+
+Where it applies:
+${creativeApplications.items.map(({ title, body }) => `- ${title}: ${body}`).join('\n')}
+${creativeApplications.specAdCaption}
 
 ${publicTiers
   .map((tier) => `${tierLabels[tier]}:\n${recordsByTier(tier).map(formatProject).join('\n')}`)
@@ -747,10 +778,29 @@ const proofHtml = `<!doctype html>
       <section aria-labelledby="latest-creative-work">
         <h2 id="latest-creative-work">Latest Creative Work</h2>
         ${latestCreativeWork.map((project) => `<article class="major">
-          <h3><a href="${escapeHtml(project.url)}">${escapeHtml(project.title)}</a></h3>
+          <h3><a href="${escapeHtml(project.url)}">${escapeHtml(project.identity)}</a></h3>
           <p class="note">${escapeHtml(project.type)} · ${escapeHtml(project.format)}</p>
-          <p>${escapeHtml(project.description)} Made with ${escapeHtml(listFormat.format(project.tools))}. ${escapeHtml(project.approach)}</p>
+          <p>${escapeHtml(project.headline)} ${escapeHtml(project.description)} Made with ${escapeHtml(listFormat.format(project.tools))}. ${escapeHtml(project.approach)}</p>
         </article>`).join('\n        ')}
+        <article>
+          <h3>${escapeHtml(behindTheBuild.kicker)}: ${escapeHtml(behindTheBuild.title)}</h3>
+          <p>${escapeHtml(behindTheBuild.intro)}</p>
+          <ul>
+            ${behindTheBuild.toolkit.map(({ name, body }) => `<li><strong>${escapeHtml(name)}.</strong> ${escapeHtml(body)}</li>`).join('\n            ')}
+          </ul>
+          <p class="note">${escapeHtml(behindTheBuild.stageRendersCaption)}</p>
+        </article>
+        <article>
+          <h3>${escapeHtml(productionVelocity.kicker)}</h3>
+          <p>${escapeHtml(productionVelocity.summary)}</p>
+        </article>
+        <article>
+          <h3>${escapeHtml(creativeApplications.kicker)}</h3>
+          <ul>
+            ${creativeApplications.items.map(({ title, body }) => `<li><strong>${escapeHtml(title)}.</strong> ${escapeHtml(body)}</li>`).join('\n            ')}
+          </ul>
+          <p class="note">${escapeHtml(creativeApplications.specAdCaption)}</p>
+        </article>
       </section>
 
       <section aria-labelledby="flagship">
