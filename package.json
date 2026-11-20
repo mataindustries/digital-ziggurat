@@ -10,6 +10,7 @@
     "build": "npm run metadata && node scripts/check-dead-channel.mjs && vite build",
     "check:dead-channel": "node scripts/check-dead-channel.mjs",
     "check:dead-channel:release": "node scripts/check-dead-channel.mjs --release",
+    "check:dead-channel:film": "node scripts/check-dead-channel.mjs --release --require-film",
     "preview": "vite preview",
     "build:release": "npm run check:dead-channel:release && npm run build"
   },

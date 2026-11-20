@@ -1,6 +1,9 @@
 # DEAD CHANNEL private media and measurement tools
 
-This document records the original private preparation workflow. The owner has
+This document records the original private preparation workflow. The public site
+currently runs DEAD CHANNEL in `archived` mode (a text-only case study; no private
+media is needed to release it). To restore the film, follow
+[RELEASE.md](RELEASE.md#restoring-the-film-release). The owner has
 since authorized the complete corrected V4.2 public release; follow
 [RELEASE.md](RELEASE.md) for the current deployment procedure. Do not regenerate
 the approved film, preview, posters or audio during the release handoff.

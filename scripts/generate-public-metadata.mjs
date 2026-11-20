@@ -84,11 +84,27 @@ if (privateMissing.length) {
 // Validate image URLs and accessible image descriptions, including multiline tags.
 for (const { file, projectId } of htmlEntries) {
   const project = publicProjects.find(({ id }) => id === projectId);
-  const socialPreview = project?.socialPreview ?? {
-    url: siteMeta.socialPreviewUrl,
-    alt: siteMeta.socialPreviewAlt,
-  };
+  // `socialPreview: null` is an explicit "no social image" (an archived case study with
+  // no published media). Anything else falls back to the site card.
+  const socialPreview =
+    project?.socialPreview === null
+      ? null
+      : (project?.socialPreview ?? {
+          url: siteMeta.socialPreviewUrl,
+          alt: siteMeta.socialPreviewAlt,
+        });
   const html = await readFile(new URL(file, import.meta.url), 'utf8');
+  if (project?.tier === 'archived') {
+    // An archived page publishes no media: it may carry no image tags, preload or link
+    // into the project's media folder, so it cannot show a broken image or player.
+    if (/<meta\s+(?:property="og:image|name="twitter:image)/.test(html)) {
+      throw new Error(`${file.slice(3)} is archived but still declares a social image`);
+    }
+    if (html.includes(`/media/${project.id}/`)) {
+      throw new Error(`${file.slice(3)} is archived but still references /media/${project.id}/`);
+    }
+    continue;
+  }
   for (const [tag, expected] of [
     ['property="og:image"', socialPreview.url],
     ['property="og:image:secure_url"', socialPreview.url],
@@ -132,8 +148,14 @@ if (decodeMeta(homepageHtml.match(/<title>([^<]*)<\/title>/)?.[1]) !== siteMeta.
   throw new Error('index.html title must match siteMeta.title');
 }
 
-// Archive projects are filtered out by publicProjects; everything below is public.
-const publicTiers = projectTiers.filter((tier) => tier !== 'archive');
+// `archive` projects are filtered out by publicProjects; everything below is public.
+// The `archived` tier (a public case study without a showcase) is only listed when a
+// project is in it, so film mode produces exactly the metadata it always did.
+const publicTiers = projectTiers.filter(
+  (tier) =>
+    tier !== 'archive' &&
+    (tier !== 'archived' || publicProjects.some((project) => project.tier === 'archived')),
+);
 const orderedProjects = [...publicProjects].sort(
   (a, b) => publicTiers.indexOf(a.tier) - publicTiers.indexOf(b.tier),
 );
@@ -142,6 +164,7 @@ const tierLabels = {
   major: 'Major projects',
   supporting: 'Supporting projects',
   lab: 'Lab',
+  archived: 'Archived case studies',
 };
 
 const linkTypes = [
@@ -167,6 +190,12 @@ const availableLinks = (links) =>
     .map(([key, type]) => ({ type, ...links[key] }));
 
 const toVisualArtifact = (project) => {
+  if (project.tier === 'archived') {
+    return {
+      type: 'intentional-status',
+      status: 'Text-only archive; no film, poster or image is published.',
+    };
+  }
   if (project.media) {
     const { media } = project;
     const posterSrc = media.poster?.jpg ?? media.poster?.webp;
@@ -611,6 +640,23 @@ const renderMajorProject = (project) => {
         </article>`;
 };
 
+// Every public case study is listed; an archived one is kept but ranked below live work.
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${[
+  { loc: `${siteMeta.publicUrl}/`, priority: '1.0' },
+  ...publicProjects
+    .filter((project) => project.links.caseStudy?.href)
+    .map((project) => ({
+      loc: `${siteMeta.publicUrl}${project.links.caseStudy.href}`,
+      priority: project.tier === 'archived' ? '0.3' : '0.8',
+    })),
+]
+  .map(({ loc, priority }) => `  <url>\n    <loc>${loc}</loc>\n    <priority>${priority}</priority>\n  </url>`)
+  .join('\n')}
+</urlset>
+`;
+
 const proofHtml = `<!doctype html>
 <html lang="en">
   <head>
@@ -841,7 +887,16 @@ const proofHtml = `<!doctype html>
         </ul>
       </section>
 
-      <section aria-labelledby="process">
+      ${
+        recordsByTier('archived').length
+          ? `<section aria-labelledby="archived">
+        <h2 id="archived">Archived case studies</h2>
+        ${recordsByTier('archived').map(renderMajorProject).join('\n        ')}
+      </section>
+
+      `
+          : ''
+      }<section aria-labelledby="process">
         <h2 id="process">How I build with AI</h2>
         <ol>
           ${processSteps
@@ -895,4 +950,5 @@ await Promise.all([
   writeFile(new URL('projects.json', publicDir), `${JSON.stringify(projectsJson, null, 2)}\n`),
   writeFile(new URL('llms.txt', publicDir), llmsTxt),
   writeFile(new URL('proof.html', publicDir), proofHtml),
+  writeFile(new URL('sitemap.xml', publicDir), sitemapXml),
 ]);

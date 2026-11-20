@@ -1,0 +1,6 @@
+{
+  "mode": "archived",
+  "archivedOn": "2026-11-20",
+  "reason": "DEAD CHANNEL is retired from the active showcase so releases no longer depend on its private media files. The case study stays public as a text-only archive.",
+  "restore": "tools/dead-channel/RELEASE.md#restoring-the-film-release"
+}

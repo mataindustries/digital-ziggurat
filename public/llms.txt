@@ -28,7 +28,7 @@ GitHub: https://github.com/mataindustries
 
 Purpose: Show working software and creative projects, explain Sergio Mata’s ownership and testing, and help founders and creative teams scope a paid commission or agency-overflow task.
 
-A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results. Shoot the Moon is the sole flagship project. PermitPulse (real-world product), DaemonV12 (agent-native engine), and Dead Channel (original short film) are the major projects. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.
+A creative-technologist portfolio with engineering evidence. Sergio Mata directs AI-assisted software and creative production, owns the decisions and validation, and shows working results. Shoot the Moon is the sole flagship project. PermitPulse (real-world product) and DaemonV12 (agent-native engine) are the major projects. Supporting and lab projects show range across software and creative work. Engineering evidence, human decisions and AI contributions are described alongside working results. Links appear only when a real public URL exists.
 
 Latest Creative Work:
 - GMErica — GameStop, 2021 (Released, Original short film, 30 seconds · 1080 × 1920): "I turned a stock chart into a roller coaster." Historical GameStop price movements become a first-person 3D roller-coaster ride, and the original music follows the chart’s rises and falls. Made with ENM Sandbox and DaemonV12. The film interprets price movement for dramatic effect. The same workflow can map other datasets to 3D motion and musical cues.
@@ -113,22 +113,6 @@ Major projects:
   Operational flow: Connect one workspace → Compose as data → Process + automate → Render WAV, MP3, stems → Analyze the result
   Live: Visit DaemonV12 (https://daemonv12.pages.dev)
   Source: View DaemonV12 source (https://github.com/mataindustries/daemonv12)
-- Dead Channel: A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.
-  Status: Released
-  Key facts: 22 seconds · original horror-comedy; 240 virtual sound sources; 1280 × 720 · 60 fps
-  Proof: Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.
-  Hard part: The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.
-  How it was built: Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using 240 coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.
-  Goal: Make an invisible threat feel present through sound, environmental effects and timing.
-  My decisions: I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.
-  AI contributions: AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.
-  Verification: The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.
-  Working result: An approved 22-second V4.2 horror-comedy with an accessible screening page and measured Signal Trace.
-  Useful for: Cinematic web experiences, technical creative production and accessible media presentation.
-  Tags: Original film, Python, NumPy, Audio DSP, Stereo sound, Cinematic web
-  Visual artifacts: /media/dead-channel/poster-1280.jpg
-  Reel: /media/dead-channel/film-22s-1280x720p60.mp4
-  Case study: Dead Channel case study (https://ziggurat.pages.dev/work/dead-channel/)
 
 Supporting projects:
 - SGVTurf: Connects local homeowner search intent to city guidance, official-source rebate context, a structured project brief, and relevant contractor discovery.
@@ -173,6 +157,24 @@ Lab:
   How it was built: AI supports research organization, editorial structure, site implementation, visual direction, and deployment. The project evolved in public, changed direction, and still carries the limits of an unofficial guide.
   Visual artifacts: /projects/angeles-crest.jpg
   Live: Open public draft (https://theangelescrest.pages.dev)
+
+Archived case studies:
+- Dead Channel: A 22-second horror-comedy about a spirit detector whose readout glitches during the approach, then returns to zero while broadcasting to an unseen swarm. Its original Convergence soundtrack was synthesized separately in Python/NumPy DSP with 240 coordinated virtual sound sources.
+  Status: Archived
+  Current status: Archived. The original film is held privately and is not hosted on this site. The case study stays public as text, with its descriptive transcript, credits, measured Signal Trace and the approved integrity hashes.
+  Key facts: 22 seconds · original horror-comedy; 240 virtual sound sources; 1280 × 720 · 60 fps
+  Proof: Original sound, cinematic presentation and measured evidence can turn an interface idea into a finished film experience.
+  Hard part: The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.
+  How it was built: Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using 240 coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.
+  Goal: Make an invisible threat feel present through sound, environmental effects and timing.
+  My decisions: I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.
+  AI contributions: AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.
+  Verification: The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.
+  Working result: An approved 22-second V4.2 horror-comedy, kept as an archived case study with its measured Signal Trace and integrity record.
+  Useful for: Cinematic web experiences, technical creative production and accessible media presentation.
+  Tags: Original film, Python, NumPy, Audio DSP, Stereo sound, Cinematic web
+  Visual artifacts: Text-only archive; no film, poster or image is published.
+  Case study: Dead Channel archived case study (https://ziggurat.pages.dev/work/dead-channel/)
 
 How I build with AI:
 1. Find the real problem: Start with the workflow, constraint or failure that is actually costing someone time.

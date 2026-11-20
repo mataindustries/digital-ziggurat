@@ -48,6 +48,14 @@ Components shared by all pages live in `src/shared.jsx`.
 
 ## DEAD CHANNEL V4.2
 
+> **Current publication mode: `archived`.** DEAD CHANNEL is retired from the homepage
+> showcase and navigation. `/work/dead-channel/` stays public as a text-only archive,
+> and `npm run build:release` no longer needs the private film media. The mode is set
+> in `src/data/deadChannelPublication.json`; see
+> [tools/dead-channel/RELEASE.md](tools/dead-channel/RELEASE.md#publication-mode) for
+> what changes and how to restore the film release. The paragraphs below describe the
+> `film` mode release, which keeps its full media, hash, caption and approval checks.
+
 The approved release uses the supplied V4.2 movie. The detector glitches
 during the approach, then its entity count returns from `ERR` to `0` at frame
 1192 (19.8667 s at 60 fps). This is distinct from `RANGE: 0.00 m` at frame 1143.
@@ -108,7 +116,8 @@ public/llms.txt
 
 For a code-only content review without the separately staged DEAD CHANNEL media,
 run `npm run metadata:code`. This regenerates the public metadata and static proof
-page while reporting the six known missing film assets. Other missing public assets
+page while reporting any missing film assets (film mode only; archived mode needs
+none). Other missing public assets
 and inconsistent homepage metadata still fail. This command does not validate
 captions or produce a release build. The standard `metadata`, `build` and
 `build:release` commands retain their caption and media requirements.

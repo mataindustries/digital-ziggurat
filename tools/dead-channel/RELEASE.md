@@ -1,5 +1,10 @@
 # DEAD CHANNEL V4.2 deployment
 
+> **Current state: archived.** The film is not part of the release, so a normal
+> `npm run build:release` needs none of the private media below. The sections after
+> [Restoring the film release](#restoring-the-film-release) describe the `film` mode
+> release and still apply, unchanged, whenever the film is published.
+
 The owner authorized the complete corrected candidate at commit
 `b72a10bfd534e7421648f71ada4496931f2a8a04` for public release, including GitHub
 push, PR, merge and Cloudflare Pages deployment. Authorization is recorded in
@@ -18,6 +23,86 @@ historical recovery material; do not replay it over the current reviewed code.
 Copy existing approved media only. Do not recreate, re-encode, remux, normalize
 or replace the film, audio, posters or preview loop. Caption generation below
 must reproduce the approved sidecar exactly.
+
+## Publication mode
+
+`src/data/deadChannelPublication.json` is the only switch. The homepage showcase,
+navigation step, case-study page, social metadata, sitemap and the release gate all
+read it through `src/data/deadChannelPublication.js`, which rejects any other value.
+
+| | `film` | `archived` (current) |
+| --- | --- | --- |
+| Homepage showcase and Ziggurat step | Yes | None |
+| `/work/dead-channel/` | Screening page: film, captions, Signal Trace | Text-only archive: logline, descriptive transcript, credits, Signal Trace, integrity record |
+| Social card, poster preload, media links | The five approved media files | None: no page, metadata file or sitemap may reference `/media/dead-channel/` |
+| Sitemap priority of the case study | 0.8 | 0.3 |
+| `npm run build:release` requires | Complete verified media, caption sidecar, owner approvals | None of those |
+| Staged film media at release time | Required | Refused, because `vite` copies `public/` into `dist` and would publish it unreferenced |
+
+Both modes always enforce the following, so archiving cannot hide a problem:
+
+- every film-identity, stereo-measurement and event assertion in `scripts/check-dead-channel.mjs`
+  (SHA-256 identities, 88 measured bins, frame and timing checks);
+- the English SDH caption timing, length and reading-rate validation, and the
+  approved caption text and hash;
+- no tracked or staged media in Git, and the `.gitignore` protections;
+- the byte count, size budget and SHA-256 of **any** media file that is present, even
+  partially staged, against `tools/dead-channel/verification/media-integrity.json`;
+- the approved picture, credits and original-mix flags and the film hash in the caption data.
+
+What `archived` relaxes is only what exists to publish a film: complete media, the
+caption sidecar and the public-release approval. Nothing else is weakened, no hash is
+changed and no placeholder media is substituted. `src/data/deadChannelCaptions.json`,
+`deadChannelSignal.json`, `deadChannelRelease.json`, `deadChannelCaseStudy.js`, the
+Signal Trace, `tools/dead-channel/` and `.gitignore` are untouched.
+
+The original film-mode case-study page is preserved verbatim at
+`tools/dead-channel/pages/film.html`. `work/dead-channel/index.html` is the archived
+page while the mode is `archived`. If you change a shared head tag (for example the
+GA4 snippet) in one, change the other.
+
+## Restoring the film release
+
+1. Stage the five approved media files and the caption data exactly as described in
+   [Exact media recovery](#exact-media-recovery). Do not re-encode or replace anything.
+2. While still archived, prove the staged media against the strict film rules:
+
+   ```sh
+   npm run check:dead-channel:film
+   ```
+
+   This is the unchanged strict gate (complete files, byte counts, SHA-256, budgets,
+   caption sidecar, owner approvals). It lists every missing or mismatched item and
+   publishes nothing.
+3. Set `"mode": "film"` in `src/data/deadChannelPublication.json`.
+4. Restore the approved film-mode page:
+
+   ```sh
+   cp tools/dead-channel/pages/film.html work/dead-channel/index.html
+   ```
+
+5. Regenerate the captions sidecar, case-study text, public metadata and sitemap:
+
+   ```sh
+   npm run metadata
+   ```
+
+6. Run the strict release build, then the validation steps in
+   [Full validation at the reviewed SHA](#full-validation-at-the-reviewed-sha):
+
+   ```sh
+   npm run build:release
+   ```
+
+7. Deploy only through the guarded Cloudflare Pages procedure below.
+
+Switching one half without the other fails loudly instead of publishing a broken page:
+in `film` mode the metadata generator rejects a case-study page whose social image does
+not match the project data, and `npm run check:dead-channel` rejects missing media
+definitions; in `archived` mode both reject any page that still names the film's media.
+To archive again, reverse steps 3 to 5 (`"mode": "archived"` and restore the archived
+page from Git), and move the staged media out of `public/media/dead-channel/` before
+`npm run build:release`.
 
 ## Access and Cloudflare readback
 

@@ -43,6 +43,34 @@
   font-size: 0.76rem;
   line-height: 1.5;
 }
+.dc-archive {
+  margin: 1.1rem 0 1rem;
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid #50664e;
+  border-left: 3px solid var(--channel-warn);
+  background: var(--channel-screen);
+}
+.dc-archive__kicker {
+  margin: 0 0 0.5rem;
+  color: var(--channel-warn);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.dc-archive h2 {
+  margin: 0 0 0.6rem;
+  color: #f4f8f6;
+  font-size: clamp(1.25rem, 5vw, 1.7rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.dc-archive p:last-child {
+  max-width: 62ch;
+  margin: 0;
+  color: #c9d9df;
+  line-height: 1.6;
+}
 .dc-player {
   position: relative;
   aspect-ratio: 16 / 9;

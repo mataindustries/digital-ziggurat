@@ -2,6 +2,7 @@
 // navigation, contact routes, and generated public metadata.
 
 import deadChannelFilm from './deadChannelFilm.json' with { type: 'json' };
+import { deadChannelArchived } from './deadChannelPublication.js';
 
 const contactEmail = 'matasergio741@gmail.com';
 
@@ -188,9 +189,41 @@ export const processSteps = [
 export const processEvidence =
   'Shoot the Moon reached 576 passing unit tests before feature freeze.';
 
-// Tiers, in display order: flagship > major > supporting > lab. Archive projects
-// stay in source for reference but never render or export publicly.
-export const projectTiers = ['flagship', 'major', 'supporting', 'lab', 'archive'];
+// Tiers, in display order: flagship > major > supporting > lab > archived. An
+// `archived` project keeps its public case study but has no showcase and publishes no
+// media. `archive` projects stay in source for reference but never render or export
+// publicly.
+export const projectTiers = ['flagship', 'major', 'supporting', 'lab', 'archived', 'archive'];
+
+// DEAD CHANNEL's approved film-mode media and social card, kept verbatim. Archived mode
+// (deadChannelPublication.json) leaves them out; film mode restores them.
+const deadChannelFilmRelease = {
+  // Approved release media is staged separately from the public Git repository.
+  // The film path holds the unchanged master bytes; keep it ignored by Git.
+  media: {
+    width: deadChannelFilm.width,
+    height: deadChannelFilm.height,
+    tone: 'channel',
+    privateReview: false,
+    poster: {
+      webp: '/media/dead-channel/poster-1280.webp',
+      jpg: '/media/dead-channel/poster-1280.jpg',
+    },
+    alt: 'A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant',
+    loop: '/media/dead-channel/loop-8s-1280.mp4',
+    reel: '/media/dead-channel/film-22s-1280x720p60.mp4',
+    captions: '/media/dead-channel/captions-en.vtt',
+    reelTitle: 'Dead Channel · watch with sound',
+    watchLabel: 'Watch with sound',
+    playWithSound: true,
+    caption: `● TX ACTIVE · sound off: an empty building · ${deadChannelFilm.duration} s`,
+    contentNote: 'Horror-comedy · sudden loud sounds near the end · best with headphones',
+  },
+  socialPreview: {
+    url: `${siteMeta.publicUrl}/media/dead-channel/og-1200x630.jpg`,
+    alt: 'Dead Channel: a field scanner reads zero entities and Discoverable: Everyone in an empty aerospace plant.',
+  },
+};
 
 export const projects = [
   {
@@ -551,14 +584,16 @@ export const projects = [
   {
     id: 'dead-channel',
     name: 'Dead Channel',
-    tier: 'major',
+    tier: deadChannelArchived ? 'archived' : 'major',
     category: 'Original short film / cinematic sound',
     ownership: {
       objective: 'Make an invisible threat feel present through sound, environmental effects and timing.',
       decisions: 'I created and directed the film and approved the picture, credits, captions and preservation of the original stereo mix.',
       aiRole: 'AI-assisted visual production; original Python/NumPy sound under my creative direction using Claude-assisted production, in a separate pipeline from DaemonV12.',
       verification: 'The case study connects measured stereo changes with verified picture frames; release checks preserve the approved V4.2 master identity.',
-      result: 'An approved 22-second V4.2 horror-comedy with an accessible screening page and measured Signal Trace.',
+      result: deadChannelArchived
+        ? 'An approved 22-second V4.2 horror-comedy, kept as an archived case study with its measured Signal Trace and integrity record.'
+        : 'An approved 22-second V4.2 horror-comedy with an accessible screening page and measured Signal Trace.',
       buyerUse: 'Cinematic web experiences, technical creative production and accessible media presentation.',
     },
     description:
@@ -580,34 +615,18 @@ export const projects = [
       'The detector glitches as the threat approaches. Sound and environmental VFX carry the unseen presence.',
     howBuilt:
       `Developed through iterative collaboration with frontier coding models. Convergence was synthesized separately in original Python/NumPy DSP using ${deadChannelFilm.sourceCount} coordinated virtual sound sources, rendered to stereo. The case study connects the picture lock to measured changes in the soundtrack.`,
-    status: 'Released',
+    status: deadChannelArchived ? 'Archived' : 'Released',
     statusTone: 'gold',
+    ...(deadChannelArchived
+      ? {
+          currentStatus:
+            'Archived. The original film is held privately and is not hosted on this site. The case study stays public as text, with its descriptive transcript, credits, measured Signal Trace and the approved integrity hashes.',
+        }
+      : {}),
     badge: deadChannelFilm.version.replace(' review', ''),
-    // Approved release media is staged separately from the public Git repository.
-    // The film path holds the unchanged master bytes; keep it ignored by Git.
-    media: {
-      width: deadChannelFilm.width,
-      height: deadChannelFilm.height,
-      tone: 'channel',
-      privateReview: false,
-      poster: {
-        webp: '/media/dead-channel/poster-1280.webp',
-        jpg: '/media/dead-channel/poster-1280.jpg',
-      },
-      alt: 'A field scanner with a glitching readout in the dark, apparently empty hall of an abandoned aerospace plant',
-      loop: '/media/dead-channel/loop-8s-1280.mp4',
-      reel: '/media/dead-channel/film-22s-1280x720p60.mp4',
-      captions: '/media/dead-channel/captions-en.vtt',
-      reelTitle: 'Dead Channel · watch with sound',
-      watchLabel: 'Watch with sound',
-      playWithSound: true,
-      caption: `● TX ACTIVE · sound off: an empty building · ${deadChannelFilm.duration} s`,
-      contentNote: 'Horror-comedy · sudden loud sounds near the end · best with headphones',
-    },
-    socialPreview: {
-      url: `${siteMeta.publicUrl}/media/dead-channel/og-1200x630.jpg`,
-      alt: 'Dead Channel: a field scanner reads zero entities and Discoverable: Everyone in an empty aerospace plant.',
-    },
+    // Film mode publishes the approved media (deadChannelFilmRelease, above); archived
+    // mode publishes none, so no page, player or social card can point at a missing file.
+    ...(deadChannelArchived ? { media: null, socialPreview: null } : deadChannelFilmRelease),
     proofSignals: [
       deadChannelFilm.version.replace(' review', ''),
       `${deadChannelFilm.frames.toLocaleString('en-US')} frames at ${deadChannelFilm.fps} fps`,
@@ -625,7 +644,7 @@ export const projects = [
       live: null,
       source: null,
       caseStudy: {
-        label: 'Dead Channel case study',
+        label: deadChannelArchived ? 'Dead Channel archived case study' : 'Dead Channel case study',
         href: '/work/dead-channel/',
       },
     },
@@ -1002,7 +1021,9 @@ export const zigguratTiers = [
     links: [
       { id: 'permitpulse', name: 'PermitPulse', href: '#permitpulse' },
       { id: 'daemonv12', name: 'DaemonV12', href: '#daemonv12' },
-      { id: 'dead-channel', name: 'Dead Channel', href: '#dead-channel' },
+      ...(deadChannelArchived
+        ? []
+        : [{ id: 'dead-channel', name: 'Dead Channel', href: '#dead-channel' }]),
     ],
   },
   { id: 'shoot-the-moon', name: 'Shoot the Moon', href: '#shoot-the-moon' },
