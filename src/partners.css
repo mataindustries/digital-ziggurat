@@ -4,6 +4,11 @@
 }
 
 .partners-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 0.65rem;
   padding-block: 0.9rem;
   border-bottom: 1px solid var(--line);
 }
