@@ -1,0 +1,161 @@
+.partners-wrap {
+  width: min(72rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.partners-header {
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.partners-hero {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.partners-hero h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 6vw, 4.4rem);
+  font-weight: 850;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.partners-hero h1 span {
+  color: var(--cyan);
+}
+
+.partners-lead,
+.partners-contact p {
+  max-width: 36rem;
+  color: #d8e2df;
+  line-height: 1.6;
+}
+
+.partners-lead {
+  font-size: clamp(1rem, 2vw, 1.18rem);
+}
+
+.partners-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.partners-showcase,
+.partners-price,
+.partners-contact {
+  padding: clamp(0.9rem, 2.5vw, 1.65rem);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.partners-showcase {
+  min-width: 0;
+  border-top-color: var(--cyan);
+}
+
+.partners-showcase h2,
+.partners-section h2 {
+  margin-bottom: 0.7rem;
+  font-size: clamp(1.45rem, 3.5vw, 2.15rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.partners-showcase iframe {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  background: #03090b;
+}
+
+.partners-section {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 0.75rem;
+}
+
+.partners-offer-date {
+  color: var(--gold);
+}
+
+.partners-prices,
+.partners-services {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.partners-price {
+  border-left-color: var(--gold);
+}
+
+.partners-price h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+}
+
+.partners-price p,
+.partners-contact p {
+  margin-bottom: 0;
+}
+
+.partners-price strong {
+  display: block;
+  color: var(--gold);
+  font-size: clamp(2.15rem, 5vw, 3rem);
+  line-height: 1.05;
+}
+
+.partners-terms {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.partners-services {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partners-services li {
+  padding: 0.7rem 0.9rem;
+  border-left: 2px solid var(--cyan);
+  background: var(--cyan-soft);
+  line-height: 1.4;
+}
+
+.partners-contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-color: rgba(32, 228, 255, 0.42);
+}
+
+.partners-footer {
+  padding-block: 1.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 38rem) {
+  .partners-prices,
+  .partners-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 56rem) {
+  .partners-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  }
+}
