@@ -370,6 +370,9 @@ function Hero() {
               {siteMeta.workCta}
             </a>
           </div>
+          <a className="text-action" href="/partners/">
+            Event &amp; LED Visuals <span aria-hidden="true">→</span>
+          </a>
           <p className="availability">
             <span className="availability__dot" aria-hidden="true" />
             {siteMeta.availability}
@@ -854,6 +857,10 @@ function ContactSection() {
           <p className="copy-status" role="status">
             {copyStatus}
           </p>
+          <a className="contact-route" href="/partners/">
+            <span>Explore ENM Studio Motion Services</span>
+            <span className="contact-route__arrow" aria-hidden="true">→</span>
+          </a>
         </div>
 
         <div className="contact-panel__routes">
